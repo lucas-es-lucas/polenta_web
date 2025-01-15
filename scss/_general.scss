@@ -1,0 +1,22 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+     // width: 1440px;
+     // height: 5372px;
+
+     background-color: $color-bg;
+     color: $color-text;
+     font-family: $font-principal;
+}
+
+ul {
+     list-style: none;
+}
+
+a {
+     text-decoration: none;
+}

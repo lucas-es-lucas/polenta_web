@@ -1,0 +1,23 @@
+$color-text: #ffffff;
+$color-text-negro: #000000;
+$color-bg-top-nav: #0E0E0E;
+$color-bg: #000000;
+$color-fondo-card: $color-text;
+$color-primary-verde: #24bf5e;
+$color-secondary-verde: #30F26D;
+$color-terciary-gris: #B3B3B3;
+$color-terciary-negro: #1A1A1A;
+$color-accent-violeta: #523CF2;
+$font-size: 1rem;
+$font-principal: "Inter", serif;
+$font-size-title: $font-size * 3;
+$font-size-subtitle: $font-size * 1.5;
+$text-noescualquierfiesta: "Devant_Horgen";
+
+@font-face {
+
+     font-family: "Devant_Horgen";
+
+     src: url(/fonts/Devant_Horgen/Devant_Horgen.ttf);
+
+}

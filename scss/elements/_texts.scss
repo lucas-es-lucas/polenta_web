@@ -1,0 +1,56 @@
+.menu {
+     &__list {
+          &__link {
+               font-size: $font-size;
+               font-weight: 500;
+               letter-spacing: -0.3px;
+               color: $color-text;
+
+               &__icon {
+                    font-size: 20px;
+               }
+          }
+     }
+}
+
+.title {
+     font-size: $font-size-title;
+     font-weight: 600;
+     letter-spacing: -0.2px;
+     line-height: 120%;
+}
+
+.subtitle {
+     font-size: $font-size-subtitle;
+     font-weight: 400;
+     letter-spacing: -0.48px;
+     line-height: 120%;
+
+     &__bold {
+          font-weight: 700;
+     }
+}
+
+.footer {
+     color: $color-terciary-gris;
+     
+     &__title {
+          font-size: 9px;
+          font-weight: 600;
+          letter-spacing: 1.8px;
+          text-transform: uppercase;
+     }
+
+     &__subtitle {
+          font-size: 9px;
+          font-weight: 500;
+          letter-spacing: -0.27px;
+     }
+
+     &__copyright__text {
+          font-size: 10px;
+          font-weight: 500;
+          letter-spacing: -0.3px;
+          text-align: center;
+     }
+}

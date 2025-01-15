@@ -1,0 +1,35 @@
+.contacto {
+     &__container {
+          height: 704px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+     }
+
+     &__section {
+          // width: 1455px;
+          width: 100%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 33px;
+
+          .contacto__escribinos__email {
+               color: $color-primary-verde;
+          }
+
+          .contacto__redes {
+               display: flex;
+               flex-direction: column;
+               gap: 22px;
+
+               &__iconos {
+                    display: flex;
+                    justify-content: center;
+                    gap: 11px;
+               }
+          }
+     }
+}
