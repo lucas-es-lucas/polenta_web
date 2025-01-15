@@ -31,6 +31,19 @@
      }
 }
 
+.card{
+     &__title {
+          font-size: 24px;
+          color: $color-text-negro;
+     }
+
+     &__description {
+          font-size: 14px;
+          color: $color-text-negro;
+          text-align: center;
+     }
+}
+
 .footer {
      color: $color-terciary-gris;
      
