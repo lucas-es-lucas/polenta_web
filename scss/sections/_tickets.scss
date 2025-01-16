@@ -1,4 +1,10 @@
 .tickets {
+     &__container {
+          background-image: url("/imgs/bgs/bg-tickets.png");
+
+          // background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px / 128.811% 100% no-repeat;
+     }
+
      &__section {
           width: 100%;
           height: 1024px;

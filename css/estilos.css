@@ -76,6 +76,7 @@ a {
   background: #0E0E0E;
   /* Drop Shadow/100 */
   display: flex;
+  width: 100%;
   height: 62px;
   padding: 0px 220px;
   justify-content: space-between;
@@ -83,7 +84,6 @@ a {
   flex-shrink: 0; }
   .menu__list {
     display: flex;
-    width: 68px;
     padding: 5px 10px;
     justify-content: center;
     align-items: center;
@@ -92,6 +92,9 @@ a {
       padding: 11px; }
       .menu__list__item :hover {
         text-decoration: underline; }
+      .menu__list__item__icon {
+        padding-right: 6px;
+        padding-left: 6px; }
     .menu__list__link {
       color: #ffffff; }
       .menu__list__link :hover {
@@ -101,6 +104,9 @@ a {
 
 .hero__bgs {
   width: 100%; }
+
+.tickets__container {
+  background-image: url("/imgs/bgs/bg-tickets.png"); }
 
 .tickets__section {
   width: 100%;
@@ -173,6 +179,7 @@ a {
       height: 40px; }
 
 .puestas__container {
+  background-image: url("/imgs/bgs/bg-puestas.png");
   width: 100%;
   height: 1024px;
   display: flex;
