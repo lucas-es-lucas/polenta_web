@@ -1,0 +1,17 @@
+.anouncement{
+     &__container{
+          // position: fixed;
+
+          display: flex;
+          justify-content:space-between;
+          align-items: center;
+          width: 100%;
+          height: 30px;
+          background-color: $color-bg-anouncement;
+     }
+
+     // &__item {
+     //      transition:linear;
+     //      transform: translateX(30);
+     // }
+}

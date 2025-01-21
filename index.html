@@ -23,7 +23,7 @@
 	</head>
 	<body>
 		<!-- Optin - Inicio -->
-		<div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
+		<!-- <div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
 		<link
 			rel="stylesheet"
 			type="text/css"
@@ -33,9 +33,26 @@
 			type="text/javascript"
 			src="https://optin.myperfit.com/res/js/fiestapolenta/uTNllBzR.js"
 			charset="UTF-8"
-		></script>
+		></script> -->
 		<!-- Optin - Fin -->
-		<header>
+		<header class="header header__fixed">
+			<section class="anouncement anouncement__container">
+				<article class="anouncement__item">
+					<p class="anouncement__text">
+						20% OFF DE AHORRO CON VISA BANCO GALICIA
+					</p>
+				</article>
+				<article class="anouncement__item">
+					<p class="anouncement__text">
+						20% OFF DE AHORRO CON VISA BANCO GALICIA
+					</p>
+				</article>
+				<article class="anouncement__item">
+					<p class="anouncement__text">
+						20% OFF DE AHORRO CON VISA BANCO GALICIA
+					</p>
+				</article>
+			</section>
 			<nav class="top-nav menu">
 				<figure>
 					<img
@@ -64,7 +81,9 @@
 							>Contacto</a
 						>
 					</li>
-					<li class="nav-item menu__list__item menu__list__item__icon">
+					<li
+						class="nav-item menu__list__item menu__list__item__icon"
+					>
 						<a
 							class="menu__list__link menu__list__link__icon"
 							href="https://www.instagram.com/polenta.polenta"
@@ -79,7 +98,9 @@
 								alt="icono instagram"
 						/></a> -->
 					</li>
-					<li class="nav-item menu__list__item menu__list__item__icon">
+					<li
+						class="nav-item menu__list__item menu__list__item__icon"
+					>
 						<a
 							class="menu__list__link menu__list__link__icon"
 							href="https://www.tiktok.com/@polenta.polenta"
@@ -122,50 +143,88 @@
 				</article>
 			</section>
 			<div class="container tickets tickets__container">
+				<!-- <img src="/imgs/bgs/bg-tickets.png" alt="imagen de fondo tickets"> -->
 				<section id="tickets" class="section tickets__section">
 					<article class="tickets__title">
 						<h2 class="title">Tickets</h2>
 					</article>
-					<article class="slider tickets__slider">
-						<a
-							href="https://home.passline.com/home"
-							target="_blank"
-						>
-							<figure>
+					<section class="slider tickets__slider">
+						<article class="ticket">
+							<!-- hero-box -->
+							<figure class="ticket__img__container">
+								<!-- hero-image-box -->
 								<img
+									class="ticket__img"
 									src="/imgs/tickets/new-ticket.png"
-									alt="imagen ticket 1"
-								/></figure
-						></a>
-						<a
-							href="https://home.passline.com/home"
-							target="_blank"
-						>
-							<figure>
+									alt="imagen del ticket"
+								/><!-- hero-img -->
+							</figure>
+							<!-- <div class="ticket__button__container"> -->
+							<button class="cta ticket__button">
+								<!-- hero-button -->
+								<a
+									class="cta__text ticket__link"
+									href="https://home.passline.com/home"
+									target="_blank"
+									>comprar</a
+								>
+							</button>
+							<!-- </div> -->
+						</article>
+						<article class="ticket">
+							<figure class="ticket__img__container">
 								<img
+									class="ticket__img"
 									src="/imgs/tickets/new-ticket.png"
-									alt="imagen ticket 2"
-								/></figure
-						></a>
-						<a
-							href="https://home.passline.com/home"
-							target="_blank"
-							><figure>
+									alt="imagen del ticket"
+								/>
+							</figure>
+							<button class="cta ticket__button">
+								<a
+									class="cta__text ticket__link"
+									href="https://home.passline.com/home"
+									target="_blank"
+									>comprar</a
+								>
+							</button>
+						</article>
+						<article class="ticket">
+							<figure class="ticket__img__container">
 								<img
+									class="ticket__img"
 									src="/imgs/tickets/new-ticket.png"
-									alt="imagen ticket 3"
-								/></figure
-						></a>
-						<a
-							href="https://home.passline.com/home"
-							target="_blank"
-							><figure>
+									alt="imagen del ticket"
+								/>
+							</figure>
+							<button class="cta ticket__button">
+								<a
+									class="cta__text ticket__link"
+									href="https://home.passline.com/home"
+									target="_blank"
+									>comprar</a
+								>
+							</button>
+						</article>
+						<article class="ticket">
+							<figure class="ticket__img__container">
 								<img
+									class="ticket__img"
 									src="/imgs/tickets/new-ticket.png"
-									alt="imagen ticket 4"
-								/></figure
-						></a>
-					</article>
+									alt="imagen del ticket"
+								/>
+							</figure>
+							<!-- <div class="ticket__button__container"> -->
+							<button class="cta ticket__button">
+								<a
+									class="cta__text ticket__link"
+									href="https://home.passline.com/home"
+									target="_blank"
+									>comprar</a
+								>
+							</button>
+							<!-- </div> -->
+						</article>
+					</section>
 				</section>
 			</div>
 			<div class="container nosotros nosotros__container">
@@ -441,5 +500,10 @@
 				</article>
 			</section>
 		</footer>
+		<button class="go-to-top">
+			<a class="go-to-top__text " href="#">VOLVER ARRIBA</a>
+			<a class="go-to-top__icon" href="#"><img src="/imgs/icons/scroll-top.png" alt="icono botón volver arriba"></a>
+		</button>
+		
 	</body>
 </html>

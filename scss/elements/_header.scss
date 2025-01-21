@@ -1,0 +1,11 @@
+.header{
+     position: fixed;
+     width: 100%;
+
+     z-index: 20;
+
+     &__fixed {
+          display: flex;
+          flex-direction: column;
+     }
+}

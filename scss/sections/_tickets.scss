@@ -1,8 +1,16 @@
 .tickets {
      &__container {
-          background-image: url("/imgs/bgs/bg-tickets.png");
+          // image {
+          //      width: 692px;
+          //      height: 891px;
+          // }
 
-          // background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px / 128.811% 100% no-repeat;
+          // background-image: url("/imgs/bgs/bg-tickets.png");
+
+          background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px / 128.811% 100% no-repeat;
+
+          // background-position: 0; // 0, bottom left;
+          // background-origin: content-box;
      }
 
      &__section {

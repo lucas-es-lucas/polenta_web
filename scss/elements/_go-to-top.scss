@@ -1,0 +1,17 @@
+.go-to-top{
+     position: fixed;
+     width: 153px;
+     height: 46px;
+
+     bottom: 25px;
+     right: 25px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding: 10px;
+     gap: 5px;
+
+     background-color: transparent;
+     border: none;
+}

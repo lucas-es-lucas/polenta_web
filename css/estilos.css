@@ -2,6 +2,35 @@
   font-family: "Devant_Horgen";
   src: url(/fonts/Devant_Horgen/Devant_Horgen.ttf); }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Inter", serif; }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+  a__:visited {
+    text-decoration: none; }
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 20; }
+  .header__fixed {
+    display: flex;
+    flex-direction: column; }
+
+.anouncement__text {
+  color: #ffffff; }
+
 .menu__list__link {
   font-size: 1rem;
   font-weight: 500;
@@ -24,6 +53,12 @@
   text-align: center; }
   .subtitle__bold {
     font-weight: 700; }
+
+.cta__text {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  text-transform: uppercase; }
 
 .card__title {
   font-size: 24px;
@@ -54,23 +89,79 @@
     letter-spacing: -0.3px;
     text-align: center; }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-body {
-  background-color: #000000;
+.go-to-top__text {
   color: #ffffff;
-  font-family: "Inter", serif; }
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.36px;
+  text-transform: uppercase; }
 
-ul {
-  list-style: none; }
+.go-to-top {
+  position: fixed;
+  width: 153px;
+  height: 46px;
+  bottom: 25px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 5px;
+  background-color: transparent;
+  border: none; }
 
-a {
-  text-decoration: none; }
-  a__:visited {
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: #1A1A1A;
+  border: 3px #ffffff solid;
+  border-radius: 5px; }
+  .cta__text {
+    width: 180px;
+    padding: 20px 30px;
+    color: #ffffff;
     text-decoration: none; }
+    .cta__text__:visited {
+      text-decoration: none; }
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+
+.ticket__img__container {
+  max-width: 100%;
+  background-color: #000000;
+  z-index: 10;
+  opacity: 1;
+  transition: all 1s ease; }
+  .ticket__img__container:hover {
+    opacity: .25;
+    z-index: 0; }
+
+.ticket__img {
+  width: 100%;
+  object-fit: cover; }
+
+.ticket__button {
+  z-index: 0;
+  position: absolute; }
+  .ticket__button:hover {
+    z-index: 10; }
+    .ticket__button:hover .ticket__img__container {
+      opacity: .25; }
+
+.anouncement__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  background-color: #B94E2B; }
 
 .menu {
   background: #0E0E0E;
@@ -106,7 +197,7 @@ a {
   width: 100%; }
 
 .tickets__container {
-  background-image: url("/imgs/bgs/bg-tickets.png"); }
+  background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px/128.811% 100% no-repeat; }
 
 .tickets__section {
   width: 100%;
@@ -165,8 +256,9 @@ a {
       overflow: hidden;
       align-content: center; }
     .nosotros__container .section .card__imagen {
-      width: 245px;
-      height: 240px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 15px 15px 0 0; }
     .nosotros__container .section .card__container {
       display: flex;
@@ -249,3 +341,5 @@ a {
     flex-direction: column;
     align-items: flex-start;
     gap: 3px; }
+  .footer__title {
+    padding-bottom: 3px; }

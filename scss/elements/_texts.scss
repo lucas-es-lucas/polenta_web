@@ -1,3 +1,9 @@
+.anouncement {
+     &__text {
+          color: $color-text;
+     }
+}
+
 .menu {
      &__list {
           &__link {
@@ -32,7 +38,16 @@
      }
 }
 
-.card{
+.cta {
+     &__text {
+          font-size: $font-size;
+          font-weight: 700;
+          letter-spacing: 0.96px;
+          text-transform: uppercase;
+     }
+}
+
+.card {
      &__title {
           font-size: 24px;
           color: $color-text-negro;
@@ -47,7 +62,7 @@
 
 .footer {
      color: $color-terciary-gris;
-     
+
      &__title {
           color: $color-terciary-gris;
 
@@ -67,10 +82,20 @@
 
      &__copyright__text {
           color: $color-terciary-gris;
-          
+
           font-size: 10px;
           font-weight: 500;
           letter-spacing: -0.3px;
           text-align: center;
+     }
+}
+
+.go-to-top {
+     &__text {
+          color: $color-text;
+          font-size: $font-size * .75;
+          font-weight: 600;
+          letter-spacing: -0.36px;
+          text-transform: uppercase;
      }
 }
