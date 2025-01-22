@@ -1,27 +1,44 @@
 .tickets {
-     &__container {
-          // image {
-          //      width: 692px;
-          //      height: 891px;
-          // }
+     // &__container {
+     //      // background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px / 128.811% 100% no-repeat;
 
-          // background-image: url("/imgs/bgs/bg-tickets.png");
+     //      width: 100%;
 
-          background: url("/imgs/bgs/bg-tickets.png") lightgray -199.37px 0px / 128.811% 100% no-repeat;
+     //      object-fit: cover;
+     // }
 
-          // background-position: 0; // 0, bottom left;
-          // background-origin: content-box;
+     &__title {
+          z-index: 0;
+     }
+
+     &__img__container {
+          // height: 100%;
+          height: calc(100vh - 92px);
+          max-width: 100%;
+
+          position: absolute;
+          z-index: 0;
+     }
+
+     &__img {
+          width: 100%;
+          // height: 100%;
+          height: calc(100vh - 92px);
+
+          object-fit: cover;
      }
 
      &__section {
           width: 100%;
-          height: 1024px;
+          // height: 1024px;
 
           display: flex;
           flex-direction: column;
           // justify-content: center;
           align-items: center;
           gap: 44px;
+
+          z-index: 10;
      }
 
      &__slider {
@@ -31,7 +48,7 @@
           flex-direction: column;
           gap: 22px;
 
-          max-height: 795px;
+          max-height: 70vh;
           overflow-y: auto;
           overflow-x: hidden;
      }

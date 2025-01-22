@@ -8,10 +8,22 @@
      // }
 
      &__bgs {
+          height: 100vh;
+          // height: calc(100vh - 92px);
           width: 100%;
+          object-fit: cover;
           // width: 1440px;
           // height: 1024px;
      }
+
+     // .banner-img {
+     //      // opacity: 40%;
+     //      height: 100%;
+     //      width: 100%;
+     //      object-fit: cover;
+     //      aspect-ratio: 16 / 9;
+     //      object-position: center top;
+     // }
 }
 
 // position: relative;

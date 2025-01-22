@@ -4,6 +4,11 @@
      box-sizing: border-box;
 }
 
+html {
+     scroll-padding-top: 92px;
+     /* height of sticky header */
+}
+
 body {
      // width: 1440px;
      // height: 5372px;
@@ -23,4 +28,14 @@ a {
      &__:visited {
           text-decoration: none;
      }
+}
+
+// main {
+//      padding-top: 92px;
+// }
+
+.container {
+     height: 100%;
+     // height: calc(100vh - 92px);
+     // padding-top: 92px;
 }

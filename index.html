@@ -119,6 +119,7 @@
 			</nav>
 		</header>
 		<main>
+			<!-- <div class="container"> -->
 			<section class="section hero hero__section">
 				<article id="hero" class="article hero__article">
 					<!-- <figure> -->
@@ -142,9 +143,16 @@
 					</div> -->
 				</article>
 			</section>
-			<div class="container tickets tickets__container">
-				<!-- <img src="/imgs/bgs/bg-tickets.png" alt="imagen de fondo tickets"> -->
-				<section id="tickets" class="section tickets__section">
+			<!-- </div> -->
+			<div id="tickets" class="container tickets tickets__container">
+				<figure class="tickets__img__container">
+					<img
+						class="tickets__img"
+						src="/imgs/bgs/bg-tickets.png"
+						alt="imagen de fondo tickets"
+					/>
+				</figure>
+				<section class="section tickets__section">
 					<article class="tickets__title">
 						<h2 class="title">Tickets</h2>
 					</article>
@@ -227,8 +235,11 @@
 					</section>
 				</section>
 			</div>
-			<div class="container nosotros nosotros__container">
-				<section class="section nosotros__section" id="nosotros">
+			<div
+				id="nosotros"
+				class="container nosotros nosotros__container"
+			>
+				<section class="section nosotros__section">
 					<article
 						class="nosotros__queeslapolenta"
 						id="queeslapolenta"
@@ -353,8 +364,15 @@
 					</section>
 				</section>
 			</div>
-			<div class="container puestas puestas__container">
-				<section id="puestas" class="section puestas__section">
+			<div id="puestas" class="container puestas puestas__container">
+				<figure class="puestas__img__container">
+					<img
+						class="puestas__img"
+						src="/imgs/bgs/bg-puestas.png"
+						alt="imagen de fondo puestas"
+					/>
+				</figure>
+				<section class="section puestas__section">
 					<article class="puestas__descripcion">
 						<h2 class="title">Puestas</h2>
 						<p class="subtitle">
@@ -398,8 +416,11 @@
 					</form>
 				</article>
 			</section>
-			<div class="container contacto contacto__container">
-				<section id="contacto" class="section contacto__section">
+			<div
+				id="contacto"
+				class="container contacto contacto__container"
+			>
+				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
 						<h2 class="title">Sigamos en contacto</h2>
 					</article>
@@ -408,8 +429,11 @@
 					>
 						<p class="subtitle">
 							Si querés trabajar con nosotros, escribinos a
-							<span class="contacto__escribinos__email"
-								>hola@fiestapolenta.com</span
+							<a href="mailto:hola@fiestapolenta.com?subject=Hola Fiesta Polenta!&body=Hola!"
+								><span
+									class="contacto__escribinos__email"
+									>hola@fiestapolenta.com</span
+								></a
 							>
 						</p>
 					</article>
@@ -475,10 +499,16 @@
 			<section id="legales" class="footer__section">
 				<article class="footer__article footer__legales">
 					<h3 class="footer__title">Cosas que hay que poner</h3>
-					<a class="footer__subtitle" href="#" target="_blank"
+					<a
+						class="footer__subtitle"
+						href="/pages/politica_de_privacidad.html"
+						target="_blank"
 						>Política de Privacidad</a
 					>
-					<a class="footer__subtitle" href="#" target="_blank"
+					<a
+						class="footer__subtitle"
+						href="/pages/proteccion_de_datos.html"
+						target="_blank"
 						>Protección de Datos</a
 					>
 				</article>
@@ -501,9 +531,12 @@
 			</section>
 		</footer>
 		<button class="go-to-top">
-			<a class="go-to-top__text " href="#">VOLVER ARRIBA</a>
-			<a class="go-to-top__icon" href="#"><img src="/imgs/icons/scroll-top.png" alt="icono botón volver arriba"></a>
+			<a class="go-to-top__text" href="#">VOLVER ARRIBA</a>
+			<a class="go-to-top__icon" href="#"
+				><img
+					src="/imgs/icons/scroll-top.png"
+					alt="icono botón volver arriba"
+			/></a>
 		</button>
-		
 	</body>
 </html>

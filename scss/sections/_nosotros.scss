@@ -1,7 +1,7 @@
 .nosotros__container {
      // width: 1440px;
      width: 100%;
-     height: 1180px;
+     // height: 1180px;
      flex-shrink: 0;
 
      background-color: $color-accent-violeta;
@@ -81,98 +81,5 @@
                width: 50px;
                height: 40px;
           }
-
-          // .nosotros__cards {
-          //      // width: 1013px;
-
-          //      display: flex;
-          //      align-items: center;
-          //      gap: 11px;
-          //      align-self: stretch;
-
-          //      &__card {
-          //           display: flex;
-          //           width: 245px;
-          //           height: 455px;
-          //           flex-direction: column;
-          //           align-items: flex-start;
-
-          //           .card__img {
-          //                width: 245px;
-          //                height: 240px;
-          //           }
-
-          //           .card__icon {
-          //                width: 50px;
-          //                height: 40px;
-          //           }
-
-          //           &__content {
-          //                display: flex;
-          //                width: 245px;
-          //                height: 215px;
-          //                padding: 22px 15px;
-          //                flex-direction: column;
-          //                gap: 11px;
-
-          //                &__titulo {
-          //                     display: flex;
-          //                     flex-direction: column;
-          //                     justify-content: center;
-          //                     align-items: center;
-          //                     gap: 3px;
-          //                }
-          //           }
-          //      }
-          // }
      }
 }
-
-// .cards {
-//      //width: 80%;
-
-//      display: flex;
-//      gap: 11px;
-// }
-
-// .card {
-//      display: flex;
-//      flex-direction: column;
-//      align-items: center;
-//      gap: 20px;
-
-//      padding: 2%;
-
-//      border: 1px solid white;
-//      border-radius: 2%;
-
-//      width: 245px;
-//      height: 455px;
-// }
-
-// .card__container__imagen {
-//      width: 245px;
-//      height: 240px;
-
-//      overflow: hidden;
-
-//      align-content: center;
-// }
-
-// .card__imagen {
-//      width: 245px;
-//      height: 240px;
-// }
-
-// .card__icono {
-//      width: 50px;
-// }
-
-// se setea en _texts.scss
-// h2 {
-//      font-size: 1rem;
-// }
-
-// p {
-//      text-align: justify;
-// }

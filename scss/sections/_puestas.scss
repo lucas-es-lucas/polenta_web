@@ -1,15 +1,34 @@
 .puestas {
-     &__container {
-          background-image: url("/imgs/bgs/bg-puestas.png");
+     // &__container {
+     //      background-image: url("/imgs/bgs/bg-puestas.png");
 
-          // background: url("/imgs/bgs/bg-puestas.png") lightgray -79.034px -41px / 135.172% 105.018% no-repeat;
+     //      // background: url("/imgs/bgs/bg-puestas.png") lightgray -79.034px -41px / 135.172% 105.018% no-repeat;
 
+     //      width: 100%;
+     //      // height: 1024px;
+
+     //      display: flex;
+     //      justify-content: center;
+     //      align-items: center;
+     // }
+
+     &__img__container {
+          // height: 100%;
+          height: calc(100vh - 92px);
+          max-width: 100%;
+
+          right: 0px;
+
+          position: absolute;
+          z-index: 0;
+     }
+
+     &__img {
           width: 100%;
-          height: 1024px;
+          // height: 100%;
+          // height: calc(100vh - 92px);
 
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          object-fit: cover;
      }
 
      &__section {
@@ -17,6 +36,8 @@
           flex-direction: column;
           align-items: center;
           gap: 33px;
+
+          position: relative;
 
           .puestas__descripcion {
                width: 60%;
@@ -33,8 +54,12 @@
           .puestas__slider {
                width: 70%;
 
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+
                &__img {
-                    width: 100%;
+                    width: 1000px;
                }
           }
      }
