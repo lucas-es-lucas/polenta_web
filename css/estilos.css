@@ -422,3 +422,15 @@ main {
   height: auto;
   display: flex;
   flex-direction: column; }
+
+main {
+  padding-top: 92px; }
+
+.proteccion__container {
+  background-color: #ffffff;
+  padding: 66px 0px;
+  padding-left: 220px;
+  padding-right: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column; }

@@ -1,0 +1,20 @@
+main {
+     padding-top: 92px;
+}
+
+.proteccion {
+     &__container {
+          background-color: $color-fondo-card;
+
+          padding: 66px 0px;
+
+          // max-width: 1440px;
+          padding-left: 220px;
+          padding-right: 220px;
+
+          height: auto;
+
+          display: flex;
+          flex-direction: column;
+     }
+}

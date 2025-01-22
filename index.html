@@ -23,7 +23,7 @@
 	</head>
 	<body>
 		<!-- Optin - Inicio -->
-		<!-- <div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
+		<div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
 		<link
 			rel="stylesheet"
 			type="text/css"
@@ -33,7 +33,7 @@
 			type="text/javascript"
 			src="https://optin.myperfit.com/res/js/fiestapolenta/uTNllBzR.js"
 			charset="UTF-8"
-		></script> -->
+		></script>
 		<!-- Optin - Fin -->
 		<header class="header header__fixed">
 			<section class="anouncement anouncement__container">
@@ -112,10 +112,11 @@
 			</section>
 			<nav class="top-nav menu">
 				<figure>
-					<img
-						src="/imgs/logos/logo-polenta.svg"
-						alt="logo-plenta"
-					/>
+					<a href="#"
+						><img
+							src="/imgs/logos/logo-polenta.svg"
+							alt="logo-plenta"
+					/></a>
 				</figure>
 				<ul class="navbar-nav menu__list">
 					<li class="nav-item menu__list__item">
@@ -454,13 +455,29 @@
 						</p>
 					</article>
 					<article class="slider puestas__slider">
-						<figure>
+						<!-- <figure>
 							<img
 								class="puestas__slider__img"
 								src="/imgs/slider/slider-img-1.png"
 								alt="imagen slider 1"
 							/>
-						</figure>
+						</figure> -->
+						<img
+							class="puestas__slider__img"
+							src="/imgs/slider/slider-img-1.png"
+						/>
+						<img
+							class="puestas__slider__img"
+							src="/imgs/slider/slider-img-2.png"
+						/>
+						<img
+							class="puestas__slider__img"
+							src="/imgs/slider/slider-img-3.png"
+						/>
+						<img
+							class="puestas__slider__img"
+							src="/imgs/slider/slider-img-4.png"
+						/>
 					</article>
 				</section>
 			</div>
@@ -604,4 +621,22 @@
 			/></a>
 		</button>
 	</body>
+	<script>
+		var slideIndex = 0;
+		carousel();
+
+		function carousel() {
+			var i;
+			var x = document.getElementsByClassName("puestas__slider__img");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > x.length) {
+				slideIndex = 1;
+			}
+			x[slideIndex - 1].style.display = "block";
+			setTimeout(carousel, 3000); // cambia cada 3 segundos
+		}
+	</script>
 </html>
