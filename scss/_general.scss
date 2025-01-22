@@ -6,13 +6,9 @@
 
 html {
      scroll-padding-top: 92px;
-     /* height of sticky header */
 }
 
 body {
-     // width: 1440px;
-     // height: 5372px;
-
      background-color: $color-bg;
      color: $color-text;
      font-family: $font-principal;
@@ -30,12 +26,6 @@ a {
      }
 }
 
-// main {
-//      padding-top: 92px;
-// }
-
 .container {
      height: 100%;
-     // height: calc(100vh - 92px);
-     // padding-top: 92px;
 }

@@ -1,0 +1,39 @@
+// main {
+//      padding-top: 92px;
+// }
+
+main {
+     padding-top: 92px;
+}
+
+.privacidad {
+     &__container {
+          background-color: $color-fondo-card;
+
+          padding: 66px 0px;
+
+          // max-width: 1440px;
+          padding-left: 220px;
+          padding-right: 220px;
+
+          height: auto;
+
+          display: flex;
+          flex-direction: column;
+     }
+
+     color: $color-text-negro;
+
+     &__title {
+          padding-top: 55px;
+
+          font-size: ($font-size * 2.25); // 36px;
+          font-weight: 400;
+          letter-spacing: -0.4px;
+     }
+
+     &__description {
+          padding-top: 33px;
+          font-size: ($font-size * 1.25); // 20px;
+     }
+}

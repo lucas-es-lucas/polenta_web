@@ -1,8 +1,10 @@
 @import "variables";
 @import "general";
 @import "elements/header";
+@import "sections/footer";
 @import "elements/texts";
 @import "elements/go-to-top";
+@import "elements/back-to-home";
 @import "elements/cta";
 @import "elements/ticket";
 @import "sections/anouncement";
@@ -14,6 +16,7 @@
 @import "sections/suscribite";
 @import "sections/contacto";
 @import "sections/legales";
+@import "sections/privacidad";
 //@import "elements/noescualquierfiesta";
 //@import "elements/card";
 @import "media__queries";
