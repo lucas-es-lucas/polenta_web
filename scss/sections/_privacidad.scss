@@ -22,18 +22,18 @@ main {
           flex-direction: column;
      }
 
-     color: $color-text-negro;
+     // color: $color-text-negro;
 
-     &__title {
-          padding-top: 55px;
+     // &__title {
+     //      padding-top: 55px;
 
-          font-size: ($font-size * 2.25); // 36px;
-          font-weight: 400;
-          letter-spacing: -0.4px;
-     }
+     //      font-size: ($font-size * 2.25); // 36px;
+     //      font-weight: 400;
+     //      letter-spacing: -0.4px;
+     // }
 
-     &__description {
-          padding-top: 33px;
-          font-size: ($font-size * 1.25); // 20px;
-     }
+     // &__description {
+     //      padding-top: 33px;
+     //      font-size: ($font-size * 1.25); // 20px;
+     // }
 }

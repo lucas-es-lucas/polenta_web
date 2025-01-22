@@ -1,17 +1,25 @@
-.anouncement{
-     &__container{
-          // position: fixed;
-
+.anouncement {
+     &__container {
           display: flex;
-          justify-content:space-between;
           align-items: center;
-          width: 100%;
+
           height: 30px;
-          background-color: $color-bg-anouncement;
+          // background-color: $color-bg-anouncement;
+
+          animation: scrolling 30s linear infinite;
+
+          @keyframes scrolling {
+               0% {
+                    transform: translateX(0)
+               }
+
+               100% {
+                    transform: translateX(-100%)
+               }
+          }
      }
 
-     // &__item {
-     //      transition:linear;
-     //      transform: translateX(30);
-     // }
+     &__item {
+          flex-shrink: 0;
+     }
 }

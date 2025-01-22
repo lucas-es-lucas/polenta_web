@@ -100,15 +100,41 @@
      }
 }
 
+// .privacidad {
+//      &__title {
+//           color: $color-text-negro;
+//           font-size: ($font-size * 2.25); // 36px;
+//           font-weight: 900;
+//           letter-spacing: -0.4px;
+//      }
+
+//      &__subtitle {
+//           font-size: ($font-size * 1.25); // 20px;
+//           font-weight: 500;
+//      }
+
+//      &__description {
+//           font-size: ($font-size * 1.25); // 20px;
+//      }
+// }
+
 .privacidad {
+     color: $color-text-negro;
+
      &__title {
-          color: $color-text-negro;
+          padding-top: 55px;
+
           font-size: ($font-size * 2.25); // 36px;
-          font-weight: 400;
+          font-weight: 600;
           letter-spacing: -0.4px;
      }
 
-     &__description {
+     &__subtitle {
           font-size: ($font-size * 1.25); // 20px;
+          font-weight: 500;
+     }
+
+     &__description {
+          padding-top: 33px;
      }
 }

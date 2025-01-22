@@ -2,6 +2,10 @@
      position: fixed;
      width: 100%;
 
+     overflow: hidden;
+
+     background-color: $color-bg-anouncement;
+
      z-index: 20;
 
      &__fixed {
