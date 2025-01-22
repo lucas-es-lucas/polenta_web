@@ -1,6 +1,8 @@
 .anouncement {
      &__text {
           color: $color-text;
+
+          font-size: ($font-size * 0.8);
      }
 }
 
