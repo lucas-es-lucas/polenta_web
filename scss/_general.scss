@@ -12,20 +12,48 @@ body {
      background-color: $color-bg;
      color: $color-text;
      font-family: $font-principal;
-}
 
-ul {
-     list-style: none;
-}
-
-a {
-     text-decoration: none;
-
-     &__:visited {
-          text-decoration: none;
+     ul {
+          list-style: none;
      }
-}
 
-.container {
-     height: 100%;
+     a {
+          text-decoration: none;
+
+          &__:visited {
+               text-decoration: none;
+          }
+     }
+
+     .container {
+          height: auto;
+
+          padding: 6rem 0;
+     }
+
+     .suscribite__container {
+          height: 220px;
+
+          padding: 0rem;
+     }
+
+     .contacto__container {
+          height: 500px;
+
+          padding: 0rem;
+     }
+
+     .privacidad__container{
+          padding: 66px 0px;
+
+          padding-left: 220px;
+          padding-right: 220px;
+     }
+
+     .proteccion__container{
+          padding: 66px 0px;
+
+          padding-left: 220px;
+          padding-right: 220px;
+     }
 }

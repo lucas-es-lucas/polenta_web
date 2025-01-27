@@ -1,7 +1,3 @@
-// main {
-//      padding-top: 92px;
-// }
-
 main {
      padding-top: 92px;
 }
@@ -10,13 +6,10 @@ main {
      &__container {
           background-color: $color-fondo-card;
 
-          padding: 66px 0px;
+          // padding: 66px 0px;
 
-          // max-width: 1440px;
-          padding-left: 220px;
-          padding-right: 220px;
-
-          height: auto;
+          // padding-left: 220px;
+          // padding-right: 220px;
 
           display: flex;
           flex-direction: column;

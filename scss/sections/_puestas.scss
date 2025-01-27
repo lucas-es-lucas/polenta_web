@@ -1,22 +1,9 @@
 .puestas {
      // &__container {
-     //      background-image: url("/imgs/bgs/bg-puestas.png");
-
-     //      // background: url("/imgs/bgs/bg-puestas.png") lightgray -79.034px -41px / 135.172% 105.018% no-repeat;
-
-     //      width: 100%;
-     //      // height: 1024px;
-
-     //      display: flex;
-     //      justify-content: center;
-     //      align-items: center;
+     //      padding: 4rem 0;
      // }
 
      &__img__container {
-          // height: 100%;
-          height: calc(100vh - 92px);
-          max-width: 100%;
-
           right: 0px;
 
           position: absolute;
@@ -25,8 +12,6 @@
 
      &__img {
           width: 100%;
-          // height: 100%;
-          // height: calc(100vh - 92px);
 
           object-fit: cover;
      }

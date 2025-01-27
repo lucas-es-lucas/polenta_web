@@ -1,10 +1,12 @@
 .contacto {
      &__container {
-          height: 704px;
+          // height: 704px;
 
           display: flex;
           justify-content: center;
           align-items: center;
+
+          // padding: 4rem 0;
      }
 
      &__section {
