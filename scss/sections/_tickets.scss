@@ -1,23 +1,27 @@
 .tickets {
-     // &__container {
-     //      padding: 4rem 0;
-     // }
+     &__container {
+          // padding: 4rem 0;
+          background-image: url('/imgs/bgs/bg-tickets.png');
+          background-repeat: no-repeat;
+          background-position-x: left;
+          background-size: contain;
+     }
 
      &__title {
           z-index: 0;
      }
 
-     &__img__container {
-          position: absolute;
-          z-index: 0;
-     }
+     // &__img__container {
+     //      position: absolute;
+     //      z-index: 0;
+     // }
 
-     &__img {
-          // width: 100%;
-          max-height: 800px;
+     // &__img {
+     //      // width: 100%;
+     //      max-height: 800px;
 
-          object-fit: cover;
-     }
+     //      object-fit: cover;
+     // }
 
      &__section {
           width: 100%;

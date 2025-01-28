@@ -260,16 +260,14 @@ body {
   width: 100%;
   object-fit: cover; }
 
+.tickets__container {
+  background-image: url("/imgs/bgs/bg-tickets.png");
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-size: contain; }
+
 .tickets__title {
   z-index: 0; }
-
-.tickets__img__container {
-  position: absolute;
-  z-index: 0; }
-
-.tickets__img {
-  max-height: 800px;
-  object-fit: cover; }
 
 .tickets__section {
   width: 100%;
@@ -341,14 +339,10 @@ body {
       width: 50px;
       height: 40px; }
 
-.puestas__img__container {
-  right: 0px;
-  position: absolute;
-  z-index: 0; }
-
-.puestas__img {
-  width: 100%;
-  object-fit: cover; }
+.puestas__container {
+  background-image: url("/imgs/bgs/bg-puestas.png");
+  background-repeat: no-repeat;
+  background-position-x: right; }
 
 .puestas__section {
   display: flex;
