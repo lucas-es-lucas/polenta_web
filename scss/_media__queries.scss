@@ -106,6 +106,14 @@
           &__bold {
                font-weight: 700;
           }
+
+
+     }
+
+     .puestas__descripcion {
+          .subtitle__bold {
+               color: $color-primary-verde;
+          }
      }
 
      .cta {
@@ -452,11 +460,12 @@
 
                .nosotros__queeslapolenta {
                     display: flex;
-                    padding: 0rem; // 2.75rem;
                     flex-direction: column;
                     align-items: center;
                     row-gap: 2rem;
                     align-self: stretch;
+
+                    padding: 0rem; // 2.75rem;
                }
 
                .cards {
@@ -510,6 +519,49 @@
 
                .card__icono {
                     width: 3rem;
+               }
+          }
+     }
+}
+
+//puestas 
+@media only screen and (max-width: 390px) {
+     .puestas {
+          &__container {
+               background-image: url('/imgs/bgs/bg-puestas.png');
+               background-repeat: no-repeat;
+               background-position-x: right;
+          }
+
+          &__section {
+               width: 100%;
+               padding: 0 1.5rem;
+
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               gap: 2rem;
+
+               position: relative;
+
+               .puestas__descripcion {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5rem;
+
+                    text-align: center;
+               }
+
+               .slider {
+                    display: flex;
+
+                    .puestas__slider {
+                         &__img {
+                              width: 100%;
+
+                              border-radius: 1.25rem;
+                         }
+                    }
                }
           }
      }

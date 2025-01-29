@@ -370,23 +370,23 @@ body {
   background-position-x: right; }
 
 .puestas__section {
+  width: 100%;
+  padding: 0 15rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
   position: relative; }
   .puestas__section .puestas__descripcion {
-    width: 60%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    row-gap: 1.5rem;
     text-align: center; }
   .puestas__section .slider {
-    width: 80%;
     display: flex; }
     .puestas__section .slider .puestas__slider__img {
-      width: 100%; }
+      width: 100%;
+      border-radius: 1.25rem; }
 
 .suscribite__container {
   width: 100%;
@@ -460,6 +460,8 @@ main {
     text-align: center; }
     .subtitle__bold {
       font-weight: 700; }
+  .puestas__descripcion .subtitle__bold {
+    color: #24bf5e; }
   .cta__text {
     font-size: 1rem;
     font-weight: 700;
@@ -648,11 +650,11 @@ main {
       gap: 3.5rem; }
       .nosotros__container .section .nosotros__queeslapolenta {
         display: flex;
-        padding: 0rem;
         flex-direction: column;
         align-items: center;
         row-gap: 2rem;
-        align-self: stretch; }
+        align-self: stretch;
+        padding: 0rem; }
       .nosotros__container .section .cards {
         display: flex;
         flex-direction: column;
@@ -685,6 +687,30 @@ main {
         height: 11.25rem; }
       .nosotros__container .section .card__icono {
         width: 3rem; } }
+
+@media only screen and (max-width: 390px) {
+  .puestas__container {
+    background-image: url("/imgs/bgs/bg-puestas.png");
+    background-repeat: no-repeat;
+    background-position-x: right; }
+  .puestas__section {
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative; }
+    .puestas__section .puestas__descripcion {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.5rem;
+      text-align: center; }
+    .puestas__section .slider {
+      display: flex; }
+      .puestas__section .slider .puestas__slider__img {
+        width: 100%;
+        border-radius: 1.25rem; } }
 
 @media only screen and (max-width: 390px) {
   .footer {
