@@ -3,7 +3,7 @@
           display: flex;
           align-items: center;
 
-          height: 30px;
+          height: $height-anouncement; //2rem;
           // background-color: $color-bg-anouncement;
 
           animation: scrolling 30s linear infinite;

@@ -1,5 +1,4 @@
 .nosotros__container {
-     // width: 1440px;
      width: 100%;
      flex-shrink: 0;
 
@@ -9,51 +8,45 @@
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     gap: 55px;
+     gap: 3.5rem;
      flex-shrink: 0;
 
-     // padding: 4rem 0;
-
      .section {
-          width: 1013px;
+          width: 64rem;
 
           display: flex;
           flex-direction: column;
-          gap: 55px;
+          gap: 3.5rem;
 
           .nosotros__queeslapolenta {
-               // width: 1013px;
-
                display: flex;
-               padding: 0px 44px;
+               padding: 0rem 2.75rem;
                flex-direction: column;
                align-items: center;
-               gap: 33px;
+               gap: 2rem;
                align-self: stretch;
           }
 
           .cards {
                display: flex;
-               gap: 11px;
+               gap: .75rem;
           }
 
           .card {
                display: flex;
                flex-direction: column;
                align-items: center;
-               // gap: 20px;
 
                background-color: $color-fondo-card;
 
-               border-radius: 15px;
+               border-radius: 1rem;
 
-               width: 245px;
-               height: 455px;
+               width: 15.5rem;
           }
 
           .card__container__imagen {
-               width: 245px;
-               height: 240px;
+               width: 15.5rem;
+               height: 15rem;
 
                overflow: hidden;
 
@@ -66,20 +59,19 @@
 
                object-fit: cover;
 
-               border-radius: 15px 15px 0 0;
+               border-radius: 1rem 1rem 0 0;
           }
 
-          .card__container{
+          .card__container {
                display: flex;
                flex-direction: column;
                align-items: center;
-               gap: 11px;
-               padding: 22px 15px;
+               gap: .75rem;
+               padding: 1.5rem 1rem;
           }
 
           .card__icono {
-               width: 50px;
-               height: 40px;
+               width: 3rem;
           }
      }
 }

@@ -8,7 +8,7 @@
   box-sizing: border-box; }
 
 html {
-  scroll-padding-top: 92px; }
+  scroll-padding-top: 6rem; }
 
 body {
   background-color: #000000;
@@ -24,19 +24,15 @@ body {
     height: auto;
     padding: 6rem 0; }
   body .suscribite__container {
-    height: 220px;
+    height: 15rem;
     padding: 0rem; }
   body .contacto__container {
-    height: 500px;
+    height: 32rem;
     padding: 0rem; }
-  body .privacidad__container {
-    padding: 66px 0px;
-    padding-left: 220px;
-    padding-right: 220px; }
-  body .proteccion__container {
-    padding: 66px 0px;
-    padding-left: 220px;
-    padding-right: 220px; }
+  body .privacidad__container, body .proteccion__container {
+    padding: 4rem 0rem;
+    padding-left: 15rem;
+    padding-right: 15rem; }
 
 .header {
   position: fixed;
@@ -49,7 +45,7 @@ body {
     flex-direction: column; }
 
 .footer {
-  height: 100px;
+  height: 6rem;
   position: relative; }
 
 .anouncement__text {
@@ -62,7 +58,7 @@ body {
   letter-spacing: -0.3px;
   color: #ffffff; }
   .menu__list__link__icon {
-    font-size: 20px; }
+    font-size: 1.25rem; }
 
 .title {
   font-size: 3rem;
@@ -86,11 +82,11 @@ body {
   text-transform: uppercase; }
 
 .card__title {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #000000; }
 
 .card__description {
-  font-size: 14px;
+  font-size: 0.9rem;
   color: #000000;
   text-align: center; }
 
@@ -98,18 +94,18 @@ body {
   color: #B3B3B3; }
   .footer__title {
     color: #B3B3B3;
-    font-size: 9px;
+    font-size: 0.6rem;
     font-weight: 600;
     letter-spacing: 1.8px;
     text-transform: uppercase; }
   .footer__subtitle {
     color: #B3B3B3;
-    font-size: 9px;
+    font-size: 0.6rem;
     font-weight: 500;
     letter-spacing: -0.27px; }
   .footer__copyright__text {
     color: #B3B3B3;
-    font-size: 10px;
+    font-size: 0.6rem;
     font-weight: 500;
     letter-spacing: -0.3px;
     text-align: center; }
@@ -137,44 +133,44 @@ body {
 
 .go-to-top {
   position: fixed;
-  width: 153px;
-  height: 46px;
-  bottom: 25px;
-  right: 25px;
+  width: 9.5rem;
+  height: 2.9rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  gap: 5px;
+  padding: .6rem;
+  gap: .3rem;
   background-color: transparent;
   border: none; }
 
 .back-to-home {
-  width: 153px;
-  height: 46px;
+  width: 9.5rem;
+  height: 2.9rem;
   display: flex;
   align-items: center;
   background-color: transparent;
   border: none;
-  padding-top: 66px; }
+  padding-top: 4rem; }
   .back-to-home__text {
     color: #000000;
     font-size: 1rem; }
   .back-to-home__icon {
-    padding-right: 5px;
+    padding-right: .3rem;
     color: #000000; }
 
 .cta {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: .6rem;
   background: #1A1A1A;
-  border: 3px #ffffff solid;
-  border-radius: 5px; }
+  border: 0.2rem #ffffff solid;
+  border-radius: .3rem; }
   .cta__text {
-    width: 180px;
-    padding: 20px 30px;
+    width: 11.5rem;
+    padding: 1.25rem 1.9rem;
     color: #ffffff;
     text-decoration: none; }
     .cta__text__:visited {
@@ -212,7 +208,7 @@ body {
 .anouncement__container {
   display: flex;
   align-items: center;
-  height: 30px;
+  height: 2rem;
   animation: scrolling 30s linear infinite; }
 
 @keyframes scrolling {
@@ -227,27 +223,26 @@ body {
 
 .menu {
   background: #0E0E0E;
-  /* Drop Shadow/100 */
   display: flex;
   width: 100%;
-  height: 62px;
-  padding: 0px 220px;
+  height: 4rem;
+  padding: 0rem 15rem;
   justify-content: space-between;
   align-items: center;
   flex-shrink: 0; }
   .menu__list {
     display: flex;
-    padding: 5px 10px;
+    padding: .3rem .6rem;
     justify-content: center;
     align-items: center;
-    gap: 10px; }
+    gap: .6rem; }
     .menu__list__item {
-      padding: 11px; }
+      padding: .7rem; }
       .menu__list__item :hover {
         text-decoration: underline; }
       .menu__list__item__icon {
-        padding-right: 6px;
-        padding-left: 6px; }
+        padding-right: .4rem;
+        padding-left: .4rem; }
     .menu__list__link {
       color: #ffffff; }
       .menu__list__link :hover {
@@ -274,15 +269,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 44px;
+  gap: 2.75rem;
   z-index: 10; }
 
 .tickets__slider {
-  width: 700px;
+  width: 44rem;
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  max-height: 750px;
+  gap: 1.5rem;
+  max-height: 47rem;
   overflow-y: auto;
   overflow-x: hidden; }
 
@@ -294,50 +289,48 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 55px;
+  gap: 3.5rem;
   flex-shrink: 0; }
   .nosotros__container .section {
-    width: 1013px;
+    width: 64rem;
     display: flex;
     flex-direction: column;
-    gap: 55px; }
+    gap: 3.5rem; }
     .nosotros__container .section .nosotros__queeslapolenta {
       display: flex;
-      padding: 0px 44px;
+      padding: 0rem 2.75rem;
       flex-direction: column;
       align-items: center;
-      gap: 33px;
+      gap: 2rem;
       align-self: stretch; }
     .nosotros__container .section .cards {
       display: flex;
-      gap: 11px; }
+      gap: .75rem; }
     .nosotros__container .section .card {
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: #ffffff;
-      border-radius: 15px;
-      width: 245px;
-      height: 455px; }
+      border-radius: 1rem;
+      width: 15.5rem; }
     .nosotros__container .section .card__container__imagen {
-      width: 245px;
-      height: 240px;
+      width: 15.5rem;
+      height: 15rem;
       overflow: hidden;
       align-content: center; }
     .nosotros__container .section .card__imagen {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 15px 15px 0 0; }
+      border-radius: 1rem 1rem 0 0; }
     .nosotros__container .section .card__container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 11px;
-      padding: 22px 15px; }
+      gap: .75rem;
+      padding: 1.5rem 1rem; }
     .nosotros__container .section .card__icono {
-      width: 50px;
-      height: 40px; }
+      width: 3rem; }
 
 .puestas__container {
   background-image: url("/imgs/bgs/bg-puestas.png");
@@ -348,26 +341,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 33px;
+  gap: 2rem;
   position: relative; }
   .puestas__section .puestas__descripcion {
     width: 60%;
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    padding: 22px;
+    gap: 1.5rem;
+    padding: 1.5rem;
     text-align: center; }
-  .puestas__section .puestas__slider {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    .puestas__section .puestas__slider__img {
-      width: 1000px; }
+  .puestas__section .slider {
+    width: 80%;
+    display: flex; }
+    .puestas__section .slider .puestas__slider__img {
+      width: 100%; }
 
 .suscribite__container {
   width: 100%;
-  height: 320px;
+  height: 20rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -384,25 +375,25 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 33px; }
+  gap: 2rem; }
   .contacto__section .contacto__escribinos__email {
     color: #24bf5e; }
   .contacto__section .contacto__redes {
     display: flex;
     flex-direction: column;
-    gap: 22px; }
+    gap: 1.5rem; }
     .contacto__section .contacto__redes__iconos {
       display: flex;
       justify-content: center;
-      gap: 11px; }
+      gap: .7rem; }
 
 .footer {
   background-color: #1A1A1A; }
   .footer__section {
     display: flex;
     width: 100%;
-    height: 100px;
-    padding: 0px 220px;
+    height: 6rem;
+    padding: 0px 15rem;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0; }
@@ -410,12 +401,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 3px; }
+    gap: .2rem; }
   .footer__title {
-    padding-bottom: 3px; }
+    padding-bottom: .2rem; }
 
 main {
-  padding-top: 92px; }
+  padding-top: 6rem; }
 
 .privacidad__container {
   background-color: #ffffff;
@@ -423,7 +414,7 @@ main {
   flex-direction: column; }
 
 main {
-  padding-top: 92px; }
+  padding-top: 6rem; }
 
 .proteccion__container {
   background-color: #ffffff;

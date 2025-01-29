@@ -5,7 +5,7 @@
 }
 
 html {
-     scroll-padding-top: 92px;
+     scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
 }
 
 body {
@@ -32,28 +32,28 @@ body {
      }
 
      .suscribite__container {
-          height: 220px;
+          height: 15rem;
 
           padding: 0rem;
      }
 
      .contacto__container {
-          height: 500px;
+          height: 32rem;
 
           padding: 0rem;
      }
 
-     .privacidad__container{
-          padding: 66px 0px;
+     .privacidad__container,.proteccion__container{
+          padding: 4rem 0rem;
 
-          padding-left: 220px;
-          padding-right: 220px;
+          padding-left: 15rem;
+          padding-right: 15rem;
      }
 
-     .proteccion__container{
-          padding: 66px 0px;
+     // .proteccion__container{
+     //      padding: 15rem 0rem;
 
-          padding-left: 220px;
-          padding-right: 220px;
-     }
+     //      padding-left: 15rem;
+     //      padding-right: 15rem;
+     // }
 }

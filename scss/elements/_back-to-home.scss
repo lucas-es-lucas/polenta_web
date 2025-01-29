@@ -1,29 +1,22 @@
 .back-to-home{
      // position: fixed;
-     width: 153px;
-     height: 46px;
-
-     // bottom: 25px;
-     // right: 25px;
+     width: 9.5rem;
+     height: 2.9rem;
 
      display: flex;
      align-items: center;
-     // justify-content: center;
-     // padding: 10px;
-     // gap: 11px;
 
      background-color: transparent;
      border: none;
 
-     padding-top: 66px;
+     padding-top: 4rem;
      &__text {
           color: $color-text-negro;
           font-size: $font-size;
      }
 
      &__icon {
-          // padding-left: 5px;
-          padding-right: 5px;
+          padding-right: .3rem;
           
           color: $color-text-negro;
      }

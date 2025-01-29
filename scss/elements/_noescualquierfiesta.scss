@@ -1,11 +1,10 @@
 .noescualquierfiesta {
      color: $color-text;
      font-family: $text-noescualquierfiesta;
-     font-size: 59px;
+     font-size: 3.7rem;
      font-style: normal;
-     font-weight: 700; //var(--sds-typography-title-hero-font-weight);
+     font-weight: 700;
      line-height: 120%;
-     /* 70.8px */
-     letter-spacing: 11.8px;
+     letter-spacing: .75rem;
      text-transform: uppercase;
 }

@@ -23,4 +23,7 @@ $text-noescualquierfiesta: "Devant_Horgen";
 
 }
 
-$height-header: 92px; //(anouncement = 30px + top-nav = 62px)
+$height-top-nav: 4rem;
+$height-anouncement: 2rem;
+
+$height-header: calc($height-anouncement + $height-top-nav);

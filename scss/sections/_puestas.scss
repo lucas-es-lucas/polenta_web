@@ -1,29 +1,15 @@
 .puestas {
      &__container {
-          // padding: 4rem 0;
           background-image: url('/imgs/bgs/bg-puestas.png');
           background-repeat: no-repeat;
           background-position-x: right;
      }
 
-     // &__img__container {
-     //      right: 0px;
-
-     //      position: absolute;
-     //      z-index: 0;
-     // }
-
-     // &__img {
-     //      width: 100%;
-
-     //      object-fit: cover;
-     // }
-
      &__section {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 33px;
+          gap: 2rem;
 
           position: relative;
 
@@ -32,22 +18,24 @@
 
                display: flex;
                flex-direction: column;
-               gap: 22px;
+               gap: 1.5rem;
 
-               padding: 22px;
+               padding: 1.5rem;
 
                text-align: center;
           }
 
-          .puestas__slider {
-               width: 70%;
+          .slider {
+               width: 80%;
 
                display: flex;
-               flex-direction: column;
-               align-items: center;
+               // flex-direction: column;
+               // align-items: center;
 
-               &__img {
-                    width: 1000px;
+               .puestas__slider {
+                    &__img {
+                         width: 100%;
+                    }
                }
           }
      }

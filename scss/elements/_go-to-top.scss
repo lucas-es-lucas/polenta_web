@@ -1,24 +1,17 @@
 .go-to-top{
      position: fixed;
-     width: 153px;
-     height: 46px;
+     width: 9.5rem;
+     height: 2.9rem;
 
-     bottom: 25px;
-     right: 25px;
+     bottom: 1.5rem;
+     right: 1.5rem;
 
      display: flex;
      align-items: center;
      justify-content: center;
-     padding: 10px;
-     gap: 5px;
+     padding: .6rem;
+     gap: .3rem;
 
      background-color: transparent;
      border: none;
-
-     // &__privacidad {
-     //      position: absolute;
-
-     //      bottom: 25px;
-     //      right: 25px;
-     // }
 }

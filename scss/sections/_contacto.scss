@@ -1,22 +1,17 @@
 .contacto {
      &__container {
-          // height: 704px;
-
           display: flex;
           justify-content: center;
           align-items: center;
-
-          // padding: 4rem 0;
      }
 
      &__section {
-          // width: 1455px;
           width: 100%;
 
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 33px;
+          gap: 2rem;
 
           .contacto__escribinos__email {
                color: $color-primary-verde;
@@ -25,12 +20,12 @@
           .contacto__redes {
                display: flex;
                flex-direction: column;
-               gap: 22px;
+               gap: 1.5rem;
 
                &__iconos {
                     display: flex;
                     justify-content: center;
-                    gap: 11px;
+                    gap: .7rem;
                }
           }
      }

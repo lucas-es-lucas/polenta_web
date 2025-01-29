@@ -2,16 +2,16 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     gap: 10px;
+     gap: .6rem;
 
      background: $color-terciary-negro;
 
-     border: 3px $color-text solid;
-     border-radius: 5px;
+     border: .2rem $color-text solid;
+     border-radius: .3rem;
 
      &__text {
-          width: 180px;
-          padding: 20px 30px;
+          width: 11.5rem;
+          padding: 1.25rem 1.9rem;
 
           color: $color-text;
           text-decoration: none;

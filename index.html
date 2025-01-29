@@ -198,13 +198,6 @@
 			</section>
 			<!-- </div> -->
 			<div id="tickets" class="container tickets tickets__container">
-				<!-- <figure class="tickets__img__container">
-					<img
-						class="tickets__img"
-						src="/imgs/bgs/bg-tickets.png"
-						alt="imagen de fondo tickets"
-					/>
-				</figure> -->
 				<section class="section tickets__section">
 					<article class="tickets__title">
 						<h2 class="title">Tickets</h2>
@@ -418,13 +411,6 @@
 				</section>
 			</div>
 			<div id="puestas" class="container puestas puestas__container">
-				<!-- <figure class="puestas__img__container">
-					<img
-						class="puestas__img"
-						src="/imgs/bgs/bg-puestas.png"
-						alt="imagen de fondo puestas"
-					/>
-				</figure> -->
 				<section class="section puestas__section">
 					<article class="puestas__descripcion">
 						<h2 class="title">Puestas</h2>
@@ -442,14 +428,15 @@
 							al mundo Polenta*.
 						</p>
 					</article>
-					<article class="slider puestas__slider">
-						<!-- <figure>
-							<img
-								class="puestas__slider__img"
-								src="/imgs/slider/slider-img-1.png"
-								alt="imagen slider 1"
-							/>
-						</figure> -->
+					<article
+						class="slider puestas__slider"
+					>
+						<!-- <button
+							class="slider__button slider__button__left"
+							onclick="plusDivs(-1)"
+						>
+							&#10094;
+						</button> -->
 						<img
 							class="puestas__slider__img"
 							src="/imgs/slider/slider-img-1.png"
@@ -470,6 +457,12 @@
 							src="/imgs/slider/slider-img-4.png"
 							alt="slider imagen 4"
 						/>
+						<!-- <button
+							class="slider__button slider__button__right"
+							onclick="plusDivs(+1)"
+						>
+							&#10095;
+						</button> -->
 					</article>
 				</section>
 			</div>
@@ -578,13 +571,11 @@
 					<a
 						class="footer__subtitle"
 						href="/pages/politica_de_privacidad.html"
-						target="_blank"
 						>Política de Privacidad</a
 					>
 					<a
 						class="footer__subtitle"
 						href="/pages/proteccion_de_datos.html"
-						target="_blank"
 						>Protección de Datos</a
 					>
 				</article>
@@ -615,6 +606,29 @@
 			/></a>
 		</button>
 	</body>
+	<!-- <script>
+		var slideIndex = 1;
+		showDivs(slideIndex);
+
+		function plusDivs(n) {
+			showDivs((slideIndex += n));
+		}
+
+		function showDivs(n) {
+			var i;
+			var x = document.getElementsByClassName("puestas__slider__img");
+			if (n > x.length) {
+				slideIndex = 1;
+			}
+			if (n < 1) {
+				slideIndex = x.length;
+			}
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			x[slideIndex - 1].style.display = "block";
+		}
+	</script> -->
 	<script>
 		var slideIndex = 0;
 		carousel();
