@@ -5,6 +5,13 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<!-- Estilo Bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
 		<!-- iconos redes -->
 		<script
 			src="https://kit.fontawesome.com/7d4193cf05.js"
@@ -98,10 +105,11 @@
 					</span>
 				</article>
 			</section>
-			<nav class="top-nav menu">
-				<figure>
+			<!-- <nav class="top-nav menu">
+				<figure class="menu__logo">
 					<a href="#"
 						><img
+							class="menu__logo__img"
 							src="/imgs/logos/logo-polenta.svg"
 							alt="logo-plenta"
 					/></a>
@@ -137,12 +145,6 @@
 						>
 							<i class="fab fa-instagram"></i>
 						</a>
-						<!-- <a class="menu__list__link" href="#">
-							<img
-								class="menu__list__link__icon"
-								src="/imgs/icons/instagram.png"
-								alt="icono instagram"
-						/></a> -->
 					</li>
 					<li
 						class="nav-item menu__list__item menu__list__item__icon"
@@ -154,18 +156,187 @@
 						>
 							<i class="fab fa-tiktok"></i>
 						</a>
-						<!-- <a class="menu__list__link" href="#"
-							><img
-								class="menu__list__link__icon"
-								src="/imgs/icons/tiktok.png"
-								alt="icono tiktok"
-						/></a> -->
 					</li>
 				</ul>
+			</nav> -->
+			<nav class="navbar navbar-expand-lg top-nav menu">
+				<div class="container-fluid">
+					<figure>
+						<a class="navbar-brand" href="#"
+							><img
+								class="menu__logo"
+								src="/imgs/logos/logo-polenta.svg"
+								alt="logo-plenta"
+						/></a>
+					</figure>
+					<button
+						class="navbar-toggler menu__burger"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse"
+						id="navbarNavDropdown"
+					>
+						<ul class="navbar-nav me-auto menu__list">
+							<li></li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="#tickets"
+									>Tickets</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="menu__list__link"
+									href="#nosotros"
+									>Nosotros</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="menu__list__link"
+									href="#puestas"
+									>Puestas</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="menu__list__link"
+									href="#suscribite"
+									>Contacto</a
+								>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="menu__list__link menu__list__link__icon"
+									href="https://www.instagram.com/polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-instagram"></i>
+								</a>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="menu__list__link menu__list__link__icon"
+									href="https://www.tiktok.com/@polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-tiktok"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</nav>
+			<!-- <nav class="navbar navbar-expand-lg menu">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#"
+						><img
+							class="menu__logo"
+							src="images/KillEmAll.png"
+							alt="logo"
+					/></a>
+					<button
+						class="navbar-toggler menu__burger"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse"
+						id="navbarNavDropdown"
+					>
+						<ul class="navbar-nav me-auto menu__paginas">
+							<li></li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__paginas__link"
+									href="pages/tour.html"
+									>TOUR</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__paginas__link"
+									href="pages/music.html"
+									>ALBUMS</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__paginas__link"
+									href="pages/songs.html"
+									>CANCIONES</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__paginas__link"
+									href="pages/shop.html"
+									>TIENDA</a
+								>
+							</li>
+						</ul>
+						<ul class="navbar-nav ms-auto menu__redes">
+							<li class="nav-item">
+								<a
+									class="nav-link menu__redes__link"
+									href="https://open.spotify.com/artist/2ye2Wgw4gimLv2eAKyk1NB?si=qB5nxu2fSmul0jKuGXZSpw&dl_branch=1"
+									target="_blank"
+									><i class="fab fa-spotify"></i
+								></a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__redes__link"
+									href="https://www.youtube.com/channel/UCbulh9WdLtEXiooRcYK7SWw  
+								"
+									target="_blank"
+									><i class="fab fa-youtube"></i
+								></a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__redes__link"
+									href="https://www.instagram.com/metallica/"
+									target="_blank"
+									><i class="fab fa-instagram"></i
+								></a>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link menu__redes__link"
+									href="https://www.facebook.com/Metallica"
+									target="_blank"
+									><i
+										class="fab fa-facebook-square"
+									></i
+								></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav> -->
 		</header>
-		<main>
-			<!-- <div class="container"> -->
+		<main class="container">
+			<!-- <div class="container__propio"> -->
 			<section class="section hero hero__section">
 				<article id="hero" class="article hero__article">
 					<!-- <figure> -->
@@ -197,7 +368,10 @@
 				</article>
 			</section>
 			<!-- </div> -->
-			<div id="tickets" class="container tickets tickets__container">
+			<div
+				id="tickets"
+				class="container__propio tickets tickets__container"
+			>
 				<section class="section tickets__section">
 					<article class="tickets__title">
 						<h2 class="title">Tickets</h2>
@@ -283,7 +457,7 @@
 			</div>
 			<div
 				id="nosotros"
-				class="container nosotros nosotros__container"
+				class="container__propio nosotros nosotros__container"
 			>
 				<section class="section nosotros__section">
 					<article
@@ -292,12 +466,16 @@
 					>
 						<h2 class="title">¿Qué c$&%! es la Polenta*?</h2>
 						<p class="subtitle">
-							La Polenta* no es cualquier fiesta. No es una
-							fiesta para todos, es una fiesta para todos
-							los que la quieren pasar bien, bailar, gozar,
-							venir como quieran, cuando quieran. Cada
-							Polenter es un láser en la pista, una
+							La Polenta* no es cualquier fiesta.
+							<br />
+							No es una fiesta para todos, es una fiesta
+							para todos los que la quieren pasar bien,
+							bailar, gozar, venir como quieran, cuando
+							quieran.
+							<br />
+							Cada Polenter es un láser en la pista, una
 							ensalada de personas que saben disfrutar.
+							<br />
 							Tampoco somos una fiesta, somos una historia
 							para contar al otro día, una anécdota nueva
 							en tu vida, un mensaje a ese amigo diciéndole
@@ -410,7 +588,10 @@
 					</section>
 				</section>
 			</div>
-			<div id="puestas" class="container puestas puestas__container">
+			<div
+				id="puestas"
+				class="container__propio puestas puestas__container"
+			>
 				<section class="section puestas__section">
 					<article class="puestas__descripcion">
 						<h2 class="title">Puestas</h2>
@@ -428,9 +609,7 @@
 							al mundo Polenta*.
 						</p>
 					</article>
-					<article
-						class="slider puestas__slider"
-					>
+					<article class="slider puestas__slider">
 						<!-- <button
 							class="slider__button slider__button__left"
 							onclick="plusDivs(-1)"
@@ -468,7 +647,7 @@
 			</div>
 			<div
 				id="suscribite"
-				class="container suscribite suscribite__container"
+				class="container__propio suscribite suscribite__container"
 			>
 				<section class="section suscribite__section">
 					<article class="card__suscribite">
@@ -486,7 +665,7 @@
 			</div>
 			<div
 				id="contacto"
-				class="container contacto contacto__container"
+				class="container__propio contacto contacto__container"
 			>
 				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
@@ -647,4 +826,9 @@
 			setTimeout(carousel, 3000); // cambia cada 3 segundos
 		}
 	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"
+	></script>
 </html>

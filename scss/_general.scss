@@ -13,6 +13,12 @@ body {
      color: $color-text;
      font-family: $font-principal;
 
+     .container {
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+     }
+
      ul {
           list-style: none;
      }
@@ -25,7 +31,20 @@ body {
           }
      }
 
-     .container {
+     h2 {
+          margin: 0;
+     }
+
+     p {
+          margin: 0;
+     }
+
+     figure {
+          margin: 0;
+     }
+
+     .container__propio {
+          width: 100%;
           height: auto;
 
           padding: 6rem 0;
@@ -43,7 +62,8 @@ body {
           padding: 0rem;
      }
 
-     .privacidad__container,.proteccion__container{
+     .privacidad__container,
+     .proteccion__container {
           padding: 4rem 0rem;
 
           padding-left: 15rem;
