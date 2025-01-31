@@ -35,8 +35,7 @@ body {
     height: auto;
     padding: 6rem 0; }
   body .suscribite__container {
-    height: 15rem;
-    padding: 0rem; }
+    padding: 6rem 0; }
   body .contacto__container {
     height: 32rem;
     padding: 0rem; }
@@ -321,13 +320,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3.5rem;
+  row-gap: 3.5rem;
   flex-shrink: 0; }
   .nosotros__container .section {
     width: 64rem;
     display: flex;
     flex-direction: column;
-    gap: 3.5rem; }
+    row-gap: 3.5rem; }
     .nosotros__container .section .nosotros__queeslapolenta {
       display: flex;
       padding: 0rem 2.75rem;
@@ -337,12 +336,12 @@ body {
       align-self: stretch; }
     .nosotros__container .section .cards {
       display: flex;
-      gap: .75rem; }
+      column-gap: .75rem; }
     .nosotros__container .section .card {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #ffffff;
+      border: none;
       border-radius: 1rem;
       width: 15.5rem; }
     .nosotros__container .section .card__container__imagen {
@@ -371,7 +370,6 @@ body {
 
 .puestas__section {
   width: 100%;
-  padding: 0 15rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -381,21 +379,23 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
-    text-align: center; }
+    text-align: center;
+    padding: 0 16.2rem; }
   .puestas__section .slider {
-    display: flex; }
+    display: flex;
+    padding: 0 15rem; }
     .puestas__section .slider .puestas__slider__img {
       width: 100%;
       border-radius: 1.25rem; }
 
 .suscribite__container {
-  width: 100%;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
   background-color: #24bf5e; }
+
+.suscribite__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2rem; }
 
 .contacto__container {
   display: flex;
@@ -407,17 +407,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem; }
+  row-gap: 2rem; }
   .contacto__section .contacto__escribinos__email {
     color: #24bf5e; }
   .contacto__section .contacto__redes {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; }
+    row-gap: 1.5rem; }
     .contacto__section .contacto__redes__iconos {
       display: flex;
       justify-content: center;
-      gap: .7rem; }
+      column-gap: 1.5rem; }
 
 main {
   padding-top: 6rem; }
@@ -574,7 +574,8 @@ main {
     background-image: url("/imgs/bgs/bg-tickets.png");
     background-repeat: no-repeat;
     background-position-x: left;
-    background-size: contain; }
+    background-position-y: center;
+    background-size: cover; }
   .tickets__title {
     z-index: 0; }
   .tickets__section {
@@ -640,35 +641,35 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3.5rem;
+    row-gap: 3.5rem;
     flex-shrink: 0; }
     .nosotros__container .section {
       width: 100%;
-      padding: 0 1.5rem;
       display: flex;
       flex-direction: column;
-      gap: 3.5rem; }
+      row-gap: 3.5rem; }
       .nosotros__container .section .nosotros__queeslapolenta {
         display: flex;
         flex-direction: column;
         align-items: center;
         row-gap: 2rem;
         align-self: stretch;
-        padding: 0rem; }
+        padding: 0rem 2.3rem; }
       .nosotros__container .section .cards {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: .75rem; }
+        row-gap: .75rem;
+        padding: 0rem; }
       .nosotros__container .section .card {
         display: flex;
         flex-direction: row;
         align-items: center;
-        background-color: #ffffff;
+        border: none;
         border-radius: 1rem;
         width: 23rem; }
       .nosotros__container .section .card__container__imagen {
-        width: 11.5rem;
+        width: 10.6rem;
         height: 11.25rem;
         overflow: hidden;
         align-content: center; }
@@ -692,10 +693,11 @@ main {
   .puestas__container {
     background-image: url("/imgs/bgs/bg-puestas.png");
     background-repeat: no-repeat;
-    background-position-x: right; }
+    background-position-x: right;
+    background-position-y: center;
+    background-size: cover; }
   .puestas__section {
     width: 100%;
-    padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -705,12 +707,46 @@ main {
       display: flex;
       flex-direction: column;
       row-gap: 1.5rem;
-      text-align: center; }
+      text-align: center;
+      padding: 0 2.5rem; }
     .puestas__section .slider {
-      display: flex; }
+      display: flex;
+      padding: 0 1rem; }
       .puestas__section .slider .puestas__slider__img {
         width: 100%;
         border-radius: 1.25rem; } }
+
+@media only screen and (max-width: 390px) {
+  .suscribite__container {
+    background-color: #24bf5e; }
+  .suscribite__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem; } }
+
+@media only screen and (max-width: 390px) {
+  .contacto__container {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .contacto__section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+    padding: 0 2rem; }
+    .contacto__section .contacto__escribinos__email {
+      color: #24bf5e; }
+    .contacto__section .contacto__redes {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.5rem; }
+      .contacto__section .contacto__redes__iconos {
+        display: flex;
+        justify-content: center;
+        column-gap: .7rem; } }
 
 @media only screen and (max-width: 390px) {
   .footer {

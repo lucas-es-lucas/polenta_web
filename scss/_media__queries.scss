@@ -324,8 +324,12 @@
           &__container {
                background-image: url('/imgs/bgs/bg-tickets.png');
                background-repeat: no-repeat;
+               // background-position-x: left;
+               // background-size: contain;
+
                background-position-x: left;
-               background-size: contain;
+               background-position-y: center;
+               background-size: cover;
           }
 
           &__title {
@@ -447,16 +451,15 @@
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 3.5rem;
+          row-gap: 3.5rem;
           flex-shrink: 0;
 
           .section {
                width: 100%;
-               padding: 0 1.5rem;
 
                display: flex;
                flex-direction: column;
-               gap: 3.5rem;
+               row-gap: 3.5rem;
 
                .nosotros__queeslapolenta {
                     display: flex;
@@ -465,14 +468,16 @@
                     row-gap: 2rem;
                     align-self: stretch;
 
-                    padding: 0rem; // 2.75rem;
+                    padding: 0rem 2.3rem;
                }
 
                .cards {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: .75rem;
+                    row-gap: .75rem;
+
+                    padding: 0rem;
                }
 
                .card {
@@ -480,17 +485,18 @@
                     flex-direction: row;
                     align-items: center;
 
-                    background-color: $color-fondo-card;
+                    // background-color: $color-fondo-card;
 
+                    border: none;
                     border-radius: 1rem;
 
                     width: 23rem;
                }
 
                .card__container__imagen {
-                    width: 11.5rem;
+                    width: 10.6rem;
                     height: 11.25rem;
-                    // width: 183px;
+                    // width: 171px;
                     // height: 180px;
                     overflow: hidden;
 
@@ -530,12 +536,16 @@
           &__container {
                background-image: url('/imgs/bgs/bg-puestas.png');
                background-repeat: no-repeat;
+               // background-position-x: right;
+
                background-position-x: right;
+               background-position-y: center;
+               background-size: cover;
           }
 
           &__section {
                width: 100%;
-               padding: 0 1.5rem;
+               // padding: 0 2.5rem;
 
                display: flex;
                flex-direction: column;
@@ -550,10 +560,14 @@
                     row-gap: 1.5rem;
 
                     text-align: center;
+
+                    padding: 0 2.5rem;
                }
 
                .slider {
                     display: flex;
+
+                    padding: 0 1rem;
 
                     .puestas__slider {
                          &__img {
@@ -565,6 +579,68 @@
                }
           }
      }
+}
+
+//suscribite 
+@media only screen and (max-width: 390px) {
+     .suscribite {
+          &__container {
+               background-color: $color-primary-verde;
+          }
+     
+          &__card {
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+     
+               row-gap: 2rem;
+          }
+     }
+}
+
+// contacto 
+@media only screen and (max-width: 390px) {
+     .contacto {
+          &__container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+          }
+
+          &__section {
+               width: 100%;
+
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               row-gap: 2rem;
+
+               padding: 0 2rem;
+
+               .contacto__escribinos__email {
+                    color: $color-primary-verde;
+               }
+
+               .contacto__redes {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5rem;
+
+                    &__iconos {
+                         display: flex;
+                         justify-content: center;
+                         column-gap: .7rem;
+                    }
+               }
+          }
+     }
+
+     // display: flex;
+     // width: 380px;
+     // padding: 0px 33px;
+     // flex-direction: column;
+     // align-items: center;
+     // gap: 33px;
 }
 
 //footer 

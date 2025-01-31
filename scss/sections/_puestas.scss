@@ -7,7 +7,7 @@
 
      &__section {
           width: 100%;
-          padding: 0 15rem;
+          // padding: 0 15rem;
 
           display: flex;
           flex-direction: column;
@@ -22,10 +22,14 @@
                row-gap: 1.5rem;
 
                text-align: center;
+
+               padding: 0 16.2rem;
           }
 
           .slider {
                display: flex;
+
+               padding: 0 15rem;
 
                .puestas__slider {
                     &__img {
