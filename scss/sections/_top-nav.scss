@@ -3,13 +3,13 @@
      //.top-nav
      background: $color-bg-top-nav;
 
-     display: flex;
-     width: 100%;
-     height: $height-top-nav; //4rem;
-     padding: 0rem 15rem;
-     justify-content: space-between;
-     align-items: center;
-     flex-shrink: 0;
+     // display: flex;
+     // width: 100%;
+     // height: auto; //$height-top-nav; //4rem;
+     padding: 0 1.5rem; //padding: 0rem 15rem;
+     // justify-content: space-between;
+     // align-items: center;
+     // flex-shrink: 0;
 
      &__burger {
           color: $color-primary-verde;
@@ -24,11 +24,11 @@
 
      &__list {
           //.navbar-nav
-          display: flex;
-          padding: .3rem .6rem;
-          justify-content: center;
-          align-items: center;
-          gap: .6rem;
+          // display: flex;
+          // padding: .3rem .6rem;
+          // justify-content: center;
+          // align-items: flex-start;// align-items: center;
+          // row-gap: .6rem;
 
           &__item {
                padding: .7rem;
@@ -52,7 +52,15 @@
 
                &__icon {
                     color: $color-primary-verde;
+
+                    // padding: 1.5rm 0;
                }
           }
+     }
+
+     &__list__redes {
+          display: flex;
+          flex-direction: row;
+          column-gap: 1.5rem;
      }
 }

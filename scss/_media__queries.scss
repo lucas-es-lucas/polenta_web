@@ -204,87 +204,58 @@
 }
 
 //menu 390px
-@media only screen and (max-width: 390px) {
-     .menu {
-          padding: 0 1.5rem;
+// @media only screen and (max-width: 390px) {
+//      .menu {
+//           padding: 0 1.5rem;
 
-          &__list {
-               //.navbar-nav
-               background: $color-bg-top-nav;
+//           &__list {
+//                //.navbar-nav
+//                background: $color-bg-top-nav;
 
-               // display: flex;
-               // padding: .3rem .6rem;
-               // justify-content: center;
-               align-items: flex-start;
-               // gap: .6rem;
+//                // display: flex;
+//                // padding: .3rem .6rem;
+//                // justify-content: center;
+//                align-items: flex-start;
+//                // gap: .6rem;
 
-               &__item {
-                    // padding: .7rem;
+//                &__item {
+//                     // padding: .7rem;
 
-                    & :hover {
-                         text-decoration: underline;
-                    }
+//                     & :hover {
+//                          text-decoration: underline;
+//                     }
 
-                    &__icon {
-                         padding-right: .4rem;
-                         padding-left: .4rem;
-                    }
-               }
+//                     &__icon {
+//                          padding-right: .4rem;
+//                          padding-left: .4rem;
+//                     }
+//                }
 
-               &__link {
-                    color: $color-text;
+//                &__link {
+//                     color: $color-text;
 
-                    & :hover {
-                         text-decoration: underline;
-                    }
+//                     & :hover {
+//                          text-decoration: underline;
+//                     }
 
-                    &__icon {
-                         color: $color-primary-verde;
-                    }
-               }
-          }
-     }
-}
+//                     &__icon {
+//                          color: $color-primary-verde;
+//                     }
+//                }
+//           }
+//      }
+// }
 
 //menu 390px - 991px 
-@media only screen and (min-width: 391px) and (max-width: 991px) {
+@media only screen and (min-width: 992px) {
      .menu {
-          padding: 0 1.5rem;
+          //.top-nav
+          background: $color-bg-top-nav;
 
-          &__list {
-               //.navbar-nav
-               background: $color-bg-top-nav;
+          padding: 0 15rem;
 
-               // display: flex;
-               // padding: .3rem .6rem;
-               // justify-content: center;
-               align-items: flex-start;
-               // gap: .6rem;
-
-               &__item {
-                    // padding: .7rem;
-
-                    & :hover {
-                         text-decoration: underline;
-                    }
-
-                    &__icon {
-                         padding-right: .4rem;
-                         padding-left: .4rem;
-                    }
-               }
-
-               &__link {
-                    color: $color-text;
-
-                    & :hover {
-                         text-decoration: underline;
-                    }
-
-                    &__icon {
-                         color: $color-primary-verde;
-                    }
-               }
+          &__list__redes {
+               column-gap: 0rem;
           }
      }
 }
@@ -490,7 +461,7 @@
                     border: none;
                     border-radius: 1rem;
 
-                    width: 23rem;
+                    width: 22.5rem;
                }
 
                .card__container__imagen {
@@ -708,8 +679,9 @@
           padding: .6rem;
           gap: .3rem;
 
-          background-color: transparent;
+          background-color: $color-bg-go-to-top; //transparent;
           border: none;
+          border-radius: 3rem;
      }
 
      // display: inline-flex;

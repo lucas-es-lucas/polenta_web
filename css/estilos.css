@@ -167,8 +167,9 @@ body {
   justify-content: center;
   padding: .6rem;
   gap: .3rem;
-  background-color: transparent;
-  border: none; }
+  background-color: #212121a6;
+  border: none;
+  border-radius: 3rem; }
 
 .back-to-home {
   width: 9.5rem;
@@ -248,38 +249,30 @@ body {
 
 .menu {
   background: #0E0E0E;
-  display: flex;
-  width: 100%;
-  height: 4rem;
-  padding: 0rem 15rem;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0; }
+  padding: 0 1.5rem; }
   .menu__burger {
     color: #24bf5e; }
     .menu__burger .navbar-toggler-icon {
       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); }
     .menu__burger:focus {
       box-shadow: none; }
-  .menu__list {
+  .menu__list__item {
+    padding: .7rem; }
+    .menu__list__item :hover {
+      text-decoration: underline; }
+    .menu__list__item__icon {
+      padding-right: .4rem;
+      padding-left: .4rem; }
+  .menu__list__link {
+    color: #ffffff; }
+    .menu__list__link :hover {
+      text-decoration: underline; }
+    .menu__list__link__icon {
+      color: #24bf5e; }
+  .menu__list__redes {
     display: flex;
-    padding: .3rem .6rem;
-    justify-content: center;
-    align-items: center;
-    gap: .6rem; }
-    .menu__list__item {
-      padding: .7rem; }
-      .menu__list__item :hover {
-        text-decoration: underline; }
-      .menu__list__item__icon {
-        padding-right: .4rem;
-        padding-left: .4rem; }
-    .menu__list__link {
-      color: #ffffff; }
-      .menu__list__link :hover {
-        text-decoration: underline; }
-      .menu__list__link__icon {
-        color: #24bf5e; }
+    flex-direction: row;
+    column-gap: 1.5rem; }
 
 .hero__bgs {
   height: 100vh;
@@ -517,41 +510,12 @@ main {
       padding-bottom: 2rem;
       text-align: justify; } }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (min-width: 992px) {
   .menu {
-    padding: 0 1.5rem; }
-    .menu__list {
-      background: #0E0E0E;
-      align-items: flex-start; }
-      .menu__list__item :hover {
-        text-decoration: underline; }
-      .menu__list__item__icon {
-        padding-right: .4rem;
-        padding-left: .4rem; }
-      .menu__list__link {
-        color: #ffffff; }
-        .menu__list__link :hover {
-          text-decoration: underline; }
-        .menu__list__link__icon {
-          color: #24bf5e; } }
-
-@media only screen and (min-width: 391px) and (max-width: 991px) {
-  .menu {
-    padding: 0 1.5rem; }
-    .menu__list {
-      background: #0E0E0E;
-      align-items: flex-start; }
-      .menu__list__item :hover {
-        text-decoration: underline; }
-      .menu__list__item__icon {
-        padding-right: .4rem;
-        padding-left: .4rem; }
-      .menu__list__link {
-        color: #ffffff; }
-        .menu__list__link :hover {
-          text-decoration: underline; }
-        .menu__list__link__icon {
-          color: #24bf5e; } }
+    background: #0E0E0E;
+    padding: 0 15rem; }
+    .menu__list__redes {
+      column-gap: 0rem; } }
 
 @media only screen and (max-width: 390px) {
   .container__propio {
@@ -667,7 +631,7 @@ main {
         align-items: center;
         border: none;
         border-radius: 1rem;
-        width: 23rem; }
+        width: 22.5rem; }
       .nosotros__container .section .card__container__imagen {
         width: 10.6rem;
         height: 11.25rem;
@@ -785,5 +749,6 @@ main {
     justify-content: center;
     padding: .6rem;
     gap: .3rem;
-    background-color: transparent;
-    border: none; } }
+    background-color: #212121a6;
+    border: none;
+    border-radius: 3rem; } }
