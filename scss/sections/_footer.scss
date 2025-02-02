@@ -1,29 +1,118 @@
 .footer {
      width: 100%;
-     height: 6rem;
+     height: auto;
+     padding: 2rem 2rem 4rem 2rem;
 
      position: relative;
 
      background-color: $color-terciary-negro;
-     
+
      &__section {
-          display: flex;
-          // width: 100%;
-          // height: 6rem;
-          padding: 0px 15rem;
-          justify-content: space-between;
-          align-items: center;
-          flex-shrink: 0;
+          // display: flex;
+          // flex-direction: column-reverse;
+          // padding: 2rem;
+          // align-items: center;
+          // row-gap: 2rem;
+          // flex-shrink: 0;
+
+          @include grillas__simetricas(1, auto, 3, auto, 0, 2rem);
+          grid-template-areas: 
+          "area__first"
+          "area__center"
+          "area__last";
      }
 
      &__legales {
+          grid-area: area__center;
+
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
-          gap: .2rem;
+          align-items: center;
+          gap: .75rem;
+     }
+
+     &__copyright {
+          grid-area: area__last;
+     }
+
+     &__logo {
+          grid-area: area__first;
      }
 
      &__title {
           padding-bottom: .2rem;
      }
+
+     &__copyright__text {
+          margin: 0;
+     }
+
+     .img__mobile {
+          display: block;
+     }
+
+     .img__desktop {
+          display: none;
+     }
 }
+
+// .tour {
+//      // background-color: rgb(200, 0, 40);
+//      @include grillas__simetricas(1, auto, 3, auto, 0vw, 2vw);
+//      grid-template-areas: 
+//      "mes01"
+//      "mes02"
+//      "mes03";
+//      .tour__mes__01 {
+//           grid-area: mes01;
+//      }
+//      .tour__mes__02 {
+//           grid-area: mes02;
+//      }
+//      .tour__mes__03 {
+//           grid-area: mes03;
+//      }
+// }
+
+// .footer {
+//      width: 100%;
+//      height: 6rem;
+
+//      position: relative;
+
+//      background-color: $color-terciary-negro;
+
+//      &__section {
+//           display: flex;
+//           // width: 100%;
+//           // height: 6rem;
+//           padding: 0px 15rem;
+//           justify-content: space-between;
+//           align-items: center;
+//           flex-shrink: 0;
+//      }
+
+//      &__legales {
+//           display: flex;
+//           flex-direction: column;
+//           align-items: flex-start;
+//           gap: .2rem;
+//      }
+
+//      &__title {
+//           padding-bottom: .2rem;
+//      }
+
+//      &__logo {
+//           display: flex;
+//           flex-direction: column;
+//      }
+
+//      .img__mobile {
+//           display: none;
+//      }
+
+//      .img__desktop {
+//           display: block;
+//      }
+// }

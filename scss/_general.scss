@@ -19,6 +19,10 @@ body {
           padding: 0;
      }
 
+     // .img__desktop {
+     //      display: none;
+     // }
+
      ul {
           list-style: none;
      }
@@ -26,7 +30,12 @@ body {
      a {
           text-decoration: none;
 
-          &__:visited {
+          &:hover {
+               text-decoration: none;
+               color: $color-text;
+          }
+
+          &:visited {
                text-decoration: none;
           }
      }
