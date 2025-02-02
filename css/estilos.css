@@ -22,7 +22,10 @@ body {
     list-style: none; }
   body a {
     text-decoration: none; }
-    body a__:visited {
+    body a:hover {
+      text-decoration: none;
+      color: #ffffff; }
+    body a:visited {
       text-decoration: none; }
   body h2 {
     margin: 0; }
@@ -162,14 +165,15 @@ body {
   height: 2.9rem;
   bottom: 1.5rem;
   right: 1.5rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .6rem;
-  gap: .3rem;
+  column-gap: .3rem;
   background-color: #212121a6;
   border: none;
   border-radius: 3rem; }
+  .go-to-top__text {
+    padding: .25rem; }
 
 .back-to-home {
   width: 9.5rem;
@@ -263,9 +267,11 @@ body {
     .menu__list__item__icon {
       padding-right: .4rem;
       padding-left: .4rem; }
+  .menu__list .nav-link:hover {
+    color: #ffffff; }
   .menu__list__link {
     color: #ffffff; }
-    .menu__list__link :hover {
+    .menu__list__link:hover {
       text-decoration: underline; }
     .menu__list__link__icon {
       color: #24bf5e; }
@@ -721,7 +727,7 @@ main {
     background-color: #1A1A1A; }
     .footer__section {
       display: flex;
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding: 2rem;
       align-items: center;
       gap: 2rem;
@@ -734,7 +740,10 @@ main {
     .footer__title {
       padding-bottom: .2rem; }
     .footer__copyright__text {
-      margin: 0; } }
+      margin: 0; }
+    .footer__logo figure img {
+      src: url("/imgs/logos/m-logo-footer.png");
+      alt: "logo polenta completo"; } }
 
 @media only screen and (max-width: 390px) {
   .go-to-top {
@@ -747,8 +756,9 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: .6rem;
-    gap: .3rem;
+    column-gap: .3rem;
     background-color: #212121a6;
     border: none;
-    border-radius: 3rem; } }
+    border-radius: 3rem; }
+    .go-to-top__text {
+      padding: .25rem; } }

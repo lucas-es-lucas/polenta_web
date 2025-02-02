@@ -26,7 +26,12 @@ body {
      a {
           text-decoration: none;
 
-          &__:visited {
+          &:hover {
+               text-decoration: none;
+               color: $color-text;
+          }
+
+          &:visited {
                text-decoration: none;
           }
      }

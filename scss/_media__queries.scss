@@ -558,12 +558,12 @@
           &__container {
                background-color: $color-primary-verde;
           }
-     
+
           &__card {
                display: flex;
                flex-direction: column;
                align-items: center;
-     
+
                row-gap: 2rem;
           }
      }
@@ -627,7 +627,7 @@
 
           &__section {
                display: flex;
-               flex-direction: column;
+               flex-direction: column-reverse;
                padding: 2rem;
                // justify-content: space-between;
                align-items: center;
@@ -648,6 +648,16 @@
 
           &__copyright__text {
                margin: 0;
+          }
+
+          &__logo {
+               figure {
+                    img {
+                         src: url("/imgs/logos/m-logo-footer.png");
+                         alt: "logo polenta completo";
+                    }
+               }
+
           }
      }
 
@@ -676,12 +686,15 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: .6rem;
-          gap: .3rem;
+          column-gap: .3rem;
 
-          background-color: $color-bg-go-to-top; //transparent;
+          background-color: $color-bg-go-to-top;
           border: none;
           border-radius: 3rem;
+
+          &__text {
+               padding: .25rem;
+          }
      }
 
      // display: inline-flex;
