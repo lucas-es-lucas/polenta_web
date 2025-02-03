@@ -96,6 +96,7 @@
 
                     &__icon {
                          font-size: ($font-size * 1.25);
+                         color: $color-primary-verde;
                     }
                }
           }
@@ -224,8 +225,24 @@
 
           padding: .25rem 15rem 0;
 
+          .navbar-collapse {
+               height: auto;
+          }
+
           &__list {
                padding-top: 0;
+
+               &__item {
+                    & :hover {
+                         // text-decoration: underline;
+                         transform: scale(1.2);
+                    }
+               }
+
+               .nav-link:hover {
+                    color: $color-text;
+                    text-decoration: none;
+               }
           }
 
           &__list__redes {
@@ -697,7 +714,6 @@
      //           display: none;
      //      }
      // }
-}
 
 // .footer {
 //      display: flex;

@@ -24,6 +24,10 @@
           }
      }
 
+     .navbar-collapse {
+          height: 100vh;
+     }
+
      &__list {
           //.navbar-nav
           // display: flex;
@@ -35,9 +39,9 @@
           &__item {
                padding: .7rem;
 
-               & :hover {
-                    text-decoration: underline;
-               }
+               // & :hover {
+               //      transform: scale(1.1);
+               // }
 
                &__icon {
                     padding-right: .4rem;
@@ -47,6 +51,7 @@
 
           .nav-link:hover {
                color: $color-text;
+               text-decoration: underline;
           }
 
           &__link {
@@ -54,6 +59,7 @@
 
                &:hover {
                     text-decoration: underline;
+                    color: $color-primary-verde;
                }
 
                &__icon {

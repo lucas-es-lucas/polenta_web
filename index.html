@@ -162,7 +162,10 @@
 			<nav class="navbar navbar-expand-lg top-nav menu">
 				<div class="container-fluid">
 					<figure>
-						<a class="navbar-brand" href="#"
+						<a
+							class="navbar-brand"
+							href="#"
+							onclick="cerrar()"
 							><img
 								class="menu__logo"
 								src="/imgs/logos/logo-polenta.svg"
@@ -254,14 +257,35 @@
 			<section class="section hero hero__section">
 				<article id="hero" class="article hero__article">
 					<!-- <figure> -->
-					<video
+					<!-- <video
 						id="hero_bgs"
 						class="hero__bgs"
 						src="/imgs/video hero/video-hero-home.mp4"
+						type="video/mp4"
+						poster="/imgs/video hero/video-hero.png"
 						autoplay
 						muted
 						loop
-					></video>
+					></video> -->
+					<video
+						id="hero_bgs"
+						class="hero__bgs"
+						poster="/imgs/video hero/video-hero.png"
+						playsinline
+						autoplay
+						muted
+						loop
+						preload="auto"
+					>
+						<source
+						type="video/mp4"
+						src="/imgs/video hero/video-hero-home.mp4"  
+						/>
+						<source
+						type="video/mp4"
+						src="/imgs/video hero/m-video-hero.mp4" media="max-device-width: 390px"
+						/>Tu navegador no soporta la reproducción automática del video.
+					</video>
 					<!-- <img
 						id="hero_bgs"
 						class="hero__bgs"
@@ -699,14 +723,13 @@
 				</article>
 			</section>
 		</footer>
-		<a class="go-to-top" href="#"
+		<a class="go-to-top" href="#" onclick="cerrar()"
 			><span class="go-to-top__text">VOLVER ARRIBA</span
 			><img
 				class="go-to-top__icon"
 				src="/imgs/icons/scroll-top.png"
 				alt="icono botón volver arriba"
 		/></a>
-		<script src="/scripts/cerrar_menu.js"></script>
 	</body>
 	<!-- <script>
 		var slideIndex = 1;
