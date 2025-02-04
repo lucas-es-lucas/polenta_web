@@ -17,6 +17,7 @@
 			src="https://kit.fontawesome.com/7d4193cf05.js"
 			crossorigin="anonymous"
 		></script>
+		<link rel="icon" type="image/png" href="/imgs/favicon/fav.png" />
 		<!-- estilos propios -->
 		<link rel="stylesheet" href="css/estilos.css" />
 		<!-- fuente -->
@@ -278,13 +279,16 @@
 						preload="auto"
 					>
 						<source
-						type="video/mp4"
-						src="/imgs/video hero/video-hero-home.mp4"  
+							type="video/mp4"
+							src="/imgs/video hero/video-hero-home.mp4"
 						/>
 						<source
-						type="video/mp4"
-						src="/imgs/video hero/m-video-hero.mp4" media="max-device-width: 390px"
-						/>Tu navegador no soporta la reproducción automática del video.
+							type="video/mp4"
+							src="/imgs/video hero/m-video-hero.mp4"
+							media="max-device-width: 390px"
+						/>
+						Tu navegador no soporta la reproducción automática
+						del video.
 					</video>
 					<!-- <img
 						id="hero_bgs"
@@ -548,13 +552,7 @@
 							al mundo Polenta*.
 						</p>
 					</article>
-					<article class="slider puestas__slider">
-						<!-- <button
-							class="slider__button slider__button__left"
-							onclick="plusDivs(-1)"
-						>
-							&#10094;
-						</button> -->
+					<!-- <article class="slider puestas__slider">
 						<img
 							class="puestas__slider__img"
 							src="/imgs/slider/slider-img-1.png"
@@ -575,13 +573,205 @@
 							src="/imgs/slider/slider-img-4.png"
 							alt="slider imagen 4"
 						/>
-						<!-- <button
-							class="slider__button slider__button__right"
-							onclick="plusDivs(+1)"
+					</article> -->
+					<!-- SLIDER DE PRUEBA -->
+					<div
+						id="carouselExampleCaptions"
+						class="carousel carousel-warning slide carousel-fade slider puestas__slider"
+						data-bs-ride="carousel" data-bs-touch="true"
+					>
+						<div class="carousel-indicators">
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="0"
+								class="active"
+								aria-current="true"
+								aria-label="Slide 1"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="1"
+								aria-label="Slide 2"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="2"
+								aria-label="Slide 3"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="3"
+								aria-label="Slide 4"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="4"
+								aria-label="Slide 5"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="5"
+								aria-label="Slide 6"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="6"
+								aria-label="Slide 7"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="7"
+								aria-label="Slide 8"
+							></button>
+						</div>
+						<div class="carousel-inner">
+							<div
+								class="carousel-item active"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-1.png"
+									class="d-block w-100 carousel__img"
+									alt="portada__presentacion"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__presentacion">20 AÑOS DE MASTER OF PUPPETS</a></h5>
+									<p><a class="portada__slide__link" href="#portada__presentacion">Reviví nuestro show celebración en Berlín</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-2.png"
+									class="d-block w-100"
+									alt="portada__novedades"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__novedades">BLACKENED 2020</a></h5>
+									<p><a class="portada__slide__link" href="#portada__novedades">Versionamos un clásico en pandemia</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-3.png"
+									class="d-block w-100"
+									alt="portada__proximaFecha"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__proximaFecha">VOLVEMOS A LOS ESCENARIOS</a></h5>
+									<p><a class="portada__slide__link" href="#portada__proximaFecha">Enterate todo sobre nuestro próximo tour</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-4.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-5.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-6.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-7.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-8.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+						</div>
+						<button
+							class="carousel-control-prev"
+							type="button"
+							data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="prev"
 						>
-							&#10095;
-						</button> -->
-					</article>
+							<span
+								class="carousel-control-prev-icon"
+								aria-hidden="true"
+							></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button
+							class="carousel-control-next"
+							type="button"
+							data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="next"
+						>
+							<span
+								class="carousel-control-next-icon"
+								aria-hidden="true"
+							></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					<!-- SLIDER DE PRUEBA -->
 				</section>
 			</div>
 			<div
@@ -755,22 +945,22 @@
 		}
 	</script> -->
 	<script>
-		var slideIndex = 0;
-		carousel();
+		// var slideIndex = 0;
+		// carousel();
 
-		function carousel() {
-			var i;
-			var x = document.getElementsByClassName("puestas__slider__img");
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
-			}
-			slideIndex++;
-			if (slideIndex > x.length) {
-				slideIndex = 1;
-			}
-			x[slideIndex - 1].style.display = "block";
-			setTimeout(carousel, 3000); // cambia cada 3 segundos
-		}
+		// function carousel() {
+		// 	var i;
+		// 	var x = document.getElementsByClassName("puestas__slider__img");
+		// 	for (i = 0; i < x.length; i++) {
+		// 		x[i].style.display = "none";
+		// 	}
+		// 	slideIndex++;
+		// 	if (slideIndex > x.length) {
+		// 		slideIndex = 1;
+		// 	}
+		// 	x[slideIndex - 1].style.display = "block";
+		// 	setTimeout(carousel, 3000); // cambia cada 3 segundos
+		// }
 
 		// function cerrar() {
 		// 	let navbar = document.querySelector(".navbar-toggler");
