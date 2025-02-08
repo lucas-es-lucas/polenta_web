@@ -1,3 +1,9 @@
+
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
 // header
 //      anouncement
 //           item 
@@ -77,143 +83,143 @@
 // }
 
 //texts 
-@media only screen and (max-width: 390px) {
-     .anouncement {
-          &__text {
-               color: $color-text;
+// @media only screen and (max-width: 390px) {
+//      .anouncement {
+//           &__text {
+//                color: $color-text;
 
-               font-size: ($font-size * 0.8);
-          }
-     }
+//                font-size: ($font-size * 0.8);
+//           }
+//      }
 
-     .menu {
-          &__list {
-               &__link {
-                    font-size: $font-size;
-                    font-weight: 500;
-                    letter-spacing: -0.3px;
-                    color: $color-text;
+//      .menu {
+//           &__list {
+//                &__link {
+//                     font-size: $font-size;
+//                     font-weight: 500;
+//                     letter-spacing: -0.3px;
+//                     color: $color-text;
 
-                    &__icon {
-                         font-size: ($font-size * 1.25);
-                         color: $color-primary-verde;
-                    }
-               }
-          }
-     }
+//                     &__icon {
+//                          font-size: ($font-size * 1.25);
+//                          color: $color-primary-verde;
+//                     }
+//                }
+//           }
+//      }
 
-     .title {
-          font-size: $font-size-title-celular;
-          font-weight: 700;
-          letter-spacing: -0.2px;
-          line-height: 120%;
-          text-align: center;
-     }
+//      .title {
+//           font-size: $font-size-title-celular;
+//           font-weight: 700;
+//           letter-spacing: -0.2px;
+//           line-height: 120%;
+//           text-align: center;
+//      }
 
-     .subtitle {
-          font-size: $font-size-subtitle-celular;
-          font-weight: 400;
-          letter-spacing: -0.48px;
-          line-height: 120%;
-          text-align: center;
+//      .subtitle {
+//           font-size: $font-size-subtitle-celular;
+//           font-weight: 400;
+//           letter-spacing: -0.48px;
+//           line-height: 120%;
+//           text-align: center;
 
-          &__bold {
-               font-weight: 700;
-          }
-     }
+//           &__bold {
+//                font-weight: 700;
+//           }
+//      }
 
-     .puestas__descripcion {
-          .subtitle__bold {
-               color: $color-primary-verde;
-          }
-     }
+//      .puestas__descripcion {
+//           .subtitle__bold {
+//                color: $color-primary-verde;
+//           }
+//      }
 
-     .cta {
-          &__text {
-               font-size: $font-size * .75;
-               font-weight: 700;
-               letter-spacing: 0.96px;
-               text-transform: uppercase;
-          }
-     }
+//      .cta {
+//           &__text {
+//                font-size: $font-size * .75;
+//                font-weight: 700;
+//                letter-spacing: 0.96px;
+//                text-transform: uppercase;
+//           }
+//      }
 
-     .card {
-          &__title {
-               font-size: ($font-size * 1.1);
-               color: $color-text-negro;
-          }
+//      .card {
+//           &__title {
+//                font-size: ($font-size * 1.1);
+//                color: $color-text-negro;
+//           }
 
-          &__description {
-               font-size: ($font-size * .7);
-               color: $color-text-negro;
-               text-align: center;
-          }
-     }
+//           &__description {
+//                font-size: ($font-size * .7);
+//                color: $color-text-negro;
+//                text-align: center;
+//           }
+//      }
 
-     .footer {
-          color: $color-terciary-gris;
+//      .footer {
+//           color: $color-terciary-gris;
 
-          &__title {
-               color: $color-terciary-gris;
+//           &__title {
+//                color: $color-terciary-gris;
 
-               font-size: ($font-size * .6);
-               font-weight: 600;
-               letter-spacing: 1.8px;
-               text-transform: uppercase;
-          }
+//                font-size: ($font-size * .6);
+//                font-weight: 600;
+//                letter-spacing: 1.8px;
+//                text-transform: uppercase;
+//           }
 
-          &__subtitle {
-               color: $color-terciary-gris;
+//           &__subtitle {
+//                color: $color-terciary-gris;
 
-               font-size: ($font-size * .6);
-               font-weight: 500;
-               letter-spacing: -0.27px;
-          }
+//                font-size: ($font-size * .6);
+//                font-weight: 500;
+//                letter-spacing: -0.27px;
+//           }
 
-          &__copyright__text {
-               color: $color-terciary-gris;
+//           &__copyright__text {
+//                color: $color-terciary-gris;
 
-               font-size: ($font-size * .6);
-               font-weight: 500;
-               letter-spacing: -0.3px;
-               text-align: center;
-          }
-     }
+//                font-size: ($font-size * .6);
+//                font-weight: 500;
+//                letter-spacing: -0.3px;
+//                text-align: center;
+//           }
+//      }
 
-     .go-to-top {
-          &__text {
-               color: $color-text;
-               font-size: ($font-size * .75);
-               font-weight: 600;
-               letter-spacing: -0.36px;
-               text-transform: uppercase;
-          }
-     }
+//      .go-to-top {
+//           &__text {
+//                color: $color-text;
+//                font-size: ($font-size * .75);
+//                font-weight: 600;
+//                letter-spacing: -0.36px;
+//                text-transform: uppercase;
+//           }
+//      }
 
-     .privacidad,
-     .proteccion {
-          color: $color-text-negro;
+//      .privacidad,
+//      .proteccion {
+//           color: $color-text-negro;
 
-          &__title {
-               padding: 3rem 0 2rem;
+//           &__title {
+//                padding: 3rem 0 2rem;
 
-               font-size: ($font-size * 2.25);
-               font-weight: 600;
-               letter-spacing: -0.4px;
-          }
+//                font-size: ($font-size * 2.25);
+//                font-weight: 600;
+//                letter-spacing: -0.4px;
+//           }
 
-          &__subtitle {
-               font-size: ($font-size * 1.25);
-               font-weight: 500;
-          }
+//           &__subtitle {
+//                font-size: ($font-size * 1.25);
+//                font-weight: 500;
+//           }
 
-          &__description {
-               padding-bottom: 2rem;
+//           &__description {
+//                padding-bottom: 2rem;
 
-               text-align: justify;
-          }
-     }
-}
+//                text-align: justify;
+//           }
+//      }
+// }
 
 //menu 390px - 991px 
 @media only screen and (min-width: 992px) {
@@ -267,14 +273,6 @@
           height: 32rem;
 
           padding: 0rem;
-     }
-
-     .privacidad__container,
-     .proteccion__container {
-          padding: 4rem 0rem;
-
-          padding-left: 15rem;
-          padding-right: 15rem;
      }
 }
 

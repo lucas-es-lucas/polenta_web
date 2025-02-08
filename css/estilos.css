@@ -42,11 +42,6 @@ body {
   body .contacto__container {
     height: 32rem;
     padding: 0rem; }
-  body .privacidad__container,
-  body .proteccion__container {
-    padding: 4rem 0rem;
-    padding-left: 15rem;
-    padding-right: 15rem; }
 
 .header {
   position: fixed;
@@ -163,6 +158,7 @@ body {
   color: #000000; }
   .privacidad__title, .proteccion__title {
     padding: 3rem 0 2rem;
+    text-align: left;
     font-size: 2.25rem;
     font-weight: 600;
     letter-spacing: -0.4px; }
@@ -172,6 +168,90 @@ body {
   .privacidad__description, .proteccion__description {
     padding-bottom: 2rem;
     text-align: justify; }
+
+@media only screen and (max-width: 390px) {
+  .anouncement__text {
+    color: #ffffff;
+    font-size: 0.8rem; }
+  .menu__list__link {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: #ffffff; }
+    .menu__list__link__icon {
+      font-size: 1.25rem;
+      color: #24bf5e; }
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    line-height: 120%;
+    text-align: center; }
+  .subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+    line-height: 120%;
+    text-align: center; }
+    .subtitle__bold {
+      font-weight: 700; }
+  .puestas__descripcion .subtitle__bold {
+    color: #24bf5e; }
+  .cta__text {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.96px;
+    text-transform: uppercase; }
+  .card__title {
+    font-size: 1.1rem;
+    color: #000000; }
+  .card__description {
+    font-size: 0.7rem;
+    color: #000000;
+    text-align: center; }
+  .footer {
+    color: #B3B3B3; }
+    .footer__title {
+      color: #B3B3B3;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase; }
+    .footer__subtitle {
+      color: #B3B3B3;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: -0.27px; }
+    .footer__copyright__text {
+      color: #B3B3B3;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      text-align: center; }
+  .go-to-top__text {
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: -0.36px;
+    text-transform: uppercase; }
+  .privacidad,
+  .proteccion {
+    color: #000000; }
+    .privacidad__title,
+    .proteccion__title {
+      padding: 3rem 0 2rem;
+      text-align: left;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.4px; }
+    .privacidad__subtitle,
+    .proteccion__subtitle {
+      font-size: 0.9rem;
+      font-weight: 500; }
+    .privacidad__description,
+    .proteccion__description {
+      padding-bottom: 2rem;
+      text-align: left; } }
 
 .go-to-top {
   position: fixed;
@@ -195,8 +275,7 @@ body {
   display: flex;
   align-items: center;
   background-color: transparent;
-  border: none;
-  padding-top: 4rem; }
+  border: none; }
   .back-to-home__text {
     color: #000000;
     font-size: 1rem; }
@@ -465,98 +544,50 @@ main {
 .privacidad__container {
   background-color: #ffffff;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem; }
 
-main {
-  padding-top: 6rem; }
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .privacidad__container {
+    padding-left: 4rem;
+    padding-right: 4rem; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .privacidad__container {
+    padding-left: 8rem;
+    padding-right: 8rem; } }
+
+@media only screen and (min-width: 1200px) {
+  .privacidad__container {
+    padding-left: 15rem;
+    padding-right: 15rem; } }
 
 .proteccion__container {
   background-color: #ffffff;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  padding-left: 2rem;
+  padding-right: 2rem; }
 
-@media only screen and (max-width: 390px) {
-  .anouncement__text {
-    color: #ffffff;
-    font-size: 0.8rem; }
-  .menu__list__link {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: -0.3px;
-    color: #ffffff; }
-    .menu__list__link__icon {
-      font-size: 1.25rem;
-      color: #24bf5e; }
-  .title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.2px;
-    line-height: 120%;
-    text-align: center; }
-  .subtitle {
-    font-size: 1.25rem;
-    font-weight: 400;
-    letter-spacing: -0.48px;
-    line-height: 120%;
-    text-align: center; }
-    .subtitle__bold {
-      font-weight: 700; }
-  .puestas__descripcion .subtitle__bold {
-    color: #24bf5e; }
-  .cta__text {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.96px;
-    text-transform: uppercase; }
-  .card__title {
-    font-size: 1.1rem;
-    color: #000000; }
-  .card__description {
-    font-size: 0.7rem;
-    color: #000000;
-    text-align: center; }
-  .footer {
-    color: #B3B3B3; }
-    .footer__title {
-      color: #B3B3B3;
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 1.8px;
-      text-transform: uppercase; }
-    .footer__subtitle {
-      color: #B3B3B3;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: -0.27px; }
-    .footer__copyright__text {
-      color: #B3B3B3;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: -0.3px;
-      text-align: center; }
-  .go-to-top__text {
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: -0.36px;
-    text-transform: uppercase; }
-  .privacidad,
-  .proteccion {
-    color: #000000; }
-    .privacidad__title,
-    .proteccion__title {
-      padding: 3rem 0 2rem;
-      font-size: 2.25rem;
-      font-weight: 600;
-      letter-spacing: -0.4px; }
-    .privacidad__subtitle,
-    .proteccion__subtitle {
-      font-size: 1.25rem;
-      font-weight: 500; }
-    .privacidad__description,
-    .proteccion__description {
-      padding-bottom: 2rem;
-      text-align: justify; } }
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .proteccion__container {
+    padding-left: 4rem;
+    padding-right: 4rem; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+  .proteccion__container {
+    padding-left: 8rem;
+    padding-right: 8rem; } }
+
+@media only screen and (min-width: 1200px) {
+  .proteccion__container {
+    padding-left: 15rem;
+    padding-right: 15rem; } }
 
 @media only screen and (min-width: 992px) {
   .menu {
@@ -583,12 +614,7 @@ main {
     padding: 0rem; }
   .contacto__container {
     height: 32rem;
-    padding: 0rem; }
-  .privacidad__container,
-  .proteccion__container {
-    padding: 4rem 0rem;
-    padding-left: 15rem;
-    padding-right: 15rem; } }
+    padding: 0rem; } }
 
 @media only screen and (max-width: 390px) {
   .tickets__container {
