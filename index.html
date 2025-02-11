@@ -5,11 +5,19 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<!-- Estilo Bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
 		<!-- iconos redes -->
 		<script
 			src="https://kit.fontawesome.com/7d4193cf05.js"
 			crossorigin="anonymous"
 		></script>
+		<link rel="icon" type="image/png" href="/imgs/favicon/fav.png" />
 		<!-- estilos propios -->
 		<link rel="stylesheet" href="css/estilos.css" />
 		<!-- fuente -->
@@ -98,10 +106,11 @@
 					</span>
 				</article>
 			</section>
-			<nav class="top-nav menu">
-				<figure>
+			<!-- <nav class="top-nav menu">
+				<figure class="menu__logo">
 					<a href="#"
 						><img
+							class="menu__logo__img"
 							src="/imgs/logos/logo-polenta.svg"
 							alt="logo-plenta"
 					/></a>
@@ -137,12 +146,6 @@
 						>
 							<i class="fab fa-instagram"></i>
 						</a>
-						<!-- <a class="menu__list__link" href="#">
-							<img
-								class="menu__list__link__icon"
-								src="/imgs/icons/instagram.png"
-								alt="icono instagram"
-						/></a> -->
 					</li>
 					<li
 						class="nav-item menu__list__item menu__list__item__icon"
@@ -154,29 +157,139 @@
 						>
 							<i class="fab fa-tiktok"></i>
 						</a>
-						<!-- <a class="menu__list__link" href="#"
-							><img
-								class="menu__list__link__icon"
-								src="/imgs/icons/tiktok.png"
-								alt="icono tiktok"
-						/></a> -->
 					</li>
 				</ul>
+			</nav> -->
+			<nav class="navbar navbar-expand-lg top-nav menu">
+				<div class="container-fluid">
+					<figure>
+						<a
+							class="navbar-brand"
+							href="#"
+							onclick="cerrar()"
+							><img
+								class="menu__logo"
+								src="/imgs/logos/logo-polenta.svg"
+								alt="logo-plenta"
+						/></a>
+					</figure>
+					<button
+						class="navbar-toggler menu__burger"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse"
+						id="navbarNavDropdown"
+					>
+						<ul class="navbar-nav ms-auto menu__list">
+							<li></li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="#tickets"
+									onclick="cerrar()"
+									>Tickets</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="#nosotros"
+									onclick="cerrar()"
+									>Nosotros</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="#puestas"
+									onclick="cerrar()"
+									>Puestas</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="#suscribite"
+									onclick="cerrar()"
+									>Contacto</a
+								>
+							</li>
+						</ul>
+						<ul
+							class="navbar-nav mr-auto menu__list menu__list__redes"
+						>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://www.instagram.com/polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-instagram"></i>
+								</a>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://www.tiktok.com/@polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-tiktok"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</nav>
 		</header>
-		<main>
-			<!-- <div class="container"> -->
+		<main class="container">
+			<!-- <div class="container__propio"> -->
 			<section class="section hero hero__section">
 				<article id="hero" class="article hero__article">
 					<!-- <figure> -->
-					<video
+					<!-- <video
 						id="hero_bgs"
 						class="hero__bgs"
 						src="/imgs/video hero/video-hero-home.mp4"
+						type="video/mp4"
+						poster="/imgs/video hero/video-hero.png"
 						autoplay
 						muted
 						loop
-					></video>
+					></video> -->
+					<video
+						id="hero_bgs"
+						class="hero__bgs"
+						poster="/imgs/video hero/video-hero.png"
+						playsinline
+						autoplay
+						muted
+						loop
+						preload="auto"
+					>
+						<source
+							type="video/mp4"
+							src="/imgs/video hero/video-hero-home.mp4"
+						/>
+						<source
+							type="video/mp4"
+							src="/imgs/video hero/m-video-hero.mp4"
+							media="max-device-width: 390px"
+						/>
+						Tu navegador no soporta la reproducción automática
+						del video.
+					</video>
 					<!-- <img
 						id="hero_bgs"
 						class="hero__bgs"
@@ -197,7 +310,10 @@
 				</article>
 			</section>
 			<!-- </div> -->
-			<div id="tickets" class="container tickets tickets__container">
+			<div
+				id="tickets"
+				class="container__propio tickets tickets__container"
+			>
 				<section class="section tickets__section">
 					<article class="tickets__title">
 						<h2 class="title">Tickets</h2>
@@ -283,7 +399,7 @@
 			</div>
 			<div
 				id="nosotros"
-				class="container nosotros nosotros__container"
+				class="container__propio nosotros nosotros__container"
 			>
 				<section class="section nosotros__section">
 					<article
@@ -292,16 +408,21 @@
 					>
 						<h2 class="title">¿Qué c$&%! es la Polenta*?</h2>
 						<p class="subtitle">
-							La Polenta* no es cualquier fiesta. No es una
-							fiesta para todos, es una fiesta para todos
-							los que la quieren pasar bien, bailar, gozar,
-							venir como quieran, cuando quieran. Cada
-							Polenter es un láser en la pista, una
+							La Polenta* no es cualquier fiesta.
+							<br />
+							No es una fiesta para todos, es una fiesta
+							para todos los que la quieren pasar bien,
+							bailar, gozar, venir como quieran, cuando
+							quieran.
+							<br />
+							Cada Polenter es un láser en la pista, una
 							ensalada de personas que saben disfrutar.
+							<br />
 							Tampoco somos una fiesta, somos una historia
 							para contar al otro día, una anécdota nueva
 							en tu vida, un mensaje a ese amigo diciéndole
 							que tuviste
+							<br />
 							<span class="subtitle__bold"
 								>La Mejor Noche del Mundo</span
 							>.
@@ -410,7 +531,10 @@
 					</section>
 				</section>
 			</div>
-			<div id="puestas" class="container puestas puestas__container">
+			<div
+				id="puestas"
+				class="container__propio puestas puestas__container"
+			>
 				<section class="section puestas__section">
 					<article class="puestas__descripcion">
 						<h2 class="title">Puestas</h2>
@@ -428,15 +552,7 @@
 							al mundo Polenta*.
 						</p>
 					</article>
-					<article
-						class="slider puestas__slider"
-					>
-						<!-- <button
-							class="slider__button slider__button__left"
-							onclick="plusDivs(-1)"
-						>
-							&#10094;
-						</button> -->
+					<!-- <article class="slider puestas__slider">
 						<img
 							class="puestas__slider__img"
 							src="/imgs/slider/slider-img-1.png"
@@ -457,21 +573,213 @@
 							src="/imgs/slider/slider-img-4.png"
 							alt="slider imagen 4"
 						/>
-						<!-- <button
-							class="slider__button slider__button__right"
-							onclick="plusDivs(+1)"
+					</article> -->
+					<!-- SLIDER DE PRUEBA -->
+					<div
+						id="carouselExampleCaptions"
+						class="carousel carousel-warning slide carousel-fade slider puestas__slider"
+						data-bs-ride="carousel" data-bs-touch="true"
+					>
+						<div class="carousel-indicators">
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="0"
+								class="active"
+								aria-current="true"
+								aria-label="Slide 1"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="1"
+								aria-label="Slide 2"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="2"
+								aria-label="Slide 3"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="3"
+								aria-label="Slide 4"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="4"
+								aria-label="Slide 5"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="5"
+								aria-label="Slide 6"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="6"
+								aria-label="Slide 7"
+							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="7"
+								aria-label="Slide 8"
+							></button>
+						</div>
+						<div class="carousel-inner">
+							<div
+								class="carousel-item active"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-1.png"
+									class="d-block w-100 carousel__img"
+									alt="portada__presentacion"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__presentacion">20 AÑOS DE MASTER OF PUPPETS</a></h5>
+									<p><a class="portada__slide__link" href="#portada__presentacion">Reviví nuestro show celebración en Berlín</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-2.png"
+									class="d-block w-100"
+									alt="portada__novedades"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__novedades">BLACKENED 2020</a></h5>
+									<p><a class="portada__slide__link" href="#portada__novedades">Versionamos un clásico en pandemia</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-3.png"
+									class="d-block w-100"
+									alt="portada__proximaFecha"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__proximaFecha">VOLVEMOS A LOS ESCENARIOS</a></h5>
+									<p><a class="portada__slide__link" href="#portada__proximaFecha">Enterate todo sobre nuestro próximo tour</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-4.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-5.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-6.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-7.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/slider/slider-img-8.png"
+									class="d-block w-100"
+									alt="portada__lanzamiento"
+								/>
+								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
+									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
+									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
+								</div> -->
+							</div>
+						</div>
+						<button
+							class="carousel-control-prev"
+							type="button"
+							data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="prev"
 						>
-							&#10095;
-						</button> -->
-					</article>
+							<span
+								class="carousel-control-prev-icon"
+								aria-hidden="true"
+							></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button
+							class="carousel-control-next"
+							type="button"
+							data-bs-target="#carouselExampleCaptions"
+							data-bs-slide="next"
+						>
+							<span
+								class="carousel-control-next-icon"
+								aria-hidden="true"
+							></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					<!-- SLIDER DE PRUEBA -->
 				</section>
 			</div>
 			<div
 				id="suscribite"
-				class="container suscribite suscribite__container"
+				class="container__propio suscribite suscribite__container"
 			>
 				<section class="section suscribite__section">
-					<article class="card__suscribite">
+					<article class="suscribite__card">
 						<h2 class="title">Suscribite a las novedades</h2>
 						<form>
 							<input
@@ -486,7 +794,7 @@
 			</div>
 			<div
 				id="contacto"
-				class="container contacto contacto__container"
+				class="container__propio contacto contacto__container"
 			>
 				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
@@ -588,23 +896,30 @@
 					</p>
 				</article>
 				<article class="footer__logo">
-					<figure>
-						<img
-							src="/imgs/logos/logo-footer.png"
-							alt="logo polenta con vector"
-						/>
-					</figure>
+					<!-- <figure> -->
+					<img
+						class="img__desktop"
+						src="/imgs/logos/logo-footer.png"
+						alt="logo polenta desktop footer"
+					/>
+					<!-- </figure> -->
+					<!-- <figure> -->
+					<img
+						class="img__mobile"
+						src="/imgs/logos/m-logo-footer.png"
+						alt="logo polenta mobile footer"
+					/>
+					<!-- </figure> -->
 				</article>
 			</section>
 		</footer>
-		<button class="go-to-top">
-			<a class="go-to-top__text" href="#">VOLVER ARRIBA</a>
-			<a class="go-to-top__icon" href="#"
-				><img
-					src="/imgs/icons/scroll-top.png"
-					alt="icono botón volver arriba"
-			/></a>
-		</button>
+		<a class="go-to-top" href="#" onclick="cerrar()"
+			><span class="go-to-top__text">VOLVER ARRIBA</span
+			><img
+				class="go-to-top__icon"
+				src="/imgs/icons/scroll-top.png"
+				alt="icono botón volver arriba"
+		/></a>
 	</body>
 	<!-- <script>
 		var slideIndex = 1;
@@ -630,21 +945,40 @@
 		}
 	</script> -->
 	<script>
-		var slideIndex = 0;
-		carousel();
+		// var slideIndex = 0;
+		// carousel();
 
-		function carousel() {
-			var i;
-			var x = document.getElementsByClassName("puestas__slider__img");
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
-			}
-			slideIndex++;
-			if (slideIndex > x.length) {
-				slideIndex = 1;
-			}
-			x[slideIndex - 1].style.display = "block";
-			setTimeout(carousel, 3000); // cambia cada 3 segundos
+		// function carousel() {
+		// 	var i;
+		// 	var x = document.getElementsByClassName("puestas__slider__img");
+		// 	for (i = 0; i < x.length; i++) {
+		// 		x[i].style.display = "none";
+		// 	}
+		// 	slideIndex++;
+		// 	if (slideIndex > x.length) {
+		// 		slideIndex = 1;
+		// 	}
+		// 	x[slideIndex - 1].style.display = "block";
+		// 	setTimeout(carousel, 3000); // cambia cada 3 segundos
+		// }
+
+		// function cerrar() {
+		// 	let navbar = document.querySelector(".navbar-toggler");
+		// 	navbar.click();
+		// }
+
+		function cerrar() {
+			$(".navbar-collapse").removeClass("show");
 		}
 	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"
+	></script>
 </html>

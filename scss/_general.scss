@@ -13,6 +13,16 @@ body {
      color: $color-text;
      font-family: $font-principal;
 
+     .container {
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+     }
+
+     // .img__desktop {
+     //      display: none;
+     // }
+
      ul {
           list-style: none;
      }
@@ -20,21 +30,39 @@ body {
      a {
           text-decoration: none;
 
-          &__:visited {
+          &:hover {
+               text-decoration: none;
+               color: $color-text;
+          }
+
+          &:visited {
                text-decoration: none;
           }
      }
 
-     .container {
+     h2 {
+          margin: 0;
+     }
+
+     p {
+          margin: 0;
+     }
+
+     figure {
+          margin: 0;
+     }
+
+     .container__propio {
+          width: 100%;
           height: auto;
 
           padding: 6rem 0;
      }
 
      .suscribite__container {
-          height: 15rem;
+          // height: 15rem;
 
-          padding: 0rem;
+          padding: 6rem 0;
      }
 
      .contacto__container {
@@ -42,18 +70,4 @@ body {
 
           padding: 0rem;
      }
-
-     .privacidad__container,.proteccion__container{
-          padding: 4rem 0rem;
-
-          padding-left: 15rem;
-          padding-right: 15rem;
-     }
-
-     // .proteccion__container{
-     //      padding: 15rem 0rem;
-
-     //      padding-left: 15rem;
-     //      padding-right: 15rem;
-     // }
 }

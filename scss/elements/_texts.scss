@@ -26,6 +26,7 @@
      font-weight: 600;
      letter-spacing: -0.2px;
      line-height: 120%;
+     text-align: center;
 }
 
 .subtitle {
@@ -107,6 +108,7 @@
 
      &__title {
           padding: 3rem 0 2rem;
+          text-align: left;
 
           font-size: ($font-size * 2.25);
           font-weight: 600;
@@ -122,5 +124,145 @@
           padding-bottom: 2rem;
 
           text-align: justify;
+     }
+}
+
+@media only screen and (max-width: 390px) { //(min-width: 576px) {
+     .anouncement {
+          &__text {
+               color: $color-text;
+
+               font-size: ($font-size * 0.8);
+          }
+     }
+
+     .menu {
+          &__list {
+               &__link {
+                    font-size: $font-size;
+                    font-weight: 500;
+                    letter-spacing: -0.3px;
+                    color: $color-text;
+
+                    &__icon {
+                         font-size: ($font-size * 1.25);
+                         color: $color-primary-verde;
+                    }
+               }
+          }
+     }
+
+     .title {
+          font-size: $font-size-title-celular;
+          font-weight: 700;
+          letter-spacing: -0.2px;
+          line-height: 120%;
+          text-align: center;
+     }
+
+     .subtitle {
+          font-size: $font-size-subtitle-celular;
+          font-weight: 400;
+          letter-spacing: -0.48px;
+          line-height: 120%;
+          text-align: center;
+
+          &__bold {
+               font-weight: 700;
+          }
+     }
+
+     .puestas__descripcion {
+          .subtitle__bold {
+               color: $color-primary-verde;
+          }
+     }
+
+     .cta {
+          &__text {
+               font-size: $font-size * .75;
+               font-weight: 700;
+               letter-spacing: 0.96px;
+               text-transform: uppercase;
+          }
+     }
+
+     .card {
+          &__title {
+               font-size: ($font-size * 1.1);
+               color: $color-text-negro;
+          }
+
+          &__description {
+               font-size: ($font-size * .7);
+               color: $color-text-negro;
+               text-align: center;
+          }
+     }
+
+     .footer {
+          color: $color-terciary-gris;
+
+          &__title {
+               color: $color-terciary-gris;
+
+               font-size: ($font-size * .6);
+               font-weight: 600;
+               letter-spacing: 1.8px;
+               text-transform: uppercase;
+          }
+
+          &__subtitle {
+               color: $color-terciary-gris;
+
+               font-size: ($font-size * .6);
+               font-weight: 500;
+               letter-spacing: -0.27px;
+          }
+
+          &__copyright__text {
+               color: $color-terciary-gris;
+
+               font-size: ($font-size * .6);
+               font-weight: 500;
+               letter-spacing: -0.3px;
+               text-align: center;
+          }
+     }
+
+     .go-to-top {
+          &__text {
+               color: $color-text;
+               font-size: ($font-size * .75);
+               font-weight: 600;
+               letter-spacing: -0.36px;
+               text-transform: uppercase;
+          }
+     }
+
+     .privacidad,
+     .proteccion {
+          color: $color-text-negro;
+
+          &__title {
+               padding: 3rem 0 2rem;
+
+               text-align: left;
+
+               font-size: ($font-size * 2);
+               font-weight: 600;
+               letter-spacing: -0.4px;
+          }
+
+          &__subtitle {
+               font-size: ($font-size * .9);
+               font-weight: 500;
+          }
+
+          &__description {
+               padding-bottom: 2rem;
+
+               text-align: left;
+          }
      }
 }

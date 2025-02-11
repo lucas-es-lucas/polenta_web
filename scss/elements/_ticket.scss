@@ -1,4 +1,3 @@
-
 .ticket {
      display: flex;
      flex-direction: column;
@@ -8,9 +7,6 @@
      position: relative;
 
      &:hover {
-          //transition: all 0.5 ease;
-          //filter: brightness(25%);
-
           .ticket__img__container {
                opacity: .25;
 
@@ -26,15 +22,6 @@
 
      opacity: 1;
      transition: all 1s ease;
-
-     // &:hover {
-     //      //transition: all 0.5 ease;
-     //      //filter: brightness(25%);
-
-     //      opacity: .25;
-
-     //      z-index: 0;
-     // }
 }
 
 .ticket__img {

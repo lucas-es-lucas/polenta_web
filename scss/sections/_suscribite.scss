@@ -1,14 +1,16 @@
 .suscribite {
      &__container {
-          width: 100%;
-          height: 20rem;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          position: relative;
+          // width: 100%;
+          // height: 20rem;
 
           background-color: $color-primary-verde;
+     }
+
+     &__card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          row-gap: 2rem;
      }
 }

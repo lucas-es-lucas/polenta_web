@@ -3,28 +3,45 @@
      //.top-nav
      background: $color-bg-top-nav;
 
-     display: flex;
-     width: 100%;
-     height: $height-top-nav; //4rem;
-     padding: 0rem 15rem;
-     justify-content: space-between;
-     align-items: center;
-     flex-shrink: 0;
+     // display: flex;
+     // width: 100%;
+     // height: auto; //$height-top-nav; //4rem;
+     padding: .8rem 1.5rem; //padding: 0rem 15rem;
+     // justify-content: space-between;
+     // align-items: center;
+     // flex-shrink: 0;
+
+     &__burger {
+          color: $color-primary-verde;
+
+          //rgba(36, 191, 94, 1)
+          .navbar-toggler-icon {
+               background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+          }
+
+          &:focus {
+               box-shadow: none;
+          }
+     }
+
+     .navbar-collapse {
+          height: 100vh;
+     }
 
      &__list {
           //.navbar-nav
-          display: flex;
-          padding: .3rem .6rem;
-          justify-content: center;
-          align-items: center;
-          gap: .6rem;
+          // display: flex;
+          padding-top: 1rem;
+          // justify-content: center;
+          // align-items: flex-start;// align-items: center;
+          // row-gap: .6rem;
 
           &__item {
                padding: .7rem;
 
-               & :hover {
-                    text-decoration: underline;
-               }
+               // & :hover {
+               //      transform: scale(1.1);
+               // }
 
                &__icon {
                     padding-right: .4rem;
@@ -32,16 +49,28 @@
                }
           }
 
+          .nav-link:hover {
+               color: $color-text;
+               text-decoration: underline;
+          }
+
           &__link {
                color: $color-text;
 
-               & :hover {
+               &:hover {
                     text-decoration: underline;
+                    color: $color-primary-verde;
                }
 
                &__icon {
                     color: $color-primary-verde;
                }
           }
+     }
+
+     &__list__redes {
+          display: flex;
+          flex-direction: row;
+          column-gap: 1.5rem;
      }
 }
