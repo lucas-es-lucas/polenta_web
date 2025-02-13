@@ -150,7 +150,8 @@ body {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.96px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
 
 .card__title {
   font-size: 1.5rem;
@@ -188,18 +189,22 @@ body {
   letter-spacing: -0.36px;
   text-transform: uppercase; }
 
-.privacidad, .proteccion {
+.privacidad,
+.proteccion {
   color: #000000; }
-  .privacidad__title, .proteccion__title {
+  .privacidad__title,
+  .proteccion__title {
     padding: 3rem 0 2rem;
     text-align: left;
     font-size: 2.25rem;
     font-weight: 600;
     letter-spacing: -0.4px; }
-  .privacidad__subtitle, .proteccion__subtitle {
+  .privacidad__subtitle,
+  .proteccion__subtitle {
     font-size: 1.25rem;
     font-weight: 500; }
-  .privacidad__description, .proteccion__description {
+  .privacidad__description,
+  .proteccion__description {
     padding-bottom: 2rem;
     text-align: justify; }
 
@@ -235,7 +240,8 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.96px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    text-align: center; }
   .card__title {
     font-size: 1.1rem;
     color: #000000; }
@@ -321,7 +327,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: .6rem;
   background: #1A1A1A;
   border: 0.2rem #ffffff solid;
   border-radius: .3rem; }
@@ -406,6 +411,8 @@ body {
         color: #24bf5e; }
       .menu__list__link__icon {
         color: #24bf5e; }
+        .menu__list__link__icon i {
+          color: #24bf5e; }
   .menu__list__redes {
     display: flex;
     flex-direction: row;
@@ -524,7 +531,7 @@ body {
       background-color: #24bf5e; }
     .puestas__section .slider .carousel-control-prev {
       transform: rotate(270deg);
-      left: 260;
+      left: 18%;
       width: auto;
       height: auto; }
       .puestas__section .slider .carousel-control-prev :hover {
@@ -533,7 +540,7 @@ body {
         background-image: url("/imgs/icons/scroll-top.png"); }
     .puestas__section .slider .carousel-control-next {
       transform: rotate(90deg);
-      right: 260;
+      right: 18%;
       width: auto;
       height: auto; }
       .puestas__section .slider .carousel-control-next :hover {
@@ -632,9 +639,11 @@ main {
     .menu__list {
       padding-top: 0; }
       .menu__list__item :hover {
-        transform: scale(1.2); }
+        text-decoration: underline; }
       .menu__list .nav-link:hover {
         color: #ffffff;
+        text-decoration: underline; }
+      .menu__list .nav-link:visited {
         text-decoration: none; }
     .menu__list__redes {
       column-gap: 0rem; } }
@@ -702,12 +711,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .6rem;
     background: #1A1A1A;
     border: 0.2rem #ffffff solid;
     border-radius: .3rem; }
     .cta__text {
-      width: 7.5rem;
+      width: 8rem;
       padding: .75rem 1.9rem;
       color: #ffffff;
       text-decoration: none; }

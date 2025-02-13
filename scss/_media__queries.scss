@@ -224,13 +224,18 @@
 
                &__item {
                     & :hover {
-                         // text-decoration: underline;
-                         transform: scale(1.2);
+                         text-decoration: underline;
+                         // transform: scale(1.2);
                     }
                }
 
                .nav-link:hover {
                     color: $color-text;
+                    // text-decoration: none;
+                    text-decoration: underline;
+               }
+
+               .nav-link:visited {
                     text-decoration: none;
                }
           }
@@ -363,7 +368,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: .6rem;
+          // gap: .6rem;
 
           background: $color-terciary-negro;
 
@@ -371,7 +376,7 @@
           border-radius: .3rem;
 
           &__text {
-               width: 7.5rem;
+               width: 8rem;
                padding: .75rem 1.9rem;
 
                color: $color-text;
