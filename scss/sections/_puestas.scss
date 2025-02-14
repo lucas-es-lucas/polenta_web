@@ -1,13 +1,20 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+
 .puestas {
      &__container {
           background-image: url('/imgs/bgs/bg-puestas.png');
           background-repeat: no-repeat;
           background-position-x: right;
+          background-position-y: center;
+          background-size: cover;
      }
 
      &__section {
           width: 100%;
-          // padding: 0 15rem;
 
           display: flex;
           flex-direction: column;
@@ -23,13 +30,13 @@
 
                text-align: center;
 
-               padding: 0 18%;
+               padding: 0 2.5rem;
           }
 
           .slider {
                display: flex;
 
-               padding: 0 15%;
+               padding: 0 1rem;
 
                .puestas__slider {
                     &__img {
@@ -56,55 +63,145 @@
                }
 
                .carousel-control-prev {
-                    transform: rotate(270deg);
+                    display: none;
 
-                    left: 18%;
+                    // transform: rotate(270deg);
 
-                    width: auto;
-                    height: auto;
+                    // left: 18%;
 
-                    & :hover {
-                         color: $color-primary-verde;
-                    }
+                    // width: auto;
+                    // height: auto;
 
-                    .carousel-control-prev-icon {
-                         background-image: url("/imgs/icons/scroll-top.png");
-                    }
+                    // & :hover {
+                    //      color: $color-primary-verde;
+                    // }
+
+                    // .carousel-control-prev-icon {
+                    //      background-image: url("/imgs/icons/scroll-top.png");
+                    // }
                }
 
                .carousel-control-next {
-                    transform: rotate(90deg);
+                    display: none;
 
-                    right: 18%;
+                    // transform: rotate(90deg);
 
-                    width: auto;
-                    height: auto;
+                    // right: 18%;
 
-                    & :hover {
-                         color: $color-primary-verde;
+                    // width: auto;
+                    // height: auto;
+
+                    // & :hover {
+                    //      color: $color-primary-verde;
+                    // }
+
+                    // .carousel-control-next-icon {
+                    //      background-image: url("/imgs/icons/scroll-top.png");
+                    // }
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 576px) {
+
+     //and (max-width: 1199px) {
+     .puestas {
+          &__container {
+               background-image: url('/imgs/bgs/bg-puestas.png');
+               background-repeat: no-repeat;
+               background-position-x: right;
+               background-position-y: top;
+               background-size: cover;
+          }
+
+          &__section {
+               width: 100%;
+
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               row-gap: 2rem;
+
+               position: relative;
+
+               .puestas__descripcion {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5rem;
+
+                    text-align: center;
+
+                    padding: 0 18%;
+               }
+
+               .slider {
+                    display: flex;
+
+                    padding: 0 15%;
+
+                    .puestas__slider {
+                         &__img {
+                              width: 100%;
+
+                              border-radius: 1.25rem;
+                         }
                     }
 
-                    .carousel-control-next-icon {
-                         background-image: url("/imgs/icons/scroll-top.png");
+                    .carousel-inner {
+                         .carousel-item {
+                              img {
+                                   width: 100%;
+
+                                   border-radius: 1.25rem;
+                              }
+                         }
+                    }
+
+                    .carousel-indicators {
+                         button {
+                              background-color: $color-primary-verde;
+                         }
+                    }
+
+                    .carousel-control-prev {
+                         display: block;
+
+                         transform: rotate(270deg);
+
+                         left: 18%;
+
+                         width: auto;
+                         height: auto;
+
+                         & :hover {
+                              color: $color-primary-verde;
+                         }
+
+                         .carousel-control-prev-icon {
+                              background-image: url("/imgs/icons/scroll-top.png");
+                         }
+                    }
+
+                    .carousel-control-next {
+                         display: block;
+
+                         transform: rotate(90deg);
+
+                         right: 18%;
+
+                         width: auto;
+                         height: auto;
+
+                         & :hover {
+                              color: $color-primary-verde;
+                         }
+
+                         .carousel-control-next-icon {
+                              background-image: url("/imgs/icons/scroll-top.png");
+                         }
                     }
                }
           }
-
-          // &__slide {
-          //      &__texto {
-          //           background-color: rgb(30, 30, 30);
-          //           width: 100%;
-          //           left: 0;
-          //           bottom: 5%;
-          //      }
-          //      &__link {
-          //           font-size: x-large;
-          //           font-stretch: extra-expanded;
-          //           // font-weight: bold;
-          //      }
-          //      &__link:hover {
-          //           color: rgb(200, 200, 200);
-          //      }
-          // }
      }
 }

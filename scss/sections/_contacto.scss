@@ -1,5 +1,15 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+
 .contacto {
      &__container {
+          height: 32rem;
+
+          padding: 0rem;
+
           display: flex;
           justify-content: center;
           align-items: center;
@@ -13,7 +23,7 @@
           align-items: center;
           row-gap: 2rem;
 
-          // padding: 0 2rem;
+          padding: 0 2rem;
 
           .contacto__escribinos__email {
                color: $color-primary-verde;
@@ -27,7 +37,46 @@
                &__iconos {
                     display: flex;
                     justify-content: center;
-                    column-gap: 1.5rem;
+                    column-gap: .7rem;
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 576px) {
+
+     //and (max-width: 1199px) {
+     .contacto {
+          &__container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+          }
+
+          &__section {
+               width: 100%;
+
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               row-gap: 2rem;
+
+               // padding: 0 2rem;
+
+               .contacto__escribinos__email {
+                    color: $color-primary-verde;
+               }
+
+               .contacto__redes {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5rem;
+
+                    &__iconos {
+                         display: flex;
+                         justify-content: center;
+                         column-gap: 1.5rem;
+                    }
                }
           }
      }
