@@ -2,6 +2,22 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
+
+     .img__mobile {
+          display: block;
+     }
+
+     .img__tablet {
+          display: none;
+     }
+
+     .img__logo__footer {
+          display: none;
+     }
+
+     .img__desktop {
+          display: none;
+     }
 }
 
 html {
@@ -18,10 +34,6 @@ body {
           margin: 0;
           padding: 0;
      }
-
-     // .img__desktop {
-     //      display: none;
-     // }
 
      ul {
           list-style: none;

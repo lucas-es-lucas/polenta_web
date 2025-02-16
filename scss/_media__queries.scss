@@ -68,144 +68,6 @@
 //      titulo 
 //      icono 
 
-//texts 
-// @media only screen and (max-width: 390px) {
-//      .anouncement {
-//           &__text {
-//                color: $color-text;
-
-//                font-size: ($font-size * 0.8);
-//           }
-//      }
-
-//      .menu {
-//           &__list {
-//                &__link {
-//                     font-size: $font-size;
-//                     font-weight: 500;
-//                     letter-spacing: -0.3px;
-//                     color: $color-text;
-
-//                     &__icon {
-//                          font-size: ($font-size * 1.25);
-//                          color: $color-primary-verde;
-//                     }
-//                }
-//           }
-//      }
-
-//      .title {
-//           font-size: $font-size-title-celular;
-//           font-weight: 700;
-//           letter-spacing: -0.2px;
-//           line-height: 120%;
-//           text-align: center;
-//      }
-
-//      .subtitle {
-//           font-size: $font-size-subtitle-celular;
-//           font-weight: 400;
-//           letter-spacing: -0.48px;
-//           line-height: 120%;
-//           text-align: center;
-
-//           &__bold {
-//                font-weight: 700;
-//           }
-//      }
-
-//      .puestas__descripcion {
-//           .subtitle__bold {
-//                color: $color-primary-verde;
-//           }
-//      }
-
-//      .cta {
-//           &__text {
-//                font-size: $font-size * .75;
-//                font-weight: 700;
-//                letter-spacing: 0.96px;
-//                text-transform: uppercase;
-//           }
-//      }
-
-//      .card {
-//           &__title {
-//                font-size: ($font-size * 1.1);
-//                color: $color-text-negro;
-//           }
-
-//           &__description {
-//                font-size: ($font-size * .7);
-//                color: $color-text-negro;
-//                text-align: center;
-//           }
-//      }
-
-//      .footer {
-//           color: $color-terciary-gris;
-
-//           &__title {
-//                color: $color-terciary-gris;
-
-//                font-size: ($font-size * .6);
-//                font-weight: 600;
-//                letter-spacing: 1.8px;
-//                text-transform: uppercase;
-//           }
-
-//           &__subtitle {
-//                color: $color-terciary-gris;
-
-//                font-size: ($font-size * .6);
-//                font-weight: 500;
-//                letter-spacing: -0.27px;
-//           }
-
-//           &__copyright__text {
-//                color: $color-terciary-gris;
-
-//                font-size: ($font-size * .6);
-//                font-weight: 500;
-//                letter-spacing: -0.3px;
-//                text-align: center;
-//           }
-//      }
-
-//      .go-to-top {
-//           &__text {
-//                color: $color-text;
-//                font-size: ($font-size * .75);
-//                font-weight: 600;
-//                letter-spacing: -0.36px;
-//                text-transform: uppercase;
-//           }
-//      }
-
-//      .privacidad,
-//      .proteccion {
-//           color: $color-text-negro;
-
-//           &__title {
-//                padding: 3rem 0 2rem;
-
-//                font-size: ($font-size * 2.25);
-//                font-weight: 600;
-//                letter-spacing: -0.4px;
-//           }
-
-//           &__subtitle {
-//                font-size: ($font-size * 1.25);
-//                font-weight: 500;
-//           }
-
-//           &__description {
-//                padding-bottom: 2rem;
-
-//                text-align: justify;
-//           }
-//      }
-// }
 
 //menu 390px - 991px 
 @media only screen and (min-width: 992px) {
@@ -253,518 +115,68 @@
 
           padding: 6rem 0;
      }
-
-     // .suscribite__container {
-     //      height: 15rem;
-
-     //      padding: 0rem;
-     // }
-
-     // .contacto__container {
-     //      height: 32rem;
-
-     //      padding: 0rem;
-     // }
 }
 
-//tickets 
-// @media only screen and (max-width: 390px) {
-//      .tickets {
-//           &__container {
-//                background-image: url('/imgs/bgs/bg-tickets.png');
-//                background-repeat: no-repeat;
-//                // background-position-x: left;
-//                // background-size: contain;
-
-//                background-position-x: left;
-//                background-position-y: center;
-//                background-size: cover;
-//           }
-
-//           &__title {
-//                z-index: 0;
-//           }
-
-//           &__section {
-//                width: 100%;
-//                padding-top: 10%;
-//                padding-bottom: 15%;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                gap: 2.75rem;
-
-//                z-index: 10;
-//           }
-
-//           &__slider {
-//                width: 95%;
-
-//                display: flex;
-//                flex-direction: column;
-//                row-gap: 1rem;
-
-//                height: auto;
-//                // max-height: 47rem;
-//                // overflow-y: auto;
-//                // overflow-x: hidden;
-//           }
-//      }
-// }
-
-//ticket 
-// @media only screen and (max-width: 390px) {
-//      .ticket {
-//           display: flex;
-//           flex-direction: column;
-//           justify-content: center;
-//           align-items: center;
-
-//           position: relative;
-
-//           // &:hover {
-//           //      .ticket__img__container {
-//           //           opacity: .25;
-
-//           //           z-index: 0;
-//           //      }
-//           // }
-//      }
-
-//      .ticket__img__container {
-//           max-width: 100%;
-//           background-color: $color-bg;
-//           z-index: 10;
-
-//           // opacity: 1;
-//           // transition: all 1s ease;
-//      }
-
-//      .ticket__img {
-//           width: 100%;
-
-//           object-fit: cover;
-//      }
-
-//      .ticket__button {
-//           z-index: 0;
-
-//           position: absolute;
-
-//           &:hover {
-//                .ticket__img__container {
-//                     opacity: .25;
-//                }
-
-//                z-index: 10;
-//           }
-//      }
-// }
-
-//cta 
-// @media only screen and (max-width: 390px) {
-//      .cta {
-//           display: flex;
-//           justify-content: center;
-//           align-items: center;
-//           // gap: .6rem;
-
-//           background: $color-terciary-negro;
-
-//           border: .2rem $color-text solid;
-//           border-radius: .3rem;
-
-//           &__text {
-//                width: 8rem;
-//                padding: .75rem 1.9rem;
-
-//                color: $color-text;
-//                text-decoration: none;
-
-//                &__:visited {
-//                     text-decoration: none;
-//                }
-//           }
-//      }
-// }
-
-//nosotros 
-// @media only screen and (max-width:390px) {
-//      .nosotros__container {
-//           width: 100%;
-//           flex-shrink: 0;
-
-//           background-color: $color-accent-violeta;
-
-//           display: inline-flex;
-//           flex-direction: column;
-//           justify-content: center;
-//           align-items: center;
-//           row-gap: 3.5rem;
-//           flex-shrink: 0;
-
-//           .section {
-//                width: 100%;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                row-gap: 3.5rem;
-
-//                .nosotros__queeslapolenta {
-//                     display: flex;
-//                     padding: 0rem 2.3rem; // padding: 0rem 18%;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     row-gap: 2rem;
-//                     align-self: stretch;
-//                }
-
-//                .cards {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     row-gap: .75rem;
-
-//                     // padding: 0rem;
-//                }
-
-//                .card {
-//                     display: flex;
-//                     flex-direction: row;
-//                     align-items: center;
-
-//                     border: none;
-//                     border-radius: 1rem;
-
-//                     width: 22.5rem;
-//                }
-
-//                .card__container__imagen {
-//                     width: 10.6rem;
-//                     height: 11.25rem;
-
-//                     overflow: hidden;
-
-//                     align-content: center;
-//                }
-
-//                .card__imagen {
-//                     width: 100%;
-//                     height: 100%;
-
-//                     object-fit: cover;
-
-//                     border-radius: 1rem 0 0 1rem;
-//                }
-
-//                .card__container {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     row-gap: .3rem;
-//                     padding: .75rem .5rem;
-
-//                     width: 12.4rem;
-//                     height: 11.25rem;
-//                }
-
-//                .card__icono {
-//                     width: 3rem;
-//                }
-//           }
-//      }
-// }
-
-//puestas 
-// @media only screen and (max-width: 390px) {
-//      .puestas {
-//           &__container {
-//                background-image: url('/imgs/bgs/bg-puestas.png');
-//                background-repeat: no-repeat;
-//                // background-position-x: right;
-
-//                background-position-x: right;
-//                background-position-y: center;
-//                background-size: cover;
-//           }
-
-//           &__section {
-//                width: 100%;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                row-gap: 2rem;
-
-//                position: relative;
-
-//                .puestas__descripcion {
-//                     display: flex;
-//                     flex-direction: column;
-//                     row-gap: 1.5rem;
-
-//                     text-align: center;
-
-//                     padding: 0 2.5rem;
-//                }
-
-//                .slider {
-//                     display: flex;
-
-//                     padding: 0 1rem;
-
-//                     .puestas__slider {
-//                          &__img {
-//                               width: 100%;
-
-//                               border-radius: 1.25rem;
-//                          }
-//                     }
-
-//                     .carousel-inner {
-//                          .carousel-item {
-//                               img {
-//                                    width: 100%;
-
-//                                    border-radius: 1.25rem;
-//                               }
-//                          }
-//                     }
-
-//                     .carousel-indicators {
-//                          button {
-//                               background-color: $color-primary-verde;
-//                          }
-//                     }
-
-//                     .carousel-control-prev {
-//                          display: none;
-
-//                          // transform: rotate(270deg);
-
-//                          // left: 18%;
-
-//                          // width: auto;
-//                          // height: auto;
-
-//                          // & :hover {
-//                          //      color: $color-primary-verde;
-//                          // }
-
-//                          // .carousel-control-prev-icon {
-//                          //      background-image: url("/imgs/icons/scroll-top.png");
-//                          // }
-//                     }
-
-//                     .carousel-control-next {
-//                          display: none;
-
-//                          // transform: rotate(90deg);
-
-//                          // right: 18%;
-
-//                          // width: auto;
-//                          // height: auto;
-
-//                          // & :hover {
-//                          //      color: $color-primary-verde;
-//                          // }
-
-//                          // .carousel-control-next-icon {
-//                          //      background-image: url("/imgs/icons/scroll-top.png");
-//                          // }
-//                     }
-//                }
-//           }
-//      }
-// }
-
-//suscribite 
-// @media only screen and (max-width: 390px) {
-//      .suscribite {
-//           &__container {
-//                background-color: $color-primary-verde;
-//           }
-
-//           &__section {
-//                padding: 0 2rem;
-//           }
-
-//           &__card {
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-
-//                row-gap: 2rem;
-//           }
-//      }
-// }
-
-// contacto 
-// @media only screen and (max-width: 390px) {
-//      .contacto {
-//           &__container {
-//                display: flex;
-//                justify-content: center;
-//                align-items: center;
-//           }
-
-//           &__section {
-//                width: 100%;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                row-gap: 2rem;
-
-//                padding: 0 2rem;
-
-//                .contacto__escribinos__email {
-//                     color: $color-primary-verde;
-//                }
-
-//                .contacto__redes {
-//                     display: flex;
-//                     flex-direction: column;
-//                     row-gap: 1.5rem;
-
-//                     &__iconos {
-//                          display: flex;
-//                          justify-content: center;
-//                          column-gap: .7rem;
-//                     }
-//                }
-//           }
-//      }
-
-//      // display: flex;
-//      // width: 380px;
-//      // padding: 0px 33px;
-//      // flex-direction: column;
-//      // align-items: center;
-//      // gap: 33px;
-// }
-
-//footer 
-// @media only screen and (min-width: 391px) {
-//      .footer {
-//           width: 100%;
-//           height: 6rem;
-//           padding: 0;
-
-//           position: relative;
-
-//           background-color: $color-terciary-negro;
-
-//           &__section {
-//                display: flex;
-//                flex-direction: row;
-//                padding: 0px 15rem;
-//                justify-content: space-between;
-//                align-items: center;
-//                flex-shrink: 0;
-
-//                // display: grid;
-//                // grid-template-columns: auto auto auto;
-//                // grid-template-rows: auto;
-//                // column-gap: 2rem;
-
-//                // // @include grillas__simetricas(3, auto, 1, auto, 0, 0);
-//                // grid-template-areas:
-//                //      "area__first"
-//                //      "area__center"
-//                //      "area__last";
-//           }
-
-//           &__legales {
-//                grid-area: area__first;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: flex-start;
-//                gap: .2rem;
-//           }
-
-//           &__copyright {
-//                grid-area: area__center;
-//           }
-
-//           &__logo {
-//                grid-area: area__last;
-
-//                display: flex;
-//                flex-direction: column;
-//           }
-
-//           &__title {
-//                padding-bottom: .2rem;
-//           }
-
-//           .img__mobile {
-//                display: none;
-//           }
-
-//           .img__desktop {
-//                display: block;
-//           }
-
-//      }
-// }
-
-// .footer {
-//      width: 100%;
-//      height: auto;
-//      padding: 2rem 2rem 4rem 2rem;
-
-//      position: relative;
-
-//      background-color: $color-terciary-negro;
-
-//      &__section {
-//           display: flex;
-//           flex-direction: column-reverse;
-//           padding: 2rem;
-//           // justify-content: space-between;
-//           align-items: center;
-//           gap: 2rem;
-//           flex-shrink: 0;
-//      }
-
-//      &__legales {
-//           display: flex;
-//           flex-direction: column;
-//           align-items: center;
-//           gap: .75rem;
-//      }
-
-//      &__title {
-//           padding-bottom: .2rem;
-//      }
-
-//      &__copyright__text {
-//           margin: 0;
-//      }
-
-//      .img__mobile {
-//           display: block;
-//      }
-
-//      .img__desktop {
-//           display: none;
-//      }
-// }
-
-// .footer {
-//      display: flex;
-//      width: 390px;
-//      height: 395px;
-//      padding: 33px;
-//      flex-direction: column;
-//      align-items: center;
-//      gap: 33px;
-// }
+//imagenes 
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: block;
+          }
+
+          .img__logo__footer {
+               display: none;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: block;
+          }
+
+          .img__logo__footer {
+               display: none;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: none;
+          }
+
+          .img__logo__footer {
+               display: block;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+     }
+}
 
 //go-to-top 
 @media only screen and (max-width: 575px) {
