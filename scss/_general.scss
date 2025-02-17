@@ -2,6 +2,30 @@
      margin: 0;
      padding: 0;
      box-sizing: border-box;
+
+     .img__mobile {
+          display: block;
+     }
+
+     .img__tablet {
+          display: none;
+     }
+
+     .img__desktop {
+          display: none;
+     }
+
+     .img__mobile__footer {
+          display: block;
+     }
+
+     .img__tablet__footer {
+          display: none;
+     }
+
+     .img__desktop__footer {
+          display: none;
+     }
 }
 
 html {
@@ -18,10 +42,6 @@ body {
           margin: 0;
           padding: 0;
      }
-
-     // .img__desktop {
-     //      display: none;
-     // }
 
      ul {
           list-style: none;

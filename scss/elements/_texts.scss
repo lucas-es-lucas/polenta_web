@@ -1,3 +1,9 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+
 .anouncement {
      &__text {
           color: $color-text;
@@ -16,21 +22,22 @@
 
                &__icon {
                     font-size: ($font-size * 1.25);
+                    color: $color-primary-verde;
                }
           }
      }
 }
 
 .title {
-     font-size: $font-size-title;
-     font-weight: 600;
+     font-size: $font-size-title-celular;
+     font-weight: 700;
      letter-spacing: -0.2px;
      line-height: 120%;
      text-align: center;
 }
 
 .subtitle {
-     font-size: $font-size-subtitle;
+     font-size: $font-size-subtitle-celular;
      font-weight: 400;
      letter-spacing: -0.48px;
      line-height: 120%;
@@ -41,23 +48,30 @@
      }
 }
 
+// .puestas__descripcion {
+//      .subtitle__bold {
+//           color: $color-primary-verde;
+//      }
+// }
+
 .cta {
      &__text {
-          font-size: $font-size;
+          font-size: $font-size * .75;
           font-weight: 700;
           letter-spacing: 0.96px;
           text-transform: uppercase;
+          text-align: center;
      }
 }
 
 .card {
      &__title {
-          font-size: ($font-size * 1.5);
+          font-size: ($font-size * 1.1);
           color: $color-text-negro;
      }
 
      &__description {
-          font-size: ($font-size * .9);
+          font-size: ($font-size * .7);
           color: $color-text-negro;
           text-align: center;
      }
@@ -103,31 +117,34 @@
      }
 }
 
-.privacidad, .proteccion {
+.privacidad,
+.proteccion {
      color: $color-text-negro;
 
      &__title {
           padding: 3rem 0 2rem;
           text-align: left;
 
-          font-size: ($font-size * 2.25);
+          font-size: ($font-size * 2);
           font-weight: 600;
           letter-spacing: -0.4px;
      }
 
      &__subtitle {
-          font-size: ($font-size * 1.25);
+          font-size: ($font-size * .9);
           font-weight: 500;
      }
 
      &__description {
           padding-bottom: 2rem;
 
-          text-align: justify;
+          text-align: left;
      }
 }
 
-@media only screen and (max-width: 390px) { //(min-width: 576px) {
+@media only screen and (min-width: 576px) {
+
+     //and (max-width: 1199px) {
      .anouncement {
           &__text {
                color: $color-text;
@@ -146,22 +163,21 @@
 
                     &__icon {
                          font-size: ($font-size * 1.25);
-                         color: $color-primary-verde;
                     }
                }
           }
      }
 
      .title {
-          font-size: $font-size-title-celular;
-          font-weight: 700;
+          font-size: $font-size-title;
+          font-weight: 600;
           letter-spacing: -0.2px;
           line-height: 120%;
           text-align: center;
      }
 
      .subtitle {
-          font-size: $font-size-subtitle-celular;
+          font-size: $font-size-subtitle;
           font-weight: 400;
           letter-spacing: -0.48px;
           line-height: 120%;
@@ -172,29 +188,30 @@
           }
      }
 
-     .puestas__descripcion {
-          .subtitle__bold {
-               color: $color-primary-verde;
-          }
-     }
+     // .puestas__descripcion {
+     //      .subtitle__bold {
+     //           color: $color-primary-verde;
+     //      }
+     // }
 
      .cta {
           &__text {
-               font-size: $font-size * .75;
+               font-size: $font-size;
                font-weight: 700;
                letter-spacing: 0.96px;
                text-transform: uppercase;
+               text-align: center;
           }
      }
 
      .card {
           &__title {
-               font-size: ($font-size * 1.1);
+               font-size: ($font-size * 1.5);
                color: $color-text-negro;
           }
 
           &__description {
-               font-size: ($font-size * .7);
+               font-size: ($font-size * .9);
                color: $color-text-negro;
                text-align: center;
           }
@@ -246,23 +263,22 @@
 
           &__title {
                padding: 3rem 0 2rem;
-
                text-align: left;
 
-               font-size: ($font-size * 2);
+               font-size: ($font-size * 2.25);
                font-weight: 600;
                letter-spacing: -0.4px;
           }
 
           &__subtitle {
-               font-size: ($font-size * .9);
+               font-size: ($font-size * 1.25);
                font-weight: 500;
           }
 
           &__description {
                padding-bottom: 2rem;
 
-               text-align: left;
+               text-align: justify;
           }
      }
 }
