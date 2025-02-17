@@ -137,14 +137,13 @@
 
      &__description {
           padding-bottom: 2rem;
+          font-size: ($font-size * .9);
 
           text-align: left;
      }
 }
 
-@media only screen and (min-width: 576px) {
-
-     //and (max-width: 1199px) {
+@media only screen and (min-width: 992px) {
      .anouncement {
           &__text {
                color: $color-text;
@@ -277,8 +276,24 @@
 
           &__description {
                padding-bottom: 2rem;
+               font-size: ($font-size * 1.25);
 
                text-align: justify;
+          }
+     }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+     .card {
+          &__title {
+               font-size: ($font-size * 1.5);
+               color: $color-text-negro;
+          }
+
+          &__description {
+               font-size: ($font-size * .9);
+               color: $color-text-negro;
+               text-align: center;
           }
      }
 }

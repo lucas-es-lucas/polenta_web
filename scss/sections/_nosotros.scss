@@ -35,12 +35,33 @@
           }
 
           .cards {
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               row-gap: .75rem;
+               // display: flex;
+               // flex-direction: column;
+               // align-items: center;
+               // row-gap: .75rem;
 
-               // padding: 0rem;
+               @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
+               grid-template-areas:
+                    "dance-crew"
+                    "lanza-remeras"
+                    "churros"
+                    "angeles-polenta";
+
+               .card__dance-crew {
+                    grid-area: "dance-crew";
+               }
+
+               .card__lanza-remeras {
+                    grid-area: "lanza-remeras";
+               }
+
+               .card__churros {
+                    grid-area: "churros";
+               }
+
+               .card__angeles-polenta {
+                    grid-area: "angeles-polenta";
+               }
           }
 
           .card {
@@ -90,7 +111,7 @@
      }
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 576px) and (max-width: 767px) {
 
      //and (max-width: 1199px) {
      .nosotros__container {
@@ -124,12 +145,158 @@
                }
 
                .cards {
-                    display: flex;
-                    flex-direction: row;
-                    // align-items: center;
-                    column-gap: .75rem;
+                    // display: flex;
+                    // flex-direction: row;
+                    // column-gap: .75rem;
 
-                    // padding: 0 15%;
+                    @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
+                    grid-template-areas:
+                         "dance-crew lanza-remeras"
+                         "churros angeles-polenta";
+               }
+
+               .card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    border: none;
+                    border-radius: 1rem;
+
+                    width: 15.5rem;
+               }
+
+               .card__container__imagen {
+                    width: 15.5rem;
+                    height: 15rem;
+
+                    overflow: hidden;
+
+                    align-content: center;
+               }
+
+               .card__imagen {
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+
+                    border-radius: 1rem 1rem 0 0;
+               }
+
+               .card__container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    row-gap: .75rem;
+                    padding: 1.5rem 1rem;
+
+                    width: 15.5rem;
+                    height: 14.1rem;
+               }
+
+               .card__icono {
+                    width: 3rem;
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+     .nosotros__container {
+          .section {
+               .cards {
+                    // display: flex;
+                    // flex-direction: row;
+                    // column-gap: .75rem;
+
+                    // @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
+                    // grid-template-areas:
+                    //      "dance-crew lanza-remeras churros angeles-polenta";
+
+                    @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
+                    grid-template-areas:
+                         "dance-crew lanza-remeras"
+                         "churros angeles-polenta";
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+     .nosotros__container {
+          .section {
+               .cards {
+                    // display: flex;
+                    // flex-direction: row;
+                    // column-gap: .75rem;
+
+                    @include grillas__simetricas(2, auto, 2, auto, 2rem, 2rem);
+                    grid-template-areas:
+                         "dance-crew lanza-remeras"
+                         "churros angeles-polenta";
+               }
+
+               .card {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    border: none;
+                    border-radius: 1rem;
+
+                    width: 15.5rem;
+               }
+
+               .card__container__imagen {
+                    width: 15.5rem;
+                    height: 15rem;
+
+                    overflow: hidden;
+
+                    align-content: center;
+               }
+
+               .card__imagen {
+                    width: 100%;
+                    height: 100%;
+
+                    object-fit: cover;
+
+                    border-radius: 1rem 1rem 0 0;
+               }
+
+               .card__container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: flex-start;
+                    row-gap: .75rem;
+                    padding: 1.5rem 1rem;
+
+                    width: 15.5rem;
+                    height: 14.1rem;
+               }
+
+               .card__icono {
+                    width: 3rem;
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     .nosotros__container {
+          .section {
+               .cards {
+                    // display: flex;
+                    // flex-direction: row;
+                    // column-gap: .75rem;
+
+                    @include grillas__simetricas(4, auto, 1, auto, .75rem, 0);
+                    grid-template-areas:
+                         "dance-crew lanza-remeras churros angeles-polenta";
                }
 
                .card {
