@@ -128,12 +128,20 @@
                display: block;
           }
 
-          .img__logo__footer {
-               display: none;
-          }
-
           .img__desktop {
                display: block;
+          }
+
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: block;
+          }
+     
+          .img__desktop__footer {
+               display: none;
           }
      }
 }
@@ -148,11 +156,19 @@
                display: block;
           }
 
-          .img__logo__footer {
-               display: none;
+          .img__desktop {
+               display: block;
           }
 
-          .img__desktop {
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: none;
+          }
+     
+          .img__desktop__footer {
                display: block;
           }
      }
@@ -168,11 +184,19 @@
                display: none;
           }
 
-          .img__logo__footer {
+          .img__desktop {
                display: block;
           }
 
-          .img__desktop {
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: none;
+          }
+     
+          .img__desktop__footer {
                display: block;
           }
      }
