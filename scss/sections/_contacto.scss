@@ -6,7 +6,7 @@
 
 .contacto {
      &__container {
-          height: 32rem;
+          height: 50rem; // 32rem;
 
           padding: 0rem;
 
@@ -44,8 +44,6 @@
 }
 
 @media only screen and (min-width: 576px) {
-
-     //and (max-width: 1199px) {
      .contacto {
           &__container {
                display: flex;

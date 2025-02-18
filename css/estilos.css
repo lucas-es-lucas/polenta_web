@@ -52,8 +52,7 @@ body {
   body .suscribite__container {
     padding: 6rem 0; }
   body .contacto__container {
-    height: 32rem;
-    padding: 0rem; }
+    padding: 6rem 0; }
 
 .header {
   position: fixed;
@@ -400,9 +399,13 @@ body {
   justify-content: center;
   align-items: center;
   position: relative; }
+  .ticket:hover .ticket__filter {
+    z-index: 0;
+    opacity: .7; }
   .ticket:hover .ticket__img__container {
-    opacity: .25;
-    z-index: 0; }
+    z-index: 7; }
+  .ticket:hover .ticket__button {
+    z-index: 10; }
 
 .ticket__img__container {
   max-width: 100%;
@@ -415,13 +418,19 @@ body {
   width: 100%;
   object-fit: cover; }
 
+.ticket__filter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: all 1s ease; }
+
 .ticket__button {
   z-index: 0;
   position: absolute; }
-  .ticket__button:hover {
-    z-index: 10; }
-    .ticket__button:hover .ticket__img__container {
-      opacity: .25; }
 
 @media only screen and (min-width: 576px) {
   .ticket {
@@ -430,9 +439,13 @@ body {
     justify-content: center;
     align-items: center;
     position: relative; }
+    .ticket:hover .ticket__filter {
+      z-index: 0;
+      opacity: .7; }
     .ticket:hover .ticket__img__container {
-      opacity: .25;
-      z-index: 0; }
+      z-index: 7; }
+    .ticket:hover .ticket__button {
+      z-index: 10; }
   .ticket__img__container {
     max-width: 100%;
     background-color: #000000;
@@ -442,13 +455,18 @@ body {
   .ticket__img {
     width: 100%;
     object-fit: cover; }
+  .ticket__filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: all 1s ease; }
   .ticket__button {
     z-index: 0;
-    position: absolute; }
-    .ticket__button:hover {
-      z-index: 10; }
-      .ticket__button:hover .ticket__img__container {
-        opacity: .25; } }
+    position: absolute; } }
 
 .anouncement__container {
   display: flex;
@@ -518,12 +536,10 @@ body {
 
 .tickets__section {
   width: 100%;
-  padding-top: 10%;
-  padding-bottom: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.75rem;
+  row-gap: 2.75rem;
   z-index: 10; }
 
 .tickets__slider {
@@ -853,7 +869,59 @@ body {
     .puestas__section .slider .carousel-control-next {
       display: none; }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .puestas__container {
+    background-image: url("/imgs/bgs/bg-puestas.png");
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: top;
+    background-size: cover; }
+  .puestas__section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 3.5rem;
+    position: relative; }
+    .puestas__section .puestas__descripcion {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.5rem;
+      text-align: center;
+      padding: 0 18%; }
+    .puestas__section .slider {
+      display: flex;
+      padding: 0 10%; }
+      .puestas__section .slider .puestas__slider__img {
+        width: 100%;
+        border-radius: 1.25rem; }
+      .puestas__section .slider .carousel-inner .carousel-item img {
+        width: 100%;
+        border-radius: 1.25rem; }
+      .puestas__section .slider .carousel-indicators button {
+        background-color: #24bf5e; }
+      .puestas__section .slider .carousel-control-prev {
+        display: block;
+        transform: rotate(270deg);
+        left: 15%;
+        width: auto;
+        height: auto; }
+        .puestas__section .slider .carousel-control-prev :hover {
+          color: #24bf5e; }
+        .puestas__section .slider .carousel-control-prev .carousel-control-prev-icon {
+          background-image: url("/imgs/icons/scroll-top.png"); }
+      .puestas__section .slider .carousel-control-next {
+        display: block;
+        transform: rotate(90deg);
+        right: 15%;
+        width: auto;
+        height: auto; }
+        .puestas__section .slider .carousel-control-next :hover {
+          color: #24bf5e; }
+        .puestas__section .slider .carousel-control-next .carousel-control-next-icon {
+          background-image: url("/imgs/icons/scroll-top.png"); } }
+
+@media only screen and (min-width: 992px) {
   .puestas__container {
     background-image: url("/imgs/bgs/bg-puestas.png");
     background-repeat: no-repeat;
@@ -929,7 +997,7 @@ body {
     row-gap: 2rem; } }
 
 .contacto__container {
-  height: 32rem;
+  height: 50rem;
   padding: 0rem;
   display: flex;
   justify-content: center;

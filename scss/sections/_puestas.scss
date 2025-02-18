@@ -103,9 +103,108 @@
      }
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+     .puestas {
+          &__container {
+               background-image: url('/imgs/bgs/bg-puestas.png');
+               background-repeat: no-repeat;
+               background-position-x: right;
+               background-position-y: top;
+               background-size: cover;
+          }
 
-     //and (max-width: 1199px) {
+          &__section {
+               width: 100%;
+
+               display: flex;
+               flex-direction: column;
+               align-items: center;
+               row-gap: 3.5rem;
+
+               position: relative;
+
+               .puestas__descripcion {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1.5rem;
+
+                    text-align: center;
+
+                    padding: 0 18%;
+               }
+
+               .slider {
+                    display: flex;
+
+                    padding: 0 10%;
+
+                    .puestas__slider {
+                         &__img {
+                              width: 100%;
+
+                              border-radius: 1.25rem;
+                         }
+                    }
+
+                    .carousel-inner {
+                         .carousel-item {
+                              img {
+                                   width: 100%;
+
+                                   border-radius: 1.25rem;
+                              }
+                         }
+                    }
+
+                    .carousel-indicators {
+                         button {
+                              background-color: $color-primary-verde;
+                         }
+                    }
+
+                    .carousel-control-prev {
+                         display: block;
+
+                         transform: rotate(270deg);
+
+                         left: 15%;
+
+                         width: auto;
+                         height: auto;
+
+                         & :hover {
+                              color: $color-primary-verde;
+                         }
+
+                         .carousel-control-prev-icon {
+                              background-image: url("/imgs/icons/scroll-top.png");
+                         }
+                    }
+
+                    .carousel-control-next {
+                         display: block;
+
+                         transform: rotate(90deg);
+
+                         right: 15%;
+
+                         width: auto;
+                         height: auto;
+
+                         & :hover {
+                              color: $color-primary-verde;
+                         }
+
+                         .carousel-control-next-icon {
+                              background-image: url("/imgs/icons/scroll-top.png");
+                         }
+                    }
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 992px) {
      .puestas {
           &__container {
                background-image: url('/imgs/bgs/bg-puestas.png');

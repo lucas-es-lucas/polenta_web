@@ -13,10 +13,18 @@
      position: relative;
 
      &:hover {
-          .ticket__img__container {
-               opacity: .25;
-
+          .ticket__filter {
                z-index: 0;
+               opacity: .7;
+          }
+
+          .ticket__img__container {
+               // opacity: .5;
+               z-index: 7;
+          }
+
+          .ticket__button {
+               z-index: 10;
           }
      }
 }
@@ -36,23 +44,33 @@
      object-fit: cover;
 }
 
+.ticket__filter {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-color: $color-bg;
+     top: 0;
+     z-index: 0;
+     opacity: 0;
+
+     transition: all 1s ease;
+}
+
 .ticket__button {
      z-index: 0;
 
      position: absolute;
 
-     &:hover {
-          .ticket__img__container {
-               opacity: .25;
-          }
+     // &:hover {
+     //      .ticket__img__container {
+     //           opacity: .25;
+     //      }
 
-          z-index: 10;
-     }
+     //      z-index: 10;
+     // }
 }
 
 @media only screen and (min-width: 576px) {
-
-     //and (max-width: 1199px) {
      .ticket {
           display: flex;
           flex-direction: column;
@@ -62,10 +80,18 @@
           position: relative;
 
           &:hover {
-               .ticket__img__container {
-                    opacity: .25;
-
+               .ticket__filter {
                     z-index: 0;
+                    opacity: .7;
+               }
+     
+               .ticket__img__container {
+                    // opacity: .5;
+                    z-index: 7;
+               }
+     
+               .ticket__button {
+                    z-index: 10;
                }
           }
      }
@@ -85,17 +111,29 @@
           object-fit: cover;
      }
 
+     .ticket__filter {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: $color-bg;
+          top: 0;
+          z-index: 0;
+          opacity: 0;
+
+          transition: all 1s ease;
+     }
+
      .ticket__button {
           z-index: 0;
 
           position: absolute;
 
-          &:hover {
-               .ticket__img__container {
-                    opacity: .25;
-               }
+          // &:hover {
+          //      .ticket__img__container {
+          //           opacity: .25;
+          //      }
 
-               z-index: 10;
-          }
+          //      z-index: 10;
+          // }
      }
 }

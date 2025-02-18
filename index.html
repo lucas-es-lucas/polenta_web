@@ -110,60 +110,6 @@
 					</span>
 				</article>
 			</section>
-			<!-- <nav class="top-nav menu">
-				<figure class="menu__logo">
-					<a href="#"
-						><img
-							class="menu__logo__img"
-							src="/imgs/logos/logo-polenta.svg"
-							alt="logo-plenta"
-					/></a>
-				</figure>
-				<ul class="navbar-nav menu__list">
-					<li class="nav-item menu__list__item">
-						<a class="menu__list__link" href="#tickets"
-							>Tickets</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a class="menu__list__link" href="#nosotros"
-							>Nosotros</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a class="menu__list__link" href="#puestas"
-							>Puestas</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a class="menu__list__link" href="#suscribite"
-							>Contacto</a
-						>
-					</li>
-					<li
-						class="nav-item menu__list__item menu__list__item__icon"
-					>
-						<a
-							class="menu__list__link menu__list__link__icon"
-							href="https://www.instagram.com/polenta.polenta"
-							target="_blank"
-						>
-							<i class="fab fa-instagram"></i>
-						</a>
-					</li>
-					<li
-						class="nav-item menu__list__item menu__list__item__icon"
-					>
-						<a
-							class="menu__list__link menu__list__link__icon"
-							href="https://www.tiktok.com/@polenta.polenta"
-							target="_blank"
-						>
-							<i class="fab fa-tiktok"></i>
-						</a>
-					</li>
-				</ul>
-			</nav> -->
 			<nav class="navbar navbar-expand-lg top-nav menu">
 				<div class="container-fluid">
 					<figure>
@@ -221,7 +167,7 @@
 							<li class="nav-item menu__list__item">
 								<a
 									class="nav-link menu__list__link"
-									href="#suscribite"
+									href="#contacto"
 									onclick="cerrar()"
 									>Contacto</a
 								>
@@ -346,6 +292,7 @@
 									src="/imgs/tickets/20250221-san-juan-2102.png"
 									alt="imagen del ticket"
 								/><!-- hero-img -->
+								<div class="ticket__filter"></div>
 							</figure>
 							<!-- <div class="ticket__button__container"> -->
 							<button class="cta ticket__button">
@@ -366,6 +313,7 @@
 									src="/imgs/tickets/20250222-san-luis-2202.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
 							<button class="cta ticket__button">
 								<a
@@ -383,6 +331,7 @@
 									src="/imgs/tickets/20250222-caba-2202.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
 							<button class="cta ticket__button">
 								<a
@@ -400,8 +349,8 @@
 									src="/imgs/tickets/20250228-mexico-2802.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
-							<!-- <div class="ticket__button__container"> -->
 							<button class="cta ticket__button">
 								<a
 									class="cta__text ticket__link"
@@ -410,19 +359,16 @@
 									>comprar</a
 								>
 							</button>
-							<!-- </div> -->
 						</article>
 						<article class="ticket">
-							<!-- hero-box -->
 							<figure class="ticket__img__container">
-								<!-- hero-image-box -->
 								<img
 									class="ticket__img"
 									src="/imgs/tickets/20250301-vcp-0103.png"
 									alt="imagen del ticket"
-								/><!-- hero-img -->
+								/>
+								<div class="ticket__filter"></div>
 							</figure>
-							<!-- <div class="ticket__button__container"> -->
 							<button class="cta ticket__button">
 								<!-- hero-button -->
 								<a
@@ -432,7 +378,6 @@
 									>comprar</a
 								>
 							</button>
-							<!-- </div> -->
 						</article>
 						<article class="ticket">
 							<figure class="ticket__img__container">
@@ -441,6 +386,7 @@
 									src="/imgs/tickets/20250302-mdp-0203.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
 							<button class="cta ticket__button">
 								<a
@@ -458,6 +404,7 @@
 									src="/imgs/tickets/20250307-rosario-0703.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
 							<button class="cta ticket__button">
 								<a
@@ -475,17 +422,16 @@
 									src="/imgs/tickets/20250308-santafe-0803.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
-							<!-- <div class="ticket__button__container"> -->
 							<button class="cta ticket__button">
 								<a
 									class="cta__text ticket__link"
-									href="https://www.ticketway.com.ar/#/cartelera-espectaculo"
+									href="https://www.ticketway.com.ar/#/cartelera?evento=1943"
 									target="_blank"
 									>comprar</a
 								>
 							</button>
-							<!-- </div> -->
 						</article>
 						<article class="ticket">
 							<figure class="ticket__img__container">
@@ -494,8 +440,8 @@
 									src="/imgs/tickets/20250308-berlin-0803.png"
 									alt="imagen del ticket"
 								/>
+								<div class="ticket__filter"></div>
 							</figure>
-							<!-- <div class="ticket__button__container"> -->
 							<button class="cta ticket__button">
 								<a
 									class="cta__text ticket__link"
@@ -504,7 +450,6 @@
 									>comprar</a
 								>
 							</button>
-							<!-- </div> -->
 						</article>
 					</section>
 				</section>
@@ -876,6 +821,7 @@
 				</section>
 			</div>
 			<div
+				style="display: none"
 				id="suscribite"
 				class="container__propio suscribite suscribite__container"
 			>
@@ -892,13 +838,23 @@
 							/>
 							<button type="submit">ENVIAR</button>
 						</form>
+						<!-- Optin - Inicio -->
+						<!-- <div id="optin-xLgKwEk0" data-type="inline"></div>
+						<link
+							rel="stylesheet"
+							type="text/css"
+							href="https://optin.myperfit.com/res/css/fiestapolenta/xLgKwEk0.css"
+						/>
+						<script
+							type="text/javascript"
+							src="https://optin.myperfit.com/res/js/fiestapolenta/xLgKwEk0.js"
+							charset="UTF-8"
+						></script> -->
+						<!-- Optin - Fin -->
 					</article>
 				</section>
 			</div>
-			<div
-				id="contacto"
-				class="container__propio contacto contacto__container"
-			>
+			<div id="contacto" class="contacto contacto__container">
 				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
 						<h2 class="title">Estemos cerquita</h2>
@@ -929,21 +885,27 @@
 								href="https://www.instagram.com/polenta.polenta"
 								target="_blank"
 							>
-								<img class="img__mobile"
+								<img
+									class="img__mobile"
 									src="/imgs/icons/m-social-icons/m-instagram.png"
-									alt="icono instagram" />
-								<img class="img__desktop"
+									alt="icono instagram"
+								/>
+								<img
+									class="img__desktop"
 									src="/imgs/icons/instagram.png"
-									alt="icono instagram" />
+									alt="icono instagram"
+								/>
 							</a>
 							<a
 								href="https://www.tiktok.com/@polenta.polenta"
 								target="_blank"
 							>
-							<img class="img__mobile"
+								<img
+									class="img__mobile"
 									src="/imgs/icons/m-social-icons/m-tiktok.png"
 									alt="icono tiktok" />
-								<img class="img__desktop"
+								<img
+									class="img__desktop"
 									src="imgs/icons/tiktok.png"
 									alt="icono tiktok"
 							/></a>
@@ -951,43 +913,50 @@
 								href="https://x.com/fiestapolenta?lang=es"
 								target="_blank"
 							>
-							<img class="img__mobile"
+								<img
+									class="img__mobile"
 									src="/imgs/icons/m-social-icons/m-twitter-x.png"
 									alt="icono twitter" />
 								<img
-								class="img__desktop"
+									class="img__desktop"
 									src="imgs/icons/twitter-x.png"
 									alt="icono twitter"
 							/></a>
 							<a
 								href="https://www.youtube.com/@polenta.polenta"
 								target="_blank"
-								><img class="img__mobile"
-								src="/imgs/icons/m-social-icons/m-youtube.png"
-								alt="icono youtube" />
-								<img class="img__desktop"
+								><img
+									class="img__mobile"
+									src="/imgs/icons/m-social-icons/m-youtube.png"
+									alt="icono youtube" />
+								<img
+									class="img__desktop"
 									src="imgs/icons/youtube.png"
 									alt="icono youtube"
 							/></a>
 							<a
 								href="https://www.twitch.tv/fiestapolenta"
 								target="_blank"
-								>
-								<img class="img__mobile"
+							>
+								<img
+									class="img__mobile"
 									src="/imgs/icons/m-social-icons/m-twitch.png"
 									alt="icono twitch" />
-								<img class="img__desktop"
+								<img
+									class="img__desktop"
 									src="imgs/icons/twitch.png"
 									alt="icono twitch"
 							/></a>
 							<a
 								href="https://open.spotify.com/user/31feh6byuhxyjkfpe26lwc3lwpt4?si=fc43047279424982"
 								target="_blank"
-								>
-								<img class="img__mobile"
+							>
+								<img
+									class="img__mobile"
 									src="/imgs/icons/m-social-icons/m-spotify.png"
 									alt="icono spotify" />
-									<img class="img__desktop"
+								<img
+									class="img__desktop"
 									src="imgs/icons/spotify.png"
 									alt="icono spotify"
 							/></a>
