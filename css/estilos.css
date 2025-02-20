@@ -56,8 +56,8 @@ body {
 
 .header {
   position: fixed;
-  width: 100%;
-  background-color: #2828e8;
+  max-width: 100%;
+  background-color: #523CF2;
   z-index: 20; }
   .header__fixed {
     display: flex;
@@ -344,9 +344,29 @@ body {
   column-gap: .3rem;
   background-color: #212121a6;
   border: none;
-  border-radius: 3rem; }
+  border-radius: 3rem;
+  z-index: 10; }
   .go-to-top__text {
     padding: .25rem; }
+
+@media only screen and (max-width: 575px) {
+  .go-to-top {
+    position: fixed;
+    width: 9.5rem;
+    height: 2.9rem;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .3rem;
+    background-color: #212121a6;
+    border: none;
+    border-radius: 3rem;
+    z-index: 10; }
+    .go-to-top__text {
+      padding: .25rem; } }
 
 .back-to-home {
   width: 9.5rem;
@@ -482,7 +502,7 @@ body {
 
 .anouncement__item {
   flex-shrink: 0;
-  padding-left: 25vw; }
+  padding-left: 10vw; }
 
 .menu {
   background: #0E0E0E;
@@ -997,7 +1017,7 @@ body {
     row-gap: 2rem; } }
 
 .contacto__container {
-  height: 50rem;
+  height: 47rem;
   padding: 0rem;
   display: flex;
   justify-content: center;
@@ -1112,11 +1132,6 @@ main {
     .menu__list__redes {
       column-gap: 0rem; } }
 
-@media only screen and (max-width: 575px) {
-  .container__propio {
-    height: auto;
-    padding: 6rem 0; } }
-
 @media only screen and (min-width: 576px) and (max-width: 991px) {
   * .img__mobile {
     display: none; }
@@ -1158,21 +1173,3 @@ main {
     display: none; }
   * .img__desktop__footer {
     display: block; } }
-
-@media only screen and (max-width: 575px) {
-  .go-to-top {
-    position: fixed;
-    width: 9.5rem;
-    height: 2.9rem;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: .3rem;
-    background-color: #212121a6;
-    border: none;
-    border-radius: 3rem; }
-    .go-to-top__text {
-      padding: .25rem; } }

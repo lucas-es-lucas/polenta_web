@@ -19,7 +19,42 @@
      border: none;
      border-radius: 3rem;
 
+     z-index: 10;
+
      &__text {
           padding: .25rem;
      }
+}
+
+@media only screen and (max-width: 575px) {
+     .go-to-top {
+          position: fixed;
+          width: 9.5rem;
+          height: 2.9rem;
+
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 0%);
+
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: .3rem;
+
+          background-color: $color-bg-go-to-top;
+          border: none;
+          border-radius: 3rem;
+
+          z-index: 10;
+
+          &__text {
+               padding: .25rem;
+          }
+     }
+
+     // display: inline-flex;
+     // padding: 10px;
+     // justify-content: center;
+     // align-items: center;
+     // gap: 5px;
 }

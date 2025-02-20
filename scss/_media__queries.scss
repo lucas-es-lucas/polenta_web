@@ -3,72 +3,6 @@
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
-// header
-//      anouncement
-//           item 
-//      top-nav 
-//           logo 
-//           nav-bar 
-//                item 
-//                icono 
-// header 
-
-// main 
-//      hero
-//           video 
-
-//      tickets
-//           container 
-//           titulo
-//           tickets
-//                ontainer 
-//                image 
-
-//      nosotros
-//           container 
-//           titulo 
-//           description 
-//           titulo 
-//           cards 
-//                card 
-//                     content 
-//                     image 
-//                     icono 
-//                     titulo 
-//                     description
-
-//      puestas 
-//           container 
-//           titulo 
-//           description 
-//           slider 
-//                imagenes 
-
-//      contacto 
-//           suscribite 
-//                titulo 
-//                form 
-//           contacto 
-//                titulo 
-//                description 
-//                iconos 
-// main 
-
-// footer 
-//      legales 
-//           titulo 
-//           privacidad 
-//           proteccion 
-//      copyright 
-//           description 
-//      logo 
-// footer 
-
-// go-to-top 
-//      titulo 
-//      icono 
-
-
 //menu 390px - 991px 
 @media only screen and (min-width: 992px) {
      .menu {
@@ -105,15 +39,6 @@
           &__list__redes {
                column-gap: 0rem;
           }
-     }
-}
-
-//container__propio 
-@media only screen and (max-width: 575px) {
-     .container__propio {
-          height: auto;
-
-          padding: 6rem 0;
      }
 }
 
@@ -200,36 +125,4 @@
                display: block;
           }
      }
-}
-
-//go-to-top 
-@media only screen and (max-width: 575px) {
-     .go-to-top {
-          position: fixed;
-          width: 9.5rem;
-          height: 2.9rem;
-
-          bottom: 0;
-          left: 50%;
-          transform: translate(-50%, 0%);
-
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          column-gap: .3rem;
-
-          background-color: $color-bg-go-to-top;
-          border: none;
-          border-radius: 3rem;
-
-          &__text {
-               padding: .25rem;
-          }
-     }
-
-     // display: inline-flex;
-     // padding: 10px;
-     // justify-content: center;
-     // align-items: center;
-     // gap: 5px;
 }
