@@ -488,6 +488,9 @@ body {
     z-index: 0;
     position: absolute; } }
 
+.p-optin#optin-form-xLgKwEk0 div.p-body {
+  background-color: #ffffff; }
+
 .anouncement__container {
   display: flex;
   align-items: center;
@@ -1017,7 +1020,7 @@ body {
     row-gap: 2rem; } }
 
 .contacto__container {
-  height: 47rem;
+  height: auto;
   padding: 0rem;
   display: flex;
   justify-content: center;
