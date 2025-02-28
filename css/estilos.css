@@ -396,6 +396,10 @@ body {
     text-decoration: none; }
     .cta__text__:visited {
       text-decoration: none; }
+  .cta__suscribite {
+    border: 0.2rem #1A1A1A solid; }
+    .cta__suscribite__text {
+      padding: .75rem; }
 
 @media only screen and (min-width: 576px) {
   .cta {
@@ -411,7 +415,9 @@ body {
       color: #ffffff;
       text-decoration: none; }
       .cta__text__:visited {
-        text-decoration: none; } }
+        text-decoration: none; }
+    .cta__suscribite {
+      border: none; } }
 
 .ticket {
   display: flex;
@@ -995,7 +1001,7 @@ body {
 
 .suscribite__container {
   background-color: #24bf5e;
-  height: 15rem;
+  height: auto;
   padding: 0rem; }
 
 .suscribite__section {
@@ -1017,7 +1023,7 @@ body {
     row-gap: 2rem; } }
 
 .contacto__container {
-  height: 47rem;
+  height: auto;
   padding: 0rem;
   display: flex;
   justify-content: center;

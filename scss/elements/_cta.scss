@@ -26,6 +26,15 @@
                text-decoration: none;
           }
      }
+
+     &__suscribite {
+          border: .2rem $color-terciary-negro solid;
+
+
+          &__text {
+               padding: .75rem;
+          }
+     }
 }
 
 @media only screen and (min-width: 576px) {
@@ -52,6 +61,10 @@
                &__:visited {
                     text-decoration: none;
                }
+          }
+
+          &__suscribite {
+               border: none; // .2rem $color-terciary-negro solid;
           }
      }
 }
