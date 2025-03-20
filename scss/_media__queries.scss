@@ -1,68 +1,128 @@
-// header
-//      anouncement
-//           item 
-//      top-nav 
-//           logo 
-//           nav-bar 
-//                item 
-//                icono 
-// header 
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
 
-// main 
-//      hero
-//           video 
+//menu 390px - 991px 
+@media only screen and (min-width: 992px) {
+     .menu {
+          //.top-nav
+          background: $color-bg-top-nav;
 
-//      tickets
-//           container 
-//           titulo
-//           tickets
-//                ontainer 
-//                image 
+          padding: .25% 15% 0;
 
-//      nosotros
-//           container 
-//           titulo 
-//           description 
-//           titulo 
-//           cards 
-//                card 
-//                     content 
-//                     image 
-//                     icono 
-//                     titulo 
-//                     description
+          .navbar-collapse {
+               height: auto;
+          }
 
-//      puestas 
-//           container 
-//           titulo 
-//           description 
-//           slider 
-//                imagenes 
+          &__list {
+               padding-top: 0;
 
-//      contacto 
-//           suscribite 
-//                titulo 
-//                form 
-//           contacto 
-//                titulo 
-//                description 
-//                iconos 
-// mian 
+               &__item {
+                    & :hover {
+                         text-decoration: underline;
+                         // transform: scale(1.2);
+                    }
+               }
 
-// footer 
-//      legales 
-//           titulo 
-//           privacidad 
-//           proteccion 
-//      copyright 
-//           description 
-//      logo 
-// footer 
+               .nav-link:hover {
+                    color: $color-text;
+                    // text-decoration: none;
+                    text-decoration: underline;
+               }
 
-// go-to-top 
-//      titulo 
-//      icono 
+               .nav-link:visited {
+                    text-decoration: none;
+               }
+          }
 
-// @media only screen and (min-width: 576px) and (max-width: 767px) {
+          &__list__redes {
+               column-gap: 0rem;
+          }
+     }
+}
 
-// }
+//imagenes 
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: block;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: block;
+          }
+     
+          .img__desktop__footer {
+               display: none;
+          }
+     }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: block;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: none;
+          }
+     
+          .img__desktop__footer {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     * {
+          .img__mobile {
+               display: none;
+          }
+
+          .img__tablet {
+               display: none;
+          }
+
+          .img__desktop {
+               display: block;
+          }
+
+          .img__mobile__footer {
+               display: none;
+          }
+     
+          .img__tablet__footer {
+               display: none;
+          }
+     
+          .img__desktop__footer {
+               display: block;
+          }
+     }
+}

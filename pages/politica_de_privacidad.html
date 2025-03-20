@@ -5,11 +5,23 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<!-- Estilo Bootstrap -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
 		<!-- iconos redes -->
 		<script
 			src="https://kit.fontawesome.com/7d4193cf05.js"
 			crossorigin="anonymous"
 		></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		/>
+		<link rel="icon" type="image/png" href="/imgs/favicon/fav.png" />
 		<!-- estilos propios -->
 		<link rel="stylesheet" href="/css/estilos.css" />
 		<!-- fuente -->
@@ -26,165 +38,199 @@
 			<section class="anouncement anouncement__container">
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						20% OFF DE AHORRO CON VISA BANCO GALICIA
+						NO ES CUALQUIER FIESTA
 					</span>
 				</article>
 			</section>
-			<nav class="top-nav menu">
-				<figure>
-					<a href="/index.html"
-						><img
-							src="/imgs/logos/logo-polenta.svg"
-							alt="logo-plenta"
-					/></a>
-				</figure>
-				<ul class="navbar-nav menu__list">
-					<li class="nav-item menu__list__item">
+			<nav class="navbar navbar-expand-lg top-nav menu">
+				<div class="container-fluid">
+					<figure>
 						<a
-							class="menu__list__link"
-							href="/index.html#tickets"
-							>Tickets</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a
-							class="menu__list__link"
-							href="/index.html#nosotros"
-							>Nosotros</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a
-							class="menu__list__link"
-							href="/index.html#puestas"
-							>Puestas</a
-						>
-					</li>
-					<li class="nav-item menu__list__item">
-						<a
-							class="menu__list__link"
-							href="/index.html#suscribite"
-							>Contacto</a
-						>
-					</li>
-					<li
-						class="nav-item menu__list__item menu__list__item__icon"
-					>
-						<a
-							class="menu__list__link menu__list__link__icon"
-							href="https://www.instagram.com/polenta.polenta"
-							target="_blank"
-						>
-							<i class="fab fa-instagram"></i>
-						</a>
-						<!-- <a class="menu__list__link" href="#">
-							<img
-								class="menu__list__link__icon"
-								src="/imgs/icons/instagram.png"
-								alt="icono instagram"
-						/></a> -->
-					</li>
-					<li
-						class="nav-item menu__list__item menu__list__item__icon"
-					>
-						<a
-							class="menu__list__link menu__list__link__icon"
-							href="https://www.tiktok.com/@polenta.polenta"
-							target="_blank"
-						>
-							<i class="fab fa-tiktok"></i>
-						</a>
-						<!-- <a class="menu__list__link" href="#"
+							class="navbar-brand"
+							href="/index.html"
+							onclick="cerrar()"
 							><img
-								class="menu__list__link__icon"
-								src="/imgs/icons/tiktok.png"
-								alt="icono tiktok"
-						/></a> -->
-					</li>
-				</ul>
+								class="menu__logo"
+								src="/imgs/logos/logo-polenta.svg"
+								alt="logo-plenta"
+						/></a>
+					</figure>
+					<button
+						class="navbar-toggler menu__burger"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div
+						class="collapse navbar-collapse"
+						id="navbarNavDropdown"
+					>
+						<ul class="navbar-nav ms-auto menu__list">
+							<li></li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="/index.html#tickets"
+									onclick="cerrar()"
+									>Tickets</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="/index.html#nosotros"
+									onclick="cerrar()"
+									>Nosotros</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="/index.html#puestas"
+									onclick="cerrar()"
+									>Puestas</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link"
+									href="/index.html#contacto"
+									onclick="cerrar()"
+									>Contacto</a
+								>
+							</li>
+						</ul>
+						<ul
+							class="navbar-nav mr-auto menu__list menu__list__redes"
+						>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://www.instagram.com/polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-instagram"></i>
+								</a>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://www.tiktok.com/@polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-tiktok"></i>
+								</a>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://x.com/fiestapolenta?lang=es"
+									target="_blank"
+								>
+									<i
+										class="fa-brands fa-x-twitter"
+									></i>
+								</a>
+							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://www.youtube.com/@polenta.polenta"
+									target="_blank"
+								>
+									<i class="fab fa-youtube"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</nav>
 		</header>
 		<main>
-			<div
-				id="privacidad"
-				class="container privacidad privacidad__container"
-			>
-				<button class="back-to-home">
-					<!-- <a class="back-to-home__icon" href="/index.html"
-                         ><img
-                              src="/imgs/icons/chevron-left-black.png"
-                              alt="icono botón volver al inicio"
-                    /><span class="back-to-home__text">Volver al inicio</span></a> -->
-					<a class="back-to-home__icon" href="/index.html"
-						><img
-							src="/imgs/icons/chevron-left-black.png"
-							alt="icono botón volver al inicio"
-					/></a>
-					<a class="back-to-home__text" href="/index.html"
-						>Volver al inicio</a
+			<div id="privacidad" class="privacidad privacidad__container">
+				<a class="back-to-home" href="/index.html"
+					><img
+						class="back-to-home__icon"
+						src="/imgs/icons/chevron-left-black.png"
+						alt="icono botón volver al inicio"
+					/><span class="back-to-home__text"
+						>Volver al inicio</span
 					>
-				</button>
+				</a>
 				<section class="section privacidad__section">
 					<article class="privacidad__content">
-						<h1 class="title privacidad__title">
+						<h1 class="privacidad__title">
 							Política de Privacidad de Fiesta Polenta
 						</h1>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							El presente Política de Privacidad establece
 							los términos en que Polenta usa y protege la
 							información que es proporcionada por sus
@@ -205,7 +251,7 @@
 						<h2 class="privacidad__subtitle">
 							Información que es recogida
 						</h2>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							Nuestro sitio web podrá recoger información
 							personal por ejemplo: Nombre, información de
 							contacto como su dirección de correo
@@ -214,7 +260,7 @@
 						<h2 class="privacidad__subtitle">
 							Uso de la información recogida
 						</h2>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							Nuestro sitio web emplea la información con
 							el fin de proporcionar el mejor servicio
 							posible, particularmente para mantener un
@@ -237,7 +283,7 @@
 							autorizado.
 						</p>
 						<h2 class="privacidad__subtitle">Cookies</h2>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							Una cookie se refiere a un fichero que es
 							enviado con la finalidad de solicitar permiso
 							para almacenarse en su ordenador, al aceptar
@@ -273,7 +319,7 @@
 						<h2 class="privacidad__subtitle">
 							Enlaces a Terceros
 						</h2>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							Este sitio web pudiera contener en laces a
 							otros sitios que pudieran ser de su interés.
 							Una vez que usted de clic en estos enlaces y
@@ -290,7 +336,7 @@
 						<h2 class="privacidad__subtitle">
 							Control de su información personal
 						</h2>
-						<p class="description privacidad__description">
+						<p class="privacidad__description">
 							En cualquier momento usted puede restringir
 							la recopilación o el uso de la información
 							personal que es proporcionada a nuestro sitio
@@ -317,13 +363,13 @@
 			<section id="legales" class="footer__section">
 				<article class="footer__article footer__legales">
 					<h3 class="footer__title">Cosas que hay que poner</h3>
-					<a class="footer__subtitle" href="#"
-						>Política de Privacidad</a
-					>
 					<a
 						class="footer__subtitle"
-						href="/pages/proteccion_de_datos.html"
-						>Protección de Datos</a
+						href="/pages/terminos_y_condiciones.html"
+						>Términos y Condiciones</a
+					>
+					<a class="footer__subtitle" href="#"
+						>Política de Privacidad</a
 					>
 				</article>
 				<article class="footer__copyright">
@@ -337,20 +383,49 @@
 				<article class="footer__logo">
 					<figure>
 						<img
+							class="img__mobile__footer"
+							src="/imgs/logos/m-logo-footer.png"
+							alt="logo polenta mobile footer"
+						/>
+					</figure>
+					<figure>
+						<img
+							class="img__tablet__footer"
+							src="/imgs/logos/m-logo-footer.png"
+							alt="logo polenta tablet footer"
+						/>
+					</figure>
+					<figure>
+						<img
+							class="img__desktop__footer"
 							src="/imgs/logos/logo-footer.png"
-							alt="logo polenta con vector"
+							alt="logo polenta desktop footer"
 						/>
 					</figure>
 				</article>
 			</section>
 		</footer>
-		<button class="go-to-top go-to-top__privacidad">
-			<a class="go-to-top__text" href="#">VOLVER ARRIBA</a>
-			<a class="go-to-top__icon" href="#"
-				><img
-					src="/imgs/icons/scroll-top.png"
-					alt="icono botón volver arriba"
-			/></a>
-		</button>
+		<a class="go-to-top go-to-top__privacidad" href="#" onclick="cerrar()"
+			><span class="go-to-top__text">VOLVER ARRIBA</span
+			><img
+				class="go-to-top__icon"
+				src="/imgs/icons/scroll-top.png"
+				alt="icono botón volver arriba"
+		/></a>
 	</body>
+	<script>
+		function cerrar() {
+			$(".navbar-collapse").removeClass("show");
+		}
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"
+	></script>
+	<script
+		src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"
+	></script>
 </html>

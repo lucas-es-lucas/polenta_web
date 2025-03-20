@@ -1,0 +1,22 @@
+@mixin textos ($size, $align) {
+     font-size: $size;
+     text-align: $align;
+}
+
+@mixin grillas__simetricas($columns, $columns-medida, $rows, $rows-medida, $column-gap, $row-gap) {
+     display: grid;
+     grid-template-columns: repeat($columns, $columns-medida);
+     grid-template-rows: repeat($rows, $rows-medida);
+     column-gap: $column-gap;
+     row-gap: $row-gap;
+     justify-content: center;
+     //padding: 1rem;
+}
+
+@mixin opacidad($cantidad) {
+     @for $i from 1 through $cantidad {
+          .album-#{$i} {
+          opacity: $i / $cantidad;               
+          }
+     }
+}

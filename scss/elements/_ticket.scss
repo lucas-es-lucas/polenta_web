@@ -1,3 +1,8 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
 
 .ticket {
      display: flex;
@@ -8,13 +13,18 @@
      position: relative;
 
      &:hover {
-          //transition: all 0.5 ease;
-          //filter: brightness(25%);
+          .ticket__filter {
+               z-index: 0;
+               opacity: .7;
+          }
 
           .ticket__img__container {
-               opacity: .25;
+               // opacity: .5;
+               z-index: 7;
+          }
 
-               z-index: 0;
+          .ticket__button {
+               z-index: 10;
           }
      }
 }
@@ -26,15 +36,6 @@
 
      opacity: 1;
      transition: all 1s ease;
-
-     // &:hover {
-     //      //transition: all 0.5 ease;
-     //      //filter: brightness(25%);
-
-     //      opacity: .25;
-
-     //      z-index: 0;
-     // }
 }
 
 .ticket__img {
@@ -43,16 +44,96 @@
      object-fit: cover;
 }
 
+.ticket__filter {
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-color: $color-bg;
+     top: 0;
+     z-index: 0;
+     opacity: 0;
+
+     transition: all 1s ease;
+}
+
 .ticket__button {
      z-index: 0;
 
      position: absolute;
 
-     &:hover{
-          .ticket__img__container{
-               opacity: .25;
-          }
+     // &:hover {
+     //      .ticket__img__container {
+     //           opacity: .25;
+     //      }
 
+     //      z-index: 10;
+     // }
+}
+
+@media only screen and (min-width: 576px) {
+     .ticket {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          position: relative;
+
+          &:hover {
+               .ticket__filter {
+                    z-index: 0;
+                    opacity: .7;
+               }
+     
+               .ticket__img__container {
+                    // opacity: .5;
+                    z-index: 7;
+               }
+     
+               .ticket__button {
+                    z-index: 10;
+               }
+          }
+     }
+
+     .ticket__img__container {
+          max-width: 100%;
+          background-color: $color-bg;
           z-index: 10;
+
+          opacity: 1;
+          transition: all 1s ease;
+     }
+
+     .ticket__img {
+          width: 100%;
+
+          object-fit: cover;
+     }
+
+     .ticket__filter {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: $color-bg;
+          top: 0;
+          z-index: 0;
+          opacity: 0;
+
+          transition: all 1s ease;
+     }
+
+     .ticket__button {
+          z-index: 0;
+
+          position: absolute;
+
+          // &:hover {
+          //      .ticket__img__container {
+          //           opacity: .25;
+          //      }
+
+          //      z-index: 10;
+          // }
      }
 }
