@@ -150,7 +150,7 @@ body {
 
 .anouncement__text {
   color: #ffffff;
-  font-size: 0.8rem; }
+  font-size: 1rem; }
 
 .menu__list__link {
   font-size: 1rem;
@@ -243,7 +243,7 @@ body {
 @media only screen and (min-width: 992px) {
   .anouncement__text {
     color: #ffffff;
-    font-size: 0.8rem; }
+    font-size: 1.1rem; }
   .menu__list__link {
     font-size: 1rem;
     font-weight: 500;
@@ -489,11 +489,16 @@ body {
     position: absolute; } }
 
 .p-optin#optin-form-xLgKwEk0 div.p-body {
-  background-color: #ffffff; }
+  min-width: 262px; }
+
+@media only screen and (min-width: 576px) {
+  .p-optin#optin-form-xLgKwEk0 div.p-body {
+    min-width: 486px; } }
 
 .anouncement__container {
   display: flex;
   align-items: center;
+  width: 100%;
   height: 2rem;
   animation: scrolling 30s linear infinite; }
 
@@ -505,7 +510,7 @@ body {
 
 .anouncement__item {
   flex-shrink: 0;
-  padding-left: 10vw; }
+  padding-left: 1vw; }
 
 .menu {
   background: #0E0E0E;
