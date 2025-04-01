@@ -44,7 +44,7 @@
      }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
      .tickets {
           &__container {
                background-image: url('/imgs/bgs/bg-tickets.png');
@@ -76,6 +76,8 @@
           }
 
           &__slider {
+               scroll-behavior: smooth;
+
                width: 80%;
 
                display: flex;
@@ -85,6 +87,10 @@
                max-height: 47rem;
                overflow-y: auto;
                overflow-x: hidden;
+          }
+
+          &__slider::-webkit-scrollbar {
+               display: none;
           }
      }
 }
@@ -121,6 +127,8 @@
           }
 
           &__slider {
+               scroll-behavior: smooth;
+
                width: 65%;
 
                display: flex;
@@ -130,6 +138,10 @@
                max-height: 47rem;
                overflow-y: auto;
                overflow-x: hidden;
+          }
+
+          &__slider::-webkit-scrollbar {
+               display: none;
           }
      }
 }
@@ -166,6 +178,8 @@
           }
 
           &__slider {
+               scroll-behavior: smooth;
+
                width: 55%;
 
                display: flex;
@@ -175,6 +189,10 @@
                max-height: 47rem;
                overflow-y: auto;
                overflow-x: hidden;
+          }
+
+          &__slider::-webkit-scrollbar {
+               display: none;
           }
      }
 }
