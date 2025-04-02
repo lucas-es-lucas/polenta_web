@@ -3,6 +3,8 @@
           display: flex;
           align-items: center;
 
+          width: 100%;
+
           height: $height-anouncement; //2rem;
           // background-color: $color-bg-anouncement;
 
@@ -22,6 +24,6 @@
      &__item {
           flex-shrink: 0;
 
-          padding-left: 10vw;
+          padding-left: 1vw;
      }
 }
