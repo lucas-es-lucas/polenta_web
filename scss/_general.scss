@@ -30,6 +30,7 @@
 
 html {
      scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
+     scroll-behavior: smooth;
 }
 
 body {
