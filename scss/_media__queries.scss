@@ -46,7 +46,7 @@
 @media only screen and (min-width: 576px) and (max-width: 991px) {
      * {
           .img__mobile {
-               display: none;
+               display: block;
           }
 
           .img__tablet {
@@ -54,17 +54,17 @@
           }
 
           .img__desktop {
-               display: block;
+               display: none;
           }
 
           .img__mobile__footer {
                display: none;
           }
-     
+
           .img__tablet__footer {
                display: block;
           }
-     
+
           .img__desktop__footer {
                display: none;
           }
@@ -78,7 +78,7 @@
           }
 
           .img__tablet {
-               display: block;
+               display: none;
           }
 
           .img__desktop {
@@ -88,11 +88,11 @@
           .img__mobile__footer {
                display: none;
           }
-     
+
           .img__tablet__footer {
                display: none;
           }
-     
+
           .img__desktop__footer {
                display: block;
           }
@@ -116,12 +116,198 @@
           .img__mobile__footer {
                display: none;
           }
-     
+
           .img__tablet__footer {
                display: none;
           }
-     
+
           .img__desktop__footer {
+               display: block;
+          }
+     }
+}
+
+//festival 
+// mobile-first
+// 390 x 927 
+// @media only screen and (min-width: 390px) and (max-width: 575px) 
+// 576 x 927 
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// 768 x 819 
+// @media only screen and (min-width: 768px) and (max-width: 989px)
+// 990 x 1024
+// @media only screen and (min-width: 990px) and (max-width: 1439px) 
+// 1440 x 1024 
+// @media only screen and (min-width: 1440px) 
+// 1920 x 1080 
+
+@media only screen and (min-width: 390px) and (max-width: 575px) {
+     * {
+          .img__festival__390 {
+               display: none;
+          }
+
+          .img__festival__576 {
+               display: block;
+          }
+
+          .img__festival__768 {
+               display: none;
+          }
+
+          .img__festival__990 {
+               display: none;
+          }
+
+          .img__festival__1440 {
+               display: none;
+          }
+
+          .img__festival__1920 {
+               display: none;
+          }
+     }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+     * {
+          .img__festival__390 {
+               display: none;
+          }
+
+          .img__festival__576 {
+               display: none;
+          }
+
+          .img__festival__768 {
+               display: block;
+          }
+
+          .img__festival__990 {
+               display: none;
+          }
+
+          .img__festival__1440 {
+               display: none;
+          }
+
+          .img__festival__1920 {
+               display: none;
+          }
+
+          .festival__img__logo__576 {
+               display: none;
+          }
+
+          .festival__img__logo__768 {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 989px) {
+     * {
+          .img__festival__390 {
+               display: none;
+          }
+
+          .img__festival__576 {
+               display: none;
+          }
+
+          .img__festival__768 {
+               display: none;
+          }
+
+          .img__festival__990 {
+               display: block;
+          }
+
+          .img__festival__1440 {
+               display: none;
+          }
+
+          .img__festival__1920 {
+               display: none;
+          }
+
+          .festival__img__logo__576 {
+               display: none;
+          }
+
+          .festival__img__logo__768 {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1439px) {
+     * {
+          .img__festival__390 {
+               display: none;
+          }
+
+          .img__festival__576 {
+               display: none;
+          }
+
+          .img__festival__768 {
+               display: none;
+          }
+
+          .img__festival__990 {
+               display: none;
+          }
+
+          .img__festival__1440 {
+               display: block;
+          }
+
+          .img__festival__1920 {
+               display: none;
+          }
+
+          .festival__img__logo__576 {
+               display: none;
+          }
+
+          .festival__img__logo__768 {
+               display: block;
+          }
+     }
+}
+
+@media only screen and (min-width: 1440px) {
+     * {
+          .img__festival__390 {
+               display: none;
+          }
+
+          .img__festival__576 {
+               display: none;
+          }
+
+          .img__festival__768 {
+               display: none;
+          }
+
+          .img__festival__990 {
+               display: none;
+          }
+
+          .img__festival__1440 {
+               display: none;
+          }
+
+          .img__festival__1920 {
+               display: block;
+          }
+
+          .festival__img__logo__576 {
+               display: none;
+          }
+
+          .festival__img__logo__768 {
                display: block;
           }
      }

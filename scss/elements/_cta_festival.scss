@@ -1,0 +1,67 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+
+.cta__festival {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+     background: $color-primary-verde;
+
+     // border: .2rem $color-text solid;
+     border-radius: 3rem;
+
+     &__text {
+          width: 13.75rem; //220 
+          height: 2.8rem; //49 
+          padding: .6rem 1.25rem;
+
+          color: $color-text;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: bold;
+
+          &__:visited {
+               text-decoration: none;
+          }
+     }
+
+     &:hover {
+          background-color: $color-terciary-negro;
+     }
+}
+
+@media only screen and (min-width: 576px) {
+
+     //and (max-width: 1199px) {
+     .cta {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // gap: .6rem;
+
+          background: $color-terciary-negro;
+
+          border: .2rem $color-text solid;
+          border-radius: .3rem;
+
+          &__text {
+               width: 11.5rem;
+               padding: 1.25rem 1.9rem;
+
+               color: $color-text;
+               text-decoration: none;
+
+               &__:visited {
+                    text-decoration: none;
+               }
+          }
+
+          &:hover {
+               background-color: $color-terciary-negro;
+          }
+     }
+}

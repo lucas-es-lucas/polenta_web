@@ -1,0 +1,174 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+// mobile-first
+// 390 x 927 
+// @media only screen and (min-width: 390px) and (max-width: 575px) 
+// 576 x 927 
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// 768 x 819 
+// @media only screen and (min-width: 768px) and (max-width: 989px)
+// 990 x 1024
+// @media only screen and (min-width: 990px) and (max-width: 1399px) 
+// 1440 x 1024 
+// @media only screen and (min-width: 1400px) 
+// 1920 x 1080 
+
+
+.festival {
+     &__container {
+          padding: 0rem;
+     }
+
+     &__img__container {
+          position: relative;
+          width: 100%;
+          /* O un valor porcentual para hacerlo responsivo */
+          // max-width: 800px;
+          /* Opcional: para controlar el ancho máximo */
+          height: auto;
+
+          img {
+               width: 100%;
+               /* Asegura que la imagen ocupe el 100% del contenedor */
+               height: auto;
+               /* Mantiene la proporción de la imagen */
+               //display: block;
+               /* Elimina espacio extra debajo de la imagen */
+          }
+     }
+
+     &__text__container {
+          position: absolute;
+          top: 50%;
+          /* Mueve el punto de anclaje al centro vertical */
+          left: 50%;
+          /* Mueve el punto de anclaje al centro horizontal */
+          transform: translate(-50%, -50%);
+          /* Ajusta el texto para que quede centrado */
+          //color: white;
+          /* Color del texto */
+          /* background-color: rgba(0, 0, 0, 0.5); Fondo semi-transparente para mejor legibilidad */
+          //padding: 10px;
+          //text-align: center;
+          width: 100%;
+          /* Ancho del texto para que se ajuste */
+
+          display: flex;
+          flex-direction: column;
+          row-gap: 2rem;
+          align-items: center;
+     }
+
+     .festival__img__logo {
+          //background-color: pink;
+          width: 62%; //244 
+     }
+
+     .festival__img__lineup {
+          //background-color: orange;
+          width: 83%; //327 
+     }
+
+     .festival__img__frase {
+          //background-color: olivedrab;
+          width: 77%; //304 
+     }
+}
+
+@media only screen and (min-width: 390px) and (max-width: 575px) {
+     .festival {
+          .festival__img__logo {
+               //background-color: yellow;
+               width: 54%; //311 
+          }
+
+          .festival__img__lineup {
+               //background-color: lightblue;
+               width: 82%; //474 
+          }
+
+          .festival__img__frase {
+               //background-color: lightcoral;
+               width: 76%; //440 
+          }
+     }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+     .festival {
+          .festival__img__logo {
+               //background-color: pink;
+               width: 73%; //561 
+          }
+
+          .festival__img__lineup {
+               //background-color: orange;
+               width: 79%; //609 
+          }
+
+          .festival__img__frase {
+               //background-color: olivedrab;
+               width: 50%; //389 
+          }
+     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 989px) {
+     .festival {
+          .festival__img__logo {
+               //background-color: yellow;
+               width: 64%; //637 
+          }
+
+          .festival__img__lineup {
+               //background-color: lightblue;
+               width: 77%; //765 
+          }
+
+          .festival__img__frase {
+               //background-color: lightcoral;
+               width: 49%; //489 
+          }
+     }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1439px) {
+     .festival {
+          .festival__img__logo {
+               //background-color: pink;
+               width: 44%; //637 
+          }
+
+          .festival__img__lineup {
+               //background-color: orange;
+               width: 58%; //845 
+          }
+
+          .festival__img__frase {
+               //background-color: olivedrab;
+               width: 37%; //541 
+          }
+     }
+}
+
+@media only screen and (min-width: 1440px) {
+     .festival {
+          .festival__img__logo {
+               //background-color: yellow;
+               width: 44%; //637 
+          }
+
+          .festival__img__lineup {
+               //background-color: lightblue;
+               width: 58%; //845 
+          }
+
+          .festival__img__frase {
+               //background-color: lightcoral;
+               width: 37%; //541 
+          }
+     }
+}
