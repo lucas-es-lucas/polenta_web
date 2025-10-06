@@ -19,7 +19,7 @@ function cambiarImagenPorHora() {
      const imagen1920 = document.getElementById('img__festival__1920');
 
 
-     if (hora >= 10 && hora < 11) { // desde la 1 AM hasta las 12 PM
+     if (hora >= 0 && hora < 12) {
           imagen390.src = '/imgs/seccion-festival-amanecer/bg-390-amanecer.png';
           imagen390.alt = 'Poster del Festival Polenta - Amanecer';
 
@@ -37,7 +37,7 @@ function cambiarImagenPorHora() {
 
           imagen1920.src = '/imgs/seccion-festival-amanecer/bg-1920-amanecer.png';
           imagen1920.alt = 'Poster del Festival Polenta - Amanecer';
-     } else { // desde 12 PM hasta la 1 AM 
+     } else {
           imagen390.src = '/imgs/seccion-festival/bg-390.png';
           imagen390.alt = 'Poster del Festival Polenta - Atardecer';
 
@@ -60,4 +60,4 @@ function cambiarImagenPorHora() {
 
 window.onload = cambiarImagenPorHora();
 
-setInterval(cambiarImagenPorHora, 60000); // 60000 milisegundos = 1 minuto
+setInterval(cambiarImagenPorHora, 60000);
