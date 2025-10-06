@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Devant_Horgen";
   src: url(/fonts/Devant_Horgen/Devant_Horgen.ttf);
@@ -498,51 +497,30 @@ body .contacto__container {
   justify-content: center;
   align-items: center;
   background: #24bf5e;
+  border: 0.2rem #24bf5e solid;
   border-radius: 3rem;
+  width: 14.5rem;
+  height: 3rem;
 }
 .cta__festival__text {
-  width: 13.75rem;
-  height: 2.8rem;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  text-align: center;
   padding: 0.6rem 1.25rem;
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: bold;
 }
-.cta__festival__text__:visited {
-  text-decoration: none;
-}
 .cta__festival:hover {
   background-color: #1A1A1A;
+  border: 0.2rem #ffffff solid;
 }
 
-@media only screen and (min-width: 576px) {
-  .cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #1A1A1A;
-    border: 0.2rem #ffffff solid;
-    border-radius: 0.3rem;
-  }
-  .cta__text {
-    width: 11.5rem;
-    padding: 1.25rem 1.9rem;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .cta__text__:visited {
-    text-decoration: none;
-  }
-  .cta:hover {
-    background-color: #1A1A1A;
-  }
-}
 .cta {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #1A1A1A;
   border: 0.2rem #ffffff solid;
   border-radius: 0.3rem;
 }
@@ -561,11 +539,13 @@ body .contacto__container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1A1A1A;
     border: 0.2rem #ffffff solid;
     border-radius: 0.3rem;
   }
   .cta__text {
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    text-align: center;
     width: 11.5rem;
     padding: 1.25rem 1.9rem;
     color: #ffffff;
@@ -618,6 +598,7 @@ body .contacto__container {
 }
 
 .ticket__button {
+  background: #1A1A1A;
   z-index: 0;
   position: absolute;
 }
@@ -756,32 +737,21 @@ body .contacto__container {
 .festival__img__container {
   position: relative;
   width: 100%;
-  /* O un valor porcentual para hacerlo responsivo */
-  /* Opcional: para controlar el ancho máximo */
   height: auto;
 }
 .festival__img__container img {
   width: 100%;
-  /* Asegura que la imagen ocupe el 100% del contenedor */
   height: auto;
-  /* Mantiene la proporción de la imagen */
-  /* Elimina espacio extra debajo de la imagen */
 }
 .festival__text__container {
   position: absolute;
   top: 50%;
-  /* Mueve el punto de anclaje al centro vertical */
   left: 50%;
-  /* Mueve el punto de anclaje al centro horizontal */
   transform: translate(-50%, -50%);
-  /* Ajusta el texto para que quede centrado */
-  /* Color del texto */
-  /* background-color: rgba(0, 0, 0, 0.5); Fondo semi-transparente para mejor legibilidad */
   width: 100%;
-  /* Ancho del texto para que se ajuste */
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 2.75rem;
   align-items: center;
 }
 .festival .festival__img__logo {
@@ -840,13 +810,13 @@ body .contacto__container {
 }
 @media only screen and (min-width: 1440px) {
   .festival .festival__img__logo {
-    width: 44%;
+    width: 33%;
   }
   .festival .festival__img__lineup {
-    width: 58%;
+    width: 44%;
   }
   .festival .festival__img__frase {
-    width: 37%;
+    width: 28%;
   }
 }
 .tickets__container {

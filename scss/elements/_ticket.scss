@@ -57,17 +57,11 @@
 }
 
 .ticket__button {
+     background: $color-terciary-negro;
+
      z-index: 0;
 
      position: absolute;
-
-     // &:hover {
-     //      .ticket__img__container {
-     //           opacity: .25;
-     //      }
-
-     //      z-index: 10;
-     // }
 }
 
 @media only screen and (min-width: 576px) {
@@ -127,13 +121,5 @@
           z-index: 0;
 
           position: absolute;
-
-          // &:hover {
-          //      .ticket__img__container {
-          //           opacity: .25;
-          //      }
-
-          //      z-index: 10;
-          // }
      }
 }

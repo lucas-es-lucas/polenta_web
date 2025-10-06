@@ -8,9 +8,6 @@
      display: flex;
      justify-content: center;
      align-items: center;
-     // gap: .6rem;
-
-     background: $color-terciary-negro;
 
      border: .2rem $color-text solid;
      border-radius: .3rem;
@@ -29,20 +26,19 @@
 }
 
 @media only screen and (min-width: 576px) {
-
-     //and (max-width: 1199px) {
      .cta {
           display: flex;
           justify-content: center;
           align-items: center;
-          // gap: .6rem;
-
-          background: $color-terciary-negro;
 
           border: .2rem $color-text solid;
           border-radius: .3rem;
 
           &__text {
+               letter-spacing: 0.96px;
+               text-transform: uppercase;
+               text-align: center;
+
                width: 11.5rem;
                padding: 1.25rem 1.9rem;
 
