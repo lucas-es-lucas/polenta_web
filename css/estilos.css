@@ -92,6 +92,13 @@ body .container__propio {
   height: auto;
   padding: 6rem 0;
 }
+body .container__propio__hero {
+  padding: 0rem;
+  line-height: 0;
+}
+body .container__propio__festival {
+  padding: 0rem;
+}
 body .suscribite__container {
   padding: 6rem 0;
 }
@@ -731,9 +738,6 @@ body .contacto__container {
   object-fit: cover;
 }
 
-.festival__container {
-  padding: 0rem;
-}
 .festival__img__container {
   position: relative;
   width: 100%;
