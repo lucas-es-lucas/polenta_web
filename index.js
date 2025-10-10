@@ -19,7 +19,7 @@ function cambiarImagenPorHora() {
      const imagen1920 = document.getElementById('img__festival__1920');
 
 
-     if (hora % 2 === 0) { //if (hora >= 0 && hora < 12) {
+     if (hora >= 0 && hora < 12) {//if (hora % 2 === 0) { //
           imagen390.src = '/imgs/seccion-festival-amanecer/bg-390-amanecer.png';
           imagen390.alt = 'Poster del Festival Polenta - Amanecer';
 
