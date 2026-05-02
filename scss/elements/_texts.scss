@@ -3,26 +3,33 @@
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
+.font-alternative {
+     font-family: $font-alternative;
+     font-size: ($font-size * 2.62);
+     font-optical-sizing: auto;
+     font-style: italic;
+     font-weight: bold;
+}
 
 .anouncement {
      &__text {
-          color: $color-text;
+          color: $color-terciary-negro;
 
-          font-size: ($font-size * 1);
+          font-size: ($font-size * 2);
      }
 }
 
 .menu {
      &__list {
           &__link {
-               font-size: $font-size;
-               font-weight: 500;
+               font-size: ($font-size * 1.25);
+               font-weight: 400;
                letter-spacing: -0.3px;
                color: $color-text;
 
                &__icon {
-                    font-size: ($font-size * 1.25);
-                    color: $color-primary-verde;
+                    font-size: ($font-size * 2);
+                    color: $color-accent-rojo;
                }
           }
      }
@@ -34,9 +41,14 @@
      letter-spacing: -0.2px;
      line-height: 120%;
      text-align: center;
+
+     &__tickets {
+          font-size: ($font-size * 6.25);
+     }
 }
 
 .subtitle {
+     font-family: $font-secondary;
      font-size: $font-size-subtitle-celular;
      font-weight: 400;
      letter-spacing: -0.48px;
@@ -66,11 +78,13 @@
 
 .card {
      &__title {
-          font-size: ($font-size * 1.1);
+          font-size: ($font-size * 2);
           color: $color-text-negro;
+          text-align: center;
      }
 
      &__description {
+          font-family: $font-secondary;
           font-size: ($font-size * .7);
           color: $color-text-negro;
           text-align: center;
@@ -110,9 +124,9 @@
 .go-to-top {
      &__text {
           color: $color-text;
-          font-size: ($font-size * .75);
-          font-weight: 600;
-          letter-spacing: -0.36px;
+          font-size: ($font-size * .9);
+          font-weight: 400;
+          letter-spacing: 0;
           text-transform: uppercase;
      }
 }

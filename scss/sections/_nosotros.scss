@@ -73,6 +73,22 @@
                border-radius: 1rem;
 
                width: 22.5rem;
+
+               &__dance-crew {
+                    background-color: $color-fondo-card-dance-crew;
+               }
+
+               &__lanza-remeras {
+                    background-color: $color-fondo-card-lanza-remeras;
+               }
+
+               &__churros {
+                    background-color: $color-fondo-card-churros;
+               }
+
+               &__angeles-polenta {
+                    background-color: $color-fondo-card-angeles;
+               }
           }
 
           .card__container__imagen {
