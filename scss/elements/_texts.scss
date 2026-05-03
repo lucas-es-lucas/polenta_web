@@ -3,12 +3,19 @@
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
-.font-alternative {
+.font__alternative {
      font-family: $font-alternative;
-     font-size: ($font-size * 2.62);
      font-optical-sizing: auto;
      font-style: italic;
      font-weight: bold;
+
+     &__anouncement {
+          font-size: ($font-size * 2.4);
+     }
+
+     &__card {
+          font-size: ($font-size * 2.625);
+     }
 }
 
 .anouncement {
@@ -37,9 +44,9 @@
 
 .title {
      font-size: $font-size-title-celular;
-     font-weight: 700;
-     letter-spacing: -0.2px;
-     line-height: 120%;
+     font-weight: 400;
+     //letter-spacing: -0.2px;
+     line-height: 110%;
      text-align: center;
 
      &__tickets {
@@ -74,7 +81,7 @@
 
 .card {
      &__title {
-          font-size: ($font-size * 2);
+          font-size: ($font-size * 2.25);
           color: $color-text-negro;
           text-align: center;
      }
@@ -136,8 +143,8 @@
           text-align: left;
 
           font-size: ($font-size * 2);
-          font-weight: 600;
-          letter-spacing: -0.4px;
+          //font-weight: 600;
+          //letter-spacing: -0.4px;
      }
 
      &__subtitle {
@@ -146,6 +153,7 @@
      }
 
      &__description {
+          font-family: $font-secondary;
           padding-bottom: 2rem;
           font-size: ($font-size * .9);
 
@@ -160,10 +168,10 @@
      }
 
      .card {
-          &__title {
-               font-size: ($font-size * 1.5);
-               color: $color-text-negro;
-          }
+          // &__title {
+          //      font-size: ($font-size * 1.5);
+          //      color: $color-text-negro;
+          // }
 
           &__description {
                font-size: ($font-size * .9);
@@ -238,10 +246,10 @@
      }
 
      .card {
-          &__title {
-               font-size: ($font-size * 1.5);
-               color: $color-text-negro;
-          }
+          // &__title {
+          //      font-size: ($font-size * 1.5);
+          //      color: $color-text-negro;
+          // }
 
           &__description {
                font-size: ($font-size * .9);
@@ -299,8 +307,8 @@
                text-align: left;
 
                font-size: ($font-size * 2.25);
-               font-weight: 600;
-               letter-spacing: -0.4px;
+               // font-weight: 600;
+               // letter-spacing: -0.4px;
           }
 
           &__subtitle {

@@ -13,12 +13,13 @@
           background-size: cover;
      }
 
-     &__title {
-          z-index: 0;
-     }
+     // &__title {
+     //      z-index: 0;
+     // }
 
      &__section {
           width: 100%;
+          padding-top: 3rem;
           // padding-top: 10%;
           // padding-bottom: 15%;
 
@@ -27,7 +28,7 @@
           align-items: center;
           row-gap: 2.75rem;
 
-          z-index: 10;
+          //z-index: 10;
      }
 
      &__slider {
@@ -53,9 +54,9 @@
                // background-position-y: top;
           // }
 
-          &__title {
-               z-index: 0;
-          }
+          // &__title {
+          //      z-index: 0;
+          // }
 
           &__section {
                width: 100%;
@@ -94,9 +95,9 @@
           //      background-position-y: top;
           // }
 
-          &__title {
-               z-index: 0;
-          }
+          // &__title {
+          //      z-index: 0;
+          // }
 
           &__section {
                width: 100%;
@@ -135,9 +136,9 @@
           //      background-position-y: top;
           // }
 
-          &__title {
-               z-index: 0;
-          }
+          // &__title {
+          //      z-index: 0;
+          // }
 
           &__section {
                width: 100%;
