@@ -36,7 +36,7 @@ html {
 body {
      background-color: $color-bg;
      color: $color-text;
-     font-family: $font-principal;
+     font-family: $font-primary;
 
      .container {
           max-width: 100%;
@@ -81,15 +81,10 @@ body {
      }
 
      .suscribite__container {
-          // height: 15rem;
-
           padding: 6rem 0;
      }
 
      .contacto__container {
-          // height: 32rem;
-
-          // padding: 0rem;
           padding: 6rem 0;
      }
 }

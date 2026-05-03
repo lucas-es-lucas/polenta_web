@@ -13,10 +13,10 @@
      background: $color-terciary-negro;
 
      border: .2rem $color-text solid;
-     border-radius: .3rem;
+     border-radius: 6.25rem;
 
      &__text {
-          width: 8rem;
+          width: 14rem;
           padding: .75rem 1.9rem;
 
           color: $color-text;
@@ -40,11 +40,11 @@
           background: $color-terciary-negro;
 
           border: .2rem $color-text solid;
-          border-radius: .3rem;
+          border-radius: 6.25rem;
 
           &__text {
-               width: 11.5rem;
-               padding: 1.25rem 1.9rem;
+               width: 14rem;
+               padding: .75rem 1.9rem;
 
                color: $color-text;
                text-decoration: none;

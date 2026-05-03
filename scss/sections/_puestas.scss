@@ -6,7 +6,7 @@
 
 .puestas {
      &__container {
-          background-image: url('/imgs/bgs/bg-puestas.png');
+          background-image: url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-puestas.png');
           background-repeat: no-repeat;
           background-position-x: right;
           background-position-y: center;
@@ -106,7 +106,7 @@
 @media only screen and (min-width: 768px) and (max-width: 991px) {
      .puestas {
           &__container {
-               background-image: url('/imgs/bgs/bg-puestas.png');
+               background-image: url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-puestas.png');
                background-repeat: no-repeat;
                background-position-x: right;
                background-position-y: top;
@@ -207,7 +207,7 @@
 @media only screen and (min-width: 992px) {
      .puestas {
           &__container {
-               background-image: url('/imgs/bgs/bg-puestas.png');
+               background-image: url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-puestas.png');
                background-repeat: no-repeat;
                background-position-x: right;
                background-position-y: top;

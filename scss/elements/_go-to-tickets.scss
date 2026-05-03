@@ -1,6 +1,6 @@
-.go-to-top {
+.go-to-tickets {
      position: fixed;
-     width: 9.5rem;
+     width: 12rem;
      height: 2.9rem;
 
      // bottom: 0;
@@ -15,7 +15,7 @@
      justify-content: center;
      column-gap: .3rem;
 
-     background-color: $color-bg-go-to-top;
+     background-color: $color-bg-go-to-tickets;
      border: none;
      border-radius: 3rem;
 
@@ -27,9 +27,9 @@
 }
 
 @media only screen and (max-width: 575px) {
-     .go-to-top {
+     .go-to-tickets {
           position: fixed;
-          width: 9.5rem;
+          width: 12rem;
           height: 2.9rem;
 
           bottom: 0;
@@ -41,7 +41,7 @@
           justify-content: center;
           column-gap: .3rem;
 
-          background-color: $color-bg-go-to-top;
+          background-color: $color-bg-go-to-tickets;
           border: none;
           border-radius: 3rem;
 

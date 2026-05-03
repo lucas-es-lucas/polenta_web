@@ -6,7 +6,7 @@
 
 .tickets {
      &__container {
-          background-image: url('/imgs/bgs/bg-tickets.png');
+          background-image: url('/imgs/video hero/video-bg-bn-gif.gif'); //url('/imgs/bgs/bg-tickets.png');
           background-repeat: no-repeat;
           background-position-x: left;
           background-position-y: center;
@@ -46,17 +46,12 @@
 
 @media only screen and (min-width: 576px) and (max-width: 991px) {
      .tickets {
-          &__container {
-               background-image: url('/imgs/bgs/bg-tickets.png');
-               background-repeat: no-repeat;
-               background-position-x: left;
-               background-position-y: top;
-               // background-size: contain;
-
+          // &__container {
+               // background-image: url('/imgs/video hero/video-bg-bn-gif.gif'); //url('/imgs/bgs/bg-tickets.png');
+               // background-repeat: no-repeat;
                // background-position-x: left;
-               // background-position-y: center;
-               // background-size: cover;
-          }
+               // background-position-y: top;
+          // }
 
           &__title {
                z-index: 0;
@@ -92,17 +87,12 @@
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
      .tickets {
-          &__container {
-               background-image: url('/imgs/bgs/bg-tickets.png');
-               background-repeat: no-repeat;
-               background-position-x: left;
-               background-position-y: top;
-               // background-size: contain;
-
-               // background-position-x: left;
-               // background-position-y: center;
-               // background-size: cover;
-          }
+          // &__container {
+          //      background-image: url('/imgs/bgs/bg-tickets.png');
+          //      background-repeat: no-repeat;
+          //      background-position-x: left;
+          //      background-position-y: top;
+          // }
 
           &__title {
                z-index: 0;
@@ -138,17 +128,12 @@
 
 @media only screen and (min-width: 1200px) {
      .tickets {
-          &__container {
-               background-image: url('/imgs/bgs/bg-tickets.png');
-               background-repeat: no-repeat;
-               background-position-x: left;
-               background-position-y: top;
-               // background-size: contain;
-
-               // background-position-x: left;
-               // background-position-y: center;
-               // background-size: cover;
-          }
+          // &__container {
+          //      background-image: url('/imgs/bgs/bg-tickets.png');
+          //      background-repeat: no-repeat;
+          //      background-position-x: left;
+          //      background-position-y: top;
+          // }
 
           &__title {
                z-index: 0;
