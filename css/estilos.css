@@ -748,32 +748,23 @@ body .contacto__container {
   }
   .tickets__slider {
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
     height: auto;
     display: grid;
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(3, auto);
-    column-gap: 3vw;
-    row-gap: 3vw;
-    justify-content: center;
-    grid-template-areas: "ticket__1 ticket__2" "ticket__3 ticket__4" ".      ticket__5 .";
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 3vw;
+    width: 100%;
+    /* tickets */
   }
-  .tickets__slider .ticket__1 {
-    grid-area: "ticket__1";
+  .tickets__slider .ticket {
+    width: 100%;
   }
-  .tickets__slider .ticket__2 {
-    grid-area: "ticket__2";
+  .tickets__slider {
+    /* si el último ticket queda impar */
   }
-  .tickets__slider .ticket__3 {
-    grid-area: "ticket__3";
-  }
-  .tickets__slider .ticket__4 {
-    grid-area: "ticket__4";
-  }
-  .tickets__slider .ticket__5 {
-    grid-area: "ticket__5";
+  .tickets__slider .ticket:last-child:nth-child(odd) {
+    grid-column: 1/-1;
+    justify-self: center;
+    max-width: 50%;
   }
 }
 .nosotros__container {
