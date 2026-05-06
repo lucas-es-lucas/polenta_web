@@ -664,27 +664,11 @@
 		</header>
 		<main class="container">
 			<section class="hero">
-				<video
-					id="hero_bgs"
-					class="hero__bgs hero-video"
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="auto"
-				>
+				<video class="hero-video" autoplay muted loop playsinline>
 					<source
-						type="video/webm"
-						src="/imgs/video/bg-tickets.webm"
-					/>
-					<source
-						type="video/mp4"
 						src="/imgs/video/bg-tickets.mp4"
+						type="video/mp4"
 					/>
-					<!-- media="(min-width:650px)" -->
-					<!-- media="min-device-width: 576px" -->
-					Tu navegador no soporta la reproducción automática del
-					video.
 				</video>
 
 				<div class="hero-overlay"></div>
@@ -705,7 +689,7 @@
 						</article>
 						<section class="slider tickets__slider">
 							<!-- Empiezan los Tickets -->
-							<article class="ticket ticket__1">
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -723,7 +707,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket ticket__2">
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -741,7 +725,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket ticket__3">
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -759,7 +743,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket ticket__4">
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -777,7 +761,158 @@
 									>
 								</button>
 							</article>
-							<article class="ticket ticket__5">
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/ticket-5.png"
+										alt="ticket Barcelona Especial Bad Bunny Puerto Rico 22-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://es.ra.co/events/2404411"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<!-- Fin de los Tickets -->
+						</section>
+					</section>
+				</div>
+			</section>
+			<!-- <div class="container__propio"> -->
+			<section class="section hero hero__section">
+				<article id="hero" class="article hero__article">
+					<figure>
+						<video
+							id="hero_bgs"
+							class="hero__bgs"
+							autoplay
+							loop
+							muted
+							playsinline
+							preload="auto"
+						>
+							<!-- <source
+									type="video/mp4"
+									src="/imgs/video hero/video-hero-home.mp4"
+									media="(min-width:1200px)"
+								/>
+								<source
+									type="video/webm"
+									src="/imgs/video hero/video-hero-home.webm"
+									media="(min-width:576px) and (max-width:1199px)"
+								/> -->
+							<source
+								type="video/webm"
+								src="/imgs/video/bg-tickets.webm"
+							/>
+							<source
+								type="video/mp4"
+								src="/imgs/video/bg-tickets.mp4"
+							/>
+							<!-- media="(min-width:650px)" -->
+							<!-- media="min-device-width: 576px" -->
+							Tu navegador no soporta la reproducción
+							automática del video.
+						</video>
+					</figure>
+				</article>
+				<!-- </section> -->
+				<!-- </div> -->
+				<div
+					id="tickets"
+					class="container__propio tickets tickets__container"
+				>
+					<section class="section tickets__section">
+						<article class="tickets__title">
+							<h2 class="title title__tickets">
+								<!-- TI<span class="title__alternative">C</span>KETS -->
+								TI<span class="title__alternative"
+									>C</span
+								>KETS
+							</h2>
+							<!-- <h2 class="title title__tickets">TICKETS</h2> -->
+						</article>
+						<section class="slider tickets__slider">
+							<!-- Empiezan los Tickets -->
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/ticket-1.png"
+										alt="ticket Maraton 09-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://venti.com.ar/evento/marat-n"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/ticket-2.png"
+										alt="ticket Tigre 15-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://venti.com.ar/evento/polenta-anexo-norte"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/ticket-3.png"
+										alt="ticket Buenos Aires C Art Media 16-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://www.passline.com/eventos/polenta-en-c-caba"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/ticket-4.png"
+										alt="ticket Córdoba 16-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://alpogo.com/evento/polenta-en-cordoba-25753"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"

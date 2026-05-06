@@ -5,30 +5,14 @@
 
 
 .tickets {
-     &__container {
-          background-image: url('/imgs/video/video-bg-bn-gif.gif'); //url('/imgs/bgs/bg-tickets.png');
-          background-repeat: no-repeat;
-          background-position-x: left;
-          background-position-y: center;
-          background-size: cover;
-     }
-
-     // &__title {
-     //      z-index: 0;
-     // }
-
      &__section {
           width: 100%;
           padding-top: 3rem;
-          // padding-top: 10%;
-          // padding-bottom: 15%;
 
           display: flex;
           flex-direction: column;
           align-items: center;
           row-gap: 2.75rem;
-
-          //z-index: 10;
      }
 
      &__slider {
@@ -39,36 +23,18 @@
           row-gap: 1rem;
 
           height: auto;
-          // max-height: 47rem;
-          // overflow-y: auto;
-          // overflow-x: hidden;
      }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 991px) {
      .tickets {
-          // &__container {
-               // background-image: url('/imgs/video hero/video-bg-bn-gif.gif'); //url('/imgs/bgs/bg-tickets.png');
-               // background-repeat: no-repeat;
-               // background-position-x: left;
-               // background-position-y: top;
-          // }
-
-          // &__title {
-          //      z-index: 0;
-          // }
-
           &__section {
                width: 100%;
-               // padding-top: 10%;
-               // padding-bottom: 15%;
 
                display: flex;
                flex-direction: column;
                align-items: center;
                row-gap: 2.75rem;
-
-               // z-index: 10;
           }
 
           &__slider {
@@ -79,37 +45,19 @@
                row-gap: 1.5rem;
 
                height: auto;
-               // max-height: 47rem;
-               // overflow-y: auto;
-               // overflow-x: hidden;
           }
      }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
      .tickets {
-          // &__container {
-          //      background-image: url('/imgs/bgs/bg-tickets.png');
-          //      background-repeat: no-repeat;
-          //      background-position-x: left;
-          //      background-position-y: top;
-          // }
-
-          // &__title {
-          //      z-index: 0;
-          // }
-
           &__section {
                width: 100%;
-               // padding-top: 10%;
-               // padding-bottom: 15%;
 
                display: flex;
                flex-direction: column;
                align-items: center;
                row-gap: 2.75rem;
-
-               // z-index: 10;
           }
 
           &__slider {
@@ -120,50 +68,56 @@
                row-gap: 1.5rem;
 
                height: auto;
-               // max-height: 47rem;
-               // overflow-y: auto;
-               // overflow-x: hidden;
           }
      }
 }
 
 @media only screen and (min-width: 1200px) {
      .tickets {
-          // &__container {
-          //      background-image: url('/imgs/bgs/bg-tickets.png');
-          //      background-repeat: no-repeat;
-          //      background-position-x: left;
-          //      background-position-y: top;
-          // }
-
-          // &__title {
-          //      z-index: 0;
-          // }
-
           &__section {
                width: 100%;
-               // padding-top: 10%;
-               // padding-bottom: 15%;
 
                display: flex;
                flex-direction: column;
                align-items: center;
                row-gap: 2.75rem;
-
-               // z-index: 10;
           }
 
           &__slider {
-               width: 55%;
+               // width: 55%;
+               width: 90%;
 
                display: flex;
                flex-direction: column;
                row-gap: 1.5rem;
 
                height: auto;
-               // max-height: 47rem;
-               // overflow-y: auto;
-               // overflow-x: hidden;
+
+               @include grillas__simetricas(2, 50%, 3, auto, 3vw, 3vw);
+               grid-template-areas:
+                    "ticket__1 ticket__2"
+                    "ticket__3 ticket__4"
+                    ".      ticket__5 .";
+
+               .ticket__1 {
+                    grid-area: "ticket__1";
+               }
+
+               .ticket__2 {
+                    grid-area: "ticket__2";
+               }
+
+               .ticket__3 {
+                    grid-area: "ticket__3";
+               }
+
+               .ticket__4 {
+                    grid-area: "ticket__4";
+               }
+
+               .ticket__5 {
+                    grid-area: "ticket__5";
+               }
           }
      }
 }
