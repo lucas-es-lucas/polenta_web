@@ -6,6 +6,15 @@
 
 .contacto {
      &__container {
+          width: 100%;
+          flex-shrink: 0;
+
+          background-image: url('/imgs/asteriscos/contacto.png'); //url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-tickets.png');
+          background-repeat: no-repeat;
+          background-position-x: center;
+          background-position-y: center;
+          background-size: cover;
+
           height: auto; // 47rem; // 32rem;
 
           padding: 0rem;

@@ -56,6 +56,7 @@ body a:visited {
 }
 body h2 {
   margin: 0;
+  line-height: 0.9;
 }
 body p {
   margin: 0;
@@ -208,7 +209,7 @@ body .contacto__container {
 }
 
 .menu__list__link {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: -0.3px;
   color: #ffffff;
@@ -232,19 +233,18 @@ body .contacto__container {
 .subtitle {
   font-family: "Inter", serif;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -0.48px;
   line-height: 120%;
   text-align: center;
 }
 .subtitle__bold {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .cta__text {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.96px;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   line-height: 120%;
@@ -333,14 +333,37 @@ body .contacto__container {
     font-size: 12.5rem;
     line-height: 140%;
   }
+  .title {
+    font-size: 6.25rem;
+    font-weight: 600;
+    line-height: 120%;
+  }
+  .font__alternative__title__tickets {
+    font-size: 8.96rem;
+    letter-spacing: -10%;
+  }
+  .font__alternative__title {
+    font-size: 4.5rem;
+    letter-spacing: -10%;
+  }
 }
-@media only screen and (min-width: 992px) {
-  .anouncement__text {
-    font-size: 2rem;
-    letter-spacing: -3%;
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .title__tickets {
+    font-size: 15rem;
+    line-height: 120%;
+  }
+  .title {
+    font-size: 6.25rem;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .title__tickets {
+    font-size: 18rem;
+    line-height: 120%;
   }
   .menu__list__link {
-    font-size: 1rem;
     font-weight: 500;
     letter-spacing: -0.3px;
     color: #ffffff;
@@ -349,89 +372,53 @@ body .contacto__container {
     font-size: 1.25rem;
   }
   .title {
-    font-size: 3rem;
+    font-size: 8.75rem;
     font-weight: 600;
-    letter-spacing: -0.2px;
-    line-height: 120%;
+    line-height: 140%;
     text-align: center;
   }
   .subtitle {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 300;
     letter-spacing: -0.48px;
     line-height: 120%;
     text-align: center;
   }
   .subtitle__bold {
-    font-weight: 700;
-  }
-  .cta__text {
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.96px;
-    text-transform: uppercase;
-    text-align: center;
+    font-weight: 600;
   }
   .card__description {
     font-size: 0.9rem;
-    color: #000000;
-    text-align: center;
-  }
-  .footer {
-    color: #B3B3B3;
   }
   .footer__title {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 1.8px;
     text-transform: uppercase;
   }
   .footer__subtitle {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: -0.27px;
   }
   .footer__copyright__text {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: -0.3px;
     text-align: center;
   }
-  .privacidad,
-  .proteccion {
-    color: #000000;
-  }
   .privacidad__title,
   .proteccion__title {
-    padding: 3rem 0 2rem;
-    text-align: left;
     font-size: 2.25rem;
   }
   .privacidad__subtitle,
   .proteccion__subtitle {
     font-size: 1.25rem;
-    font-weight: 500;
   }
   .privacidad__description,
   .proteccion__description {
-    padding-bottom: 2rem;
     font-size: 1.25rem;
     text-align: justify;
-  }
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .title__tickets {
-    font-size: 15rem;
-    line-height: 120%;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .title__tickets {
-    font-size: 18rem;
-    line-height: 120%;
   }
 }
 .go-to-tickets {
@@ -487,8 +474,7 @@ body .contacto__container {
   border-radius: 6.25rem;
 }
 .cta__text {
-  width: 14rem;
-  padding: 0.75rem 1.9rem;
+  padding: 0.75rem 1.5rem;
   color: #ffffff;
   text-decoration: none;
 }
@@ -496,25 +482,6 @@ body .contacto__container {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 576px) {
-  .cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #1A1A1A;
-    border: 0.2rem #ffffff solid;
-    border-radius: 6.25rem;
-  }
-  .cta__text {
-    width: 14rem;
-    padding: 0.75rem 1.9rem;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .cta__text__:visited {
-    text-decoration: none;
-  }
-}
 .ticket {
   display: flex;
   flex-direction: column;
@@ -534,8 +501,7 @@ body .contacto__container {
 }
 
 .ticket__img__container {
-  max-width: 100%;
-  background-color: #000000;
+  width: 100%;
   z-index: 10;
   opacity: 1;
   transition: all 1s ease;
@@ -554,6 +520,7 @@ body .contacto__container {
   top: 0;
   z-index: 0;
   opacity: 0;
+  border-radius: 0.7rem;
   transition: all 1s ease;
 }
 
@@ -581,8 +548,7 @@ body .contacto__container {
     z-index: 10;
   }
   .ticket__img__container {
-    max-width: 100%;
-    background-color: #000000;
+    width: 100%;
     z-index: 10;
     opacity: 1;
     transition: all 1s ease;
@@ -593,12 +559,12 @@ body .contacto__container {
   }
   .ticket__filter {
     position: absolute;
-    width: 100%;
     height: 100%;
     background-color: #000000;
     top: 0;
     z-index: 0;
     opacity: 0;
+    border-radius: 1.13rem;
     transition: all 1s ease;
   }
   .ticket__button {
@@ -633,7 +599,7 @@ body .contacto__container {
 }
 .anouncement__item {
   flex-shrink: 0;
-  padding-left: 9vw;
+  padding-left: 5vw;
 }
 
 .menu {
@@ -692,7 +658,7 @@ body .contacto__container {
 }
 
 .tickets__container {
-  background-image: url("/imgs/video hero/video-bg-bn-gif.gif");
+  background-image: url("/imgs/video/video-bg-bn-gif.gif");
   background-repeat: no-repeat;
   background-position-x: left;
   background-position-y: center;
@@ -765,9 +731,9 @@ body .contacto__container {
 .nosotros__container {
   width: 100%;
   flex-shrink: 0;
-  background-image: url("/imgs/bgs/m-bg-nosotros.png");
+  background-image: url("/imgs/asteriscos/nosotros.png");
   background-repeat: no-repeat;
-  background-position-x: left;
+  background-position-x: center;
   background-position-y: center;
   background-size: cover;
   display: inline-flex;
@@ -863,7 +829,6 @@ body .contacto__container {
   .nosotros__container {
     width: 100%;
     flex-shrink: 0;
-    background-color: #523CF2;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -1029,11 +994,7 @@ body .contacto__container {
   }
 }
 .puestas__container {
-  background-image: url("/imgs/bgs/m-bg-nosotros.png");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
-  background-size: cover;
+  background-color: #000000;
 }
 .puestas__section {
   width: 100%;
@@ -1074,11 +1035,7 @@ body .contacto__container {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .puestas__container {
-    background-image: url("/imgs/bgs/m-bg-nosotros.png");
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: top;
-    background-size: cover;
+    background-color: #000000;
   }
   .puestas__section {
     width: 100%;
@@ -1139,11 +1096,7 @@ body .contacto__container {
 }
 @media only screen and (min-width: 992px) {
   .puestas__container {
-    background-image: url("/imgs/bgs/m-bg-nosotros.png");
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: top;
-    background-size: cover;
+    background-color: #000000;
   }
   .puestas__section {
     width: 100%;
@@ -1229,6 +1182,13 @@ body .contacto__container {
   }
 }
 .contacto__container {
+  width: 100%;
+  flex-shrink: 0;
+  background-image: url("/imgs/asteriscos/contacto.png");
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: cover;
   height: auto;
   padding: 0rem;
   display: flex;

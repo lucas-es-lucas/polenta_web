@@ -10,11 +10,11 @@
 
      // background-color: $color-accent-violeta;
 
-     background-image: url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-tickets.png');
+     background-image: url('/imgs/asteriscos/nosotros.png'); //url('/imgs/bgs/m-bg-nosotros.png'); //url('/imgs/bgs/bg-tickets.png');
      background-repeat: no-repeat;
-     background-position-x: left;
+     background-position-x: center;
      background-position-y: center;
-     background-size: cover;
+     background-size:cover;
 
      display: inline-flex;
      flex-direction: column;
@@ -140,7 +140,7 @@
           width: 100%;
           flex-shrink: 0;
 
-          background-color: $color-accent-violeta;
+          // background-color: $color-accent-violeta;
 
           display: inline-flex;
           flex-direction: column;

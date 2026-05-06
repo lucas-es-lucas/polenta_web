@@ -13,6 +13,16 @@
           font-size: ($font-size * 2.4);
      }
 
+     // &__title__tickets {
+     //      font-size: ($font-size * 7);
+     //      letter-spacing: -10%;
+     // }
+
+     // &__title {
+     //      font-size: ($font-size * 4.5);
+     //      letter-spacing: -10%;
+     // }
+
      &__card {
           font-size: ($font-size * 2.625);
      }
@@ -29,7 +39,7 @@
 .menu {
      &__list {
           &__link {
-               font-size: ($font-size * 1.25);
+               font-size: ($font-size * 1.4);
                font-weight: 400;
                letter-spacing: -0.3px;
                color: $color-text;
@@ -58,21 +68,21 @@
 .subtitle {
      font-family: $font-secondary;
      font-size: $font-size-subtitle-celular;
-     font-weight: 400;
+     font-weight: 300;
      letter-spacing: -0.48px;
      line-height: 120%;
      text-align: center;
 
      &__bold {
-          font-weight: 700;
+          font-weight: 500;
      }
 }
 
 .cta {
      &__text {
-          font-size: $font-size;
-          font-weight: 700;
-          letter-spacing: 0.96px;
+          font-size: ($font-size * 1.2);
+          font-weight: 600;
+          // letter-spacing: 0.96px;
           text-transform: uppercase;
           text-align: center;
           line-height: 120%;
@@ -143,8 +153,6 @@
           text-align: left;
 
           font-size: ($font-size * 2);
-          //font-weight: 600;
-          //letter-spacing: -0.4px;
      }
 
      &__subtitle {
@@ -167,6 +175,18 @@
           line-height: 140%;
      }
 
+     // .font__alternative {
+     //      &__title__tickets {
+     //           font-size: ($font-size * 8.96);
+     //           letter-spacing: -10%;
+     //      }
+
+     //      &__title {
+     //           font-size: ($font-size * 4.5);
+     //           letter-spacing: -10%;
+     //      }
+     // }
+
      .card {
           // &__title {
           //      font-size: ($font-size * 1.5);
@@ -186,22 +206,123 @@
           font-size: ($font-size * 12.5);
           line-height: 140%;
      }
+
+     .title {
+          font-size: $font-size-title-tablet;
+          font-weight: 600;
+          line-height: 120%;
+     }
+
+     .font__alternative {
+          &__title__tickets {
+               font-size: ($font-size * 8.96);
+               letter-spacing: -10%;
+          }
+
+          &__title {
+               font-size: ($font-size * 4.5);
+               letter-spacing: -10%;
+          }
+     }
 }
 
-@media only screen and (min-width: 992px) {
-     .anouncement {
-          &__text {
-               // color: $color-text;
-               // font-size: ($font-size * 1.1);
-               font-size: ($font-size * 2);
-               letter-spacing: -3%;
-          }
+// @media only screen and (min-width: 992px) {
+//      .menu {
+//           &__list {
+//                &__link {
+//                     // font-size: $font-size;
+//                     font-weight: 500;
+//                     letter-spacing: -0.3px;
+//                     color: $color-text;
+
+//                     &__icon {
+//                          font-size: ($font-size * 1.25);
+//                     }
+//                }
+//           }
+//      }
+
+//      .subtitle {
+//           font-size: $font-size-subtitle-tablet;
+//           font-weight: 300;
+//           letter-spacing: -0.48px;
+//           line-height: 120%;
+//           text-align: center;
+
+//           &__bold {
+//                font-weight: 600;
+//           }
+//      }
+
+//      .card {
+//           &__description {
+//                font-size: ($font-size * .9);
+//           }
+//      }
+
+//      .footer {
+//           &__title {
+//                font-size: ($font-size * .6);
+//                font-weight: 600;
+//                letter-spacing: 1.8px;
+//                text-transform: uppercase;
+//           }
+
+//           &__subtitle {
+//                font-size: ($font-size * .6);
+//                font-weight: 500;
+//                letter-spacing: -0.27px;
+//           }
+
+//           &__copyright__text {
+//                font-size: ($font-size * .6);
+//                font-weight: 500;
+//                letter-spacing: -0.3px;
+//                text-align: center;
+//           }
+//      }
+
+//      .privacidad,
+//      .proteccion {
+//           &__title {
+//                font-size: ($font-size * 2.25);
+//           }
+
+//           &__subtitle {
+//                font-size: ($font-size * 1.25);
+//           }
+
+//           &__description {
+//                font-size: ($font-size * 1.25);
+
+//                text-align: justify;
+//           }
+//      }
+// }
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+     .title__tickets {
+          font-size: ($font-size * 15);
+          line-height: 120%;
+     }
+
+     .title {
+          font-size: $font-size-title-tablet;
+          font-weight: 600;
+          line-height: 120%;
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     .title__tickets {
+          font-size: ($font-size * 18);
+          line-height: 120%;
      }
 
      .menu {
           &__list {
                &__link {
-                    font-size: $font-size;
+                    // font-size: $font-size;
                     font-weight: 500;
                     letter-spacing: -0.3px;
                     color: $color-text;
@@ -214,72 +335,46 @@
      }
 
      .title {
-          font-size: $font-size-title;
+          font-size: $font-size-title-desktop;
           font-weight: 600;
-          letter-spacing: -0.2px;
-          line-height: 120%;
+          line-height: 140%;
           text-align: center;
      }
 
      .subtitle {
-          font-size: $font-size-subtitle;
-          font-weight: 400;
+          font-size: $font-size-subtitle-tablet;
+          font-weight: 300;
           letter-spacing: -0.48px;
           line-height: 120%;
           text-align: center;
 
           &__bold {
-               font-weight: 700;
-          }
-     }
-
-     .cta {
-          &__text {
-               font-size: $font-size;
-               font-weight: 700;
-               letter-spacing: 0.96px;
-               text-transform: uppercase;
-               text-align: center;
+               font-weight: 600;
           }
      }
 
      .card {
-          // &__title {
-          //      font-size: ($font-size * 1.5);
-          //      color: $color-text-negro;
-          // }
-
           &__description {
                font-size: ($font-size * .9);
-               color: $color-text-negro;
-               text-align: center;
           }
      }
 
      .footer {
-          color: $color-terciary-gris;
-
           &__title {
-               color: $color-terciary-gris;
-
-               font-size: ($font-size * .6);
+               font-size: ($font-size * .7);
                font-weight: 600;
                letter-spacing: 1.8px;
                text-transform: uppercase;
           }
 
           &__subtitle {
-               color: $color-terciary-gris;
-
-               font-size: ($font-size * .6);
+               font-size: ($font-size * .7);
                font-weight: 500;
                letter-spacing: -0.27px;
           }
 
           &__copyright__text {
-               color: $color-terciary-gris;
-
-               font-size: ($font-size * .6);
+               font-size: ($font-size * .7);
                font-weight: 500;
                letter-spacing: -0.3px;
                text-align: center;
@@ -288,41 +383,18 @@
 
      .privacidad,
      .proteccion {
-          color: $color-text-negro;
-
           &__title {
-               padding: 3rem 0 2rem;
-               text-align: left;
-
                font-size: ($font-size * 2.25);
-               // font-weight: 600;
-               // letter-spacing: -0.4px;
           }
 
           &__subtitle {
                font-size: ($font-size * 1.25);
-               font-weight: 500;
           }
 
           &__description {
-               padding-bottom: 2rem;
                font-size: ($font-size * 1.25);
 
                text-align: justify;
           }
-     }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-     .title__tickets {
-          font-size: ($font-size * 15);
-          line-height: 120%;
-     }
-}
-
-@media only screen and (min-width: 1200px) {
-     .title__tickets {
-          font-size: ($font-size * 18);
-          line-height: 120%;
      }
 }
