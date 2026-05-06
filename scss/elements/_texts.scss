@@ -82,8 +82,8 @@
           position: relative;
           top: 0.02em;
 
-          margin-left: -0.2em;
-          margin-right: -0.15em;
+          // margin-left: -0.025em;
+          margin-right: 0.025em;
      }
 }
 
@@ -208,7 +208,6 @@
      .title {
           font-size: $font-size-title-tablet;
           font-weight: 600;
-          line-height: 120%;
 
           &__tickets {
                font-size: ($font-size * 9);
@@ -226,8 +225,6 @@
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
      .title {
           font-size: $font-size-title-tablet;
-          font-weight: 600;
-          line-height: 120%;
 
           &__tickets {
                font-size: ($font-size * 10);
@@ -260,9 +257,6 @@
 
      .title {
           font-size: $font-size-title-desktop;
-          font-weight: 600;
-          line-height: 140%;
-          text-align: center;
 
           &__tickets {
                font-size: ($font-size * 11);
