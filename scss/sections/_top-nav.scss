@@ -38,6 +38,7 @@
                }
           }
 
+          // items(links) del burger
           .nav-link:hover {
                color: $color-text;
                text-decoration: underline;
@@ -46,9 +47,13 @@
           &__link {
                color: $color-text;
 
+               &__loca {
+                    display: none;
+               }
+
                &:hover {
                     text-decoration: underline;
-                    color: $color-primary-verde;
+                    // color: $color-primary-verde;
                }
 
                &__icon {
