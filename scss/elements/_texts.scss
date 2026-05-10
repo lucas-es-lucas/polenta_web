@@ -58,6 +58,23 @@
 
                text-transform: uppercase;
 
+               &__alternative {
+                    font-family: $font-alternative;
+                    font-optical-sizing: auto;
+                    font-style: italic;
+                    font-weight: bold;
+
+                    font-size: 1.15em;
+                    position: relative;
+
+                    margin-left: 0.06em;
+                    margin-right: 0.07em;
+
+                    &__contacto {
+                         margin-right: 0em;
+                    }
+               }
+
                &__icon {
                     font-size: ($font-size * 1.25);
                     color: $color-accent-rojo;
@@ -87,7 +104,6 @@
           position: relative;
           top: 0.02em;
 
-          // margin-left: -0.025em;
           margin-right: 0.025em;
      }
 }
@@ -140,7 +156,7 @@
           font-weight: 600;
           text-transform: uppercase;
 
-          margin-bottom:0;
+          margin-bottom: 0;
      }
 
      &__subtitle {

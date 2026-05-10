@@ -18,18 +18,10 @@
           &__list {
                padding-top: 0;
 
-               &__item {
-                    & :hover {
-                         text-decoration: underline;
-                         // transform: scale(1.2);
-                    }
-               }
-
-               .nav-link:hover {
-                    color: $color-text;
-                    // text-decoration: none;
-                    text-decoration: underline;
-               }
+               // items(links) del burger
+               // .nav-link:hover {
+               //      color: $color-text;
+               // }
 
                .nav-link:visited {
                     text-decoration: none;

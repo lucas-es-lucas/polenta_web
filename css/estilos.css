@@ -217,6 +217,19 @@ body .contacto__container {
   color: #ffffff;
   text-transform: uppercase;
 }
+.menu__list__link__alternative {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.15em;
+  position: relative;
+  margin-left: 0.06em;
+  margin-right: 0.07em;
+}
+.menu__list__link__alternative__contacto {
+  margin-right: 0em;
+}
 .menu__list__link__icon {
   font-size: 1.25rem;
   color: #E7270E;
@@ -642,19 +655,35 @@ body .contacto__container {
 }
 .menu__list .nav-link:hover {
   color: #ffffff;
-  text-decoration: underline;
 }
 .menu__list__link {
   color: #ffffff;
 }
-.menu__list__link__loca {
+.menu__list__link__normal, .menu__list__link__alternative {
+  transition: opacity 1s ease;
+}
+.menu__list__link__normal {
+  opacity: 1;
+}
+.menu__list__link {
+  /* Inicialmente ocultamos las letras alternativas */
+}
+.menu__list__link__alternative {
   display: none;
+  opacity: 0;
 }
-.menu__list__link:hover {
-  text-decoration: underline;
+.menu__list__link {
+  /* Al hacer hover en el link, mostramos la alternativa y ocultamos la normal */
 }
-.menu__list__link__icon {
-  color: #24bf5e;
+.menu__list__link:hover .menu__list__link__normal {
+  display: none;
+  opacity: 0;
+}
+.menu__list__link:hover .menu__list__link__alternative {
+  display: inline;
+  /* necesario para que sea visible */
+  opacity: 1;
+  line-height: 0;
 }
 .menu__list__link__icon i {
   color: #E7270E;
@@ -1371,13 +1400,6 @@ main {
   }
   .menu__list {
     padding-top: 0;
-  }
-  .menu__list__item :hover {
-    text-decoration: underline;
-  }
-  .menu__list .nav-link:hover {
-    color: #ffffff;
-    text-decoration: underline;
   }
   .menu__list .nav-link:visited {
     text-decoration: none;
