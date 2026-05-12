@@ -37,7 +37,7 @@
 .asset {
      position: fixed;
      /* se mantiene fijo al scrollear */
-     width: 20rem; //10vw /* tamaño relativo a viewport, responsive */ /* ajustable */ 
+     // width: 28rem; //10vw /* tamaño relativo a viewport, responsive */ /* ajustable */ 
      height: auto;
      /* Aplicamos la animación a las assets */
      // animation: rotate 20s linear infinite;
@@ -47,25 +47,29 @@
 }
 
 /* Posicionamiento de cada asset */
-.asset-red {
-     top: 7%; //10vh;
-     left: -9rem; //-10vw; //-25%; //
+.asset-azul {
+     width: 28rem; //10vw /* tamaño relativo a viewport, responsive */ /* ajustable */ 
+     top: -4%; //10vh;
+     left: -7rem; //-10vw; //-25%; //
      animation: rotate 25s linear infinite;
 }
 
+.asset-red {
+     width: 30rem; //10vw /* tamaño relativo a viewport, responsive */ /* ajustable */ 
+     bottom: -12%; //10vh;
+     right: -10rem; //-10vw; //-15%; //
+     animation: rotate 50s linear infinite;
+}
+
 .asset-verde {
+     display: none;
      top: 15%; //10vh;
      right: -7rem; //-10vw; //-20%; //
      animation: rotate 30s linear infinite reverse; /* puede ser inversa */
 }
 
-.asset-azul {
-     bottom: 15%; //10vh;
-     right: -5rem; //-10vw; //-15%; //
-     animation: rotate 50s linear infinite;
-}
-
 .asset-orange {
+     display: none;
      bottom: 0%; //15vh;
      left: -8rem; //-10vw; //-20%; //
      animation: rotate 28s linear infinite reverse;

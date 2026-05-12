@@ -651,7 +651,6 @@ body .contacto__container {
 .asset {
   position: fixed;
   /* se mantiene fijo al scrollear */
-  width: 20rem;
   height: auto;
   /* Aplicamos la animación a las assets */
   /* 20s para dar rotación lenta, ajustable */
@@ -660,25 +659,29 @@ body .contacto__container {
 }
 
 /* Posicionamiento de cada asset */
-.asset-red {
-  top: 7%;
-  left: -9rem;
+.asset-azul {
+  width: 28rem;
+  top: -4%;
+  left: -7rem;
   animation: rotate 25s linear infinite;
 }
 
+.asset-red {
+  width: 30rem;
+  bottom: -12%;
+  right: -10rem;
+  animation: rotate 50s linear infinite;
+}
+
 .asset-verde {
+  display: none;
   top: 15%;
   right: -7rem;
   animation: rotate 30s linear infinite reverse; /* puede ser inversa */
 }
 
-.asset-azul {
-  bottom: 15%;
-  right: -5rem;
-  animation: rotate 50s linear infinite;
-}
-
 .asset-orange {
+  display: none;
   bottom: 0%;
   left: -8rem;
   animation: rotate 28s linear infinite reverse;
@@ -737,8 +740,8 @@ body .contacto__container {
   padding: 0.7rem;
 }
 .menu__list__item__icon {
-  padding-right: 0.4rem;
-  padding-left: 0.4rem;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
 }
 .menu__list .nav-link:hover {
   color: #ffffff;
