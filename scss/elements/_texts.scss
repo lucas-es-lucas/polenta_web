@@ -213,6 +213,9 @@
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
+     // .title {
+     //      font-size: $font-size-title-celular-grande;
+     // }
      .title__tickets {
           font-size: ($font-size * 8);
           line-height: 140%;

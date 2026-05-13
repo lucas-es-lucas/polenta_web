@@ -354,7 +354,7 @@ body .contacto__container {
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .title {
-    font-size: 6.25rem;
+    font-size: 6rem;
     font-weight: 600;
   }
   .title__tickets {
@@ -367,7 +367,7 @@ body .contacto__container {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .title {
-    font-size: 6.25rem;
+    font-size: 6rem;
   }
   .title__tickets {
     font-size: 10rem;
@@ -387,7 +387,7 @@ body .contacto__container {
     font-size: 1.25rem;
   }
   .title {
-    font-size: 8rem;
+    font-size: 6rem;
   }
   .title__tickets {
     font-size: 11rem;
