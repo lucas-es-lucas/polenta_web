@@ -31,12 +31,16 @@
 html {
      scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
      scroll-behavior: smooth;
+
+     overflow-x: hidden;
 }
 
 body {
      background-color: $color-bg;
      color: $color-text;
      font-family: $font-primary;
+
+     overflow-x: hidden;
 
      .container {
           max-width: 100%;

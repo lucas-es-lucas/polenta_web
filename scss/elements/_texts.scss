@@ -140,7 +140,8 @@
 
      &__description {
           font-family: $font-secondary;
-          font-size: ($font-size * .7);
+          font-size: ($font-size * .9);
+          line-height: 1.2em;
           color: $color-text-negro;
           text-align: center;
      }

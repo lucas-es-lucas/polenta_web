@@ -30,12 +30,14 @@
 html {
   scroll-padding-top: 6rem;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #000000;
   color: #ffffff;
   font-family: "Anton", sans-serif;
+  overflow-x: hidden;
 }
 body .container {
   max-width: 100%;
@@ -283,7 +285,8 @@ body .contacto__container {
 }
 .card__description {
   font-family: "Inter", serif;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.2em;
   color: #000000;
   text-align: center;
 }
@@ -652,7 +655,7 @@ body .contacto__container {
 }
 /* Assets flotantes */
 .asset {
-  position: fixed;
+  position: absolute;
   /* se mantiene fijo al scrollear */
   height: auto;
   /* Aplicamos la animación a las assets */
@@ -680,7 +683,8 @@ body .contacto__container {
   display: none;
   top: 15%;
   right: -7rem;
-  animation: rotate 30s linear infinite reverse; /* puede ser inversa */
+  animation: rotate 30s linear infinite reverse;
+  /* puede ser inversa */
 }
 
 .asset-orange {

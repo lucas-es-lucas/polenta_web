@@ -35,7 +35,8 @@
 
 /* Assets flotantes */
 .asset {
-     position: fixed;
+     position: absolute;
+     //fixed;
      /* se mantiene fijo al scrollear */
      // width: 28rem; //10vw /* tamaño relativo a viewport, responsive */ /* ajustable */ 
      height: auto;
@@ -65,7 +66,8 @@
      display: none;
      top: 15%; //10vh;
      right: -7rem; //-10vw; //-20%; //
-     animation: rotate 30s linear infinite reverse; /* puede ser inversa */
+     animation: rotate 30s linear infinite reverse;
+     /* puede ser inversa */
 }
 
 .asset-orange {
