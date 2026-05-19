@@ -31,12 +31,16 @@
 html {
      scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
      scroll-behavior: smooth;
+
+     overflow-x: hidden;
 }
 
 body {
      background-color: $color-bg;
      color: $color-text;
-     font-family: $font-principal;
+     font-family: $font-primary;
+
+     overflow-x: hidden;
 
      .container {
           max-width: 100%;
@@ -63,6 +67,7 @@ body {
 
      h2 {
           margin: 0;
+          line-height: .9
      }
 
      p {
@@ -78,18 +83,15 @@ body {
           height: auto;
 
           padding: 6rem 0;
+
+          justify-items: center;
      }
 
      .suscribite__container {
-          // height: 15rem;
-
           padding: 6rem 0;
      }
 
      .contacto__container {
-          // height: 32rem;
-
-          // padding: 0rem;
           padding: 6rem 0;
      }
 }

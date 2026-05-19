@@ -28,34 +28,53 @@
           &__item {
                padding: .7rem;
 
-               // & :hover {
-               //      transform: scale(1.1);
-               // }
-
                &__icon {
-                    padding-right: .4rem;
-                    padding-left: .4rem;
+                    // padding-right: .4rem;
+                    // padding-left: .4rem;
+                    padding-right: .2rem;
+                    padding-left: .2rem;
                }
           }
 
+          // items(links) del burger
           .nav-link:hover {
                color: $color-text;
-               text-decoration: underline;
           }
 
           &__link {
                color: $color-text;
 
-               &:hover {
-                    text-decoration: underline;
-                    color: $color-primary-verde;
+               &__normal,
+               &__alternative {
+                    transition: opacity 1s ease;
+               }
+
+               &__normal {
+                    opacity: 1;
+               }
+
+               /* Inicialmente ocultamos las letras alternativas */
+               &__alternative {
+                    display: none;
+                    opacity: 0;
+               }
+
+               /* Al hacer hover en el link, mostramos la alternativa y ocultamos la normal */
+               &:hover .menu__list__link__normal {
+                    display: none;
+                    opacity: 0;
+               }
+
+               &:hover .menu__list__link__alternative {
+                    display: inline;
+                    /* necesario para que sea visible */
+                    opacity: 1;
+                    line-height: 0;
                }
 
                &__icon {
-                    color: $color-primary-verde;
-
                     i {
-                         color: $color-primary-verde;
+                         color: $color-accent-rojo;
                     }
                }
           }
@@ -66,4 +85,32 @@
           flex-direction: row;
           column-gap: 1.5rem;
      }
+
+     // .menu__list__link__normal,
+     // .menu__list__link__alternative {
+     //      transition: opacity 0.2s ease;
+     // }
+
+     // .menu__list__link__normal {
+     //      opacity: 1;
+     // }
+
+     // /* Inicialmente ocultamos las letras alternativas */
+     // .menu__list__link__alternative {
+     //      display: none;
+     //      opacity: 0;
+     // }
+
+     // /* Al hacer hover en el link, mostramos la alternativa y ocultamos la normal */
+     // .menu__list__link:hover .menu__list__link__normal {
+     //      display: none;
+     //      opacity: 0;
+     // }
+
+     // .menu__list__link:hover .menu__list__link__alternative {
+     //      display: inline;
+     //      opacity: 1;
+     //      /* necesario para que sea visible */
+     //      line-height: 0;
+     // }
 }

@@ -3,14 +3,11 @@
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
-
 .puestas {
      &__container {
-          background-image: url('/imgs/bgs/bg-puestas.png');
-          background-repeat: no-repeat;
-          background-position-x: right;
-          background-position-y: center;
-          background-size: cover;
+          background-color: $color-bg;
+          position: relative;
+          z-index: 2;
      }
 
      &__section {
@@ -64,40 +61,10 @@
 
                .carousel-control-prev {
                     display: none;
-
-                    // transform: rotate(270deg);
-
-                    // left: 18%;
-
-                    // width: auto;
-                    // height: auto;
-
-                    // & :hover {
-                    //      color: $color-primary-verde;
-                    // }
-
-                    // .carousel-control-prev-icon {
-                    //      background-image: url("/imgs/icons/scroll-top.png");
-                    // }
                }
 
                .carousel-control-next {
                     display: none;
-
-                    // transform: rotate(90deg);
-
-                    // right: 18%;
-
-                    // width: auto;
-                    // height: auto;
-
-                    // & :hover {
-                    //      color: $color-primary-verde;
-                    // }
-
-                    // .carousel-control-next-icon {
-                    //      background-image: url("/imgs/icons/scroll-top.png");
-                    // }
                }
           }
      }
@@ -105,14 +72,6 @@
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
      .puestas {
-          &__container {
-               background-image: url('/imgs/bgs/bg-puestas.png');
-               background-repeat: no-repeat;
-               background-position-x: right;
-               background-position-y: top;
-               background-size: cover;
-          }
-
           &__section {
                width: 100%;
 
@@ -206,14 +165,6 @@
 
 @media only screen and (min-width: 992px) {
      .puestas {
-          &__container {
-               background-image: url('/imgs/bgs/bg-puestas.png');
-               background-repeat: no-repeat;
-               background-position-x: right;
-               background-position-y: top;
-               background-size: cover;
-          }
-
           &__section {
                width: 100%;
 

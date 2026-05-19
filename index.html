@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -42,33 +42,58 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Flex:opsz,wght,XOPQ,XTRA,YOPQ,YTDE,YTFI,YTLC,YTUC@8..144,100..1000,96,468,79,-203,738,514,712&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
 			rel="stylesheet"
 		/>
 		<!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FMR6FZQEV"></script>
-         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-           gtag('js', new Date());
-           gtag('config', 'G-4FMR6FZQEV');
-        </script>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-4FMR6FZQEV"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-4FMR6FZQEV");
+		</script>
 		<!-- Meta Pixel Code -->
-        <script>
-         !function(f,b,e,v,n,t,s)
-         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-         n.queue=[];t=b.createElement(e);t.async=!0;
-         t.src=v;s=b.getElementsByTagName(e)[0];
-         s.parentNode.insertBefore(t,s)}(window, document,'script',
-         'https://connect.facebook.net/en_US/fbevents.js');
-         fbq('init', '949301219680374');
-         fbq('track', 'PageView');
-        </script>
-        <noscript><img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=949301219680374&ev=PageView&noscript=1"/></noscript>
-        <!-- End Meta Pixel Code -->
+		<script>
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod
+						? n.callMethod.apply(n, arguments)
+						: n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = "2.0";
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(
+				window,
+				document,
+				"script",
+				"https://connect.facebook.net/en_US/fbevents.js",
+			);
+			fbq("init", "949301219680374");
+			fbq("track", "PageView");
+		</script>
+		<noscript
+			><img
+				height="1"
+				width="1"
+				style="display: none"
+				src="https://www.facebook.com/tr?id=949301219680374&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- End Meta Pixel Code -->
 		<title>Fiesta Polenta</title>
 	</head>
 	<body>
@@ -85,248 +110,468 @@
 			charset="UTF-8"
 		></script> -->
 		<!-- Optin - Fin -->
+		<!-- Background fijo -->
+		<div class="background-fixed">
+			<img
+				src="/imgs/bgs/section-bg.png"
+				alt="fondo"
+				class="background-img"
+			/>
+			<img
+				src="/imgs/asteriscos/asset-azul.png"
+				alt="azul"
+				class="asset asset-azul"
+			/>
+			<img
+				src="/imgs/asteriscos/asset-orange.png"
+				alt="naranja"
+				class="asset asset-orange"
+			/>
+			<img
+				src="/imgs/asteriscos/asset-red.png"
+				alt="rojo"
+				class="asset asset-red"
+			/>
+			<img
+				src="/imgs/asteriscos/asset-verde.png"
+				alt="verde"
+				class="asset asset-verde"
+			/>
+		</div>
 		<header class="header header__fixed">
 			<section class="anouncement anouncement__container">
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 				<article class="anouncement__item">
 					<span class="anouncement__text">
-						💥​
+						NO
+						<span
+							class="font__alternative font__alternative__anouncement"
+							>E</span
+						>S CU<span
+							class="font__alternative font__alternative__anouncement"
+							>A</span
+						>LQUIER FIE<span
+							class="font__alternative font__alternative__anouncement"
+							>S</span
+						>TA
 					</span>
 				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						NO ES CUALQUIER FIESTA
-					</span>
-				</article>
-				<article class="anouncement__item">
-					<span class="anouncement__text">
-						💥​
-					</span>
-				</article>
+				<!-- <article class="anouncement__item">
+					<span class="anouncement__text"> 💥​ </span>
+				</article> -->
 			</section>
 			<nav class="navbar navbar-expand-lg top-nav menu">
 				<div class="container-fluid">
@@ -360,10 +605,16 @@
 							<li></li>
 							<li class="nav-item menu__list__item">
 								<a
-									class="nav-link menu__list__link"
+									class="nav-link menu__list__link menu__list__link__normal"
 									href="#tickets"
 									onclick="cerrar()"
-									>Tickets</a
+									>ti<span
+										class="menu__list__link__normal"
+										>c</span
+									><span
+										class="menu__list__link__alternative"
+										>c</span
+									>kets</a
 								>
 							</li>
 							<li class="nav-item menu__list__item">
@@ -371,15 +622,27 @@
 									class="nav-link menu__list__link"
 									href="#nosotros"
 									onclick="cerrar()"
-									>Nosotros</a
+									>nos<span
+										class="menu__list__link__normal"
+										>o</span
+									><span
+										class="menu__list__link__alternative"
+										>o</span
+									>tros</a
 								>
 							</li>
 							<li class="nav-item menu__list__item">
 								<a
-									class="nav-link menu__list__link"
+									class="nav-link menu__list__link menu__list__link__normal"
 									href="#puestas"
 									onclick="cerrar()"
-									>Puestas</a
+									>pu<span
+										class="menu__list__link__normal"
+										>e</span
+									><span
+										class="menu__list__link__alternative"
+										>e</span
+									>stas</a
 								>
 							</li>
 							<li class="nav-item menu__list__item">
@@ -387,7 +650,13 @@
 									class="nav-link menu__list__link"
 									href="#contacto"
 									onclick="cerrar()"
-									>Contacto</a
+									>cont<span
+										class="menu__list__link__normal"
+										>a</span
+									><span
+										class="menu__list__link__alternative menu__list__link__alternative__contacto"
+										>a</span
+									>cto</a
 								>
 							</li>
 						</ul>
@@ -440,181 +709,215 @@
 									<i class="fab fa-youtube"></i>
 								</a>
 							</li>
+							<li
+								class="nav-item menu__list__item menu__list__item__icon"
+							>
+								<a
+									class="nav-link menu__list__link menu__list__link__icon"
+									href="https://open.spotify.com/user/31feh6byuhxyjkfpe26lwc3lwpt4?si=fc43047279424982"
+									target="_blank"
+								>
+									<i class="fab fa-spotify"></i>
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 		</header>
 		<main class="container">
-			<section class="section hero hero__section">
-				<article id="hero" class="article hero__article">
-					<figure>
-						<video
-							id="hero_bgs"
-							class="hero__bgs"
-							autoplay
-							loop
-							muted
-							playsinline
-							preload="auto"
-						>
-							<source
-								type="video/mp4"
-								src="/imgs/video hero/video-hero-home.mp4"
-								media="(min-width:1200px)"
-							/>
-							<source
-								type="video/webm"
-								src="/imgs/video hero/video-hero-home.webm"
-								media="(min-width:576px) and (max-width:1199px)"
-							/>
-							<source
-								type="video/webm"
-								src="/imgs/video hero/m-video-hero.webm"
-							/>
-							<source
-								type="video/mp4"
-								src="/imgs/video hero/m-video-hero.mp4"
-							/>
-							Tu navegador no soporta la reproducción
-							automática del video.
-						</video>
-					</figure>
-				</article>
-			</section>
-			<div
-				id="tickets"
-				class="container__propio tickets tickets__container"
-			>
-				<section class="section tickets__section">
-					<article class="tickets__title">
-						<h2 class="title">Tickets</h2>
-					</article>
-					<section class="slider tickets__slider">
-					<!-- Empiezan los Tickets --> 
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260509-mrtn.png"
-									alt="ticket Maraton 09-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://venti.com.ar/evento/marat-n"
-									target="_blank"
-									>comprar</a>
-							</button>
+			<section class="hero">
+				<video
+					id="hero_bgs"
+					class="hero__bgs hero-video"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="auto"
+				>
+					<source
+						type="video/webm"
+						src="/imgs/video/bg-tickets.webm"
+					/>
+					<source
+						type="video/mp4"
+						src="/imgs/video/bg-tickets.mp4"
+					/>
+					<!-- media="(min-width:650px)" -->
+					<!-- media="min-device-width: 576px" -->
+					Tu navegador no soporta la reproducción automática del
+					video.
+				</video>
+				<div class="hero-overlay"></div>
+				<div
+					id="tickets"
+					class="hero-content container__propio tickets tickets__container"
+				>
+					<section class="section tickets__section">
+						<article class="tickets__title">
+							<h2 class="title">
+								<!-- TI<span class="title__alternative">C</span>KETS -->
+								TI<span class="title__alternative"
+									>C</span
+								>KETS
+							</h2>
+							<!-- <h2 class="title title__tickets">TICKETS</h2> -->
 						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260515-tigre.png"
-									alt="ticket Tigre 15-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://venti.com.ar/evento/polenta-anexo-norte"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260516-caba.png"
-									alt="ticket Buenos Aires C Art Media 16-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://www.passline.com/eventos/polenta-en-c-caba"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260516-cordoba.png"
-									alt="ticket Córdoba 16-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://alpogo.com/evento/polenta-en-cordoba-25753"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260522-bcna-pr.png"
-									alt="ticket Barcelona Especial Bad Bunny Puerto Rico 22-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://es.ra.co/events/2404411"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260523-mvdeo.png"
-									alt="ticket Montevideo 23-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://redtickets.uy/evento/POLENTA-MONTEVIDEO--2305/28902/"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-						<article class="ticket">
-							<figure class="ticket__img__container">
-								<img
-									class="ticket__img"
-									src="/imgs/tickets/20260524-lanus.png"
-									alt="ticket Lanus 24-05-2026"
-								/>
-								<div class="ticket__filter"></div>
-							</figure>
-							<button class="cta ticket__button">
-								<a
-									class="cta__text ticket__link"
-									href="https://www.cafaccess.com/evento/2405-polenta-en-club-leloir"
-									target="_blank"
-									>comprar</a>
-							</button>
-						</article>
-                    <!-- Fin de los Tickets --> 
+						<section class="slider tickets__slider">
+						
+						<!-- Empiezan los Tickets -->
+			
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260522-barcelona.png"
+										alt="ticket Barcelona Especial Bad Bunny Puerto Rico 22-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://es.ra.co/events/2404411"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260523-mvdeo.png"
+										alt="ticket Montevideo 23-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://redtickets.uy/evento/POLENTA-MONTEVIDEO--2305/28902/"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260523-la-plata.png"
+										alt="ticket La Plata 23-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://livepass.com.ar/events/polenta-en-el-teatro-opera-lp-23-05"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260523-tandil.png"
+										alt="ticket Tandil 23-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://www.todopass.com.ar/inicio/599-polenta.html"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260524-lanus.png"
+										alt="ticket Lanús 24-05-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://www.cafaccess.com/evento/2405-polenta-en-club-leloir"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260605-solo-pop.png"
+										alt="ticket Solo Pop 05-06-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://venti.com.ar/evento/polenta-solo-pop-en-nicetoclub"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260605-rosario.png"
+										alt="ticket Rosario 05-06-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://eventos.tqr.la/event/5-6?code=PATR37"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+							<article class="ticket">
+								<figure class="ticket__img__container">
+									<img
+										class="ticket__img"
+										src="/imgs/tickets/20260606-milan.png"
+										alt="ticket Milán 06-06-2026"
+									/>
+									<div class="ticket__filter"></div>
+								</figure>
+								<button class="cta ticket__button">
+									<a
+										class="cta__text ticket__link"
+										href="https://site.fourvenues.com/es/magazzini-generali-1/events/fiesta-polenta-06-06-2026-GFKL"
+										target="_blank"
+										>QUIERO MI TICKET</a
+									>
+								</button>
+							</article>
+						<!-- Fin de los Tickets -->
+
+						</section>
 					</section>
-				</section>
-			</div>
+				</div>
+			</section>
 			<div
 				id="nosotros"
 				class="container__propio nosotros nosotros__container"
@@ -624,52 +927,62 @@
 						class="nosotros__queeslapolenta"
 						id="queeslapolenta"
 					>
-						<h2 class="title">¿Qué c$&%! es la Polenta?</h2>
-						<p class="subtitle">
+						<h2 class="title">
+							<!-- ¿QUÉ C$&%!<br />ES P<span class="title__alternative">O</span>LENTA*? -->
+							¿QUÉ C$&#! ES P<span
+								class="title__alternative"
+								>O</span
+							>LENTA*?
+						</h2>
+						<!-- <h2 class="title">
+							¿QUÉ C$&%!<br />ES POLENTA*?
+						</h2> -->
+						<p class="subtitle subtitle__bold">
 							Polenta* no es cualquier fiesta.
+						</p>
+						<p class="subtitle">
+							Es una fiesta para todxs, donde lo que
+							importa es bailar.
 							<br />
-							Es una fiesta para todxs. Somos un mix de
-							lásers, goce, churros, baile y mucho más.
-							<br />
-							Cada Polenter es un láser en la pista,
-							una diversidad de miradas que saben disfrutar.
-							<br />
+							¿Ya sabés qué nos hace diferentes?
+							<!-- <br />
 							Somos una historia para contar al otro día,
 							una anécdota nueva en tu vida,
 							<br />
 							un mensaje a ese amigo diciéndole que tuviste
 							<br />
-							<span class="subtitle__bold"
+							<span>la mejor noche del mundo</span>. -->
+							<!-- <span class="subtitle__bold"
 								>La mejor noche del mundo</span
-							>.
+							>. -->
 						</p>
-						<h2 class="title">Sí, eso somos.</h2>
+						<!-- <h2 class="title">SÍ, ESO<br />SOMOS.</h2> -->
 					</article>
 					<section class="cards">
 						<article class="card card__dance-crew">
 							<figure class="card__container__imagen">
 								<img
 									class="card__imagen img__mobile"
-									src="/imgs/cards/m-dancers.png"
+									src="/imgs/cards/card-dancers.png"
 									alt="card imagen dance crew"
 								/>
 								<img
 									class="card__imagen img__desktop"
-									src="/imgs/cards/card-dancers.jpg"
+									src="/imgs/cards/card-dancers.png"
 									alt="card imagen dance crew"
 								/>
 							</figure>
 							<figure class="card__container">
-								<img
-									class="card__icono"
-									src="/imgs/cards/dancers.svg"
-									alt="card icono dance crew"
-								/>
-								<h2 class="card__title">Dance Crew</h2>
+								<h2 class="card__title">
+									DANCE<br />C<span
+										class="font__alternative font__alternative__card"
+										>R</span
+									>EW
+								</h2>
 								<p class="card__description">
-									Cada fiesta es una nueva perfo
-									donde nuestros dancers te invitan a
-									darlo todo en la pista.
+									La pista de baile es el corazón de
+									la fiesta, y ellxs solo la
+									encienden un poco más.
 								</p>
 							</figure>
 						</article>
@@ -677,7 +990,7 @@
 							<figure class="card__container__imagen">
 								<img
 									class="card__imagen img__mobile"
-									src="/imgs/cards/m-lanza-remeras.png"
+									src="/imgs/cards/card-lanzaremeras.jpg"
 									alt="card imagen lanza-remeras"
 								/>
 								<img
@@ -687,18 +1000,15 @@
 								/>
 							</figure>
 							<figure class="card__container">
-								<img
-									class="card__icono"
-									src="/imgs/cards/lanza-remeras.svg"
-									alt="card icono lanza-remeras"
-								/>
 								<h2 class="card__title">
-									Lanza-Remeras
+									LANZA<br />RE<span
+										class="font__alternative font__alternative__card"
+										>M</span
+									>ERAS
 								</h2>
 								<p class="card__description">
-									Nos comemos la peli y tiramos merch
-									de Polenta para que te vayas con un
-									souvenir de la fiesta.
+									El momento favorito de todxs: caen
+									remeras del cielo.
 								</p>
 							</figure>
 						</article>
@@ -706,28 +1016,25 @@
 							<figure class="card__container__imagen">
 								<img
 									class="card__imagen img__mobile"
-									src="/imgs/cards/m-churros.png"
+									src="/imgs/cards/card-churros.png"
 									alt="card imagen churros"
 								/>
 								<img
 									class="card__imagen img__desktop"
-									src="/imgs/cards/card-churros.jpg"
+									src="/imgs/cards/card-churros.png"
 									alt="card imagen churros"
 								/>
 							</figure>
 							<figure class="card__container">
-								<img
-									class="card__icono"
-									src="/imgs/cards/churros.svg"
-									alt="card icono churros"
-								/>
 								<h2 class="card__title">
-									4:20 Churros
+									4:20<br />CHU<span
+										class="font__alternative font__alternative__card"
+										>R</span
+									>ROS
 								</h2>
 								<p class="card__description">
-									Justo para el bajón, salimos a
-									repartir churros con dulce de leche
-									mientras suena Emilia, ¿épico, no?
+									Cuando es hora de un churrito
+									estamos ahí, repartiendo.
 								</p>
 							</figure>
 						</article>
@@ -735,7 +1042,7 @@
 							<figure class="card__container__imagen">
 								<img
 									class="card__imagen img__mobile"
-									src="/imgs/cards/m-angeles.png"
+									src="/imgs/cards/card-angeles.png"
 									alt="card imagen angeles polenta"
 								/>
 								<img
@@ -745,19 +1052,19 @@
 								/>
 							</figure>
 							<figure class="card__container">
-								<img
-									class="card__icono"
-									src="/imgs/cards/angeles.svg"
-									alt="card icono angeles polenta"
-								/>
 								<h2 class="card__title">
-									Ángeles Polenta*
+									C<span
+										class="font__alternative font__alternative__card"
+										>R</span
+									>EW DE ANG<span
+										class="font__alternative font__alternative__card"
+										>E</span
+									>LES
 								</h2>
 								<p class="card__description">
-									La seguridad importa. Nuestros
-									Ángeles dan vueltas por la pista
-									velando por el bienestar y la
-									comodidad de todxs.
+									La seguridad nos importa.<br />
+									Nuestrxs Ángeles están cerquita
+									para cuidarlos a todxs.
 								</p>
 							</figure>
 						</article>
@@ -770,13 +1077,17 @@
 			>
 				<section class="section puestas__section">
 					<article class="puestas__descripcion">
-						<h2 class="title">Puestas</h2>
+						<h2 class="title">
+							<!-- PU<span class="title__alternative">E</span>STAS -->
+							PU<span class="title__alternative">E</span
+							>STAS
+						</h2>
+						<!-- <h2 class="title">PUESTAS</h2> -->
 						<p class="subtitle">
-							Queremos que Polenta sea una experiencia para
-							vos desde que llegás hasta que salís, por eso
-							la puesta de luces, lásers, pantallas y
-							visuales de la fiesta son los grandes
-							protagonistas.
+							Queremos que Polenta* sea una experiencia
+							completa, por eso pensamos en la puesta de
+							luces, lásers, pantallas y visuales de cada
+							fiesta.
 						</p>
 						<p class="subtitle subtitle__bold">
 							Cada edición es única, como vos.
@@ -839,6 +1150,12 @@
 								data-bs-slide-to="7"
 								aria-label="Slide 8"
 							></button>
+							<button
+								type="button"
+								data-bs-target="#carouselExampleCaptions"
+								data-bs-slide-to="8"
+								aria-label="Slide 9"
+							></button>
 						</div>
 						<div class="carousel-inner">
 							<div
@@ -846,112 +1163,90 @@
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-1.png"
+									src="imgs/puestas/slider-img-1.png"
 									class="d-block w-100 carousel__img"
-									alt="portada__presentacion"
+									alt="puestas-1"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__presentacion">20 AÑOS DE MASTER OF PUPPETS</a></h5>
-									<p><a class="portada__slide__link" href="#portada__presentacion">Reviví nuestro show celebración en Berlín</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-2.png"
+									src="imgs/puestas/slider-img-2.png"
 									class="d-block w-100"
-									alt="portada__novedades"
+									alt="puestas-2"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__novedades">BLACKENED 2020</a></h5>
-									<p><a class="portada__slide__link" href="#portada__novedades">Versionamos un clásico en pandemia</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-3.png"
+									src="imgs/puestas/slider-img-3.png"
 									class="d-block w-100"
-									alt="portada__proximaFecha"
+									alt="puestas-3"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__proximaFecha">VOLVEMOS A LOS ESCENARIOS</a></h5>
-									<p><a class="portada__slide__link" href="#portada__proximaFecha">Enterate todo sobre nuestro próximo tour</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-4.png"
+									src="imgs/puestas/slider-img-4.png"
 									class="d-block w-100"
-									alt="portada__lanzamiento"
+									alt="puestas-4"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
-									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-5.png"
+									src="imgs/puestas/slider-img-5.png"
 									class="d-block w-100"
-									alt="portada__lanzamiento"
+									alt="puestas-5"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
-									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-6.png"
+									src="imgs/puestas/slider-img-6.png"
 									class="d-block w-100"
-									alt="portada__lanzamiento"
+									alt="puestas-6"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
-									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-7.png"
+									src="imgs/puestas/slider-img-7.png"
 									class="d-block w-100"
-									alt="portada__lanzamiento"
+									alt="puestas-7"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
-									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
-								</div> -->
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
 								<img
-									src="imgs/slider/slider-img-8.png"
+									src="imgs/puestas/slider-img-8.png"
 									class="d-block w-100"
-									alt="portada__lanzamiento"
+									alt="puestas-8"
 								/>
-								<!-- <div class="carousel-caption d-none d-md-block portada__slide__texto">
-									<h5><a class="portada__slide__link" href="#portada__lanzamiento">HARDWIRED... TO SELF-DESTRUCT</a></h5>
-									<p><a class="portada__slide__link" href="#portada__lanzamiento">Conocé nuestro último disco</a></p>
-								</div> -->
+							</div>
+							<div
+								class="carousel-item"
+								data-bs-interval="2500"
+							>
+								<img
+									src="imgs/puestas/slider-img-9.png"
+									class="d-block w-100"
+									alt="puestas-9"
+								/>
 							</div>
 						</div>
 						<button
@@ -984,7 +1279,15 @@
 			<div id="contacto" class="contacto contacto__container">
 				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
-						<h2 class="title">Estemos cerquita</h2>
+						<h2 class="title">
+							<!-- <span class="title__alternative">E</span>STEMOS<br />
+							CE<span class="title__alternative">R</span>QUITA</h2> -->
+							<span class="title__alternative">E</span
+							>STEMOS CE<span class="title__alternative"
+								>R</span
+							>QUITA
+						</h2>
+						<!-- <h2 class="title">ESTEMOS<br />CERQUITA</h2> -->
 					</article>
 					<article
 						class="contacto__article contacto__escribinos"
@@ -1003,10 +1306,11 @@
 					<article
 						class="card__contacto contacto__article contacto__redes"
 					>
-						<p class="subtitle">
-							Seguinos en nuestras redes sociales para más
+						<!-- <p class="subtitle">
+							Seguinos en nuestras redes para más
 							novedades:
-						</p>
+						</p> -->
+						<p class="subtitle">Stalkeanos acá 👇🏼</p>
 						<article class="contacto__redes__iconos">
 							<a
 								href="https://www.instagram.com/polenta.polenta"
@@ -1061,7 +1365,7 @@
 									src="imgs/icons/youtube.png"
 									alt="icono youtube"
 							/></a>
-							<a
+							<!-- <a
 								href="https://www.twitch.tv/fiestapolenta"
 								target="_blank"
 							>
@@ -1073,7 +1377,7 @@
 									class="img__desktop"
 									src="imgs/icons/twitch.png"
 									alt="icono twitch"
-							/></a>
+							/></a> -->
 							<a
 								href="https://open.spotify.com/user/31feh6byuhxyjkfpe26lwc3lwpt4?si=fc43047279424982"
 								target="_blank"
@@ -1110,7 +1414,7 @@
 		<footer id="footer" class="footer">
 			<section id="legales" class="footer__section">
 				<article class="footer__article footer__legales">
-					<h3 class="footer__title">Cosas que hay que poner</h3>
+					<h3 class="footer__title">COSAS QUE HAY QUE PONER</h3>
 					<a
 						class="footer__subtitle"
 						href="/pages/terminos_y_condiciones.html"
@@ -1134,34 +1438,37 @@
 					<figure>
 						<img
 							class="img__mobile__footer"
-							src="/imgs/logos/m-logo-footer.png"
+							src="/imgs/logos/m-Footer-Logo-Blur-White.png"
 							alt="logo polenta mobile footer"
 						/>
 					</figure>
 					<figure>
 						<img
 							class="img__tablet__footer"
-							src="/imgs/logos/m-logo-footer.png"
+							src="/imgs/logos/m-Footer-Logo-Blur-White.png"
 							alt="logo polenta tablet footer"
 						/>
 					</figure>
 					<figure>
 						<img
 							class="img__desktop__footer"
-							src="/imgs/logos/logo-footer.png"
+							src="/imgs/logos/Footer-Logo-Blur-White.png"
 							alt="logo polenta desktop footer"
 						/>
 					</figure>
 				</article>
 			</section>
 		</footer>
-		<a class="go-to-top" href="#" onclick="cerrar()"
-			><span class="go-to-top__text">VOLVER ARRIBA</span
+		<a
+			class="go-to-tickets go-to-tickets__index"
+			href="/index.html#tickets"
+			onclick="cerrar()"
 			><img
-				class="go-to-top__icon"
-				src="/imgs/icons/scroll-top.png"
-				alt="icono botón volver arriba"
-		/></a>
+				class="go-to-tickets__icon"
+				src="/imgs/icons/ticket.svg"
+				alt="ícono botón para ir a la sección de tickets"
+			/><span class="go-to-tickets__text">COMPRAR TICKETS</span></a
+		>
 	</body>
 	<script src="/index.js"></script>
 	<script>

@@ -8,8 +8,6 @@
      width: 100%;
      flex-shrink: 0;
 
-     background-color: $color-accent-violeta;
-
      display: inline-flex;
      flex-direction: column;
      justify-content: center;
@@ -27,7 +25,7 @@
 
           .nosotros__queeslapolenta {
                display: flex;
-               padding: 0rem 2.3rem; // padding: 0rem 18%;
+               padding: 0rem 2.3rem;
                flex-direction: column;
                align-items: center;
                row-gap: 2rem;
@@ -35,11 +33,6 @@
           }
 
           .cards {
-               // display: flex;
-               // flex-direction: column;
-               // align-items: center;
-               // row-gap: .75rem;
-
                @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
                grid-template-areas:
                     "dance-crew"
@@ -73,6 +66,22 @@
                border-radius: 1rem;
 
                width: 22.5rem;
+
+               &__dance-crew {
+                    background-color: $color-fondo-card-dance-crew;
+               }
+
+               &__lanza-remeras {
+                    background-color: $color-fondo-card-lanza-remeras;
+               }
+
+               &__churros {
+                    background-color: $color-fondo-card-churros;
+               }
+
+               &__angeles-polenta {
+                    background-color: $color-fondo-card-angeles;
+               }
           }
 
           .card__container__imagen {
@@ -112,13 +121,9 @@
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
-
-     //and (max-width: 1199px) {
      .nosotros__container {
           width: 100%;
           flex-shrink: 0;
-
-          background-color: $color-accent-violeta;
 
           display: inline-flex;
           flex-direction: column;
@@ -145,10 +150,6 @@
                }
 
                .cards {
-                    // display: flex;
-                    // flex-direction: row;
-                    // column-gap: .75rem;
-
                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
                     grid-template-areas:
                          "dance-crew lanza-remeras"
@@ -207,14 +208,6 @@
      .nosotros__container {
           .section {
                .cards {
-                    // display: flex;
-                    // flex-direction: row;
-                    // column-gap: .75rem;
-
-                    // @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
-                    // grid-template-areas:
-                    //      "dance-crew lanza-remeras churros angeles-polenta";
-
                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
                     grid-template-areas:
                          "dance-crew lanza-remeras"
@@ -228,10 +221,6 @@
      .nosotros__container {
           .section {
                .cards {
-                    // display: flex;
-                    // flex-direction: row;
-                    // column-gap: .75rem;
-
                     @include grillas__simetricas(2, auto, 2, auto, 2rem, 2rem);
                     grid-template-areas:
                          "dance-crew lanza-remeras"
@@ -290,10 +279,6 @@
      .nosotros__container {
           .section {
                .cards {
-                    // display: flex;
-                    // flex-direction: row;
-                    // column-gap: .75rem;
-
                     @include grillas__simetricas(4, auto, 1, auto, .75rem, 0);
                     grid-template-areas:
                          "dance-crew lanza-remeras churros angeles-polenta";
