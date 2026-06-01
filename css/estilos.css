@@ -539,6 +539,7 @@ body .contacto__container {
 .ticket__img {
   width: 100%;
   object-fit: cover;
+  border-radius: 1rem;
 }
 
 .ticket__filter {
@@ -602,6 +603,9 @@ body .contacto__container {
   }
 }
 @media only screen and (min-width: 768px) {
+  .ticket__img {
+    border-radius: 1.2rem;
+  }
   .ticket__filter {
     border-radius: 1.1rem;
   }

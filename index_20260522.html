@@ -27,10 +27,10 @@
 			crossorigin="anonymous"
 		/>
 		<!-- iconos redes -->
-		<!-- <script
+		<script
 			src="https://kit.fontawesome.com/7d4193cf05.js"
 			crossorigin="anonymous"
-		></script> -->
+		></script>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -123,9 +123,19 @@
 				class="asset asset-azul"
 			/>
 			<img
+				src="/imgs/asteriscos/asset-orange.png"
+				alt="naranja"
+				class="asset asset-orange"
+			/>
+			<img
 				src="/imgs/asteriscos/asset-red.png"
 				alt="rojo"
 				class="asset asset-red"
+			/>
+			<img
+				src="/imgs/asteriscos/asset-verde.png"
+				alt="verde"
+				class="asset asset-verde"
 			/>
 		</div>
 		<header class="header header__fixed">
@@ -754,11 +764,11 @@
 							</h2>
 							<!-- <h2 class="title title__tickets">TICKETS</h2> -->
 						</article>
-						<!-- Los tickets se insertan dinámicamente (tickets.js)-->
-						<!-- Los tickets se insertan manualmente -->
+						<section class="slider tickets__slider">
+						
 						<!-- Empiezan los Tickets -->
-						<section class="slider tickets__slider" id="ticketsSlider">
-							<!-- <article class="ticket">
+			
+							<article class="ticket">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -776,7 +786,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket">
+							<article class="ticket 20260523">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -794,7 +804,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket">
+							<article class="ticket 20260523">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -812,7 +822,7 @@
 									>
 								</button>
 							</article>
-							<article class="ticket">
+							<article class="ticket 20260523">
 								<figure class="ticket__img__container">
 									<img
 										class="ticket__img"
@@ -919,9 +929,10 @@
 										>QUIERO MI TICKET</a
 									>
 								</button>
-							</article> -->
-						</section>
+							</article>
 						<!-- Fin de los Tickets -->
+
+						</section>
 					</section>
 				</div>
 			</section>
@@ -1478,7 +1489,6 @@
 		>
 	</body>
 	<script src="/index.js"></script>
-	<script src="/tickets.js"></script>
 	<script>
 		function cerrar() {
 			$(".navbar-collapse").removeClass("show");

@@ -68,3 +68,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
      observer.observe(heroSection);
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//      const tickets = document.querySelectorAll(".ticket");
+
+//      // Fecha actual
+//      const today = new Date();
+
+//      // normalizar las fechas
+//      today.setHours(0, 0, 0, 0);
+
+//      tickets.forEach(ticket => {
+//           const img = ticket.querySelector(".ticket__img");
+
+//           if (!img) return;
+
+//           // Obtiene el src
+//           const src = img.getAttribute("src");
+
+//           // Busca una fecha tipo 20260522
+//           const match = src.match(/(\d{8})/);
+
+//           if (!match) return;
+
+//           const dateString = match[1];
+
+//           // Separar año, mes y día
+//           const year = parseInt(dateString.substring(0, 4));
+//           const month = parseInt(dateString.substring(4, 6)) - 1;
+//           const day = parseInt(dateString.substring(6, 8));
+
+//           const ticketDate = new Date(year, month, day);
+
+//           // normalizar las fechas
+//           ticketDate.setHours(0, 0, 0, 0);
+
+//           const diffTime = today - ticketDate;
+
+//           // Convertir a días
+//           const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+//           // Ocultar si pasaron más de 1 día //2 días
+//           if (diffDays > 1) {
+//                // ticket.style.display = "none";
+//                ticket.remove();
+//           }
+//      });
+// });
