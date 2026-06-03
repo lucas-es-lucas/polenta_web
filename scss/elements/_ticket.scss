@@ -42,7 +42,7 @@
      object-fit: cover;
 
      // PARA LAS IMÁGENES CON LAS ESQUINAS CUADRADAS 
-     border-radius: 1rem;
+     // border-radius: 1rem;
 }
 
 .ticket__filter {
@@ -124,9 +124,9 @@
 
 @media only screen and (min-width: 768px) {
      // PARA LAS IMÁGENES CON LAS ESQUINAS CUADRADAS 
-     .ticket__img {
-          border-radius: 1.2rem;
-     }
+     // .ticket__img {
+     //      border-radius: 1.2rem;
+     // }
 
      .ticket__filter {
           border-radius: 1.1rem;
