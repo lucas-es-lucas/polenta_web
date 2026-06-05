@@ -7,7 +7,13 @@ async function loadTickets() {
 
      const slider = document.getElementById("ticketsSlider");
 
-     const today = new Date();
+     // const today = new Date();
+
+     const DAYS_TO_KEEP = 3;
+
+     const cutoffDate = new Date();
+     cutoffDate.setHours(0, 0, 0, 0);
+     cutoffDate.setDate(cutoffDate.getDate() - DAYS_TO_KEEP);
 
      tickets.forEach(ticket => {
 
@@ -18,9 +24,10 @@ async function loadTickets() {
           const day = ticket.date.slice(6, 8);
 
           const ticketDate = new Date(`${year}-${month}-${day}`);
+          ticketDate.setHours(0, 0, 0, 0);
 
           // Ocultar tickets viejos
-          if (ticketDate < today) return;
+          if (ticketDate < cutoffDate) return;
 
           const article = document.createElement("article");
           article.classList.add("ticket");
