@@ -1,50 +1,74 @@
 [
      {
-          "date": "20260602",
-          "city": "lanus",
-          "alt": "ticket Lanús 24-05-2026",
-          "link": "https://www.cafaccess.com/evento/2405-polenta-en-club-leloir"
+          "date": "20260918",
+          "city": "solo-pop-bcna",
+          "alt": "ticket Polenta Solo Pop Barcelona 18-09-2026",
+          "link": "https://es.ra.co/events/2499612"
      },
      {
-          "date": "20260605",
-          "city": "solo-pop",
-          "alt": "ticket Solo Pop 05-06-2026",
-          "link": "https://venti.com.ar/evento/polenta-solo-pop-en-nicetoclub"
+          "date": "20260918",
+          "city": "berlin",
+          "alt": "ticket Polenta Berlin 18-09-2026",
+          "link": "https://pretix.eu/malvadaprod/polentaberlin"
      },
      {
-          "date": "20260605",
-          "city": "rosario",
-          "alt": "tticket Rosario 05-06-2026",
-          "link": "https://eventos.tqr.la/event/5-6?code=PATR37"
+          "date": "20260919",
+          "city": "cordoba",
+          "alt": "ticket Polenta Cordoba 19-09-2026",
+          "link": "https://alpogo.com/evento/28172"
      },
      {
-          "date": "20260606",
-          "city": "milan",
-          "alt": "ticket Milán 06-06-2026",
-          "link": "https://site.fourvenues.com/es/magazzini-generali-1/events/fiesta-polenta-06-06-2026-GFKL"
-     },
-     {
-          "date": "20260613",
+          "date": "20260919",
           "city": "caba",
-          "alt": "ticket CABA 13-06-2026",
-          "link": "https://www.passline.com/eventos/polenta-512924"
+          "alt": "ticket Polenta Buenos Aires 19-09-2026",
+          "link": "https://www.enigmatickets.com/event/54201727-2f61-448a-ba86-7aeb4a145645"
      },
      {
-          "date": "20260613",
-          "city": "neuquen",
-          "alt": "ticket Neuquén 13-06-2026",
-          "link": "https://www.masentrada.app/events/polenta"
+          "date": "20260925",
+          "city": "solo-pop",
+          "alt": "ticket Polenta Solo Pop 25-09-2026",
+          "link": "https://venti.live/evento/polenta-solo-pop-25-sep-en-niceto-club-18-a-os"
      },
-          {
-          "date": "20260620",
-          "city": "mvdeo",
-          "alt": "ticket Montevideo 20-06-2026",
-          "link": "https://redtickets.uy/evento/POLENTA-MONTEVIDEO--2006/29741/"
+     {
+          "date": "20260926",
+          "city": "valencia",
+          "alt": "ticket Polenta Valencia 26-09-2026",
+          "link": "https://xceed.me/en/valencia/event/26-09-polenta-argentina/241919/channel/invitados-roto"
      },
-          {
-          "date": "20260703",
+     {
+          "date": "20261002",
+          "city": "nyc",
+          "alt": "ticket Polenta New York City 02-10-2026",
+          "link": "https://kydlabs.com/e/EV2f6c8418-e54c-464a-a71c-1769b7516f73?ref=shortlink"
+     },
+     {
+          "date": "20261002",
+          "city": "solo-pop-mvdeo",
+          "alt": "ticket Polenta Solo Pop Montevideo 02-10-2026",
+          "link": "https://redtickets.uy/evento/POLENTA-POP-MONTEVIDEO--0210/33438/"
+     },
+     {
+          "date": "20261003",
+          "city": "milan",
+          "alt": "ticket Polenta Milan 03-10-2026",
+          "link": "https://www.ticketone.it/eventseries/polenta-milan-4238226/"
+     },
+     {
+          "date": "20261004",
           "city": "barcelona",
-          "alt": "ticket Barcelona 03-07-2026",
-          "link": "https://ra.co/events/2436062"
+          "alt": "ticket Polenta Barcelona 04-10-2026",
+          "link": "https://es.ra.co/events/2532119"
+     },
+     {
+          "date": "20261010",
+          "city": "lomas",
+          "alt": "ticket Polenta Lomas 10-10-2026",
+          "link": "https://www.passline.com/eventos/polenta-dandelion-lomas-de-zamora-zona-sur"
+     },
+     {
+          "date": "20261017",
+          "city": "copenhague",
+          "alt": "ticket Polenta Copenhague 17-10-2026",
+          "link": "https://pretix.eu/malvadaprod/polentacph/"
      }
 ]
