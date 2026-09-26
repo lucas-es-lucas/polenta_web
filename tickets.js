@@ -7,9 +7,8 @@ async function loadTickets() {
 
      const slider = document.getElementById("ticketsSlider");
 
-     // const today = new Date();
-
-     const DAYS_TO_KEEP = 3;
+     // Muestra Ayer y Hoy 
+     const DAYS_TO_KEEP = 2;
 
      const cutoffDate = new Date();
      cutoffDate.setHours(0, 0, 0, 0);
