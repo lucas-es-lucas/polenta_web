@@ -49,6 +49,16 @@
      }
 }
 
+@media only screen and (max-width: 767px) {
+     .go-to-tickets {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: .3rem;
+          opacity: 1;
+     }
+}
+
 
 // .go-to-tickets {
 //      position: fixed;

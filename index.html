@@ -96,7 +96,21 @@
 		<!-- End Meta Pixel Code -->
 		<title>Fiesta Polenta</title>
 	</head>
-	<body>
+	<body class="is-loading">
+		<div
+			id="initial-loader"
+			class="initial-loader"
+			role="status"
+			aria-live="polite"
+			aria-label="Cargando Fiesta Polenta"
+		>
+			<img
+				id="initial-loader-logo"
+				class="initial-loader__logo"
+				src="/imgs/loader/Loader-Logo.gif"
+				alt="Cargando Fiesta Polenta"
+			/>
+		</div>
 		<!-- Optin - Inicio -->
 		<div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
 		<link
@@ -716,34 +730,29 @@
 			</nav>
 		</header>
 		<main class="container">
-			<section class="hero">
+			<section id="hero" class="hero" aria-label="Fiesta Polenta">
 				<video
 					id="hero_bgs"
-					class="hero__bgs hero-video"
-					autoplay
+					class="hero__video"
 					muted
-					loop
 					playsinline
 					preload="auto"
-				>
-					<source
-						type="video/webm"
-						src="/imgs/video/bg-tickets.webm"
-					/>
-					<source
-						type="video/mp4"
-						src="/imgs/video/bg-tickets.mp4"
-					/>
-					<!-- media="(min-width:650px)" -->
-					<!-- media="min-device-width: 576px" -->
-					Tu navegador no soporta la reproducción automática del
-					video.
-				</video>
-				<div class="hero-overlay"></div>
-				<div
-					id="tickets"
-					class="hero-content container__propio tickets tickets__container"
-				>
+					data-webm="/imgs/assets-hero-section/asterisk-blue-logo-party.webm"
+					data-mp4="/imgs/assets-hero-section/asterisk-blue-logo-party.mp4"
+				></video>
+			</section>
+			<section id="tickets" class="tickets tickets__container">
+				<video
+					id="tickets_bgs"
+					class="tickets__video"
+					muted
+					playsinline
+					preload="auto"
+					data-webm="/imgs/video/bg-tickets.webm"
+					data-mp4="/imgs/video/bg-tickets.mp4"
+				></video>
+				<div class="tickets__overlay" aria-hidden="true"></div>
+				<div class="tickets__content">
 					<section class="section tickets__section">
 						<article class="tickets__title">
 							<h2 class="title">
@@ -1570,7 +1579,7 @@
 		</footer>
 		<a
 			class="go-to-tickets go-to-tickets__index"
-			href="/index.html#tickets"
+			href="#tickets"
 			onclick="cerrar()"
 			><img
 				class="go-to-tickets__icon"

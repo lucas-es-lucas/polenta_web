@@ -8,6 +8,174 @@ setTimeout(function () {
      headID.appendChild(newScript);
 }, 15000); // 15 segundos de delay para mostrar el popup
 
+(() => {
+     const loader = document.getElementById("initial-loader");
+     const loaderLogo = document.getElementById("initial-loader-logo");
+     const backgroundVideo = document.getElementById("hero_bgs");
+     const ticketsVideo = document.getElementById("tickets_bgs");
+
+     if (!loader || !loaderLogo || !backgroundVideo) return;
+
+     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+     let activeHeroViewportVariant;
+     let activeTicketsViewportVariant;
+     let resourceVersion = 0;
+     let siteRevealed = false;
+     const loaderStartedAt = performance.now();
+     const MINIMUM_LOADER_DURATION = 2000;
+
+     const waitForImage = (image) => new Promise((resolve) => {
+          if (image.complete) {
+               resolve();
+               return;
+          }
+
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+     });
+
+     const setVideoSource = (video, sources, shouldLoop) => {
+         const canPlayWebm = video.canPlayType("video/webm") !== "";
+          const source = canPlayWebm || !sources.mp4 ? sources.webm : sources.mp4;
+
+         video.loop = shouldLoop;
+
+          if (video.dataset.activeSource === source) return Promise.resolve();
+
+          video.dataset.activeSource = source;
+
+          return new Promise((resolve) => {
+               const finish = () => resolve();
+
+               video.addEventListener("loadeddata", finish, { once: true });
+               video.addEventListener("error", finish, { once: true });
+               video.src = source;
+               video.load();
+          });
+     };
+
+     const getHeroViewportVariant = () => {
+          if (window.innerWidth < 768) return "mobile";
+          return "desktop";
+     };
+
+     const getTicketsViewportVariant = () => {
+          if (window.innerWidth < 768) return "mobile";
+          if (window.innerWidth < 1200) return "tablet";
+          return "desktop";
+     };
+
+     const heroSources = {
+          mobile: {
+               webm: "/imgs/assets-hero-section/m-asterisk-blue-logo-party.webm",
+               mp4: "/imgs/assets-hero-section/m-asterisk-blue-logo-party.mp4",
+          },
+          desktop: {
+               webm: backgroundVideo.dataset.webm,
+               mp4: backgroundVideo.dataset.mp4,
+          },
+     };
+
+     const ticketsSources = {
+          mobile: {
+               webm: "/imgs/video/bg-tickets-320-vertical.webm",
+               mp4: "/imgs/video/bg-tickets-320-vertical.mp4",
+          },
+          tablet: {
+               webm: "/imgs/video/bg-tickets-768.webm",
+               mp4: "/imgs/video/bg-tickets-768.mp4",
+          },
+          desktop: {
+               webm: ticketsVideo?.dataset.webm,
+               mp4: ticketsVideo?.dataset.mp4,
+          },
+     };
+
+     const configureHeroMedia = () => {
+          const viewportVariant = getHeroViewportVariant();
+          activeHeroViewportVariant = viewportVariant;
+
+          return [
+               setVideoSource(backgroundVideo, heroSources[viewportVariant], !reduceMotion),
+          ];
+     };
+
+     const configureTicketsMedia = () => {
+          if (!ticketsVideo) return Promise.resolve();
+
+          const viewportVariant = getTicketsViewportVariant();
+          activeTicketsViewportVariant = viewportVariant;
+
+          return setVideoSource(ticketsVideo, ticketsSources[viewportVariant], true)
+               .then(() => ticketsVideo.play().catch(() => {}));
+     };
+
+     const startHeroAnimations = () => {
+          backgroundVideo.play().catch(() => {});
+     };
+
+     const revealSite = () => {
+          if (siteRevealed) return;
+
+          siteRevealed = true;
+          document.body.classList.remove("is-loading");
+          document.body.classList.add("loader-ready");
+          loader.classList.add("initial-loader--leaving");
+
+          if (reduceMotion) {
+               startHeroAnimations();
+               loader.remove();
+               return;
+          }
+
+          loader.addEventListener("transitionend", (event) => {
+               if (event.propertyName !== "opacity") return;
+               startHeroAnimations();
+               loader.remove();
+          }, { once: true });
+     };
+
+     const loadCriticalResources = () => {
+          const currentVersion = ++resourceVersion;
+          const criticalResources = [
+               waitForImage(loaderLogo),
+               ...configureHeroMedia(),
+          ];
+
+          Promise.all(criticalResources).then(() => {
+               const remainingDuration = Math.max(
+                    0,
+                    MINIMUM_LOADER_DURATION - (performance.now() - loaderStartedAt),
+               );
+
+               window.setTimeout(() => {
+                    if (currentVersion === resourceVersion) revealSite();
+               }, remainingDuration);
+          });
+     };
+
+     window.addEventListener("resize", () => {
+          const heroViewportVariant = getHeroViewportVariant();
+          const ticketsViewportVariant = getTicketsViewportVariant();
+
+          if (ticketsViewportVariant !== activeTicketsViewportVariant) {
+               configureTicketsMedia();
+          }
+
+          if (heroViewportVariant === activeHeroViewportVariant) return;
+
+          if (siteRevealed) {
+               Promise.all(configureHeroMedia()).then(startHeroAnimations);
+               return;
+          }
+
+          loadCriticalResources();
+     });
+
+     configureTicketsMedia();
+     loadCriticalResources();
+})();
+
 // console.log('pirulo');
 // setTimeout(executeMainFunction, 5000);
 
@@ -44,6 +212,13 @@ setTimeout(function () {
 // });
 
 document.addEventListener("DOMContentLoaded", function () {
+     const ticketsSection = document.getElementById("tickets");
+     const nosotrosSection = document.getElementById("nosotros");
+
+     if (ticketsSection && nosotrosSection) {
+          nosotrosSection.after(ticketsSection);
+     }
+
      const goButton = document.querySelector(".go-to-tickets");
      const heroSection = document.querySelector(".hero");
 
