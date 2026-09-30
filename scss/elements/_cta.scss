@@ -16,8 +16,7 @@
      border-radius: 6.25rem;
 
      &__text {
-          width: 14rem;
-          padding: .75rem 1.9rem;
+          padding: .75rem 1.5rem;
 
           color: $color-text;
           text-decoration: none;
@@ -28,30 +27,17 @@
      }
 }
 
-@media only screen and (min-width: 576px) {
+// @media only screen and (min-width: 576px) {
+//      .cta {
+//           &__text {
+//                // padding: .75rem 1.5rem;
 
-     //and (max-width: 1199px) {
-     .cta {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          // gap: .6rem;
+//                // color: $color-text;
+//                // text-decoration: none;
 
-          background: $color-terciary-negro;
-
-          border: .2rem $color-text solid;
-          border-radius: 6.25rem;
-
-          &__text {
-               width: 14rem;
-               padding: .75rem 1.9rem;
-
-               color: $color-text;
-               text-decoration: none;
-
-               &__:visited {
-                    text-decoration: none;
-               }
-          }
-     }
-}
+//                &__:visited {
+//                     text-decoration: none;
+//                }
+//           }
+//      }
+// }

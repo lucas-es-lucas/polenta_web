@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Devant_Horgen";
   src: url(/fonts/Devant_Horgen/Devant_Horgen.ttf);
@@ -29,12 +30,14 @@
 html {
   scroll-padding-top: 6rem;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #000000;
   color: #ffffff;
   font-family: "Anton", sans-serif;
+  overflow-x: hidden;
 }
 body .container {
   max-width: 100%;
@@ -56,6 +59,7 @@ body a:visited {
 }
 body h2 {
   margin: 0;
+  line-height: 0.9;
 }
 body p {
   margin: 0;
@@ -67,6 +71,7 @@ body .container__propio {
   width: 100%;
   height: auto;
   padding: 6rem 0;
+  justify-items: center;
 }
 body .suscribite__container {
   padding: 6rem 0;
@@ -107,7 +112,7 @@ body .contacto__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.3rem;
 }
 .footer__copyright {
   grid-area: area__last;
@@ -115,24 +120,20 @@ body .contacto__container {
 .footer__logo {
   grid-area: area__first;
 }
-.footer__title {
-  padding-bottom: 0.2rem;
-}
 .footer__copyright__text {
   margin: 0;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .footer {
-    width: 100%;
+    height: 6.25rem;
     padding: 0;
-    position: relative;
-    background-color: #1A1A1A;
+    align-content: center;
   }
   .footer__section {
     display: flex;
     flex-direction: row;
-    padding: 0px 10rem;
+    padding: 0px 13rem;
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
@@ -158,10 +159,9 @@ body .contacto__container {
 }
 @media only screen and (min-width: 1200px) {
   .footer {
-    width: 100%;
+    height: 6.25rem;
     padding: 0;
-    position: relative;
-    background-color: #1A1A1A;
+    align-content: center;
   }
   .footer__section {
     display: flex;
@@ -176,7 +176,7 @@ body .contacto__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    row-gap: 0.2rem;
+    gap: 0.2rem;
   }
   .footer__copyright {
     grid-area: area__center;
@@ -190,12 +190,17 @@ body .contacto__container {
     padding-bottom: 0.2rem;
   }
 }
-.font-alternative {
+.font__alternative {
   font-family: "Playfair Display", serif;
-  font-size: 2.62rem;
   font-optical-sizing: auto;
   font-style: italic;
   font-weight: bold;
+}
+.font__alternative__anouncement {
+  font-size: 2.4rem;
+}
+.font__alternative__card {
+  font-size: 2.625rem;
 }
 
 .anouncement__text {
@@ -204,58 +209,84 @@ body .contacto__container {
   letter-spacing: -3%;
 }
 
+.menu__logo {
+  height: 2.25rem;
+}
 .menu__list__link {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: -0.3px;
   color: #ffffff;
+  text-transform: uppercase;
+}
+.menu__list__link__alternative {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.15em;
+  position: relative;
+  margin-left: 0.06em;
+  margin-right: 0.07em;
+}
+.menu__list__link__alternative__contacto {
+  margin-right: 0em;
 }
 .menu__list__link__icon {
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: #E7270E;
 }
 
 .title {
-  font-size: 3.75rem;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  line-height: 120%;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 110%;
   text-align: center;
 }
 .title__tickets {
   font-size: 6.25rem;
   line-height: 110%;
 }
+.title__alternative {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: relative;
+  top: 0.02em;
+  margin-right: 0.025em;
+}
 
 .subtitle {
   font-family: "Inter", serif;
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -0.48px;
   line-height: 120%;
   text-align: center;
 }
 .subtitle__bold {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .cta__text {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.96px;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-transform: uppercase;
   text-align: center;
   line-height: 120%;
 }
 
 .card__title {
-  font-size: 2rem;
+  font-size: 2.25rem;
   color: #000000;
   text-align: center;
 }
 .card__description {
   font-family: "Inter", serif;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.2em;
   color: #000000;
   text-align: center;
 }
@@ -267,8 +298,8 @@ body .contacto__container {
   color: #B3B3B3;
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 1.8px;
   text-transform: uppercase;
+  margin-bottom: 0;
 }
 .footer__subtitle {
   color: #B3B3B3;
@@ -286,7 +317,7 @@ body .contacto__container {
 
 .go-to-tickets__text {
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -301,8 +332,6 @@ body .contacto__container {
   padding: 3rem 0 2rem;
   text-align: left;
   font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: -0.4px;
 }
 .privacidad__subtitle,
 .proteccion__subtitle {
@@ -311,39 +340,51 @@ body .contacto__container {
 }
 .privacidad__description,
 .proteccion__description {
+  font-family: "Inter", serif;
   padding-bottom: 2rem;
   font-size: 0.9rem;
   text-align: left;
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
+  .title {
+    font-size: 3.75rem;
+  }
   .title__tickets {
     font-size: 8rem;
     line-height: 140%;
   }
-  .card__title {
-    font-size: 1.5rem;
-    color: #000000;
-  }
   .card__description {
     font-size: 0.9rem;
-    color: #000000;
-    text-align: center;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .title {
+    font-size: 6rem;
+    font-weight: 600;
+  }
   .title__tickets {
-    font-size: 12.5rem;
+    font-size: 9rem;
     line-height: 140%;
   }
-}
-@media only screen and (min-width: 992px) {
-  .anouncement__text {
-    font-size: 2rem;
-    letter-spacing: -3%;
+  .card__description {
+    font-size: 0.9rem;
   }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .title {
+    font-size: 6rem;
+  }
+  .title__tickets {
+    font-size: 10rem;
+    line-height: 140%;
+  }
+  .card__description {
+    font-size: 1.1rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
   .menu__list__link {
-    font-size: 1rem;
     font-weight: 500;
     letter-spacing: -0.3px;
     color: #ffffff;
@@ -352,142 +393,88 @@ body .contacto__container {
     font-size: 1.25rem;
   }
   .title {
-    font-size: 3rem;
-    font-weight: 600;
-    letter-spacing: -0.2px;
+    font-size: 6rem;
+  }
+  .title__tickets {
+    font-size: 11rem;
     line-height: 120%;
-    text-align: center;
   }
   .subtitle {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 300;
     letter-spacing: -0.48px;
     line-height: 120%;
     text-align: center;
   }
   .subtitle__bold {
-    font-weight: 700;
-  }
-  .cta__text {
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.96px;
-    text-transform: uppercase;
-    text-align: center;
-  }
-  .card__title {
-    font-size: 1.5rem;
-    color: #000000;
+    font-weight: 600;
   }
   .card__description {
-    font-size: 0.9rem;
-    color: #000000;
-    text-align: center;
-  }
-  .footer {
-    color: #B3B3B3;
+    font-size: 1.1rem;
   }
   .footer__title {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 1.8px;
     text-transform: uppercase;
   }
   .footer__subtitle {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: -0.27px;
   }
   .footer__copyright__text {
-    color: #B3B3B3;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: -0.3px;
     text-align: center;
   }
-  .go-to-tickets__text {
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: -0.36px;
-    text-transform: uppercase;
-  }
-  .privacidad,
-  .proteccion {
-    color: #000000;
-  }
   .privacidad__title,
   .proteccion__title {
-    padding: 3rem 0 2rem;
-    text-align: left;
     font-size: 2.25rem;
-    font-weight: 600;
-    letter-spacing: -0.4px;
   }
   .privacidad__subtitle,
   .proteccion__subtitle {
     font-size: 1.25rem;
-    font-weight: 500;
   }
   .privacidad__description,
   .proteccion__description {
-    padding-bottom: 2rem;
     font-size: 1.25rem;
     text-align: justify;
   }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .title__tickets {
-    font-size: 15rem;
-    line-height: 120%;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .title__tickets {
-    font-size: 18rem;
-    line-height: 120%;
-  }
-}
 .go-to-tickets {
   position: fixed;
-  width: 12rem;
-  height: 2.9rem;
+  width: 10rem;
+  height: 2.5rem;
+  padding: 0.25rem 1rem;
   bottom: 1.5rem;
   right: 1.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 0.3rem;
   background-color: #E7270E;
   border: none;
   border-radius: 3rem;
-  z-index: 10;
+  z-index: 999;
+  display: none;
+  /* Arranca oculto */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
 }
 .go-to-tickets__text {
   padding: 0.25rem;
 }
 
-@media only screen and (max-width: 575px) {
+.go-to-tickets.show {
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.3rem;
+}
+
+@media only screen and (max-width: 992px) {
   .go-to-tickets {
-    position: fixed;
-    width: 12rem;
-    height: 2.9rem;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0%);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 0.3rem;
-    background-color: #E7270E;
-    border: none;
-    border-radius: 3rem;
-    z-index: 10;
-  }
-  .go-to-tickets__text {
-    padding: 0.25rem;
   }
 }
 .back-to-home {
@@ -516,8 +503,7 @@ body .contacto__container {
   border-radius: 6.25rem;
 }
 .cta__text {
-  width: 14rem;
-  padding: 0.75rem 1.9rem;
+  padding: 0.75rem 1.5rem;
   color: #ffffff;
   text-decoration: none;
 }
@@ -525,25 +511,6 @@ body .contacto__container {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 576px) {
-  .cta {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #1A1A1A;
-    border: 0.2rem #ffffff solid;
-    border-radius: 6.25rem;
-  }
-  .cta__text {
-    width: 14rem;
-    padding: 0.75rem 1.9rem;
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .cta__text__:visited {
-    text-decoration: none;
-  }
-}
 .ticket {
   display: flex;
   flex-direction: column;
@@ -563,8 +530,7 @@ body .contacto__container {
 }
 
 .ticket__img__container {
-  max-width: 100%;
-  background-color: #000000;
+  width: 100%;
   z-index: 10;
   opacity: 1;
   transition: all 1s ease;
@@ -583,6 +549,7 @@ body .contacto__container {
   top: 0;
   z-index: 0;
   opacity: 0;
+  border-radius: 0.65rem;
   transition: all 1s ease;
 }
 
@@ -610,8 +577,7 @@ body .contacto__container {
     z-index: 10;
   }
   .ticket__img__container {
-    max-width: 100%;
-    background-color: #000000;
+    width: 100%;
     z-index: 10;
     opacity: 1;
     transition: all 1s ease;
@@ -622,17 +588,27 @@ body .contacto__container {
   }
   .ticket__filter {
     position: absolute;
-    width: 100%;
     height: 100%;
     background-color: #000000;
     top: 0;
     z-index: 0;
     opacity: 0;
+    border-radius: 0.8rem;
     transition: all 1s ease;
   }
   .ticket__button {
     z-index: 0;
     position: absolute;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ticket__filter {
+    border-radius: 1.1rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ticket__filter {
+    border-radius: 0.8rem;
   }
 }
 .p-optin#optin-form-xLgKwEk0 div.p-body {
@@ -644,11 +620,94 @@ body .contacto__container {
     min-width: 486px;
   }
 }
+/* Fondo fijo */
+.background-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* para que no bloquee clicks */
+  z-index: 0;
+  /* atrás de todo */
+  overflow: hidden;
+}
+
+/* Imagen de fondo */
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animación de rotación */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Assets flotantes */
+.asset {
+  position: absolute;
+  /* se mantiene fijo al scrollear */
+  height: auto;
+  /* Aplicamos la animación a las assets */
+  /* 20s para dar rotación lenta, ajustable */
+  transform-origin: center center;
+  /* gira alrededor de su centro */
+}
+
+/* Posicionamiento de cada asset */
+.asset-azul {
+  width: 28rem;
+  top: -4%;
+  left: -7rem;
+  animation: rotate 25s linear infinite;
+}
+
+.asset-red {
+  width: 30rem;
+  bottom: -12%;
+  right: -10rem;
+  animation: rotate 50s linear infinite;
+}
+
+.asset-verde {
+  display: none;
+  top: 15%;
+  right: -7rem;
+  animation: rotate 30s linear infinite reverse;
+  /* puede ser inversa */
+}
+
+.asset-orange {
+  display: none;
+  bottom: 0%;
+  left: -8rem;
+  animation: rotate 28s linear infinite reverse;
+}
+
+/* Secciones con contenido por encima del background */
+#nosotros,
+#puestas,
+#contacto {
+  position: relative;
+  z-index: 1;
+}
+
+/* Posicionamiento de cada asset */
 .anouncement__container {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 2rem;
+  height: 2.5rem;
   background-color: #E7270E;
   animation: scrolling 30s linear infinite;
 }
@@ -662,7 +721,7 @@ body .contacto__container {
 }
 .anouncement__item {
   flex-shrink: 0;
-  padding-left: 1vw;
+  padding-left: 5vw;
 }
 
 .menu {
@@ -688,22 +747,40 @@ body .contacto__container {
   padding: 0.7rem;
 }
 .menu__list__item__icon {
-  padding-right: 0.4rem;
-  padding-left: 0.4rem;
+  padding-right: 0.2rem;
+  padding-left: 0.2rem;
 }
 .menu__list .nav-link:hover {
   color: #ffffff;
-  text-decoration: underline;
 }
 .menu__list__link {
   color: #ffffff;
 }
-.menu__list__link:hover {
-  text-decoration: underline;
-  color: #24bf5e;
+.menu__list__link__normal, .menu__list__link__alternative {
+  transition: opacity 1s ease;
 }
-.menu__list__link__icon {
-  color: #24bf5e;
+.menu__list__link__normal {
+  opacity: 1;
+}
+.menu__list__link {
+  /* Inicialmente ocultamos las letras alternativas */
+}
+.menu__list__link__alternative {
+  display: none;
+  opacity: 0;
+}
+.menu__list__link {
+  /* Al hacer hover en el link, mostramos la alternativa y ocultamos la normal */
+}
+.menu__list__link:hover .menu__list__link__normal {
+  display: none;
+  opacity: 0;
+}
+.menu__list__link:hover .menu__list__link__alternative {
+  display: inline;
+  /* necesario para que sea visible */
+  opacity: 1;
+  line-height: 0;
 }
 .menu__list__link__icon i {
   color: #E7270E;
@@ -714,32 +791,54 @@ body .contacto__container {
   column-gap: 1.5rem;
 }
 
-.hero__bgs {
-  height: 100vh;
+.hero {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  object-fit: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tickets__container {
-  background-image: url("/imgs/video hero/video-bg-bn-gif.gif");
-  background-repeat: no-repeat;
-  background-position-x: left;
-  background-position-y: center;
-  background-size: cover;
-}
-.tickets__title {
+/* videos */
+.hero__bgs {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   z-index: 0;
 }
+
+/* por si necesito un filter después */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+}
+
+/* Tickets */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 4rem 2rem;
+}
+
 .tickets__section {
   width: 100%;
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 2.75rem;
-  z-index: 10;
 }
 .tickets__slider {
-  width: 95%;
+  width: 100%;
+  padding: 0 5%;
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -747,9 +846,6 @@ body .contacto__container {
 }
 
 @media only screen and (min-width: 576px) and (max-width: 991px) {
-  .tickets__title {
-    z-index: 0;
-  }
   .tickets__section {
     width: 100%;
     display: flex;
@@ -758,7 +854,8 @@ body .contacto__container {
     row-gap: 2.75rem;
   }
   .tickets__slider {
-    width: 80%;
+    width: 100%;
+    padding: 0 5%;
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -766,9 +863,6 @@ body .contacto__container {
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .tickets__title {
-    z-index: 0;
-  }
   .tickets__section {
     width: 100%;
     display: flex;
@@ -777,7 +871,8 @@ body .contacto__container {
     row-gap: 2.75rem;
   }
   .tickets__slider {
-    width: 65%;
+    width: 100%;
+    padding: 0 10%;
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -785,9 +880,6 @@ body .contacto__container {
   }
 }
 @media only screen and (min-width: 1200px) {
-  .tickets__title {
-    z-index: 0;
-  }
   .tickets__section {
     width: 100%;
     display: flex;
@@ -796,21 +888,35 @@ body .contacto__container {
     row-gap: 2.75rem;
   }
   .tickets__slider {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
     height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 1vw;
+    width: 100%;
+    padding: 0 10%;
+    /* tickets */
+  }
+  .tickets__slider .ticket {
+    width: 100%;
+  }
+  .tickets__slider {
+    /* si el último ticket queda impar */
+  }
+  .tickets__slider .ticket:last-child:nth-child(odd) {
+    grid-column: 1/-1;
+    justify-self: center;
+    max-width: 50%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .tickets__slider {
+    width: 100%;
+    padding: 0 10%;
   }
 }
 .nosotros__container {
   width: 100%;
   flex-shrink: 0;
-  background-image: url("/imgs/bgs/m-bg-nosotros.png");
-  background-repeat: no-repeat;
-  background-position-x: left;
-  background-position-y: center;
-  background-size: cover;
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
@@ -904,7 +1010,6 @@ body .contacto__container {
   .nosotros__container {
     width: 100%;
     flex-shrink: 0;
-    background-color: #523CF2;
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -1070,11 +1175,9 @@ body .contacto__container {
   }
 }
 .puestas__container {
-  background-image: url("/imgs/bgs/m-bg-nosotros.png");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: center;
-  background-size: cover;
+  background-color: #000000;
+  position: relative;
+  z-index: 2;
 }
 .puestas__section {
   width: 100%;
@@ -1114,13 +1217,6 @@ body .contacto__container {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .puestas__container {
-    background-image: url("/imgs/bgs/m-bg-nosotros.png");
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: top;
-    background-size: cover;
-  }
   .puestas__section {
     width: 100%;
     display: flex;
@@ -1179,13 +1275,6 @@ body .contacto__container {
   }
 }
 @media only screen and (min-width: 992px) {
-  .puestas__container {
-    background-image: url("/imgs/bgs/m-bg-nosotros.png");
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: top;
-    background-size: cover;
-  }
   .puestas__section {
     width: 100%;
     display: flex;
@@ -1270,6 +1359,8 @@ body .contacto__container {
   }
 }
 .contacto__container {
+  width: 100%;
+  flex-shrink: 0;
   height: auto;
   padding: 0rem;
   display: flex;
@@ -1311,9 +1402,6 @@ body .contacto__container {
     flex-direction: column;
     align-items: center;
     row-gap: 2rem;
-  }
-  .contacto__section .contacto__escribinos__email {
-    color: #24bf5e;
   }
   .contacto__section .contacto__redes {
     display: flex;
@@ -1389,20 +1477,13 @@ main {
 @media only screen and (min-width: 992px) {
   .menu {
     background: #0E0E0E;
-    padding: 0.25% 15% 0;
+    padding: 0.25% 10% 0;
   }
   .menu .navbar-collapse {
     height: auto;
   }
   .menu__list {
     padding-top: 0;
-  }
-  .menu__list__item :hover {
-    text-decoration: underline;
-  }
-  .menu__list .nav-link:hover {
-    color: #ffffff;
-    text-decoration: underline;
   }
   .menu__list .nav-link:visited {
     text-decoration: none;

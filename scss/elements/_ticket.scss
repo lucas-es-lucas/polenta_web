@@ -19,7 +19,6 @@
           }
 
           .ticket__img__container {
-               // opacity: .5;
                z-index: 7;
           }
 
@@ -30,8 +29,7 @@
 }
 
 .ticket__img__container {
-     max-width: 100%;
-     background-color: $color-bg;
+     width: 100%;
      z-index: 10;
 
      opacity: 1;
@@ -42,6 +40,9 @@
      width: 100%;
 
      object-fit: cover;
+
+     // PARA LAS IMÁGENES CON LAS ESQUINAS CUADRADAS 
+     // border-radius: 1rem;
 }
 
 .ticket__filter {
@@ -52,6 +53,7 @@
      top: 0;
      z-index: 0;
      opacity: 0;
+     border-radius: .65rem;
 
      transition: all 1s ease;
 }
@@ -60,14 +62,6 @@
      z-index: 0;
 
      position: absolute;
-
-     // &:hover {
-     //      .ticket__img__container {
-     //           opacity: .25;
-     //      }
-
-     //      z-index: 10;
-     // }
 }
 
 @media only screen and (min-width: 576px) {
@@ -84,12 +78,11 @@
                     z-index: 0;
                     opacity: .7;
                }
-     
+
                .ticket__img__container {
-                    // opacity: .5;
                     z-index: 7;
                }
-     
+
                .ticket__button {
                     z-index: 10;
                }
@@ -97,8 +90,7 @@
      }
 
      .ticket__img__container {
-          max-width: 100%;
-          background-color: $color-bg;
+          width: 100%;
           z-index: 10;
 
           opacity: 1;
@@ -113,12 +105,12 @@
 
      .ticket__filter {
           position: absolute;
-          width: 100%;
           height: 100%;
           background-color: $color-bg;
           top: 0;
           z-index: 0;
           opacity: 0;
+          border-radius: .8rem;
 
           transition: all 1s ease;
      }
@@ -127,13 +119,22 @@
           z-index: 0;
 
           position: absolute;
+     }
+}
 
-          // &:hover {
-          //      .ticket__img__container {
-          //           opacity: .25;
-          //      }
+@media only screen and (min-width: 768px) {
+     // PARA LAS IMÁGENES CON LAS ESQUINAS CUADRADAS 
+     // .ticket__img {
+     //      border-radius: 1.2rem;
+     // }
 
-          //      z-index: 10;
-          // }
+     .ticket__filter {
+          border-radius: 1.1rem;
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     .ticket__filter {
+          border-radius: .8rem;
      }
 }
