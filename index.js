@@ -55,7 +55,16 @@ setTimeout(function () {
      };
 
      const getHeroViewportVariant = () => {
-          if (window.innerWidth < 768) return "mobile";
+          const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+          if (window.innerWidth < 768) {
+               return isLandscape ? "mobileLandscape" : "mobilePortrait";
+          }
+
+          if (window.innerWidth < 1200) {
+               return isLandscape ? "tabletLandscape" : "mobilePortrait";
+          }
+
           return "desktop";
      };
 
@@ -66,13 +75,21 @@ setTimeout(function () {
      };
 
      const heroSources = {
-          mobile: {
-               webm: "/imgs/assets-hero-section/m-asterisk-blue-logo-party.webm",
-               mp4: "/imgs/assets-hero-section/m-asterisk-blue-logo-party.mp4",
+          mobilePortrait: {
+               webm: backgroundVideo.dataset.mobilePortraitWebm,
+               mp4: backgroundVideo.dataset.mobilePortraitMp4,
+          },
+          mobileLandscape: {
+               webm: backgroundVideo.dataset.mobileLandscapeWebm,
+               mp4: backgroundVideo.dataset.mobileLandscapeMp4,
+          },
+          tabletLandscape: {
+               webm: backgroundVideo.dataset.tabletLandscapeWebm,
+               mp4: backgroundVideo.dataset.tabletLandscapeMp4,
           },
           desktop: {
-               webm: backgroundVideo.dataset.webm,
-               mp4: backgroundVideo.dataset.mp4,
+               webm: backgroundVideo.dataset.desktopWebm,
+               mp4: backgroundVideo.dataset.desktopMp4,
           },
      };
 

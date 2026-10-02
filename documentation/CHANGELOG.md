@@ -25,6 +25,19 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-02
+
+#### Changed
+
+-   Hero selecciona y carga una sola variante de video según ancho y
+    orientación del viewport: mobile vertical, mobile horizontal, tablet
+    horizontal o desktop. La selección se actualiza al cruzar un breakpoint o
+    cambiar de orientación, sin precargar las variantes inactivas.
+-   Entre `768px` y `1199px` en orientación vertical se reutiliza la
+    composición vertical mobile porque no hay un asset vertical específico de
+    tablet en `imgs/assets-hero-section`.
+-   Áreas afectadas: `index.html`, `index.js` y `03-section-hero.md`.
+
 ### 2026-09-30
 
 #### Added

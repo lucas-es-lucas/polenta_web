@@ -7,10 +7,22 @@ Este documento describe las características propias de la section Hero.
 ## 2. Contenido
 
 La section Hero utiliza un video compuesto propio. Incluye el logo animado,
-el asterisco animado y el fondo en un único recurso.
+el asterisco animado y el fondo en un único recurso. JavaScript asigna una
+única fuente compatible (`WebM` o `MP4`) según el viewport, por lo que las
+variantes inactivas no se cargan en el render inicial.
 
--   Bajo `768px`: `imgs/assets-hero-section/m-asterisk-blue-logo-party`.
--   Desde `768px`: `imgs/assets-hero-section/asterisk-blue-logo-party`.
+-   Bajo `768px` en orientación vertical:
+    `imgs/assets-hero-section/m-asterisk-blue-logo`.
+-   Bajo `768px` en orientación horizontal:
+    `imgs/assets-hero-section/m-640-asterisk-blue-logo`.
+-   Desde `768px` hasta `1199px` en orientación horizontal:
+    `imgs/assets-hero-section/tablet-asterisk-blue-logo`.
+-   Desde `1200px`: `imgs/assets-hero-section/asterisk-blue-logo`.
+
+No hay un recurso específico de tablet vertical en
+`imgs/assets-hero-section`; por ello, desde `768px` hasta `1199px` en
+orientación vertical Hero reutiliza `m-asterisk-blue-logo`, la composición
+vertical disponible.
 
 Cada variante ofrece WebM y MP4 como alternativas de compatibilidad.
 
