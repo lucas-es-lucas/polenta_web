@@ -1,42 +1,150 @@
-# Polenta Web — Resumen del proyecto
+# Polenta Web --- Resumen del proyecto
 
-## Identificación
+## 1. Identificación
 
-Sitio web de Fiesta Polenta. El proyecto está construido con HTML, JavaScript y estilos SCSS compilados a CSS.
+Proyecto web de Fiesta Polenta.
 
-## Principios técnicos
+El proyecto se trabaja en VS Code y está construido utilizando
+únicamente HTML, CSS y JavaScript.
 
-- Enfoque mobile first y responsive.
-- Los estilos fuente están en `scss/` y se compilan en `css/estilos.css` con `npm run build-css`.
-- No se incorporan dependencias o comportamientos nuevos sin verificarlos primero en el código.
+## 2. Principios técnicos
 
-## Estructura actual del sitio
+-   Mobile first.
+-   Responsive.
+-   HTML, CSS y JavaScript sin frameworks indicados en la documentación
+    disponible.
 
-La página principal contiene:
+## 3. Estructura general del sitio
 
-- header, announcement bar y navbar;
-- un bloque inicial `.hero`;
-- las sections Nosotros, Puestas y Contacto;
-- footer;
-- un acceso fijo «COMPRAR TICKETS».
+El sitio consta de:
 
-En el estado actual, Tickets forma parte del bloque `.hero`.
+-   Header.
+-   Announcement bar dentro del header.
+-   Navbar dentro del header.
+-   5 sections.
+-   Footer.
+-   Loader inicial.
 
-## Bloque Hero + Tickets actual
+Las sections son:
 
-El bloque `.hero` contiene el video de fondo, una capa oscura y el contenido de Tickets. El video usa `imgs/video/bg-tickets.webm` con `imgs/video/bg-tickets.mp4` como alternativa.
+1.  Hero
+2.  Tickets
+3.  Nosotros
+4.  Puestas
+5.  Contacto
 
-La información funcional y visual de este bloque está en `02-bloque-hero-tickets.md`. La lógica de Tickets está en `04-section-tickets.md`.
+## 4. Loader inicial
 
-## Documentación del proyecto
+El loader se visualiza antes que el contenido del sitio.
 
-- `01-proyecto-resumen.md`: contexto general y estructura actual.
-- `02-bloque-hero-tickets.md`: comportamiento del bloque inicial actual.
-- `03-section-hero.md`: especificación del contenedor Hero actual.
-- `04-section-tickets.md`: datos y renderizado de Tickets.
-- `CHANGELOG.md`: cambios relevantes.
-- `AGENTS.md`: reglas de trabajo para agentes de desarrollo.
+Mientras está visible:
 
-## Información no especificada
+-   el contenido del sitio permanece oculto;
+-   no se permite el scroll;
+-   no se puede interactuar con el contenido subyacente.
 
-La documentación no reemplaza al código. Antes de modificar detalles no documentados —por ejemplo, layout completo de otras sections, dimensiones de assets o integraciones externas— hay que verificarlos en la implementación actual o pedir una definición.
+El loader permanece visible hasta que cargan sus recursos críticos: el
+asset del loader y la variante de video compuesta de Hero que corresponde al
+viewport actual. Luego desaparece mediante una transición.
+
+La carga, obtención o renderizado de Tickets no debe retrasar la salida del
+loader. Esta regla busca evitar que una demora en Tickets bloquee la entrada
+al sitio.
+
+El asset visual definido para esta versión es:
+
+-   `imgs/loader/Loader-Logo.gif`
+
+Al finalizar la transición del loader comienzan las animaciones de Hero.
+
+## 5. Hero y Tickets
+
+Hero y Tickets son sections independientes. Hero utiliza un video compuesto
+con fondo, asterisco animado y logo animado; Tickets utiliza su propio video
+de fondo sin asterisco ni logo. La carga de Tickets no forma parte de los
+recursos críticos del loader.
+
+## 6. Orden de visualización
+
+Al cargar el sitio:
+
+1.  Se muestra el loader.
+2.  Se muestra la section Hero.
+3.  A continuación se visualiza la section Nosotros.
+4.  Luego se visualiza la section Tickets, con su propio video de fondo.
+5.  A continuación se visualizan las sections Puestas y Contacto.
+6.  Finalmente se visualiza el footer.
+
+## 7. Tickets
+
+La section Tickets contiene los tickets, cada uno con:
+
+-   una imagen;
+-   un link de compra.
+
+La cantidad de tickets varía durante la semana.
+
+Las fechas futuras se agregan manualmente y las fechas obsoletas se
+quitan mediante JavaScript.
+
+El archivo `tickets.js` contiene la información utilizada para
+renderizar los tickets.
+
+El comportamiento específico de Tickets está documentado en:
+
+`04-section-tickets.md`
+
+## 8. Documentación del proyecto
+
+La documentación se organiza separando:
+
+-   contexto general del proyecto;
+-   comportamiento compartido entre Hero y Tickets;
+-   comportamiento específico de Hero;
+-   comportamiento específico de Tickets;
+-   historial de cambios;
+-   instrucciones de trabajo para agentes de desarrollo.
+
+### Documentos
+
+-   `01-proyecto-resumen.md` --- contexto general.
+-   `02-bloque-hero-tickets.md` --- comportamiento compartido de Hero +
+    Tickets.
+-   `03-section-hero.md` --- especificaciones propias de Hero.
+-   `04-section-tickets.md` --- especificaciones propias de Tickets.
+-   `CHANGELOG.md` --- cambios relevantes del proyecto.
+-   `AGENTS.md` --- reglas de trabajo para agentes de desarrollo.
+
+## 9. Estrategia de ramas
+
+El trabajo operativo con Git se rige por las siguientes ramas:
+
+-   `branch_deploy` representa la versión de producción publicada en
+    `https://fiestapolenta.com/`.
+-   Las ramas de funcionalidades se utilizan para desarrollar y validar
+    cambios nuevos. Una vez aprobados por Polenta, se integran en
+    `branch_deploy`.
+-   `main` es la rama estable de referencia. Se actualiza únicamente al
+    integrar `branch_deploy` después de un período de estabilidad posterior a
+    una publicación oficial.
+-   Las ramas que contienen versiones anteriores del sitio se conservan como
+    referencia histórica y no integran el flujo habitual de despliegue.
+
+Las reglas operativas, los merges permitidos y el formato de los commits están
+definidos en `AGENTS.md`.
+
+## 10. Información no especificada
+
+La documentación disponible no define, entre otros aspectos:
+
+-   estructura completa de carpetas y archivos;
+-   nombres de todos los archivos CSS/HTML/JS;
+-   dimensiones o formatos de assets;
+-   comportamiento detallado del header y navbar;
+-   comportamiento de las sections Nosotros, Puestas y Contacto;
+-   reglas exactas para considerar una fecha como obsoleta;
+-   proveedor o formato de los links de compra.
+
+No se deben inferir estas reglas a partir de este documento. Cuando sea
+necesario modificar alguno de estos aspectos, primero debe verificarse
+en el código o definirse explícitamente.
