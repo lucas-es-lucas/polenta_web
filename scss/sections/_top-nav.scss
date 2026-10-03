@@ -41,6 +41,13 @@
                color: $color-text;
           }
 
+          .nav-link:focus,
+          .nav-link:active {
+               color: $color-text;
+               outline: none;
+               box-shadow: none;
+          }
+
           &__link {
                color: $color-text;
 
@@ -84,6 +91,12 @@
           display: flex;
           flex-direction: row;
           column-gap: 1.5rem;
+     }
+
+     .navbar-brand:focus,
+     .navbar-brand:active {
+          outline: none;
+          box-shadow: none;
      }
 
      // .menu__list__link__normal,

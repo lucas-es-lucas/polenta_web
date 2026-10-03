@@ -1,117 +1,245 @@
+const LOADER_MINIMUM_DURATION = 2000;
 
-setTimeout(function () {
-     var headID = document.getElementsByTagName("head")[0];
-     var newScript = document.createElement('script');
-     newScript.type = 'text/javascript';
-     // newScript.src = 'http://www.somedomain.com/somescript.js';
-     newScript.src = "https://optin.myperfit.com/res/js/fiestapolenta/uTNllBzR.js"
-     headID.appendChild(newScript);
-}, 15000); // 15 segundos de delay para mostrar el popup
+window.setTimeout(() => {
+     const perfitScript = document.createElement("script");
+     perfitScript.type = "text/javascript";
+     perfitScript.src = "https://optin.myperfit.com/res/js/fiestapolenta/uTNllBzR.js";
+     document.head.appendChild(perfitScript);
+}, 15000);
 
-// console.log('pirulo');
-// setTimeout(executeMainFunction, 5000);
+function getBackgroundVideoVariant() {
+     const width = window.innerWidth;
+     const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
-// document.addEventListener("DOMContentLoaded", function () {
-//      const goButton = document.querySelector(".go-to-tickets");
+     if (width < 768 || (width < 1200 && isPortrait)) {
+          return {
+               id: "vertical",
+               webm: "/imgs/video/bg-tickets-320-vertical.webm",
+               mp4: "/imgs/video/bg-tickets-320-vertical.mp4",
+          };
+     }
 
-//      // Detectamos si estamos en index.html
-//      const isIndex = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
+     if (width < 1200) {
+          return {
+               id: "tablet",
+               webm: "/imgs/video/bg-tickets-768.webm",
+               mp4: "/imgs/video/bg-tickets-768.mp4",
+          };
+     }
 
-//      if (isIndex) {
-//           const heroSection = document.querySelector(".hero");
+     return {
+          id: "desktop",
+          webm: "/imgs/video/bg-tickets.webm",
+          mp4: "/imgs/video/bg-tickets.mp4",
+     };
+}
 
-//           if (heroSection) {
-//                // Solo en index.html aplicamos IntersectionObserver
-//                const observer = new IntersectionObserver(
-//                     (entries) => {
-//                          entries.forEach(entry => {
-//                               if (entry.isIntersecting) {
-//                                    goButton.classList.remove("show");
-//                               } else {
-//                                    goButton.classList.add("show");
-//                               }
-//                          });
-//                     },
-//                     { root: null, threshold: 0 }
-//                );
+function setBackgroundVideo(video) {
+     const variant = getBackgroundVideoVariant();
 
-//                observer.observe(heroSection);
-//           }
-//      } else {
-//           // Otras páginas: el botón puede mostrarse por defecto o seguir oculto
-//           goButton.classList.add("show");
-//      }
-// });
+     if (video.dataset.variant === variant.id) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-     const goButton = document.querySelector(".go-to-tickets");
-     const heroSection = document.querySelector(".hero");
+     video.dataset.variant = variant.id;
+     video.innerHTML = `
+          <source type="video/webm" src="${variant.webm}">
+          <source type="video/mp4" src="${variant.mp4}">
+     `;
+     video.load();
+}
 
-     // Usamos IntersectionObserver para detectar si .hero está visible
-     const observer = new IntersectionObserver(
-          (entries) => {
-               entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                         // Hero está visible → ocultamos el botón
-                         goButton.classList.remove("show");
+function waitForImage(image) {
+     if (image.complete) return Promise.resolve();
+
+     return new Promise((resolve) => {
+          image.addEventListener("load", resolve, { once: true });
+          image.addEventListener("error", resolve, { once: true });
+     });
+}
+
+function waitForVideo(video) {
+     if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          return Promise.resolve();
+     }
+
+     return new Promise((resolve) => {
+          video.addEventListener("loadeddata", resolve, { once: true });
+          video.addEventListener("error", resolve, { once: true });
+     });
+}
+
+function wait(duration) {
+     return new Promise((resolve) => window.setTimeout(resolve, duration));
+}
+
+function setHeaderHeight() {
+     const header = document.querySelector(".header");
+     if (!header) return;
+
+     document.documentElement.style.setProperty(
+          "--site-header-height",
+          `${header.getBoundingClientRect().height}px`,
+     );
+}
+
+function startHeroAnimations() {
+     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+     document.querySelectorAll(".hero__animations video").forEach((video) => {
+          video.play().catch(() => {});
+     });
+}
+
+function scrollToTickets(behavior = "smooth") {
+     const heroTicketsBlock = document.getElementById("heroTickets");
+     const ticketsSection = document.getElementById("tickets");
+
+     if (!heroTicketsBlock || !ticketsSection) return;
+
+     window.scrollTo({ top: 0, behavior });
+     heroTicketsBlock.scrollTo({
+          top: ticketsSection.offsetTop,
+          behavior,
+     });
+}
+
+function scrollToHero(behavior = "smooth") {
+     const heroTicketsBlock = document.getElementById("heroTickets");
+     if (!heroTicketsBlock) return;
+
+     window.scrollTo({ top: 0, behavior });
+     heroTicketsBlock.scrollTo({ top: 0, behavior });
+}
+
+function setupTicketsCta(goButton, heroTicketsBlock) {
+     if (!goButton || !heroTicketsBlock) return;
+
+     const mobileQuery = window.matchMedia("(max-width: 992px)");
+     let isBlockVisible = true;
+     const updateVisibility = ([entry]) => {
+          isBlockVisible = entry.isIntersecting;
+          goButton.classList.toggle(
+               "show",
+               !mobileQuery.matches && !isBlockVisible,
+          );
+     };
+
+     const observer = new IntersectionObserver(updateVisibility, {
+          root: null,
+          threshold: 0,
+     });
+
+     observer.observe(heroTicketsBlock);
+     mobileQuery.addEventListener("change", () => {
+          goButton.classList.toggle("show", !mobileQuery.matches && !isBlockVisible);
+     });
+}
+
+function setupScrollHandoff(heroTicketsBlock) {
+     if (!heroTicketsBlock) return;
+
+     heroTicketsBlock.addEventListener(
+          "wheel",
+          (event) => {
+               if (event.ctrlKey || event.deltaY === 0) return;
+
+               const maxScrollTop =
+                    heroTicketsBlock.scrollHeight - heroTicketsBlock.clientHeight;
+               const nextScrollTop = heroTicketsBlock.scrollTop + event.deltaY;
+
+               if (event.deltaY > 0 && nextScrollTop > maxScrollTop) {
+                    event.preventDefault();
+                    heroTicketsBlock.scrollTop = maxScrollTop;
+                    window.scrollBy({ top: nextScrollTop - maxScrollTop });
+               }
+
+               if (event.deltaY < 0 && nextScrollTop < 0) {
+                    event.preventDefault();
+                    heroTicketsBlock.scrollTop = 0;
+                    window.scrollBy({ top: nextScrollTop });
+               }
+          },
+          { passive: false },
+     );
+}
+
+function setupInternalNavigation() {
+     document
+          .querySelectorAll('a[href="#hero"], a[href="#tickets"]')
+          .forEach((link) => {
+               link.addEventListener("click", (event) => {
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+                    event.preventDefault();
+                    const target = link.getAttribute("href");
+                    window.history.replaceState(null, "", target);
+
+                    if (target === "#tickets") {
+                         scrollToTickets();
                     } else {
-                         // Hero no está visible → mostramos el botón
-                         goButton.classList.add("show");
+                         scrollToHero();
                     }
                });
-          },
-          {
-               root: null, // viewport
-               threshold: 0, // cualquier visibilidad
-          }
-     );
+          });
+}
 
-     observer.observe(heroSection);
+document.addEventListener("DOMContentLoaded", async () => {
+     const loaderAsset = document.getElementById("loaderAsset");
+     const backgroundVideo = document.getElementById("hero_bgs");
+     const goButton = document.querySelector(".go-to-tickets");
+     const heroTicketsBlock = document.getElementById("heroTickets");
+     const skipLoader = ["#hero", "#tickets"].includes(window.location.hash);
+
+     setHeaderHeight();
+     setBackgroundVideo(backgroundVideo);
+
+     if (skipLoader) {
+          document.body.classList.remove("is-loading");
+          backgroundVideo.play().catch(() => {});
+          startHeroAnimations();
+          window.requestAnimationFrame(() => {
+               if (window.location.hash === "#tickets") {
+                    scrollToTickets("auto");
+               } else {
+                    scrollToHero("auto");
+               }
+          });
+     } else {
+          const loaderStartedAt = performance.now();
+          await Promise.all([waitForImage(loaderAsset), waitForVideo(backgroundVideo)]);
+          await wait(Math.max(0, LOADER_MINIMUM_DURATION - (performance.now() - loaderStartedAt)));
+
+          document.body.classList.remove("is-loading");
+          backgroundVideo.play().catch(() => {});
+          window.setTimeout(startHeroAnimations, 350);
+     }
+
+     setupTicketsCta(goButton, heroTicketsBlock);
+     setupScrollHandoff(heroTicketsBlock);
+     setupInternalNavigation();
 });
 
-// document.addEventListener("DOMContentLoaded", () => {
-//      const tickets = document.querySelectorAll(".ticket");
+window.addEventListener("hashchange", () => {
+     if (!["#hero", "#tickets"].includes(window.location.hash)) return;
 
-//      // Fecha actual
-//      const today = new Date();
+     document.documentElement.classList.add("skip-loader");
+     document.body.classList.remove("is-loading");
+     if (window.location.hash === "#tickets") {
+          scrollToTickets();
+     } else {
+          scrollToHero();
+     }
+});
 
-//      // normalizar las fechas
-//      today.setHours(0, 0, 0, 0);
+window.addEventListener("resize", () => {
+     setHeaderHeight();
 
-//      tickets.forEach(ticket => {
-//           const img = ticket.querySelector(".ticket__img");
+     const backgroundVideo = document.getElementById("hero_bgs");
+     if (!backgroundVideo) return;
 
-//           if (!img) return;
-
-//           // Obtiene el src
-//           const src = img.getAttribute("src");
-
-//           // Busca una fecha tipo 20260522
-//           const match = src.match(/(\d{8})/);
-
-//           if (!match) return;
-
-//           const dateString = match[1];
-
-//           // Separar año, mes y día
-//           const year = parseInt(dateString.substring(0, 4));
-//           const month = parseInt(dateString.substring(4, 6)) - 1;
-//           const day = parseInt(dateString.substring(6, 8));
-
-//           const ticketDate = new Date(year, month, day);
-
-//           // normalizar las fechas
-//           ticketDate.setHours(0, 0, 0, 0);
-
-//           const diffTime = today - ticketDate;
-
-//           // Convertir a días
-//           const diffDays = diffTime / (1000 * 60 * 60 * 24);
-
-//           // Ocultar si pasaron más de 1 día //2 días
-//           if (diffDays > 1) {
-//                // ticket.style.display = "none";
-//                ticket.remove();
-//           }
-//      });
-// });
+     const currentTime = backgroundVideo.currentTime;
+     setBackgroundVideo(backgroundVideo);
+     if (backgroundVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          backgroundVideo.currentTime = currentTime;
+          backgroundVideo.play().catch(() => {});
+     }
+});

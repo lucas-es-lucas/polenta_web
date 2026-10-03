@@ -28,6 +28,10 @@
      }
 }
 
+:root {
+     --site-header-height: #{$height-header};
+}
+
 html {
      scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
      scroll-behavior: smooth;
@@ -41,6 +45,10 @@ body {
      font-family: $font-primary;
 
      overflow-x: hidden;
+
+     &.is-loading {
+          overflow: hidden;
+     }
 
      .container {
           max-width: 100%;

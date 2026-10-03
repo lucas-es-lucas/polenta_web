@@ -6,6 +6,11 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<script>
+			if (["#hero", "#tickets"].includes(window.location.hash)) {
+				document.documentElement.classList.add("skip-loader");
+			}
+		</script>
 		<meta
 			name="description"
 			content="La Polenta es la fiesta que estás buscando. Vení como quieras, con quien quieras, a pasar una noche única"
@@ -96,7 +101,14 @@
 		<!-- End Meta Pixel Code -->
 		<title>Fiesta Polenta</title>
 	</head>
-	<body>
+	<body class="is-loading">
+		<div class="site-loader" role="status" aria-live="polite" aria-label="Cargando sitio">
+			<img
+				id="loaderAsset"
+				src="/imgs/loader/Loader-Logo.gif"
+				alt=""
+			/>
+		</div>
 		<!-- Optin - Inicio -->
 		<div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
 		<link
@@ -568,7 +580,7 @@
 					<figure>
 						<a
 							class="navbar-brand"
-							href="#"
+							href="#hero"
 							onclick="cerrar()"
 							><img
 								class="menu__logo"
@@ -716,30 +728,35 @@
 			</nav>
 		</header>
 		<main class="container">
-			<section class="hero">
+			<section id="heroTickets" class="hero-tickets-block" aria-label="Inicio y tickets">
+				<div class="hero-tickets-block__background" aria-hidden="true">
 				<video
 					id="hero_bgs"
 					class="hero__bgs hero-video"
-					autoplay
 					muted
 					loop
 					playsinline
 					preload="auto"
+					poster="/imgs/video/bg-tickets-Cover.jpg"
 				>
-					<source
-						type="video/webm"
-						src="/imgs/video/bg-tickets.webm"
-					/>
-					<source
-						type="video/mp4"
-						src="/imgs/video/bg-tickets.mp4"
-					/>
-					<!-- media="(min-width:650px)" -->
-					<!-- media="min-device-width: 576px" -->
 					Tu navegador no soporta la reproducción automática del
 					video.
 				</video>
 				<div class="hero-overlay"></div>
+				</div>
+				<div class="hero-tickets-block__content">
+					<section id="hero" class="hero">
+						<div class="hero__animations" aria-label="Polenta">
+							<video class="hero__asterisk" muted loop playsinline preload="metadata">
+								<source type="video/webm" src="/imgs/assets-mov/asterisk-blue.webm" />
+								<source type="video/quicktime" src="/imgs/assets-mov/asterisk-blue.mov" />
+							</video>
+							<video class="hero__logo" muted loop playsinline preload="metadata">
+								<source type="video/webm" src="/imgs/assets-mov/logo-type-changing.webm" />
+								<source type="video/quicktime" src="/imgs/assets-mov/logo-type-changing.mov" />
+							</video>
+						</div>
+					</section>
 				<div
 					id="tickets"
 					class="hero-content container__propio tickets tickets__container"
@@ -923,6 +940,7 @@
 						</section>
 						<!-- Fin de los Tickets -->
 					</section>
+				</div>
 				</div>
 			</section>
 			<div
@@ -1570,7 +1588,7 @@
 		</footer>
 		<a
 			class="go-to-tickets go-to-tickets__index"
-			href="/index.html#tickets"
+			href="#tickets"
 			onclick="cerrar()"
 			><img
 				class="go-to-tickets__icon"

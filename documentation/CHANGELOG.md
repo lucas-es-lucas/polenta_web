@@ -27,6 +27,36 @@ Tipos sugeridos:
 
 ### 2026-10-03
 
+#### Added
+
+-   Se incorporó el loader inicial con el GIF de Polenta, bloqueo de interacción
+    y scroll, carga de la variante activa del video y una presencia mínima de
+    dos segundos.
+-   Se agregó Hero con los videos animados del asterisco azul y del logo de
+    Polenta, centrados y reproducidos después de la salida del loader.
+
+#### Changed
+
+-   Hero y Tickets ahora comparten un bloque inicial con scroll interno sin
+    barra visible y un único video de fondo responsive. Al terminar Tickets,
+    el scroll continúa hacia Nosotros y las sections posteriores.
+-   Áreas afectadas: `index.html`, `index.js`, `scss/sections/_hero.scss` y
+    documentación de Hero + Tickets.
+-   El CTA «COMPRAR TICKETS» queda fijo en mobile y, en desktop, se muestra
+    solamente al dejar atrás el bloque Hero + Tickets. Los enlaces a Tickets
+    desde la home y las páginas legales omiten el loader y posicionan el scroll
+    interno directamente en la section.
+-   Se amplió el logo animado de Hero y se agregó el traspaso explícito del
+    scroll entre el bloque interno Hero + Tickets y el documento para evitar
+    que el recorrido se interrumpa al terminar Tickets.
+-   El logo de la navbar ahora vuelve a Hero mediante navegación interna; desde
+    las páginas legales llega a Hero sin mostrar el loader.
+-   Se normalizó el color de foco y activación de los enlaces de la navbar, se
+    ajustó la escala responsive del logo animado y se compensó la posición de
+    los assets de Hero en mobile y tablet para conservar el centrado visual.
+
+### 2026-10-03
+
 #### Documentation
 
 -   Se formalizó la estrategia de ramas: desarrollo en ramas de

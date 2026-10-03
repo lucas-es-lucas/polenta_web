@@ -21,14 +21,14 @@ El sitio consta de:
 -   Header.
 -   Announcement bar dentro del header.
 -   Navbar dentro del header.
--   5 sections.
+-   un bloque inicial Hero + Tickets y 4 sections posteriores.
 -   Footer.
 -   Loader inicial.
 
 Las sections son:
 
-1.  Hero
-2.  Tickets
+1.  Hero (dentro del bloque inicial)
+2.  Tickets (dentro del bloque inicial)
 3.  Nosotros
 4.  Puestas
 5.  Contacto
@@ -44,8 +44,9 @@ Mientras está visible:
 -   no se puede interactuar con el contenido subyacente.
 
 El loader permanece visible hasta que cargan sus recursos críticos: el
-asset del loader y la variante de video compuesta de Hero que corresponde al
-viewport actual. Luego desaparece mediante una transición.
+asset del loader y la variante de video de fondo que corresponde al viewport
+actual. Permanece visible al menos dos segundos y luego desaparece mediante
+una transición.
 
 La carga, obtención o renderizado de Tickets no debe retrasar la salida del
 loader. Esta regla busca evitar que una demora en Tickets bloquee la entrada
@@ -59,10 +60,10 @@ Al finalizar la transición del loader comienzan las animaciones de Hero.
 
 ## 5. Hero y Tickets
 
-Hero y Tickets son sections independientes. Hero utiliza un video compuesto
-con fondo, asterisco animado y logo animado; Tickets utiliza su propio video
-de fondo sin asterisco ni logo. La carga de Tickets no forma parte de los
-recursos críticos del loader.
+Hero y Tickets son sections independientes dentro de un mismo bloque
+scrollable, con un único video de fondo compartido. Hero superpone el
+asterisco y el logo animados; Tickets no. La carga y el renderizado de los
+tickets no forma parte de los recursos críticos del loader.
 
 ## 6. Orden de visualización
 
@@ -70,9 +71,10 @@ Al cargar el sitio:
 
 1.  Se muestra el loader.
 2.  Se muestra la section Hero.
-3.  A continuación se visualiza la section Nosotros.
-4.  Luego se visualiza la section Tickets, con su propio video de fondo.
-5.  A continuación se visualizan las sections Puestas y Contacto.
+3.  Al hacer scroll dentro del bloque inicial, se visualiza Tickets sobre el
+    mismo video de fondo.
+4.  Al finalizar ese bloque, se visualizan las sections Nosotros, Puestas y
+    Contacto.
 6.  Finalmente se visualiza el footer.
 
 ## 7. Tickets

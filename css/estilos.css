@@ -27,6 +27,10 @@
   display: none;
 }
 
+:root {
+  --site-header-height: calc(2.5rem + 4rem);
+}
+
 html {
   scroll-padding-top: 6rem;
   scroll-behavior: smooth;
@@ -38,6 +42,9 @@ body {
   color: #ffffff;
   font-family: "Anton", sans-serif;
   overflow-x: hidden;
+}
+body.is-loading {
+  overflow: hidden;
 }
 body .container {
   max-width: 100%;
@@ -475,6 +482,11 @@ body .contacto__container {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.3rem;
+    opacity: 1;
   }
 }
 .back-to-home {
@@ -753,6 +765,12 @@ body .contacto__container {
 .menu__list .nav-link:hover {
   color: #ffffff;
 }
+.menu__list .nav-link:focus,
+.menu__list .nav-link:active {
+  color: #ffffff;
+  outline: none;
+  box-shadow: none;
+}
 .menu__list__link {
   color: #ffffff;
 }
@@ -790,42 +808,165 @@ body .contacto__container {
   flex-direction: row;
   column-gap: 1.5rem;
 }
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.menu .navbar-brand:focus,
+.menu .navbar-brand:active {
+  outline: none;
+  box-shadow: none;
 }
 
-/* videos */
-.hero__bgs {
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: grid;
+  place-items: center;
+  background: #000000;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+.site-loader img {
+  width: min(72vw, 30rem);
+  height: auto;
+}
+
+body.is-loading .site-loader {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition-delay: 0s;
+}
+
+html.skip-loader .site-loader {
+  display: none;
+}
+
+html.skip-loader body.is-loading {
+  overflow-y: auto;
+}
+
+.hero-tickets-block {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: calc(100svh - var(--site-header-height));
+  margin-top: var(--site-header-height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: auto;
+  touch-action: pan-y;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hero-tickets-block::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-tickets-block__background {
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero__bgs,
+.hero-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.hero__bgs {
   object-fit: cover;
   object-position: center;
-  z-index: 0;
 }
 
-/* por si necesito un filter después */
 .hero-overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.hero-tickets-block__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: calc(var(--site-header-height) - 100svh);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: calc(100svh - var(--site-header-height));
+}
+
+.hero__animations {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(110vw, 60rem);
+  aspect-ratio: 1;
+}
+
+.hero__asterisk,
+.hero__logo {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* Tickets */
+.hero__logo {
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  width: min(145vw, 72rem);
+  height: 105%;
+  transform: translate(-50%, -50%);
+}
+
 .hero-content {
   position: relative;
-  z-index: 2;
+  display: flex;
+  align-items: center;
   width: 100%;
+  min-height: calc(100svh - var(--site-header-height));
   padding: 4rem 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .hero__animations {
+    width: min(88vh, 64vw, 60rem);
+  }
+  .hero__logo {
+    width: min(150vw, 120rem);
+    height: 160%;
+  }
+}
+@media only screen and (max-width: 1199px) {
+  .hero__asterisk {
+    transform: translateX(-8%);
+  }
+  .hero__logo {
+    transform: translate(-54%, -50%);
+  }
+}
+@media only screen and (max-width: 767px) {
+  .hero__asterisk {
+    transform: translateX(-5%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-loader,
+  .hero-tickets-block {
+    scroll-behavior: auto;
+  }
 }
 
 .tickets__section {

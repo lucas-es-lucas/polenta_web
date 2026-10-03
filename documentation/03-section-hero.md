@@ -1,20 +1,18 @@
-# Polenta Web — Contenedor Hero actual
-
-## Propósito
-
-La section `.hero` es el contenedor inicial actual del sitio y aloja el contenido de Tickets. Esta documentación describe solamente esa implementación existente.
+# Polenta Web — Section Hero
 
 ## Composición
 
-- Ocupa todo el ancho y tiene `min-height: 100vh`.
-- El video de fondo ocupa el contenedor con `object-fit: cover` y centrado.
-- `.hero-overlay` aplica una capa oscura sobre el video.
-- `.hero-content` se ubica por encima de las capas visuales y contiene Tickets.
+Hero (`#hero`) ocupa el alto disponible del viewport dentro del bloque inicial,
+una vez descontada la announcement bar y la navbar. Sus animaciones están
+centradas vertical y horizontalmente: `asterisk-blue` se ubica detrás y
+`logo-type-changing` por encima.
 
-## Relación con Tickets
+Ambos recursos se reproducen sin sonido y en loop. Comienzan después de que
+termina la transición de salida del loader. Cuando el usuario solicita reducir
+el movimiento, no se inicia su reproducción automática.
 
-Tickets se encuentra dentro de `.hero`, no después de Hero. Ambos usan el mismo video de fondo definido en el HTML del bloque. Las clases de presentación de Tickets se mantienen en los estilos específicos de Tickets.
+## Fondo
 
-## Límites de esta especificación
-
-Esta especificación cubre únicamente la implementación actual. Cualquier cambio que altere la composición, el contenido o la relación de Hero con Tickets debe definirse y documentarse antes de modificar esta base.
+Hero no incorpora un fondo propio: utiliza la misma variante responsive del
+video de fondo compartido con Tickets. La variante activa se actualiza al
+cambiar el breakpoint o la orientación.

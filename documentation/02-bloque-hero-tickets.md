@@ -2,27 +2,25 @@
 
 ## Propósito
 
-Este documento describe el bloque inicial actual del sitio. Hero y Tickets no son sections independientes en esta versión: Tickets se renderiza dentro de `.hero`.
-
-## Estructura
-
-En `index.html`, `.hero` contiene:
-
-1. el video de fondo `#hero_bgs`;
-2. la capa `.hero-overlay`;
-3. el contenedor `#tickets`, que incluye el título y `#ticketsSlider`.
-
-El video se reproduce automáticamente, sin sonido, en loop y dentro de la página. Usa WebM como fuente principal y MP4 como alternativa:
-
-- `imgs/video/bg-tickets.webm`
-- `imgs/video/bg-tickets.mp4`
+Hero y Tickets son sections independientes contenidas en el bloque inicial
+`.hero-tickets-block`. Comparten el video de fondo, pero Hero agrega las
+animaciones visuales propias.
 
 ## Visualización y scroll
 
-El bloque es el primer contenido de `main`, tiene una altura mínima de viewport y sigue el scroll normal del documento. El contenido de Tickets queda sobre el video gracias a la capa de contenido posicionada por encima del fondo y de la superposición.
+El bloque comienza debajo del header fijo y ocupa el alto disponible del
+viewport, descontando la announcement bar y la navbar. Tiene scroll vertical
+interno sin barra visible: primero se muestra Hero y luego Tickets. Al llegar
+al final del bloque, el scroll continúa normalmente hacia las sections
+siguientes del documento.
 
-Al dejar de ser visible `.hero`, `index.js` muestra el acceso fijo «COMPRAR TICKETS»; mientras `.hero` está visible, lo oculta.
+El video y la superposición permanecen visibles durante todo el recorrido
+interno. Hero y Tickets se centran de forma independiente dentro del alto
+visible del bloque. Se carga sólo una variante de video: vertical bajo 768 px y en tablet
+vertical; horizontal de tablet entre 768 px y 1199 px en orientación
+horizontal; y desktop desde 1200 px.
 
-## Alcance
+## Tickets
 
-No se deben tratar Hero y Tickets como secciones separadas ni cambiar el video, el contenedor o el comportamiento de scroll de uno sin revisar el otro. Una futura alternativa con Hero independiente debe documentarse en su propia rama, sin modificar esta especificación base hasta que se integre.
+Tickets mantiene `#tickets`, `#ticketsSlider` y su renderizado desde
+`tickets.js`. No debe condicionar la salida del loader.
