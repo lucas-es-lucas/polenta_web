@@ -33,6 +33,11 @@ html {
   overflow-x: hidden;
 }
 
+.section-nav-target {
+  position: absolute;
+  top: 3rem;
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
@@ -695,9 +700,9 @@ body .contacto__container {
 }
 
 /* Secciones con contenido por encima del background */
-#nosotros,
-#puestas,
-#contacto {
+.nosotros__container,
+.puestas__container,
+.contacto__container {
   position: relative;
   z-index: 1;
 }

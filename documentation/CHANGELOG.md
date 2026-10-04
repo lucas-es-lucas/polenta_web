@@ -27,6 +27,16 @@ Tipos sugeridos:
 
 ### 2026-10-03
 
+#### Fixed
+
+-   Los enlaces de la navbar hacia Nosotros, Puestas y Contacto ahora apuntan
+    al punto medio del padding superior de cada section. Así se conserva parte
+    del fondo por encima del título y el espacio para la cabecera fija.
+-   Tickets se mantiene fuera del alcance de este cambio y conserva su destino
+    de navegación anterior.
+-   Áreas afectadas: `index.html`, `scss/_general.scss`,
+    `scss/sections/_background.scss` y `css/estilos.css`.
+
 #### Documentation
 
 -   Se formalizó la estrategia de ramas: desarrollo en ramas de
