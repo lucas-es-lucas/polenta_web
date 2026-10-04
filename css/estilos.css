@@ -37,6 +37,11 @@ html {
   overflow-x: hidden;
 }
 
+.section-nav-target {
+  position: absolute;
+  top: 3rem;
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
@@ -707,9 +712,9 @@ body .contacto__container {
 }
 
 /* Secciones con contenido por encima del background */
-#nosotros,
-#puestas,
-#contacto {
+.nosotros__container,
+.puestas__container,
+.contacto__container {
   position: relative;
   z-index: 1;
 }
@@ -1344,8 +1349,15 @@ html.skip-loader body.is-loading {
   border-radius: 1.25rem;
 }
 .puestas__section .slider .carousel-inner .carousel-item img {
+  display: block;
   width: 100%;
+  height: auto;
   border-radius: 1.25rem;
+}
+.puestas__section .slider .carousel-inner .carousel-item picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 .puestas__section .slider .carousel-indicators button {
   background-color: #24bf5e;
