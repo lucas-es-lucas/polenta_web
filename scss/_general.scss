@@ -35,6 +35,11 @@ html {
      overflow-x: hidden;
 }
 
+.section-nav-target {
+     position: absolute;
+     top: 3rem;
+}
+
 body {
      background-color: $color-bg;
      color: $color-text;

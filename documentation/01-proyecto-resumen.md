@@ -115,7 +115,25 @@ La documentación se organiza separando:
 -   `CHANGELOG.md` --- cambios relevantes del proyecto.
 -   `AGENTS.md` --- reglas de trabajo para agentes de desarrollo.
 
-## 9. Información no especificada
+## 9. Estrategia de ramas
+
+El trabajo operativo con Git se rige por las siguientes ramas:
+
+-   `branch_deploy` representa la versión de producción publicada en
+    `https://fiestapolenta.com/`.
+-   Las ramas de funcionalidades se utilizan para desarrollar y validar
+    cambios nuevos. Una vez aprobados por Polenta, se integran en
+    `branch_deploy`.
+-   `main` es la rama estable de referencia. Se actualiza únicamente al
+    integrar `branch_deploy` después de un período de estabilidad posterior a
+    una publicación oficial.
+-   Las ramas que contienen versiones anteriores del sitio se conservan como
+    referencia histórica y no integran el flujo habitual de despliegue.
+
+Las reglas operativas, los merges permitidos y el formato de los commits están
+definidos en `AGENTS.md`.
+
+## 10. Información no especificada
 
 La documentación disponible no define, entre otros aspectos:
 

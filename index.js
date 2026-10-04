@@ -261,6 +261,53 @@ document.addEventListener("DOMContentLoaded", function () {
      observer.observe(heroSection);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+     const contactoLink = document.querySelector('a[href="#contacto"]');
+     const contactoTarget = document.getElementById("contacto");
+     const puestasSlider = document.querySelector(".puestas__slider");
+
+     if (!contactoLink || !contactoTarget || !puestasSlider) return;
+
+     let contactNavigationPending = false;
+     let contactNavigationTimeout;
+
+     const correctContactNavigation = () => {
+          if (!contactNavigationPending || window.location.hash !== "#contacto") return;
+
+          contactoTarget.scrollIntoView({
+               block: "start",
+               behavior: "instant",
+          });
+     };
+
+     const beginContactNavigationCorrection = () => {
+          contactNavigationPending = true;
+
+          window.clearTimeout(contactNavigationTimeout);
+          contactNavigationTimeout = window.setTimeout(() => {
+               contactNavigationPending = false;
+          }, 5000);
+
+          requestAnimationFrame(() => {
+               requestAnimationFrame(correctContactNavigation);
+          });
+     };
+
+     contactoLink.addEventListener("click", beginContactNavigationCorrection);
+
+     window.addEventListener("hashchange", () => {
+          if (window.location.hash === "#contacto") {
+               beginContactNavigationCorrection();
+          }
+     });
+
+     const puestasResizeObserver = new ResizeObserver(() => {
+          requestAnimationFrame(correctContactNavigation);
+     });
+
+     puestasResizeObserver.observe(puestasSlider);
+});
+
 // document.addEventListener("DOMContentLoaded", () => {
 //      const tickets = document.querySelectorAll(".ticket");
 
