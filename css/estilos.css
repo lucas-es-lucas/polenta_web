@@ -1208,8 +1208,15 @@ body .contacto__container {
   border-radius: 1.25rem;
 }
 .puestas__section .slider .carousel-inner .carousel-item img {
+  display: block;
   width: 100%;
+  height: auto;
   border-radius: 1.25rem;
+}
+.puestas__section .slider .carousel-inner .carousel-item picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 .puestas__section .slider .carousel-indicators button {
   background-color: #24bf5e;
