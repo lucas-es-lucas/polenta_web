@@ -249,8 +249,13 @@ document.addEventListener("DOMContentLoaded", function () {
           nosotrosContainer.after(ticketsSection);
      }
 
-     const initialHashTarget = document.querySelector(window.location.hash);
-     if (["#hero", "#tickets"].includes(window.location.hash) && initialHashTarget) {
+     const initialHash = window.location.hash;
+     const shouldCorrectInitialHashNavigation = ["#hero", "#tickets"].includes(initialHash);
+     const initialHashTarget = shouldCorrectInitialHashNavigation
+          ? document.querySelector(initialHash)
+          : null;
+
+     if (initialHashTarget) {
           let initialHashNavigationPending = true;
           let initialHashNavigationFrame;
 
@@ -279,11 +284,11 @@ document.addEventListener("DOMContentLoaded", function () {
      if (!goButton || !ticketsSection) return;
 
      const mobileQuery = window.matchMedia("(max-width: 767px)");
-     let animationFrame;
+     let visibilityFrame;
 
      const updateTicketsCtaVisibility = () => {
-          window.cancelAnimationFrame(animationFrame);
-          animationFrame = window.requestAnimationFrame(() => {
+          window.cancelAnimationFrame(visibilityFrame);
+          visibilityFrame = window.requestAnimationFrame(() => {
                const ticketsHavePassed = ticketsSection.getBoundingClientRect().bottom <= 0;
                goButton.classList.toggle("show", mobileQuery.matches || ticketsHavePassed);
           });

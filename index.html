@@ -7,7 +7,7 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<script>
-			if (["#hero", "#tickets"].includes(window.location.hash)) {
+			if (["#hero", "#nosotros", "#tickets", "#puestas", "#contacto"].includes(window.location.hash)) {
 				document.documentElement.classList.add("skip-loader");
 			}
 		</script>
@@ -614,20 +614,6 @@
 							<li></li>
 							<li class="nav-item menu__list__item">
 								<a
-									class="nav-link menu__list__link menu__list__link__normal"
-									href="#tickets"
-									onclick="cerrar()"
-									>ti<span
-										class="menu__list__link__normal"
-										>c</span
-									><span
-										class="menu__list__link__alternative"
-										>c</span
-									>kets</a
-								>
-							</li>
-							<li class="nav-item menu__list__item">
-								<a
 									class="nav-link menu__list__link"
 									href="#nosotros"
 									onclick="cerrar()"
@@ -638,6 +624,20 @@
 										class="menu__list__link__alternative"
 										>o</span
 									>tros</a
+								>
+							</li>
+							<li class="nav-item menu__list__item">
+								<a
+									class="nav-link menu__list__link menu__list__link__normal"
+									href="#tickets"
+									onclick="cerrar()"
+									>ti<span
+										class="menu__list__link__normal"
+										>c</span
+									><span
+										class="menu__list__link__alternative"
+										>c</span
+									>kets</a
 								>
 							</li>
 							<li class="nav-item menu__list__item">
