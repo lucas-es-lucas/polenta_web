@@ -70,5 +70,41 @@
           "city": "copenhague",
           "alt": "ticket Polenta Copenhague 17-10-2026",
           "link": "https://pretix.eu/malvadaprod/polentacph/"
+     },
+     {
+          "date": "20261017",
+          "city": "cba",
+          "alt": "ticket Polenta Córdoba Cerro de las Rosas 17-10-2026",
+          "link": "http://www.paseshow.com.ar/eventos/polenta-x-unp-17-de-octubre"
+     },
+     {
+          "date": "20261017",
+          "city": "madrid",
+          "alt": "ticket Polenta Madrid 17-10-2026",
+          "link": "https://www.fourvenues.com/Sala-ART/76PC"
+     },
+     {
+          "date": "20261024",
+          "city": "bcna",
+          "alt": "ticket Polenta Barcelona 24-10-2026",
+          "link": "https://es.ra.co/events/2527256"
+     },
+     {
+          "date": "20261024",
+          "city": "caba",
+          "alt": "ticket Polenta Buenos Aires 24-10-2026",
+          "link": "https://www.enigmatickets.com/event/1994ae18-958b-4847-a348-429acc9d88bf"
+     },
+     {
+          "date": "20261024",
+          "city": "mvdeo",
+          "alt": "ticket Polenta Montevideo 24-10-2026",
+          "link": "https://redtickets.uy/evento/POLENTA-MONTEVIDEO--2410/33488/"
+     },
+     {
+          "date": "20261106",
+          "city": "nyc",
+          "alt": "ticket Polenta New York 06-11-2026",
+          "link": "https://kydlabs.com/e/EV9a0a6819-372a-4502-8b30-51b5af020b44?ref=shortlink"
      }
 ]
