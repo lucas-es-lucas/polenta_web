@@ -82,31 +82,6 @@ function setHeaderHeight() {
      );
 }
 
-function isIOS() {
-     return /iPad|iPhone|iPod/.test(navigator.userAgent) || (
-          navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1
-     );
-}
-
-function setupHeroAnimationSources() {
-     const useHEVCAlpha = isIOS();
-
-     document.querySelectorAll(".hero__animations video").forEach((video) => {
-          const primarySource = useHEVCAlpha
-               ? { src: video.dataset.hevcAlpha, type: 'video/quicktime; codecs="hvc1"' }
-               : { src: video.dataset.webm, type: "video/webm" };
-          const fallbackSource = useHEVCAlpha
-               ? { src: video.dataset.webm, type: "video/webm" }
-               : { src: video.dataset.mov, type: "video/quicktime" };
-
-          video.innerHTML = `
-               <source src="${primarySource.src}" type="${primarySource.type}">
-               <source src="${fallbackSource.src}" type="${fallbackSource.type}">
-          `;
-          video.load();
-     });
-}
-
 function startHeroAnimations() {
      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -216,7 +191,6 @@ document.addEventListener("DOMContentLoaded", async () => {
      const skipLoader = HOME_SECTION_HASHES.includes(window.location.hash);
 
      setHeaderHeight();
-     setupHeroAnimationSources();
      setBackgroundVideo(backgroundVideo);
 
      if (skipLoader) {

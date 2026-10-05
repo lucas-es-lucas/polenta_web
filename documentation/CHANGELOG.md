@@ -29,9 +29,9 @@ Tipos sugeridos:
 
 #### Fixed
 
--   Se agregaron fallbacks HEVC con alfa para las animaciones del asterisco y
-    logo. En iPhone y iPad, Safari, Chrome y Arc ahora seleccionan esos assets
-    en lugar de WebM, evitando que el canal alfa se renderice negro.
+-   Se restableció el orden de fuentes WebM/MOV de las animaciones al utilizado
+    en la primera versión publicada de Hero animado. Los assets son los mismos
+    que en `f135111`, cuya preview se visualizaba sin fondo negro en iPhone.
 -   Los enlaces de navegación desde las páginas legales a Hero, Tickets,
     Nosotros, Puestas y Contacto ahora omiten el loader y conservan el destino
     de cada ancla.
