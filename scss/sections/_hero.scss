@@ -7,6 +7,21 @@
      }
 }
 
+.skip-loader {
+     body.is-loading {
+          height: auto;
+          overflow: auto;
+
+          > :not(.initial-loader) {
+               visibility: visible;
+          }
+     }
+
+     .initial-loader {
+          display: none;
+     }
+}
+
 .initial-loader {
      position: fixed;
      inset: 0;

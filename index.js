@@ -13,6 +13,7 @@ setTimeout(function () {
      const loaderLogo = document.getElementById("initial-loader-logo");
      const backgroundVideo = document.getElementById("hero_bgs");
      const ticketsVideo = document.getElementById("tickets_bgs");
+     const skipLoader = document.documentElement.classList.contains("skip-loader");
 
      if (!loader || !loaderLogo || !backgroundVideo) return;
 
@@ -137,6 +138,13 @@ setTimeout(function () {
           siteRevealed = true;
           document.body.classList.remove("is-loading");
           document.body.classList.add("loader-ready");
+
+          if (skipLoader) {
+               startHeroAnimations();
+               loader.remove();
+               return;
+          }
+
           loader.classList.add("initial-loader--leaving");
 
           if (reduceMotion) {
@@ -190,7 +198,11 @@ setTimeout(function () {
      });
 
      configureTicketsMedia();
-     loadCriticalResources();
+     if (skipLoader) {
+          Promise.all(configureHeroMedia()).then(revealSite);
+     } else {
+          loadCriticalResources();
+     }
 })();
 
 // console.log('pirulo');
@@ -231,34 +243,57 @@ setTimeout(function () {
 document.addEventListener("DOMContentLoaded", function () {
      const ticketsSection = document.getElementById("tickets");
      const nosotrosSection = document.getElementById("nosotros");
+     const nosotrosContainer = nosotrosSection?.closest(".nosotros__container");
 
-     if (ticketsSection && nosotrosSection) {
-          nosotrosSection.after(ticketsSection);
+     if (ticketsSection && nosotrosContainer) {
+          nosotrosContainer.after(ticketsSection);
+     }
+
+     const initialHashTarget = document.querySelector(window.location.hash);
+     if (["#hero", "#tickets"].includes(window.location.hash) && initialHashTarget) {
+          let initialHashNavigationPending = true;
+          let initialHashNavigationFrame;
+
+          const correctInitialHashNavigation = () => {
+               if (!initialHashNavigationPending) return;
+
+               window.cancelAnimationFrame(initialHashNavigationFrame);
+               initialHashNavigationFrame = window.requestAnimationFrame(() => {
+                    initialHashTarget.scrollIntoView({ block: "start", behavior: "auto" });
+               });
+          };
+
+          const initialHashNavigationObserver = new ResizeObserver(
+               correctInitialHashNavigation,
+          );
+          initialHashNavigationObserver.observe(nosotrosContainer);
+          correctInitialHashNavigation();
+
+          window.setTimeout(() => {
+               initialHashNavigationPending = false;
+               initialHashNavigationObserver.disconnect();
+          }, 5000);
      }
 
      const goButton = document.querySelector(".go-to-tickets");
-     const heroSection = document.querySelector(".hero");
+     if (!goButton || !ticketsSection) return;
 
-     // Usamos IntersectionObserver para detectar si .hero está visible
-     const observer = new IntersectionObserver(
-          (entries) => {
-               entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                         // Hero está visible → ocultamos el botón
-                         goButton.classList.remove("show");
-                    } else {
-                         // Hero no está visible → mostramos el botón
-                         goButton.classList.add("show");
-                    }
-               });
-          },
-          {
-               root: null, // viewport
-               threshold: 0, // cualquier visibilidad
-          }
-     );
+     const mobileQuery = window.matchMedia("(max-width: 767px)");
+     let animationFrame;
 
-     observer.observe(heroSection);
+     const updateTicketsCtaVisibility = () => {
+          window.cancelAnimationFrame(animationFrame);
+          animationFrame = window.requestAnimationFrame(() => {
+               const ticketsHavePassed = ticketsSection.getBoundingClientRect().bottom <= 0;
+               goButton.classList.toggle("show", mobileQuery.matches || ticketsHavePassed);
+          });
+     };
+
+     window.addEventListener("scroll", updateTicketsCtaVisibility, { passive: true });
+     window.addEventListener("resize", updateTicketsCtaVisibility);
+     mobileQuery.addEventListener("change", updateTicketsCtaVisibility);
+     new ResizeObserver(updateTicketsCtaVisibility).observe(ticketsSection);
+     updateTicketsCtaVisibility();
 });
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -25,6 +25,20 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-05
+
+#### Fixed
+
+-   Los enlaces internos hacia Hero y Tickets conservan la navegación por hash
+    sin mostrar el loader. Esto incluye el logo de la navbar, el CTA Comprar
+    Tickets y los enlaces equivalentes desde las páginas legales.
+-   El CTA Comprar Tickets queda visible desde la carga en mobile y, desde
+    tablet, aparece únicamente después de superar el final de Tickets. La
+    regla toma como referencia la section Tickets ya reubicada después de
+    Nosotros y no la visibilidad de Hero.
+-   Áreas afectadas: `index.html`, `index.js`, páginas legales y estilos del
+    loader.
+
 ### 2026-10-03
 
 #### Fixed

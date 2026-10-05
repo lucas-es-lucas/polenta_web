@@ -6,6 +6,11 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0"
 		/>
+		<script>
+			if (["#hero", "#tickets"].includes(window.location.hash)) {
+				document.documentElement.classList.add("skip-loader");
+			}
+		</script>
 		<meta
 			name="description"
 			content="La Polenta es la fiesta que estás buscando. Vení como quieras, con quien quieras, a pasar una noche única"
@@ -582,7 +587,7 @@
 					<figure>
 						<a
 							class="navbar-brand"
-							href="#"
+							href="#hero"
 							onclick="cerrar()"
 							><img
 								class="menu__logo"

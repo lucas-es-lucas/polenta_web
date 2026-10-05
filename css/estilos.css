@@ -813,6 +813,17 @@ body .contacto__container {
   visibility: hidden;
 }
 
+.skip-loader body.is-loading {
+  height: auto;
+  overflow: auto;
+}
+.skip-loader body.is-loading > :not(.initial-loader) {
+  visibility: visible;
+}
+.skip-loader .initial-loader {
+  display: none;
+}
+
 .initial-loader {
   position: fixed;
   inset: 0;
