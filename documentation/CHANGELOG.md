@@ -33,10 +33,9 @@ Tipos sugeridos:
     conservan la navegación por hash sin mostrar el loader. Esto incluye el
     logo de la navbar, el CTA Comprar Tickets y los enlaces equivalentes desde
     las páginas legales.
--   El CTA Comprar Tickets queda visible desde la carga en mobile y, desde
-    tablet, aparece únicamente después de superar el final de Tickets. La
-    regla toma como referencia la section Tickets ya reubicada después de
-    Nosotros y no la visibilidad de Hero.
+-   El CTA Comprar Tickets queda visible desde la carga en mobile. Desde
+    tablet se oculta mientras Hero o Tickets están en viewport y se muestra
+    en Nosotros, Puestas, Contacto y footer.
 -   La navbar respeta el orden de visualización de las sections: Nosotros,
     Tickets, Puestas y Contacto. El mismo orden y los destinos por hash se
     aplican en las páginas de Términos y Condiciones y Política de Privacidad.

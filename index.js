@@ -281,7 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
      }
 
      const goButton = document.querySelector(".go-to-tickets");
-     if (!goButton || !ticketsSection) return;
+     const heroSection = document.getElementById("hero");
+     if (!goButton || !heroSection || !ticketsSection) return;
 
      const mobileQuery = window.matchMedia("(max-width: 767px)");
      let visibilityFrame;
@@ -289,14 +290,24 @@ document.addEventListener("DOMContentLoaded", function () {
      const updateTicketsCtaVisibility = () => {
           window.cancelAnimationFrame(visibilityFrame);
           visibilityFrame = window.requestAnimationFrame(() => {
-               const ticketsHavePassed = ticketsSection.getBoundingClientRect().bottom <= 0;
-               goButton.classList.toggle("show", mobileQuery.matches || ticketsHavePassed);
+               const scrollPaddingTop = parseFloat(
+                    window.getComputedStyle(document.documentElement).scrollPaddingTop,
+               ) || 0;
+               const sectionIsVisible = (section) => {
+                    const { top, bottom } = section.getBoundingClientRect();
+                    return top < window.innerHeight && bottom > scrollPaddingTop;
+               };
+               const shouldShowOnDesktop = !sectionIsVisible(heroSection)
+                    && !sectionIsVisible(ticketsSection);
+
+               goButton.classList.toggle("show", mobileQuery.matches || shouldShowOnDesktop);
           });
      };
 
      window.addEventListener("scroll", updateTicketsCtaVisibility, { passive: true });
-     window.addEventListener("resize", updateTicketsCtaVisibility);
-     mobileQuery.addEventListener("change", updateTicketsCtaVisibility);
+      window.addEventListener("resize", updateTicketsCtaVisibility);
+      mobileQuery.addEventListener("change", updateTicketsCtaVisibility);
+     new ResizeObserver(updateTicketsCtaVisibility).observe(heroSection);
      new ResizeObserver(updateTicketsCtaVisibility).observe(ticketsSection);
      updateTicketsCtaVisibility();
 });
