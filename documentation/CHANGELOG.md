@@ -29,9 +29,10 @@ Tipos sugeridos:
 
 #### Fixed
 
--   Se restableció el orden de fuentes WebM/MOV de las animaciones al utilizado
-    en la primera versión publicada de Hero animado. Los assets son los mismos
-    que en `f135111`, cuya preview se visualizaba sin fondo negro en iPhone.
+-   En iPhone e iPad, Hero ahora prioriza los MOV ProRes 4444 originales con
+    canal alfa. Esto evita que WebKit seleccione WebM y convierta la
+    transparencia en un fondo negro; en el resto de los navegadores se
+    mantiene WebM como fuente primaria.
 -   Los enlaces de navegación desde las páginas legales a Hero, Tickets,
     Nosotros, Puestas y Contacto ahora omiten el loader y conservan el destino
     de cada ancla.

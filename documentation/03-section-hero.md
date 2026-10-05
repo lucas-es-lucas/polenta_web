@@ -11,9 +11,10 @@ Ambos recursos se reproducen sin sonido y en loop. Comienzan después de que
 termina la transición de salida del loader. Cuando el usuario solicita reducir
 el movimiento, no se inicia su reproducción automática.
 
-Cada animación declara WebM como fuente principal y ProRes 4444 MOV como
-fallback, conservando el mecanismo de selección de fuentes del commit inicial
-de Hero animado.
+Cada animación conserva ambas fuentes con canal alfa. En iPhone e iPad se
+prioriza el MOV ProRes 4444 original, porque WebKit puede aceptar WebM pero
+decodificar su alfa como negro. En el resto de los navegadores se mantiene
+WebM como fuente principal y MOV como fallback.
 
 ## Fondo
 

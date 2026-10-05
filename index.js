@@ -82,6 +82,31 @@ function setHeaderHeight() {
      );
 }
 
+function isAppleMobile() {
+     return /iPad|iPhone|iPod/.test(navigator.userAgent) || (
+          navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1
+     );
+}
+
+function setupHeroAnimationSources() {
+     const preferMov = isAppleMobile();
+
+     document.querySelectorAll(".hero__animations video").forEach((video) => {
+          const primary = preferMov
+               ? { src: video.dataset.mov, type: "video/quicktime" }
+               : { src: video.dataset.webm, type: "video/webm" };
+          const fallback = preferMov
+               ? { src: video.dataset.webm, type: "video/webm" }
+               : { src: video.dataset.mov, type: "video/quicktime" };
+
+          video.innerHTML = `
+               <source src="${primary.src}" type="${primary.type}">
+               <source src="${fallback.src}" type="${fallback.type}">
+          `;
+          video.load();
+     });
+}
+
 function startHeroAnimations() {
      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -191,6 +216,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      const skipLoader = HOME_SECTION_HASHES.includes(window.location.hash);
 
      setHeaderHeight();
+     setupHeroAnimationSources();
      setBackgroundVideo(backgroundVideo);
 
      if (skipLoader) {
