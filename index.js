@@ -81,6 +81,33 @@ function setHeaderHeight() {
      );
 }
 
+function isAppleMobile() {
+     return /iPad|iPhone|iPod/.test(navigator.userAgent) || (
+          navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1
+     );
+}
+
+function setupHeroAnimationSources() {
+     const useHEVCAlpha = isAppleMobile();
+
+     document.querySelectorAll(".hero__animations video").forEach((video) => {
+          if (useHEVCAlpha) {
+               // Sin atributo type: WebKit debe probar el HEVC con alfa antes
+               // de evaluar el fallback WebM que iOS renderiza opaco.
+               video.innerHTML = `
+                    <source src="${video.dataset.hevcAlpha}">
+                    <source src="${video.dataset.webm}" type="video/webm">
+               `;
+          } else {
+               video.innerHTML = `
+                    <source src="${video.dataset.webm}" type="video/webm">
+                    <source src="${video.dataset.mov}" type="video/quicktime">
+               `;
+          }
+          video.load();
+     });
+}
+
 function startHeroAnimations() {
      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -190,6 +217,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      const skipLoader = ["#hero", "#tickets"].includes(window.location.hash);
 
      setHeaderHeight();
+     setupHeroAnimationSources();
      setBackgroundVideo(backgroundVideo);
 
      if (skipLoader) {

@@ -119,9 +119,6 @@ html.skip-loader body.is-loading {
      height: 100%;
      object-fit: contain;
 
-     // Si un navegador entrega el alfa del video como negro, screen compone
-     // ese negro con el video de fondo en vez de dibujar un rectángulo opaco.
-     mix-blend-mode: screen;
 }
 
 .hero__logo {
