@@ -966,10 +966,6 @@ html.skip-loader body.is-loading {
   .hero__asterisk {
     transform: translateX(-5%);
   }
-  .hero__asterisk,
-  .hero__logo {
-    mix-blend-mode: screen;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-loader,
