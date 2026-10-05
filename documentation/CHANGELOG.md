@@ -25,6 +25,17 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-05
+
+#### Fixed
+
+-   Los enlaces de navegación desde las páginas legales a Hero, Tickets,
+    Nosotros, Puestas y Contacto ahora omiten el loader y conservan el destino
+    de cada ancla.
+-   En mobile, las animaciones con transparencia del Hero usan una composición
+    que evita que los navegadores que decodifican el alfa como negro muestren
+    un fondo negro.
+
 ### 2026-10-03
 
 #### Added

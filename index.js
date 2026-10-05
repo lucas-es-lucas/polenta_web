@@ -1,4 +1,5 @@
 const LOADER_MINIMUM_DURATION = 2000;
+const HOME_SECTION_HASHES = ["#hero", "#tickets", "#nosotros", "#puestas", "#contacto"];
 
 window.setTimeout(() => {
      const perfitScript = document.createElement("script");
@@ -187,7 +188,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      const backgroundVideo = document.getElementById("hero_bgs");
      const goButton = document.querySelector(".go-to-tickets");
      const heroTicketsBlock = document.getElementById("heroTickets");
-     const skipLoader = ["#hero", "#tickets"].includes(window.location.hash);
+     const skipLoader = HOME_SECTION_HASHES.includes(window.location.hash);
 
      setHeaderHeight();
      setBackgroundVideo(backgroundVideo);
@@ -199,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           window.requestAnimationFrame(() => {
                if (window.location.hash === "#tickets") {
                     scrollToTickets("auto");
-               } else {
+               } else if (window.location.hash === "#hero") {
                     scrollToHero("auto");
                }
           });
@@ -263,16 +264,20 @@ document.addEventListener("DOMContentLoaded", function () {
      });
 
      puestasResizeObserver.observe(puestasSlider);
+
+     if (window.location.hash === "#contacto") {
+          beginContactNavigationCorrection();
+     }
 });
 
 window.addEventListener("hashchange", () => {
-     if (!["#hero", "#tickets"].includes(window.location.hash)) return;
+     if (!HOME_SECTION_HASHES.includes(window.location.hash)) return;
 
      document.documentElement.classList.add("skip-loader");
      document.body.classList.remove("is-loading");
      if (window.location.hash === "#tickets") {
           scrollToTickets();
-     } else {
+     } else if (window.location.hash === "#hero") {
           scrollToHero();
      }
 });

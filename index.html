@@ -7,7 +7,11 @@
 			content="width=device-width, initial-scale=1.0"
 		/>
 		<script>
-			if (["#hero", "#tickets"].includes(window.location.hash)) {
+			if (
+				["#hero", "#tickets", "#nosotros", "#puestas", "#contacto"].includes(
+					window.location.hash,
+				)
+			) {
 				document.documentElement.classList.add("skip-loader");
 			}
 		</script>

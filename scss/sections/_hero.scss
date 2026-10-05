@@ -167,6 +167,13 @@ html.skip-loader body.is-loading {
      .hero__asterisk {
           transform: translateX(-5%);
      }
+
+     // Algunos navegadores móviles decodifican los videos WebM con alfa
+     // como negro. Screen conserva el video de fondo donde el frame es negro.
+     .hero__asterisk,
+     .hero__logo {
+          mix-blend-mode: screen;
+     }
 }
 
 @media (prefers-reduced-motion: reduce) {
