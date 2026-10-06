@@ -891,7 +891,6 @@ html.skip-loader body.is-loading {
 
 .hero-tickets-block__content {
   position: relative;
-  z-index: 1;
   width: 100%;
   margin-top: calc(var(--site-header-height) - 100svh);
 }
