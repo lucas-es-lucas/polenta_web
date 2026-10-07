@@ -925,10 +925,8 @@
 					</section>
 				</div>
 			</section>
-			<div
-				id="nosotros"
-				class="container__propio nosotros nosotros__container"
-			>
+			<div class="container__propio nosotros nosotros__container">
+				<span id="nosotros" class="section-nav-target" aria-hidden="true"></span>
 				<section class="section nosotros__section">
 					<article
 						class="nosotros__queeslapolenta"
@@ -968,24 +966,19 @@
 					<section class="cards">
 						<article class="card card__dance-crew">
 							<figure class="card__container__imagen">
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/cards/mobile/card-dancers-320w.png 320w, /imgs/cards/mobile/card-dancers-480w.png 480w" sizes="10.6rem" />
+									<source media="(max-width: 1199px)" srcset="/imgs/cards/tablet/card-dancers-640w.png 640w, /imgs/cards/tablet/card-dancers-768w.png 768w" sizes="15.5rem" />
 								<img
-									class="card__imagen img__mobile"
-									src="/imgs/cards/card-dancers.png"
+									class="card__imagen"
+									src="/imgs/cards/desktop/card-dancers.png"
 									alt="card imagen dance crew"
-									width="1080" 
+									width="1080"
 									height="1350"
 									loading="lazy"
 									decoding="async"
 								/>
-								<img
-									class="card__imagen img__desktop"
-									src="/imgs/cards/card-dancers.png"
-									alt="card imagen dance crew"
-									width="1080" 
-									height="1350"
-									loading="lazy"
-									decoding="async"
-								/>
+								</picture>
 							</figure>
 							<figure class="card__container">
 								<h2 class="card__title">
@@ -1003,24 +996,19 @@
 						</article>
 						<article class="card card__lanza-remeras">
 							<figure class="card__container__imagen">
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/cards/mobile/card-lanzaremeras-320w.png 320w, /imgs/cards/mobile/card-lanzaremeras-480w.png 480w" sizes="10.6rem" />
+									<source media="(max-width: 1199px)" srcset="/imgs/cards/tablet/card-lanzaremeras-640w.png 640w, /imgs/cards/tablet/card-lanzaremeras-768w.png 768w" sizes="15.5rem" />
 								<img
-									class="card__imagen img__mobile"
-									src="/imgs/cards/card-lanzaremeras.jpg"
+									class="card__imagen"
+									src="/imgs/cards/desktop/card-lanzaremeras.jpg"
 									alt="card imagen lanza-remeras"
-									width="1280" 
+									width="1280"
 									height="1920"
 									loading="lazy"
 									decoding="async"
 								/>
-								<img
-									class="card__imagen img__desktop"
-									src="/imgs/cards/card-lanzaremeras.jpg"
-									alt="card imagen lanza-remeras"
-									width="1280" 
-									height="1920"
-									loading="lazy"
-									decoding="async"
-								/>
+								</picture>
 							</figure>
 							<figure class="card__container">
 								<h2 class="card__title">
@@ -1037,24 +1025,19 @@
 						</article>
 						<article class="card card__churros">
 							<figure class="card__container__imagen">
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/cards/mobile/card-churros-320w.png 320w, /imgs/cards/mobile/card-churros-480w.png 480w" sizes="10.6rem" />
+									<source media="(max-width: 1199px)" srcset="/imgs/cards/tablet/card-churros-640w.png 640w, /imgs/cards/tablet/card-churros-768w.png 768w" sizes="15.5rem" />
 								<img
-									class="card__imagen img__mobile"
-									src="/imgs/cards/card-churros.png"
+									class="card__imagen"
+									src="/imgs/cards/desktop/card-churros.png"
 									alt="card imagen churros"
-									width="1080" 
+									width="1080"
 									height="1350"
 									loading="lazy"
 									decoding="async"
 								/>
-								<img
-									class="card__imagen img__desktop"
-									src="/imgs/cards/card-churros.png"
-									alt="card imagen churros"
-									width="1080" 
-									height="1350"
-									loading="lazy"
-									decoding="async"
-								/>
+								</picture>
 							</figure>
 							<figure class="card__container">
 								<h2 class="card__title">
@@ -1071,24 +1054,19 @@
 						</article>
 						<article class="card card__angeles-polenta">
 							<figure class="card__container__imagen">
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/cards/mobile/card-angeles-320w.png 320w, /imgs/cards/mobile/card-angeles-480w.png 480w" sizes="10.6rem" />
+									<source media="(max-width: 1199px)" srcset="/imgs/cards/tablet/card-angeles-640w.png 640w, /imgs/cards/tablet/card-angeles-768w.png 768w" sizes="15.5rem" />
 								<img
-									class="card__imagen img__mobile"
-									src="/imgs/cards/card-angeles.png"
+									class="card__imagen"
+									src="/imgs/cards/desktop/card-angeles.png"
 									alt="card imagen angeles polenta"
-									width="1080" 
+									width="1080"
 									height="991"
 									loading="lazy"
 									decoding="async"
 								/>
-								<img
-									class="card__imagen img__desktop"
-									src="/imgs/cards/card-angeles.png"
-									alt="card imagen angeles polenta"
-									width="1080" 
-									height="991"
-									loading="lazy"
-									decoding="async"
-								/>
+								</picture>
 							</figure>
 							<figure class="card__container">
 								<h2 class="card__title">
@@ -1110,10 +1088,8 @@
 					</section>
 				</section>
 			</div>
-			<div
-				id="puestas"
-				class="container__propio puestas puestas__container"
-			>
+			<div class="container__propio puestas puestas__container">
+				<span id="puestas" class="section-nav-target" aria-hidden="true"></span>
 				<section class="section puestas__section">
 					<article class="puestas__descripcion">
 						<h2 class="title">
@@ -1201,109 +1177,172 @@
 								class="carousel-item active"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-1-320w.png 320w, /imgs/puestas/mobile/slider-img-1-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-1-640w.png 640w, /imgs/puestas/tablet/slider-img-1-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-1-640w.png 640w, /imgs/puestas/tablet/slider-img-1-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-1.png"
+									src="/imgs/puestas/desktop/slider-img-1.png"
 									class="d-block w-100 carousel__img"
 									alt="puestas-1"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-2-320w.png 320w, /imgs/puestas/mobile/slider-img-2-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-2-640w.png 640w, /imgs/puestas/tablet/slider-img-2-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-2-640w.png 640w, /imgs/puestas/tablet/slider-img-2-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-2.png"
+									src="/imgs/puestas/desktop/slider-img-2.png"
 									class="d-block w-100"
 									alt="puestas-2"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-3-320w.png 320w, /imgs/puestas/mobile/slider-img-3-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-3-640w.png 640w, /imgs/puestas/tablet/slider-img-3-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-3-640w.png 640w, /imgs/puestas/tablet/slider-img-3-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-3.png"
+									src="/imgs/puestas/desktop/slider-img-3.png"
 									class="d-block w-100"
 									alt="puestas-3"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-4-320w.png 320w, /imgs/puestas/mobile/slider-img-4-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-4-640w.png 640w, /imgs/puestas/tablet/slider-img-4-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-4-640w.png 640w, /imgs/puestas/tablet/slider-img-4-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-4.png"
+									src="/imgs/puestas/desktop/slider-img-4.png"
 									class="d-block w-100"
 									alt="puestas-4"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-5-320w.png 320w, /imgs/puestas/mobile/slider-img-5-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-5-640w.png 640w, /imgs/puestas/tablet/slider-img-5-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-5-640w.png 640w, /imgs/puestas/tablet/slider-img-5-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-5.png"
+									src="/imgs/puestas/desktop/slider-img-5.png"
 									class="d-block w-100"
 									alt="puestas-5"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-6-320w.png 320w, /imgs/puestas/mobile/slider-img-6-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-6-640w.png 640w, /imgs/puestas/tablet/slider-img-6-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-6-640w.png 640w, /imgs/puestas/tablet/slider-img-6-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-6.png"
+									src="/imgs/puestas/desktop/slider-img-6.png"
 									class="d-block w-100"
 									alt="puestas-6"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-7-320w.png 320w, /imgs/puestas/mobile/slider-img-7-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-7-640w.png 640w, /imgs/puestas/tablet/slider-img-7-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-7-640w.png 640w, /imgs/puestas/tablet/slider-img-7-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-7.png"
+									src="/imgs/puestas/desktop/slider-img-7.png"
 									class="d-block w-100"
 									alt="puestas-7"
+									width="2336"
+									height="1314"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-8-320w.png 320w, /imgs/puestas/mobile/slider-img-8-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-8-640w.png 640w, /imgs/puestas/tablet/slider-img-8-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-8-640w.png 640w, /imgs/puestas/tablet/slider-img-8-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-8.png"
+									src="/imgs/puestas/desktop/slider-img-8.png"
 									class="d-block w-100"
 									alt="puestas-8"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 							<div
 								class="carousel-item"
 								data-bs-interval="2500"
 							>
+								<picture>
+									<source media="(max-width: 575px)" srcset="/imgs/puestas/mobile/slider-img-9-320w.png 320w, /imgs/puestas/mobile/slider-img-9-480w.png 480w" sizes="calc(100vw - 2rem)" />
+									<source media="(max-width: 991px)" srcset="/imgs/puestas/tablet/slider-img-9-640w.png 640w, /imgs/puestas/tablet/slider-img-9-768w.png 768w" sizes="80vw" />
+									<source media="(max-width: 1199px)" srcset="/imgs/puestas/tablet/slider-img-9-640w.png 640w, /imgs/puestas/tablet/slider-img-9-768w.png 768w" sizes="70vw" />
 								<img
-									src="imgs/puestas/slider-img-9.png"
+									src="/imgs/puestas/desktop/slider-img-9.png"
 									class="d-block w-100"
 									alt="puestas-9"
+									width="1920"
+									height="1080"
 									loading="lazy"
 									decoding="async"
 								/>
+								</picture>
 							</div>
 						</div>
 						<button
@@ -1333,7 +1372,8 @@
 					</div>
 				</section>
 			</div>
-			<div id="contacto" class="contacto contacto__container">
+			<div class="contacto contacto__container">
+				<span id="contacto" class="section-nav-target" aria-hidden="true"></span>
 				<section class="section contacto__section">
 					<article class="contacto__article contacto__sigamos">
 						<h2 class="title">

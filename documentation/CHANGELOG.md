@@ -27,6 +27,40 @@ Tipos sugeridos:
 
 ### 2026-10-03
 
+#### Fixed
+
+-   Se definió el contenedor `<picture>` del carrusel de Puestas como bloque
+    de ancho completo con relación `16 / 9` y se fijó la altura automática de
+    sus imágenes. Esto preserva la proporción apaisada y reserva el espacio
+    antes de que cargue la variante responsive, evitando desplazar el ancla de
+    Contacto en todos los breakpoints.
+-   Se incorporó una corrección temporal del ancla de Contacto cuando cambia
+    la altura de Puestas durante la primera navegación, para cubrir ajustes de
+    layout posteriores a la carga inicial.
+-   Áreas afectadas: `index.js`, `scss/sections/_puestas.scss` y
+    `css/estilos.css`.
+
+-   Los enlaces de la navbar hacia Nosotros, Puestas y Contacto ahora apuntan
+    al punto medio del padding superior de cada section. Así se conserva parte
+    del fondo por encima del título y el espacio para la cabecera fija.
+-   Tickets se mantiene fuera del alcance de este cambio y conserva su destino
+    de navegación anterior.
+-   Áreas afectadas: `index.html`, `scss/_general.scss`,
+    `scss/sections/_background.scss` y `css/estilos.css`.
+
+-   Se reservaron las proporciones de las imágenes del carrusel de Puestas
+    antes de su carga diferida para evitar que desplacen el destino de Contacto
+    durante el primer uso de la navegación.
+-   Área afectada: `index.html`.
+
+#### Changed
+
+-   Las imágenes de las cards de Nosotros y del carrusel de Puestas ahora usan
+    variantes responsive con `<picture>`, `srcset` y `sizes`: mobile hasta
+    `575px`, tablet hasta `1199px` y desktop como fallback. Se mantienen la
+    carga diferida, la decodificación asíncrona y las dimensiones reservadas.
+-   Área afectada: `index.html`.
+
 #### Documentation
 
 -   Se formalizó la estrategia de ramas: desarrollo en ramas de
