@@ -1,0 +1,39 @@
+// @media only screen and (min-width: 576px) and (max-width: 767px) 
+// @media only screen and (min-width: 768px) and (max-width: 1199px)
+// @media only screen and (min-width: 1200px) and (max-width: 1399px) 
+// @media only screen and (min-width: 1400px) 
+
+// .animations__container {
+//     display: grid;
+//     place-items: center;
+// }
+
+.animations {
+    &__container {
+        display: grid;
+        place-items: center;
+
+        >.animations__asterisk,
+        >.animations__logo {
+            grid-area: 1 / 1;
+        }
+    }
+
+    &__asterisk {
+        width: min(70vh, calc(100% - 2rem));
+        max-height: calc(100% - clamp(2rem, 8vh, 8rem));
+
+        object-fit: contain;
+
+        z-index: 0;
+    }
+
+    &__logo {
+        width: min(70vh, calc(100% - 2rem));
+        max-height: calc(100% - 2rem);
+
+        object-fit: contain;
+
+        z-index: 1;
+    }
+}
