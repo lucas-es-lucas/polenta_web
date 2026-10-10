@@ -25,6 +25,31 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-10
+
+#### Documentation
+
+-   Se actualizó la documentación funcional de la rama `feat-hero-assets` para
+    reflejar la arquitectura prevista y el estado actual de implementación, sin
+    registrar como terminadas las funcionalidades que continúan en desarrollo.
+-   Se actualizó el resumen general del proyecto con el recorrido previsto
+    Loader → Hero animado → Tickets → Nosotros, la relación visual entre Hero y
+    Tickets y el estado de sus implementaciones pendientes.
+-   Se documentó el bloque compartido Hero + Tickets con un único video de
+    fondo, scroll continuo del documento y sin sistema de scroll interno
+    independiente.
+-   Se documentaron las animaciones de Hero: asterisco azul y logo tipográfico,
+    sus assets disponibles y las validaciones técnicas todavía pendientes.
+-   Se actualizaron las especificaciones de Tickets, conservando su lógica de
+    carga, filtrado, renderizado dinámico y comportamiento responsive
+    actualmente verificado.
+-   Se creó la especificación funcional del loader inicial, incluyendo sus
+    requisitos confirmados, el estado pendiente de implementación y la
+    propuesta técnica aún no aprobada para sus recursos críticos.
+-   Áreas afectadas: `01-proyecto-resumen.md`,
+    `02-bloque-hero-tickets.md`, `03-section-hero.md`,
+    `04-section-tickets.md` y `05-loader.md`.
+
 ### 2026-10-03
 
 #### Fixed

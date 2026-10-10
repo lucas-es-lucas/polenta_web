@@ -1,30 +1,106 @@
 # Polenta Web — Section Tickets
 
-## Propósito
+## 1. Propósito
 
-Tickets se renderiza dentro del bloque `.hero` actual. Cada ticket incluye una imagen y un enlace de compra.
+Tickets presenta los eventos disponibles de Fiesta Polenta y se renderiza
+dinámicamente mediante `tickets.js`.
 
-## Fuente de datos
+En la arquitectura prevista de `feat-hero-assets`, Tickets aparece después del
+Hero animado y antes de la section Nosotros.
 
-`tickets.js` carga `/data/tickets.json`. Cada objeto usado por el script incluye, como mínimo:
+## 2. Relación con Hero y Loader
 
-- `date`, con formato `YYYYMMDD`;
-- `city`, usado para formar la ruta de imagen;
-- `alt`, texto alternativo de la imagen;
-- `link`, destino de compra.
+Hero y Tickets estarán visualmente diferenciados, pero compartirán un
+contenedor general y un único video de fondo.
 
-La imagen se resuelve como `/imgs/tickets/{date}-{city}.png`.
+El scroll desde Hero hacia Tickets será continuo y seguirá el desplazamiento
+normal del documento.
 
-## Regla de visibilidad
+La carga y el renderizado de Tickets no deben condicionar la salida del loader
+inicial.
 
-`tickets.js` usa `DAYS_TO_KEEP = 2`. Normaliza la fecha actual a las 00:00 y calcula una fecha de corte dos días anterior. Un ticket no se renderiza cuando su fecha es anterior a esa fecha de corte.
+La arquitectura compartida de Hero y Tickets se documenta en:
 
-Por lo tanto, se muestran los tickets de hoy, ayer y anteayer; los anteriores no se agregan al slider.
+`02-bloque-hero-tickets.md`
 
-## Renderizado
+Las condiciones de carga y salida del loader se documentan en:
 
-Los tickets se agregan dinámicamente a `#ticketsSlider`. En desktop, los estilos organizan el slider en dos columnas y centran el último ticket cuando queda impar. La implementación visual está en los estilos de Tickets.
+`05-loader.md`
 
-## Precauciones
+## 3. Estado actual de implementación
 
-Antes de cambiar la lógica de fechas, la estructura de `tickets.json`, el nombre de imágenes o el enlace de compra, revisar `tickets.js` y los datos actuales. Tickets comparte el contenedor y el video de fondo con Hero; ver `02-bloque-hero-tickets.md`.
+### Implementado y verificado
+
+-   `tickets.js` carga y procesa los datos de Tickets.
+-   Los tickets se insertan dinámicamente en `#ticketsSlider`.
+-   `index.html` conserva la implementación actual, con Tickets dentro del
+    bloque `.hero`.
+-   Hasta `1199px`, `#ticketsSlider` utiliza una única columna.
+-   Desde `1200px`, `#ticketsSlider` utiliza una grilla de dos columnas y
+    centra el último ticket cuando la cantidad de elementos es impar.
+
+### Arquitectura prevista
+
+-   Tickets se mostrará visualmente después del Hero animado.
+-   Tickets compartirá un único video de fondo con Hero.
+-   Después de Tickets comenzará la section Nosotros.
+-   La estructura HTML definitiva podrá ajustarse durante la implementación,
+    sin alterar la lógica funcional confirmada de Tickets.
+
+## 4. Fuente de datos
+
+`tickets.js` carga:
+
+`/data/tickets.json`
+
+Cada objeto utilizado por el script incluye, como mínimo:
+
+-   `date`, con formato `YYYYMMDD`;
+-   `city`, usado para formar la ruta de imagen;
+-   `alt`, texto alternativo de la imagen;
+-   `link`, destino de compra.
+
+La imagen se resuelve como:
+
+`/imgs/tickets/{date}-{city}.png`
+
+## 5. Regla de visibilidad
+
+`tickets.js` usa:
+
+`DAYS_TO_KEEP = 2`
+
+El script normaliza la fecha actual a las 00:00 y calcula una fecha de corte
+dos días anterior.
+
+Un ticket no se renderiza cuando su fecha es anterior a esa fecha de corte.
+
+Por lo tanto, se muestran los tickets de hoy, ayer y anteayer. Los tickets
+anteriores no se agregan al slider.
+
+## 6. Renderizado y presentación
+
+Los tickets se agregan dinámicamente a `#ticketsSlider`.
+
+Cada ticket renderizado incluye:
+
+-   una imagen;
+-   un enlace de compra.
+
+La cantidad de tickets puede variar durante la semana. Las fechas futuras se
+agregan manualmente en los datos y las fechas obsoletas se excluyen mediante
+JavaScript.
+
+## 7. Precauciones y alcance
+
+Antes de cambiar la lógica de fechas, la estructura de `tickets.json`, el
+nombre de las imágenes o los enlaces de compra, se deben revisar `tickets.js`
+y los datos actuales.
+
+Las especificaciones visuales y funcionales propias del Hero se documentan en:
+
+`03-section-hero.md`
+
+No se deben asumir elementos HTML definitivos, breakpoints adicionales ni
+cambios funcionales en Tickets mientras la estructura final de Hero + Tickets
+continúe en implementación.
