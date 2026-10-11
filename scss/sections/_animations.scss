@@ -20,8 +20,8 @@
     }
 
     &__asterisk {
-        background-color: transparent !important;
-        outline: none;
+        // background-color: transparent !important;
+        // outline: none;
 
         width: min(70vh, calc(100% - 2rem));
         max-height: calc(100% - clamp(2rem, 8vh, 8rem));
@@ -32,8 +32,8 @@
     }
 
     &__logo {
-        background-color: transparent !important;
-        outline: none;
+        // background-color: transparent !important;
+        // outline: none;
 
         width: min(70vh, calc(100% - 2rem));
         max-height: calc(100% - 2rem);
