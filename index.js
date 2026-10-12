@@ -12,20 +12,12 @@ const video = document.querySelector("#asterisk");
 
 const ua = navigator.userAgent;
 
-const isIOS =
-     /iPad|iPhone|iPod/.test(ua) ||
-     (navigator.platform === "MacIntel" &&
-          navigator.maxTouchPoints > 1);
+const supportsVp9WebM =
+    video.canPlayType('video/webm; codecs="vp9"') !== "";
 
-const isSafari =
-     /Safari/.test(ua) &&
-     !/Chrome|Chromium|CriOS|Edg|OPR|FxiOS/.test(ua);
-
-const useHEVC = isIOS || isSafari;
-
-video.src = useHEVC
-     ? "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov"
-     : "/imgs/assets-mov/asterisk-blue-vp9.webm";
+video.src = supportsVp9WebM
+    ? "/imgs/assets-mov/asterisk-blue-vp9.webm"
+    : "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov";
 
      console.log("User Agent:", ua);
      console.log("isIOS:", isIOS);
