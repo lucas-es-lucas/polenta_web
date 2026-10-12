@@ -854,7 +854,6 @@ body .contacto__container {
 }
 .animations__asterisk, .animations__logo {
   background: transparent;
-  mix-blend-mode: screen;
   object-fit: contain;
 }
 .animations__asterisk {
