@@ -25,6 +25,31 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-12
+
+#### Changed
+
+-   Se integró Hero antes de Tickets en `index.html`, dentro del bloque
+    compartido con un único video de fondo.
+-   Se incorporó la superposición de las animaciones de asterisco y logo en
+    Hero mediante la implementación de estilos actual.
+-   Se ajustaron las fuentes de las animaciones para utilizar MOV/HEVC con
+    alternativas WebM, y se retiró el uso de `mix-blend-mode: screen` en esas
+    capas para resolver los fondos negros observados.
+
+#### Documentation
+
+-   Se actualizó la documentación funcional de `feat-hero-assets` para
+    reflejar la integración actual de Hero, Tickets y sus assets de animación.
+-   Se registró la validación de reproducción realizada en dispositivos Apple
+    y se mantuvo pendiente la validación en los demás navegadores objetivo.
+-   Se mantuvo el loader inicial como funcionalidad definida pero no
+    implementada; las animaciones actuales todavía no están coordinadas con su
+    transición de salida.
+-   Áreas afectadas: `01-proyecto-resumen.md`,
+    `02-bloque-hero-tickets.md`, `03-section-hero.md`,
+    `04-section-tickets.md`, `05-loader.md` y `CHANGELOG.md`.
+
 ### 2026-10-10
 
 #### Documentation

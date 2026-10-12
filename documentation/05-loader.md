@@ -36,7 +36,7 @@ loader.
 
 ## 3. Relación con Hero y Tickets
 
-La arquitectura prevista de `feat-hero-assets` contiene:
+La arquitectura actual de `feat-hero-assets` contiene:
 
 -   un video de fondo compartido entre Hero y Tickets;
 -   una animación de asterisco;
@@ -46,6 +46,11 @@ Hero y Tickets estarán visualmente diferenciados, pero compartirán un
 contenedor general y un único video de fondo.
 
 Tickets no forma parte de la condición de salida del loader.
+
+Actualmente no existe un loader integrado. Las animaciones de Hero declaran
+reproducción automática en la implementación actual, por lo que todavía no
+hay una coordinación implementada entre la transición de salida del loader y
+el inicio de esas animaciones.
 
 ## 4. Propuesta técnica pendiente de aprobación
 

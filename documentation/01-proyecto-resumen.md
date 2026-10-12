@@ -56,7 +56,7 @@ decisiones técnicas pendientes se documentan en:
 
 `05-loader.md`
 
-## 5. Arquitectura prevista de Hero y Tickets
+## 5. Arquitectura de Hero y Tickets
 
 Hero y Tickets estarán visualmente diferenciados, pero compartirán un
 contenedor general y un único video de fondo.
@@ -82,29 +82,31 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 
 ### Implementado y verificado
 
--   `index.html` conserva la implementación original del bloque Hero + Tickets.
+-   `index.html` integra Hero antes de Tickets dentro de un mismo bloque
+    `.hero`.
+-   El bloque utiliza un único video de fondo, `#hero_bgs`, para Hero y
+    Tickets.
 -   La lógica de carga y filtrado de Tickets continúa en `tickets.js`.
--   Los archivos de animación de asterisco y logo están disponibles en el
-    directorio local `imgs/assets-mov/`, en formatos WebM y MOV.
+-   Las animaciones de asterisco y logo están incorporadas como videos
+    superpuestos.
+-   Los assets integrados están disponibles en `imgs/assets-mov/` en formatos
+    MOV y WebM. El fallback del logo se denomina
+    `logo-type-changing-vp8.webm`.
+-   La reproducción de las animaciones fue validada en dispositivos Apple sin
+    los fondos negros que presentaba la implementación anterior.
 
 ### Parcialmente implementado
 
--   `index_copy.html` contiene una estructura experimental para Hero animado,
-    previa a Tickets.
--   Los estilos base de Hero y de las animaciones están incorporados de forma
-    parcial.
--   Hero y Tickets están planteados dentro de un contenedor común con un único
-    video de fondo.
+-   Los estilos de Hero y animaciones contemplan unidades de viewport y
+    restricciones de tamaño, pero su comportamiento responsive definitivo
+    todavía no fue validado.
 
 ### Pendiente de implementación o validación
 
 -   Implementar el loader inicial.
--   Integrar la nueva estructura en `index.html`.
--   Superponer visualmente las dos animaciones de Hero.
--   Definir e implementar el comportamiento responsive específico de las
-    animaciones.
--   Completar la integración definitiva de los archivos de animación y validar
-    su reproducción en los navegadores objetivo.
+-   Validar el comportamiento responsive específico de las animaciones.
+-   Validar la reproducción de los videos en los navegadores objetivo, además
+    de los dispositivos Apple ya comprobados.
 -   Validar la continuidad visual del video compartido durante el scroll.
 -   Aprobar la definición técnica de los recursos críticos del loader.
 

@@ -2,8 +2,8 @@
 
 ## 1. Propósito
 
-Este documento define la arquitectura compartida prevista entre Hero y Tickets
-para la versión `feat-hero-assets`.
+Este documento define la arquitectura compartida entre Hero y Tickets para la
+versión `feat-hero-assets`.
 
 Hero y Tickets estarán visualmente diferenciados, pero formarán parte de un
 bloque general con un único video de fondo compartido.
@@ -40,27 +40,24 @@ section Nosotros.
 
 ### Implementado y verificado
 
--   `index.html` conserva el bloque original, con Tickets dentro de `.hero`.
--   El bloque actual contiene un único video de fondo, `#hero_bgs`.
+-   `index.html` contiene Hero antes de Tickets dentro del bloque `.hero`.
+-   El bloque contiene un único video de fondo, `#hero_bgs`.
+-   Hero contiene las animaciones de asterisco y logo antes de Tickets.
+-   Las animaciones se superponen mediante la implementación de estilos actual.
 -   La lógica de Tickets continúa dependiendo de `tickets.js`.
 
 ### Parcialmente implementado
 
--   `index_copy.html` contiene una estructura experimental con las animaciones
-    de Hero y Tickets dentro de un contenedor común.
--   El borrador mantiene un único video de fondo para el bloque.
--   Los estilos base de Hero y de las animaciones están incorporados de forma
-    parcial.
+-   Los estilos del bloque contemplan la disposición actual, pero el
+    comportamiento responsive definitivo continúa pendiente de validación.
 
 ### Pendiente de implementación o validación
 
--   Integrar la nueva arquitectura en `index.html`.
--   Superponer visualmente las animaciones de asterisco y logo.
 -   Verificar la continuidad visual del video durante el scroll entre Hero y
     Tickets.
--   Definir e implementar el comportamiento responsive definitivo.
+-   Validar el comportamiento responsive definitivo.
 -   Validar la reproducción de los recursos de video en los navegadores
-    objetivo.
+    objetivo, además de los dispositivos Apple ya comprobados.
 -   Revisar el comportamiento del CTA fijo "COMPRAR TICKETS", actualmente
     controlado mediante un `IntersectionObserver` sobre `.hero`, para
     determinar si sigue siendo adecuado con la nueva distribución visual de

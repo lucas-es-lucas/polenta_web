@@ -32,43 +32,44 @@ Los recursos disponibles para las animaciones se encuentran en:
 
 ### Asterisco azul
 
--   `asterisk-blue.webm`
--   `asterisk-blue.mov`
+-   `asterisk-blue-square-hevc-alpha-v3.mov`
+-   `asterisk-blue-vp9.webm`
 
 ### Logo tipográfico
 
--   `logo-type-changing.webm`
--   `logo-type-changing.mov`
+-   `logo-type-changing-hevc-alpha-v3.mov`
+-   `logo-type-changing-vp8.webm`
 
-Los recursos existen localmente, pero su integración definitiva y validación
-en navegadores están pendientes.
+Los recursos indicados están integrados en `index.html`: la fuente MOV/HEVC se
+declara antes de la fuente WebM. La validación en los navegadores objetivo
+continúa pendiente, salvo la comprobación realizada en dispositivos Apple.
 
 ## 4. Estado actual de implementación
 
 ### Implementado y verificado
 
--   `index.html` conserva la estructura original del bloque Hero + Tickets.
--   Los assets de asterisco y logo están disponibles en el directorio local
+-   `index.html` integra las dos animaciones de Hero antes de Tickets.
+-   Los assets de asterisco y logo están disponibles e integrados desde
     `imgs/assets-mov/`.
--   Los estilos correspondientes a la implementación experimental del Hero
-    están presentes en `css/estilos.css`, pero su funcionamiento visual
-    definitivo todavía no fue validado.
+-   Las animaciones se visualizan superpuestas mediante una grilla que ubica
+    ambos videos en la misma celda.
+-   Los videos declaran `autoplay`, `muted`, `loop`, `playsinline` y
+    `preload="auto"`.
+-   Los estilos correspondientes a esta implementación están presentes en
+    `css/estilos.css`.
+-   La reproducción sin fondos negros fue validada en dispositivos Apple.
 
 ### Parcialmente implementado
 
--   `index_copy.html` contiene una implementación experimental de las dos
-    animaciones dentro del bloque común de Hero y Tickets.
--   `scss/sections/_hero.scss` contiene estilos parciales del bloque Hero.
--   `scss/sections/_animations.scss` contiene estilos específicos de las
-    animaciones.
+-   Los estilos de `scss/sections/_hero.scss` y
+    `scss/sections/_animations.scss` incluyen la implementación actual, pero
+    su comportamiento responsive definitivo todavía no fue validado.
 
 ### Pendiente de implementación o validación
 
--   Integrar la nueva estructura de Hero en `index.html`.
--   Superponer visualmente las animaciones de asterisco y logo.
--   Implementar el comportamiento responsive definitivo.
+-   Validar el comportamiento responsive definitivo.
 -   Validar la reproducción y compatibilidad de los videos en los navegadores
-    objetivo.
+    objetivo, además de los dispositivos Apple ya comprobados.
 -   Validar la presentación visual de Hero en los tamaños y orientaciones de
     pantalla definidos durante la implementación.
 
@@ -76,14 +77,11 @@ en navegadores están pendientes.
 
 Esta especificación no define todavía:
 
--   reproducción en loop;
 -   sincronización exacta entre animaciones;
 -   pausa al salir del viewport;
 -   reinicio al regresar a Hero;
 -   breakpoints específicos;
 -   dimensiones y posiciones definitivas;
--   técnica CSS de superposición;
--   estrategia de fallback de video;
 -   comportamiento ante errores de reproducción.
 
 Estas decisiones deberán definirse durante la implementación y documentarse

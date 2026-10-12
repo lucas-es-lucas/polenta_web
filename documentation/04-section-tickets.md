@@ -5,13 +5,13 @@
 Tickets presenta los eventos disponibles de Fiesta Polenta y se renderiza
 dinámicamente mediante `tickets.js`.
 
-En la arquitectura prevista de `feat-hero-assets`, Tickets aparece después del
+En la arquitectura actual de `feat-hero-assets`, Tickets aparece después del
 Hero animado y antes de la section Nosotros.
 
 ## 2. Relación con Hero y Loader
 
-Hero y Tickets estarán visualmente diferenciados, pero compartirán un
-contenedor general y un único video de fondo.
+Hero y Tickets están visualmente diferenciados, pero comparten un contenedor
+general y un único video de fondo.
 
 El scroll desde Hero hacia Tickets será continuo y seguirá el desplazamiento
 normal del documento.
@@ -33,19 +33,20 @@ Las condiciones de carga y salida del loader se documentan en:
 
 -   `tickets.js` carga y procesa los datos de Tickets.
 -   Los tickets se insertan dinámicamente en `#ticketsSlider`.
--   `index.html` conserva la implementación actual, con Tickets dentro del
-    bloque `.hero`.
+-   `index.html` contiene Tickets después de las animaciones de Hero dentro
+    del bloque `.hero`.
 -   Hasta `1199px`, `#ticketsSlider` utiliza una única columna.
 -   Desde `1200px`, `#ticketsSlider` utiliza una grilla de dos columnas y
     centra el último ticket cuando la cantidad de elementos es impar.
 
-### Arquitectura prevista
+### Aspectos pendientes de validación
 
--   Tickets se mostrará visualmente después del Hero animado.
--   Tickets compartirá un único video de fondo con Hero.
--   Después de Tickets comenzará la section Nosotros.
--   La estructura HTML definitiva podrá ajustarse durante la implementación,
-    sin alterar la lógica funcional confirmada de Tickets.
+-   Verificar la continuidad visual del video de fondo durante el scroll desde
+    Hero hacia Tickets.
+-   Validar la presentación responsive del bloque compartido, sin alterar la
+    lógica funcional confirmada de Tickets.
+-   La estructura HTML podrá ajustarse si fuera necesario, preservando la
+    lógica funcional confirmada de Tickets.
 
 ## 4. Fuente de datos
 
