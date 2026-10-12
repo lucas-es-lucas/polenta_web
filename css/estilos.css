@@ -852,16 +852,17 @@ body .contacto__container {
 .animations__container > .animations__logo {
   grid-area: 1/1;
 }
+.animations__asterisk, .animations__logo {
+  object-fit: contain;
+}
 .animations__asterisk {
   width: min(70vh, 100% - 2rem);
   max-height: calc(100% - clamp(2rem, 8vh, 8rem));
-  object-fit: contain;
   z-index: 0;
 }
 .animations__logo {
   width: min(70vh, 100% - 2rem);
   max-height: calc(100% - 2rem);
-  object-fit: contain;
   z-index: 1;
 }
 

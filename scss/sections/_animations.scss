@@ -19,26 +19,28 @@
         }
     }
 
-    &__asterisk {
-        // background-color: transparent !important;
-        // outline: none;
+    &__asterisk,
+    &__logo {
+        // background: transparent;
+        // mix-blend-mode: screen;
 
+        object-fit: contain;
+    }
+
+    &__asterisk {
         width: min(70vh, calc(100% - 2rem));
         max-height: calc(100% - clamp(2rem, 8vh, 8rem));
 
-        object-fit: contain;
+        // object-fit: contain;
 
         z-index: 0;
     }
 
     &__logo {
-        // background-color: transparent !important;
-        // outline: none;
-
         width: min(70vh, calc(100% - 2rem));
         max-height: calc(100% - 2rem);
 
-        object-fit: contain;
+        // object-fit: contain;
 
         z-index: 1;
     }
