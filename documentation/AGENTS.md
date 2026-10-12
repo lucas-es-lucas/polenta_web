@@ -123,20 +123,21 @@ revisar los cambios pendientes y explicar la operación propuesta.
 
 Todos los commits del proyecto, sin importar la rama, deben usar este formato:
 
-`YYYYMMDD_N: descripción concisa y clara del cambio`
+`YYYYMMDD-HHMM-ART: descripción concisa y clara del cambio`
 
--   `YYYYMMDD` es la fecha del commit: año de cuatro dígitos, mes de dos
-    dígitos y día de dos dígitos.
--   `_` separa la fecha del número de commit.
--   `N` es el número correlativo inmediatamente posterior al número más alto
-    utilizado en todo el repositorio, considerando todas las ramas existentes.
+-   `YYYYMMDD` es la fecha del commit: año de cuatro dígitos,
+    mes de dos dígitos, día de dos dígitos.
+-   `-` separa la fecha, la hora y la zona horaria del commit.
+-   `HHMM` es la hora del commit: hora de dos dígitos en formato de 24 horas y
+    minutos de dos dígitos, sin separador.
+-   `ART` identifica la zona horaria `America/Argentina/Buenos_Aires`.
 -   `:` separa el identificador del mensaje.
 -   La descripción explica de forma concisa y clara el contenido del commit.
 
-Ejemplo: `20261002_103: Section Hero: se agregan variantes del video para distintos breakpoints.`
+Ejemplo: `20261003-2149-ART: Navegación de las sections Nosotros, Puestas y Contacto. Ahora anclan al punto medio de su padding superior: 48px antes del título dentro de los 96px existentes.`
 
-Antes de crear un commit, verificar el número más alto disponible en el
-historial de todas las ramas para evitar duplicados.
+Antes de crear un commit, verificar en el historial de todas las ramas que el
+identificador `YYYYMMDD-HHMM-ART` no esté utilizado, para evitar duplicados.
 
 ## 10. Alcance
 
