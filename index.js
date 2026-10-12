@@ -8,34 +8,34 @@ setTimeout(function () {
      headID.appendChild(newScript);
 }, 15000); // 15 segundos de delay para mostrar el popup
 
-// // const video = document.querySelector("#asterisk");
+const video = document.querySelector("#asterisk");
 
-// // const ua = navigator.userAgent;
+const ua = navigator.userAgent;
 
-// // const isIOS =
-// //      /iPad|iPhone|iPod/.test(ua) ||
-// //      (navigator.platform === "MacIntel" &&
-// //           navigator.maxTouchPoints > 1);
+const isIOS =
+     /iPad|iPhone|iPod/.test(ua) ||
+     (navigator.platform === "MacIntel" &&
+          navigator.maxTouchPoints > 1);
 
-// // const isSafari =
-// //      /Safari/.test(ua) &&
-// //      !/Chrome|Chromium|CriOS|Edg|OPR|FxiOS/.test(ua);
+const isSafari =
+     /Safari/.test(ua) &&
+     !/Chrome|Chromium|CriOS|Edg|OPR|FxiOS/.test(ua);
 
-// // const useHEVC = isIOS || isSafari;
+const useHEVC = isIOS || isSafari;
 
-// // video.src = useHEVC
-// //      ? "/imgs/assets-mov/asterisk-blue-HEVC.mov"
-// //      : "/imgs/assets-mov/asterisk-blue-vp9.webm";
+video.src = useHEVC
+     ? "/imgs/assets-mov/asterisk-blue-HEVC.mov"
+     : "/imgs/assets-mov/asterisk-blue-vp9.webm";
 
-// //      console.log("User Agent:", ua);
-// //      console.log("isIOS:", isIOS);
-// //      console.log("isSafari:", isSafari);
-// //      console.log("useHEVC:", useHEVC);
+     console.log("User Agent:", ua);
+     console.log("isIOS:", isIOS);
+     console.log("isSafari:", isSafari);
+     console.log("useHEVC:", useHEVC);
 
-// // video.load();
-// // video.play().catch(() => {
-// //      // El navegador podría bloquear la reproducción automática.
-// // });
+video.load();
+video.play().catch(() => {
+     // El navegador podría bloquear la reproducción automática.
+});
 
 // console.log('pirulo');
 // setTimeout(executeMainFunction, 5000);
