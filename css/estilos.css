@@ -853,6 +853,8 @@ body .contacto__container {
   grid-area: 1/1;
 }
 .animations__asterisk, .animations__logo {
+  background: transparent;
+  mix-blend-mode: screen;
   object-fit: contain;
 }
 .animations__asterisk {
