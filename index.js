@@ -24,7 +24,7 @@ const isSafari =
 const useHEVC = isIOS || isSafari;
 
 video.src = useHEVC
-     ? "/imgs/assets-mov/asterisk-blue-HEVC.mov"
+     ? "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov"
      : "/imgs/assets-mov/asterisk-blue-vp9.webm";
 
      console.log("User Agent:", ua);
