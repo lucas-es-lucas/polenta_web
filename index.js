@@ -8,26 +8,26 @@ setTimeout(function () {
      headID.appendChild(newScript);
 }, 15000); // 15 segundos de delay para mostrar el popup
 
-const video = document.querySelector("#asterisk");
+// // const video = document.querySelector("#asterisk");
 
-const ua = navigator.userAgent;
+// // const ua = navigator.userAgent;
 
-const supportsVp9WebM =
-    video.canPlayType('video/webm; codecs="vp9"') !== "";
+// // const supportsVp9WebM =
+// //     video.canPlayType('video/webm; codecs="vp9"') !== "";
 
-video.src = supportsVp9WebM
-    ? "/imgs/assets-mov/asterisk-blue-vp9.webm"
-    : "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov";
+// // video.src = supportsVp9WebM
+// //     ? "/imgs/assets-mov/asterisk-blue-vp9.webm"
+// //     : "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov";
 
-     console.log("User Agent:", ua);
-     console.log("isIOS:", isIOS);
-     console.log("isSafari:", isSafari);
-     console.log("useHEVC:", useHEVC);
+// //      console.log("User Agent:", ua);
+// //      console.log("isIOS:", isIOS);
+// //      console.log("isSafari:", isSafari);
+// //      console.log("useHEVC:", useHEVC);
 
-video.load();
-video.play().catch(() => {
-     // El navegador podría bloquear la reproducción automática.
-});
+// // video.load();
+// // video.play().catch(() => {
+// //      // El navegador podría bloquear la reproducción automática.
+// // });
 
 // console.log('pirulo');
 // setTimeout(executeMainFunction, 5000);
