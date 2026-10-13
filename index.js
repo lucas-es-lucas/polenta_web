@@ -8,87 +8,126 @@ setTimeout(function () {
      headID.appendChild(newScript);
 }, 15000); // 15 segundos de delay para mostrar el popup
 
-// // const video = document.querySelector("#asterisk");
+document.addEventListener("DOMContentLoaded", () => {
+     const block = document.querySelector("#hero-tickets");
+     const stage = document.querySelector(".hero-tickets__stage");
+     const cta = document.querySelector(".go-to-tickets");
+     const desktop = window.matchMedia("(min-width: 1200px)");
 
-// // const ua = navigator.userAgent;
+     if (!block) return;
 
-// // const supportsVp9WebM =
-// //     video.canPlayType('video/webm; codecs="vp9"') !== "";
+     /*
+      * Muestra el video solo detrás de la porción actualmente visible
+      * del bloque Hero + Tickets.
+      */
+     if (stage) {
+          let framePending = false;
 
-// // video.src = supportsVp9WebM
-// //     ? "/imgs/assets-mov/asterisk-blue-vp9.webm"
-// //     : "/imgs/assets-mov/asterisk-blue-hevc-alpha.mov";
+          const syncStageClip = () => {
+               framePending = false;
 
-// //      console.log("User Agent:", ua);
-// //      console.log("isIOS:", isIOS);
-// //      console.log("isSafari:", isSafari);
-// //      console.log("useHEVC:", useHEVC);
+               const rect = block.getBoundingClientRect();
+               const viewportHeight = window.innerHeight;
 
-// // video.load();
-// // video.play().catch(() => {
-// //      // El navegador podría bloquear la reproducción automática.
-// // });
+               const blockIsVisible =
+                    rect.bottom > 0 &&
+                    rect.top < viewportHeight;
 
-// console.log('pirulo');
-// setTimeout(executeMainFunction, 5000);
+               if (!blockIsVisible) {
+                    stage.style.clipPath = "inset(100% 0 0 0)";
+                    return;
+               }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//      const goButton = document.querySelector(".go-to-tickets");
+               const topInset = Math.max(
+                    0,
+                    Math.min(viewportHeight, rect.top)
+               );
 
-//      // Detectamos si estamos en index.html
-//      const isIndex = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
+               const bottomInset = Math.max(
+                    0,
+                    Math.min(viewportHeight, viewportHeight - rect.bottom)
+               );
 
-//      if (isIndex) {
-//           const heroSection = document.querySelector(".hero");
+               stage.style.clipPath =
+                    `inset(${topInset}px 0 ${bottomInset}px 0)`;
+          };
 
-//           if (heroSection) {
-//                // Solo en index.html aplicamos IntersectionObserver
-//                const observer = new IntersectionObserver(
-//                     (entries) => {
-//                          entries.forEach(entry => {
-//                               if (entry.isIntersecting) {
-//                                    goButton.classList.remove("show");
-//                               } else {
-//                                    goButton.classList.add("show");
-//                               }
-//                          });
-//                     },
-//                     { root: null, threshold: 0 }
-//                );
+          const requestStageSync = () => {
+               if (framePending) return;
 
-//                observer.observe(heroSection);
-//           }
-//      } else {
-//           // Otras páginas: el botón puede mostrarse por defecto o seguir oculto
-//           goButton.classList.add("show");
-//      }
-// });
+               framePending = true;
+               requestAnimationFrame(syncStageClip);
+          };
 
-document.addEventListener("DOMContentLoaded", function () {
-     const goButton = document.querySelector(".go-to-tickets");
-     const heroSection = document.querySelector(".hero");
+          window.addEventListener("scroll", requestStageSync, {
+               passive: true,
+          });
 
-     // Usamos IntersectionObserver para detectar si .hero está visible
-     const observer = new IntersectionObserver(
-          (entries) => {
-               entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                         // Hero está visible → ocultamos el botón
-                         goButton.classList.remove("show");
-                    } else {
-                         // Hero no está visible → mostramos el botón
-                         goButton.classList.add("show");
-                    }
-               });
-          },
-          {
-               root: null, // viewport
-               threshold: 0, // cualquier visibilidad
+          window.addEventListener("resize", requestStageSync);
+
+          const stageResizeObserver = new ResizeObserver(requestStageSync);
+          stageResizeObserver.observe(block);
+
+          syncStageClip();
+     }
+
+     /*
+      * CTA desktop: aparece únicamente al salir Hero + Tickets completo.
+      */
+     if (!cta) return;
+
+     let ctaObserver;
+
+     const syncCta = () => {
+          ctaObserver?.disconnect();
+
+          if (!desktop.matches) {
+               cta.classList.add("show");
+               return;
           }
-     );
 
-     observer.observe(heroSection);
+          cta.classList.remove("show");
+
+          ctaObserver = new IntersectionObserver(([entry]) => {
+               cta.classList.toggle("show", !entry.isIntersecting);
+          });
+
+          ctaObserver.observe(block);
+     };
+
+     desktop.addEventListener("change", syncCta);
+     syncCta();
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//      const block = document.querySelector("#hero-tickets");
+//      const cta = document.querySelector(".go-to-tickets");
+//      const desktop = window.matchMedia("(min-width: 1200px)");
+
+//      if (!cta || !block) return;
+
+//      let ctaObserver;
+
+//      const syncCta = () => {
+//           ctaObserver?.disconnect();
+
+//           if (!desktop.matches) {
+//                cta.classList.add("show");
+//                return;
+//           }
+
+//           cta.classList.remove("show");
+
+//           ctaObserver = new IntersectionObserver(([entry]) => {
+//                cta.classList.toggle("show", !entry.isIntersecting);
+//           });
+
+//           ctaObserver.observe(block);
+//      };
+
+//      desktop.addEventListener("change", syncCta);
+//      syncCta();
+// });
 
 document.addEventListener("DOMContentLoaded", function () {
      const contactoLink = document.querySelector('a[href="#contacto"]');

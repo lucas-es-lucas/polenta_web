@@ -449,10 +449,10 @@ body .contacto__container {
 }
 .go-to-tickets {
   position: fixed;
-  width: 10rem;
+  width: auto;
   height: 2.5rem;
   padding: 0.25rem 1rem;
-  bottom: 1.5rem;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
   right: 1.5rem;
   background-color: #E7270E;
   border: none;
@@ -465,6 +465,7 @@ body .contacto__container {
 }
 .go-to-tickets__text {
   padding: 0.25rem;
+  white-space: nowrap;
 }
 
 .go-to-tickets.show {
@@ -475,11 +476,18 @@ body .contacto__container {
   column-gap: 0.3rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width: 1199px) {
   .go-to-tickets {
-    bottom: 0;
+    display: inline-flex;
+    opacity: 1;
     left: 50%;
-    transform: translate(-50%, 0%);
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1200px) {
+  .go-to-tickets {
+    right: clamp(1.25rem, 2vw, 2rem);
   }
 }
 .back-to-home {
@@ -796,52 +804,79 @@ body .contacto__container {
   column-gap: 1.5rem;
 }
 
-.hero {
+.hero-tickets {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* videos */
+  z-index: 1;
+  isolation: isolate;
+  /*
+   * main tiene padding-top: 6rem y el header mide 6.5rem.
+   */
+  margin-top: 0.5rem;
+  /*
+   * El video queda fijo, pero JavaScript recorta visualmente esta capa
+   * al área visible de Hero + Tickets.
+   */
 }
-.hero__bgs {
-  position: absolute;
+.hero-tickets__stage {
+  position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-}
-.hero {
-  /* Animaciones + Tickets */
-  /* Antes era .hero-content */
-}
-.hero__block {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 4rem 2rem;
-}
-.hero {
-  /* Animaciones */
-}
-.hero__animations {
-  position: relative;
   width: 100%;
   height: 100vh;
   height: 100svh;
   height: 100dvh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /*
+   * Oculto hasta que index.js calcula el área visible del bloque.
+   */
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
 }
-
-/* por si necesito un filter después */
-.hero-overlay {
+.hero-tickets__bgs,
+.hero-tickets .hero-overlay {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-tickets__bgs {
+  object-fit: cover;
+  object-position: center;
+}
+.hero-tickets .hero-overlay {
   background: rgba(0, 0, 0, 0.35);
   z-index: 1;
+}
+.hero-tickets__block {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+.hero-tickets__animations {
+  width: 100%;
+  /*
+  * Área visible del video:
+  * viewport menos announcement bar y navbar.
+  */
+  height: calc(100vh - 6.5rem);
+  height: calc(100svh - 6.5rem);
+  height: calc(100dvh - 6.5rem);
+  /*
+  * Evita que min-height vuelva a alterar el área de centrado.
+  */
+  min-height: 0;
+  /*
+  * Centra asterisco y logo sobre el rectángulo visible del video.
+  */
+  display: grid;
+  place-items: center;
+  /*
+  * Compensa que el header es fixed:
+  * centra las animaciones en el área visible del video,
+  * desde el final de la navbar hasta el borde inferior.
+  */
+  transform: translateY(6.5rem);
 }
 
 .animations__container {

@@ -1,124 +1,154 @@
-.hero {
+.hero-tickets {
      position: relative;
-     overflow: hidden;
+     z-index: 1;
+     isolation: isolate;
 
-     width: 100%;
-     min-height: 100vh;
+     /*
+      * main tiene padding-top: 6rem y el header mide 6.5rem.
+      */
+     margin-top: calc($height-header - 6rem);
 
-     display: flex;
-     align-items: center;
-     justify-content: center;
+     /*
+      * El video queda fijo, pero JavaScript recorta visualmente esta capa
+      * al área visible de Hero + Tickets.
+      */
+     &__stage {
+          position: fixed;
+          inset: 0;
 
-     /* videos */
+          width: 100%;
+          height: 100vh;
+          height: 100svh;
+          height: 100dvh;
 
-     &__bgs {
+          z-index: 0;
+          overflow: hidden;
+          pointer-events: none;
+
+          /*
+           * Oculto hasta que index.js calcula el área visible del bloque.
+           */
+          clip-path: inset(100% 0 0 0);
+          will-change: clip-path;
+     }
+
+     &__bgs,
+     .hero-overlay {
           position: absolute;
           inset: 0;
 
           width: 100%;
           height: 100%;
-
-          object-fit: cover;
-          object-position: center;
-
-          z-index: 0;
      }
 
-     /* Animaciones + Tickets */
-     /* Antes era .hero-content */
+     &__bgs {
+          object-fit: cover;
+          object-position: center;
+     }
+
+     .hero-overlay {
+          background: rgba(0, 0, 0, 0.35);
+          z-index: 1;
+     }
 
      &__block {
           position: relative;
-          z-index: 2;
-
-          width: 100%;
-
-          padding: 4rem 2rem;
+          z-index: 1;
+          padding: 0;
      }
-
-     /* Animaciones */
 
      &__animations {
-          position: relative;
-
           width: 100%;
 
-          // Fallback → viewport pequeño estable → viewport dinámico.
-          height: 100vh;
-          height: 100svh;
-          height: 100dvh;
+          /*
+      * Área visible del video:
+      * viewport menos announcement bar y navbar.
+      */
+          height: calc(100vh - #{$height-header});
+          height: calc(100svh - #{$height-header});
+          height: calc(100dvh - #{$height-header});
+
+          /*
+      * Evita que min-height vuelva a alterar el área de centrado.
+      */
+          min-height: 0;
+
+          /*
+      * Centra asterisco y logo sobre el rectángulo visible del video.
+      */
+          display: grid;
+          place-items: center;
+
+          /*
+      * Compensa que el header es fixed:
+      * centra las animaciones en el área visible del video,
+      * desde el final de la navbar hasta el borde inferior.
+      */
+          transform: translateY($height-header);
      }
 }
 
-/* por si necesito un filter después */
-
-.hero-overlay {
-     position: absolute;
-     inset: 0;
-
-     background: rgba(0, 0, 0, 0.35);
-
-     z-index: 1;
-}
-
-// .hero-content {
+// .hero-tickets {
 //      position: relative;
-//      z-index: 2;
+//      isolation: isolate;
 
-//      width: 100%;
-//      // max-width: 1200px;
+//      /* background del hero-tickets */
 
-//      padding: 4rem 2rem;
+//      &__backdrop {
+//           position: fixed;
+//           inset: 0;
+//           width: 100%;
+//           height: 100dvh;
+//           z-index: 1;
+//           pointer-events: none;
+//           opacity: 0;
+//           visibility: hidden;
+//           transition: opacity .2s ease, visibility 0s linear .2s;
 
-//      // height: auto;
-// }
+//           &.is-active {
+//                opacity: 1;
+//                visibility: visible;
+//                transition-delay: 0s;
+//           }
+//      }
 
-// .hero {
-//      position: relative;
-//      overflow: hidden;
+//      /* background + video + overlay */
 
-//      width: 100%;
-//      min-height: 100vh;
+//      &__bgs,
+//      .hero-overlay {
+//           position: absolute;
+//           inset: 0;
+//           width: 100%;
+//           height: 100%;
+//      }
 
-//      display: flex;
-//      align-items: center;
-//      justify-content: center;
-// }
+//      /* video del background */
 
-// /* videos */
+//      &__bgs {
+//           object-fit: cover;
+//      }
 
-// .hero-video {
-//      position: absolute;
-//      inset: 0;
+//      /* filter */
 
-//      width: 100%;
-//      height: 100%;
+//      .hero-overlay {
+//           background: rgba(0, 0, 0, 0.35);
 
-//      object-fit: cover;
-//      object-position: center;
+//           z-index: 1;
+//      }
 
-//      z-index: 0;
-// }
+//      /* content = Animaciones + Tickets */
 
-// /* por si necesito un filter después */
+//      &__block {
+//           position: relative;
+//           z-index: 2;
+//           padding: 4rem 2rem;
+//      }
 
-// .hero-overlay {
-//      position: absolute;
-//      inset: 0;
+//      /* Animaciones */
 
-//      background: rgba(0, 0, 0, 0.35);
-
-//      z-index: 1;
-// }
-
-// /* Tickets */
-
-// .hero-content {
-//      position: relative;
-//      z-index: 2;
-
-//      width: 100%;
-//      max-width: 1200px;
-
-//      padding: 4rem 2rem;
+//      &__animations {
+//           min-height: 100vh;
+//           min-height: 100svh;
+//           min-height: 100dvh;
+//      }
 // }

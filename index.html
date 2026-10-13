@@ -431,20 +431,20 @@
 		</nav>
 	</header>
 	<main class="container">
-		<section class="hero">
-			<video id="hero_bgs" class="hero__bgs hero-video" autoplay muted loop playsinline preload="auto">
-				<source type="video/webm" src="/imgs/video/bg-tickets.webm" />
-				<source type="video/mp4" src="/imgs/video/bg-tickets.mp4" />
-				<!-- media="(min-width:650px)" -->
-				<!-- media="min-device-width: 576px" -->
-				Tu navegador no soporta la reproducción automática del
-				video.
-			</video>
-			<div class="hero-overlay"></div>
+		<section id="hero-tickets" class="hero hero-tickets">
+			<div class="hero-tickets__stage" aria-hidden="true">
+				<video id="hero_bgs" class="hero-tickets__bgs hero-video" autoplay muted loop playsinline preload="auto">
+					<source type="video/webm" src="/imgs/video/bg-tickets.webm" />
+					<source type="video/mp4" src="/imgs/video/bg-tickets.mp4" />
+					Tu navegador no soporta la reproducción automática del
+					video.
+				</video>
+				<div class="hero-overlay"></div>
+			</div>
 			<!-- bloque hero + tickets para scroll -->
-			<div class="hero__block hero-content">
+			<div class="hero-tickets__block hero-tickets__content">
 				<!-- section animaciones -->
-				<section class="hero-animations hero__animations animations animations__container">
+				<section class="hero-animations hero-tickets__animations animations animations__container">
 					<!-- asterisco animado -->
 					<video class="animations__asterisk" autoplay muted loop playsinline preload="auto">
 						<source src="/imgs/assets-mov/asterisk-blue-square-hevc-alpha-v3.mov"
@@ -464,7 +464,7 @@
 					</video>
 				</section>
 				<!-- section tickets -->
-				<div id="tickets" class="hero-tickets hero__tickets tickets__container container__propio tickets">
+				<div id="tickets" class="hero__tickets tickets__container container__propio tickets">
 					<section class="section tickets__section">
 						<article class="tickets__title">
 							<h2 class="title">
