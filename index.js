@@ -588,6 +588,96 @@ document.addEventListener("DOMContentLoaded", () => {
      puestasResizeObserver.observe(puestasSlider);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+     /*
+      * Si Tickets todavía no se renderizó, la navegación nativa a una section
+      * posterior calcula el hash con una altura incompleta. Al terminar de
+      * insertar los tickets, se repite una única vez el desplazamiento.
+      */
+     const ticketSlider = document.getElementById("ticketsSlider");
+     const delayedTargets = new Set([
+          "#nosotros",
+          "#puestas",
+          "#contacto",
+     ]);
+
+     if (!ticketSlider) return;
+
+     let ticketsRendered = ticketSlider.children.length > 0;
+     let pendingHash = "";
+
+     const correctPendingNavigation = () => {
+          if (!pendingHash || window.location.hash !== pendingHash) {
+               pendingHash = "";
+               return;
+          }
+
+          const target = document.querySelector(pendingHash);
+
+          if (!target) {
+               pendingHash = "";
+               return;
+          }
+
+          /*
+           * "auto" respeta html { scroll-behavior: smooth }, igual que las
+           * demás navigaciones nativas por hash.
+           */
+          target.scrollIntoView({
+               block: "start",
+               behavior: "auto",
+          });
+
+          pendingHash = "";
+     };
+
+     const queueInitialHashCorrection = () => {
+          const { hash } = window.location;
+
+          if (!delayedTargets.has(hash)) return;
+
+          /*
+           * En una entrada externa con hash, corregir aun si la respuesta de
+           * Tickets llegó excepcionalmente antes de DOMContentLoaded.
+           */
+          pendingHash = hash;
+
+          if (ticketsRendered) {
+               requestAnimationFrame(correctPendingNavigation);
+          }
+     };
+
+     const ticketsObserver = new MutationObserver(() => {
+          if (ticketsRendered) return;
+
+          ticketsRendered = ticketSlider.children.length > 0;
+
+          if (ticketsRendered && pendingHash) {
+               requestAnimationFrame(correctPendingNavigation);
+          }
+     });
+
+     ticketsObserver.observe(ticketSlider, {
+          childList: true,
+     });
+
+     /*
+      * Cubre /index.html#nosotros, #puestas y #contacto provenientes de
+      * Términos y Privacidad.
+      */
+     queueInitialHashCorrection();
+
+     /*
+      * Cubre un clic muy temprano desde la navbar de index.html, antes de que
+      * tickets.js haya terminado de poblar la grilla.
+      */
+     window.addEventListener("hashchange", () => {
+          if (!ticketsRendered) {
+               queueInitialHashCorrection();
+          }
+     });
+});
+
 // document.addEventListener("DOMContentLoaded", () => {
 //      const tickets = document.querySelectorAll(".ticket");
 
