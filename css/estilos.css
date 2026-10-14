@@ -96,6 +96,61 @@ body .contacto__container {
   flex-direction: column;
 }
 
+/*
+ * El contenido no debe verse ni recibir interacción hasta que el loader
+ * termine. La clase se agrega en el <head>, antes de que cargue el contenido.
+ */
+html.is-loading,
+html.is-loading body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.is-loading body > :not(#initial-loader) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/*
+ * Por defecto el loader no ocupa espacio ni se muestra.
+ * Sólo se activa en la carga inicial, o mientras ejecuta su salida.
+ */
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+  background-color: #000000;
+  opacity: 1;
+  /*
+   * Debe cubrir header, CTA y widgets externos mientras bloquea el sitio.
+   */
+  z-index: 2000;
+  transition: opacity 0.45s ease;
+}
+
+html.is-loading .initial-loader,
+.initial-loader.is-leaving {
+  display: grid;
+}
+
+.initial-loader.is-leaving {
+  opacity: 0;
+}
+
+.initial-loader__logo {
+  /*
+   * La referencia usa un logo compacto: en desktop queda cercano a 24rem
+   * y en pantallas angostas puede ocupar hasta el 72% del viewport.
+   */
+  width: min(24rem, 72vw);
+  height: auto;
+  max-height: 82dvh;
+  object-fit: contain;
+}
+
 .footer {
   width: 100%;
   height: auto;
@@ -880,6 +935,10 @@ body .contacto__container {
 }
 
 .animations__container {
+  /*
+   * Ambas animaciones usan la misma celda: se superponen y conservan
+   * el centro visual común del Hero.
+   */
   display: grid;
   place-items: center;
 }
@@ -888,20 +947,114 @@ body .contacto__container {
   grid-area: 1/1;
 }
 .animations__asterisk, .animations__logo {
+  display: block;
   background: transparent;
   object-fit: contain;
 }
 .animations__asterisk {
-  width: min(70vh, 100% - 2rem);
+  /*
+   * El asset es cuadrado. Se limita por alto para no competir con
+   * navbar/announcement ni desbordar Hero en pantallas bajas.
+   */
+  width: min(70vh, 42vw, 100% - 2rem);
   max-height: calc(100% - clamp(2rem, 8vh, 8rem));
   z-index: 0;
+  /*
+   * El archivo tiene bastante área transparente alrededor del objeto.
+   * Se escala visualmente para igualar la composición de referencia.
+   */
+  transform: scale(2.5);
+  transform-origin: center;
 }
 .animations__logo {
-  width: min(70vh, 100% - 2rem);
+  /*
+   * El logo proviene de un canvas 16:9 y requiere más ancho visual
+   * que el asterisco para coincidir con la referencia de Hero.
+   */
+  width: min(112vw, 34rem);
   max-height: calc(100% - 2rem);
   z-index: 1;
+  /*
+   * El canvas del logo incluye espacio lateral transparente.
+   * Esta escala aproxima su presencia al video compuesto de referencia.
+   */
+  transform: scale(1.7);
+  transform-origin: center;
 }
 
+/*
+ * Tablet: el espacio horizontal permite ampliar el logo sin aumentar
+ * el asterisco, que ya tiene una presencia equilibrada.
+ */
+@media only screen and (min-width: 576px) {
+  .animations__logo {
+    width: min(90vw, 90vh, 46rem);
+  }
+}
+/*
+ * Desktop: el logo se acerca a la referencia visual; el asterisco se mantiene
+ * limitado por el alto para no dominar el Hero en monitores panorámicos.
+ */
+@media only screen and (min-width: 1200px) {
+  .animations__logo {
+    width: min(68vw, 100vh, 64rem);
+  }
+}
+/*
+ * Tablet: ambos assets necesitan una expansión mayor porque sus canvases
+ * individuales contienen más espacio vacío que el video de referencia.
+ */
+@media only screen and (min-width: 576px) {
+  .animations__asterisk {
+    transform: scale(2.2);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
+/*
+ * Desktop: conserva aire alrededor de la composición sin reducir el impacto
+ * visual del logo ni del asterisco.
+ */
+@media only screen and (min-width: 1200px) {
+  .animations__asterisk {
+    transform: scale(1.5);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
+/*
+ * Sólo en mobile, los canvases ampliados conservan más espacio transparente
+ * hacia la izquierda. Este ajuste centra el contenido visual, no el canvas.
+ */
+@media only screen and (max-width: 575px) {
+  .animations__asterisk, .animations__logo {
+    position: relative;
+    left: -5vw;
+  }
+}
+/*
+ * Entre 992px y 1199px hay navbar desktop, pero todavía se aplica el
+ * escalado tablet. Reducimos la composición antes de llegar al breakpoint
+ * desktop para que no invada la navegación.
+ */
+@media only screen and (min-width: 992px) and (max-width: 1099px) {
+  .animations__asterisk {
+    transform: scale(1.5);
+  }
+  .animations__logo {
+    transform: scale(1.85);
+  }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1199px) {
+  .animations__asterisk {
+    transform: scale(1.7);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
 .tickets__section {
   width: 100%;
   padding-top: 3rem;

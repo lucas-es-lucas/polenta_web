@@ -18,6 +18,8 @@ Su arquitectura compartida con Tickets se define en:
 -   Ambas animaciones deben visualizarse superpuestas, una sobre la otra.
 -   Las animaciones comienzan una vez finalizada la transición de salida del
     loader.
+-   En condiciones normales, las animaciones se reproducen en loop. Con
+    `prefers-reduced-motion: reduce`, se reproducen una única vez.
 -   Hero comparte su video de fondo con Tickets.
 -   El usuario puede continuar desde Hero hacia Tickets mediante el scroll
     normal del documento.
@@ -41,8 +43,9 @@ Los recursos disponibles para las animaciones se encuentran en:
 -   `logo-type-changing-vp8.webm`
 
 Los recursos indicados están integrados en `index.html`: la fuente MOV/HEVC se
-declara antes de la fuente WebM. La validación en los navegadores objetivo
-continúa pendiente, salvo la comprobación realizada en dispositivos Apple.
+declara antes de la fuente WebM. El asterisco cuenta además con un poster PNG
+estático para representar el recurso antes de que el primer frame esté
+disponible.
 
 ## 4. Estado actual de implementación
 
@@ -53,25 +56,18 @@ continúa pendiente, salvo la comprobación realizada en dispositivos Apple.
     `imgs/assets-mov/`.
 -   Las animaciones se visualizan superpuestas mediante una grilla que ubica
     ambos videos en la misma celda.
--   Los videos declaran `autoplay`, `muted`, `loop`, `playsinline` y
-    `preload="auto"`.
--   Los estilos correspondientes a esta implementación están presentes en
-    `css/estilos.css`.
--   La reproducción sin fondos negros fue validada en dispositivos Apple.
-
-### Parcialmente implementado
-
--   Los estilos de `scss/sections/_hero.scss` y
-    `scss/sections/_animations.scss` incluyen la implementación actual, pero
-    su comportamiento responsive definitivo todavía no fue validado.
+-   El inicio de las animaciones queda coordinado por el loader; no dependen
+    de `autoplay` en el marcado.
+-   Los estilos de `scss/sections/_animations.scss` superponen ambas capas y
+    ajustan escala y posición para mobile, tablet, desktop y el rango de
+    `992px` a `1199px`.
+-   La reproducción normal repite las animaciones; el modo de movimiento
+    reducido reproduce una única vez.
 
 ### Pendiente de implementación o validación
 
--   Validar el comportamiento responsive definitivo.
 -   Validar la reproducción y compatibilidad de los videos en los navegadores
     objetivo, además de los dispositivos Apple ya comprobados.
--   Validar la presentación visual de Hero en los tamaños y orientaciones de
-    pantalla definidos durante la implementación.
 
 ## 5. Decisiones técnicas pendientes
 
@@ -80,9 +76,6 @@ Esta especificación no define todavía:
 -   sincronización exacta entre animaciones;
 -   pausa al salir del viewport;
 -   reinicio al regresar a Hero;
--   breakpoints específicos;
--   dimensiones y posiciones definitivas;
--   comportamiento ante errores de reproducción.
 
 Estas decisiones deberán definirse durante la implementación y documentarse
 cuando estén confirmadas.

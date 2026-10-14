@@ -39,14 +39,14 @@ Las cinco áreas principales de contenido, en orden de visualización, serán:
 
 ## 4. Loader inicial
 
-La versión `feat-hero-assets` incluirá un loader inicial antes de que el
+La versión `feat-hero-assets` incorpora un loader inicial antes de que el
 usuario acceda al contenido del sitio.
 
 Mientras esté visible, el contenido permanecerá oculto, el scroll estará
 bloqueado y no será posible interactuar con el contenido subyacente.
 
-El loader desaparecerá mediante una transición. Al finalizarla, comenzarán
-las dos animaciones de Hero.
+El loader permanece al menos tres segundos y desaparece mediante una
+transición. Al finalizarla, comienzan las dos animaciones de Hero.
 
 La carga, obtención o renderizado de Tickets no debe retrasar la salida del
 loader.
@@ -72,13 +72,15 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 
 ### Funcionalidad definida
 
--   La versión incluirá un loader inicial.
+-   La versión incorpora un loader inicial.
 -   El loader ocultará el contenido, bloqueará el scroll e impedirá la
     interacción con el contenido subyacente mientras esté visible.
 -   Hero y Tickets estarán visualmente diferenciados y compartirán un
     contenedor general con un único video de fondo.
 -   Al finalizar la transición del loader comenzarán las dos animaciones de
     Hero.
+-   La salida del loader no espera la carga, obtención ni renderizado de
+    Tickets.
 
 ### Implementado y verificado
 
@@ -89,26 +91,28 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 -   La lógica de carga y filtrado de Tickets continúa en `tickets.js`.
 -   Las animaciones de asterisco y logo están incorporadas como videos
     superpuestos.
--   Los assets integrados están disponibles en `imgs/assets-mov/` en formatos
-    MOV y WebM. El fallback del logo se denomina
-    `logo-type-changing-vp8.webm`.
--   La reproducción de las animaciones fue validada en dispositivos Apple sin
-    los fondos negros que presentaba la implementación anterior.
-
-### Parcialmente implementado
-
--   Los estilos de Hero y animaciones contemplan unidades de viewport y
-    restricciones de tamaño, pero su comportamiento responsive definitivo
-    todavía no fue validado.
+-   Las animaciones usan MOV/HEVC con alternativa WebM y se inician una vez
+    terminada la transición del loader. Con `prefers-reduced-motion: reduce`,
+    se reproducen una vez y no repiten el loop.
+-   El asterisco utiliza un poster PNG estático mientras su video se prepara.
+-   Se selecciona y carga dinámicamente una sola variante del video de fondo:
+    vertical mobile hasta `575px` en portrait, variante intermedia hasta
+    `1199px` y variante desktop desde `1200px`. Cada variante ofrece WebM y
+    MP4.
+-   El loader espera el GIF, la variante de fondo activa y el primer frame de
+    las dos animaciones; cuenta además con una salvaguarda de doce segundos
+    para evitar que el sitio quede bloqueado ante un recurso pendiente.
+-   Las entradas directas a `#hero` y `#tickets` omiten el loader.
+-   Se ajustó la composición responsive de las animaciones para mobile,
+    tablet, desktop y el rango intermedio de `992px` a `1199px`.
 
 ### Pendiente de implementación o validación
 
--   Implementar el loader inicial.
--   Validar el comportamiento responsive específico de las animaciones.
 -   Validar la reproducción de los videos en los navegadores objetivo, además
     de los dispositivos Apple ya comprobados.
 -   Validar la continuidad visual del video compartido durante el scroll.
--   Aprobar la definición técnica de los recursos críticos del loader.
+-   Verificar la navegación desde los CTA y las páginas legales hacia
+    `#hero` y `#tickets` sin mostrar el loader.
 
 ## 7. Orden de visualización previsto
 
@@ -187,11 +191,6 @@ definidos en `AGENTS.md`.
 
 La documentación disponible no define, entre otros aspectos:
 
--   duración mínima del loader;
--   duración y efecto visual exactos de su transición;
--   tiempo máximo de espera ante errores de carga;
--   comportamiento ante recursos incompatibles;
--   detalles de implementación responsive del loader;
 -   estructura completa de carpetas y archivos;
 -   nombres de todos los archivos CSS/HTML/JS;
 -   comportamiento detallado del header y navbar;

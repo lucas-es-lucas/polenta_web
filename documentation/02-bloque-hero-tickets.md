@@ -45,6 +45,10 @@ section Nosotros.
 -   Hero contiene las animaciones de asterisco y logo antes de Tickets.
 -   Las animaciones se superponen mediante la implementación de estilos actual.
 -   La lógica de Tickets continúa dependiendo de `tickets.js`.
+-   La variante de video de fondo se selecciona dinámicamente según el
+    viewport, sin insertar ni precargar las variantes inactivas.
+-   La composición responsive de las animaciones contempla mobile, tablet,
+    desktop y el rango de `992px` a `1199px`.
 
 ### Parcialmente implementado
 
@@ -53,9 +57,6 @@ section Nosotros.
 
 ### Pendiente de implementación o validación
 
--   Verificar la continuidad visual del video durante el scroll entre Hero y
-    Tickets.
--   Validar el comportamiento responsive definitivo.
 -   Validar la reproducción de los recursos de video en los navegadores
     objetivo, además de los dispositivos Apple ya comprobados.
 -   Revisar el comportamiento del CTA fijo "COMPRAR TICKETS", actualmente

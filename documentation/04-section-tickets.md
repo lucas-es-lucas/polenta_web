@@ -19,6 +19,9 @@ normal del documento.
 La carga y el renderizado de Tickets no deben condicionar la salida del loader
 inicial.
 
+Tickets no forma parte de los recursos críticos del loader: su obtención y
+renderizado dinámico continúan de manera independiente.
+
 La arquitectura compartida de Hero y Tickets se documenta en:
 
 `02-bloque-hero-tickets.md`

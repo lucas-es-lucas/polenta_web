@@ -3,45 +3,161 @@
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
-// .animations__container {
-//     display: grid;
-//     place-items: center;
-// }
-
 .animations {
-    &__container {
-        display: grid;
-        place-items: center;
+     &__container {
+          /*
+           * Ambas animaciones usan la misma celda: se superponen y conservan
+           * el centro visual común del Hero.
+           */
+          display: grid;
+          place-items: center;
 
-        >.animations__asterisk,
-        >.animations__logo {
-            grid-area: 1 / 1;
-        }
-    }
+          > .animations__asterisk,
+          > .animations__logo {
+               grid-area: 1 / 1;
+          }
+     }
 
-    &__asterisk,
-    &__logo {
-        background: transparent;
-        // mix-blend-mode: screen;
+     &__asterisk,
+     &__logo {
+          display: block;
 
-        object-fit: contain;
-    }
+          background: transparent;
+          object-fit: contain;
+     }
 
-    &__asterisk {
-        width: min(70vh, calc(100% - 2rem));
-        max-height: calc(100% - clamp(2rem, 8vh, 8rem));
+     &__asterisk {
+          /*
+           * El asset es cuadrado. Se limita por alto para no competir con
+           * navbar/announcement ni desbordar Hero en pantallas bajas.
+           */
+          width: min(70vh, 42vw, calc(100% - 2rem));
+          max-height: calc(100% - clamp(2rem, 8vh, 8rem));
 
-        // object-fit: contain;
+          z-index: 0;
 
-        z-index: 0;
-    }
+          /*
+           * El archivo tiene bastante área transparente alrededor del objeto.
+           * Se escala visualmente para igualar la composición de referencia.
+           */
+          transform: scale(2.5);
+          transform-origin: center;
+     }
 
-    &__logo {
-        width: min(70vh, calc(100% - 2rem));
-        max-height: calc(100% - 2rem);
+     &__logo {
+          /*
+           * El logo proviene de un canvas 16:9 y requiere más ancho visual
+           * que el asterisco para coincidir con la referencia de Hero.
+           */
+          width: min(112vw, 34rem);
+          max-height: calc(100% - 2rem);
 
-        // object-fit: contain;
+          z-index: 1;
 
-        z-index: 1;
-    }
+          /*
+           * El canvas del logo incluye espacio lateral transparente.
+           * Esta escala aproxima su presencia al video compuesto de referencia.
+           */
+          transform: scale(1.7);
+          transform-origin: center;
+     }
+}
+
+/*
+ * Tablet: el espacio horizontal permite ampliar el logo sin aumentar
+ * el asterisco, que ya tiene una presencia equilibrada.
+ */
+@media only screen and (min-width: 576px) {
+     .animations {
+          &__logo {
+               width: min(90vw, 90vh, 46rem);
+          }
+     }
+}
+
+/*
+ * Desktop: el logo se acerca a la referencia visual; el asterisco se mantiene
+ * limitado por el alto para no dominar el Hero en monitores panorámicos.
+ */
+@media only screen and (min-width: 1200px) {
+     .animations {
+          &__logo {
+               width: min(68vw, 100vh, 64rem);
+          }
+     }
+}
+
+/*
+ * Tablet: ambos assets necesitan una expansión mayor porque sus canvases
+ * individuales contienen más espacio vacío que el video de referencia.
+ */
+@media only screen and (min-width: 576px) {
+     .animations {
+          &__asterisk {
+               transform: scale(2.2);
+          }
+
+          &__logo {
+               transform: scale(2.0);
+          }
+     }
+}
+
+/*
+ * Desktop: conserva aire alrededor de la composición sin reducir el impacto
+ * visual del logo ni del asterisco.
+ */
+@media only screen and (min-width: 1200px) {
+     .animations {
+          &__asterisk {
+               transform: scale(1.5);
+          }
+
+          &__logo {
+               transform: scale(2.0);
+          }
+     }
+}
+
+/*
+ * Sólo en mobile, los canvases ampliados conservan más espacio transparente
+ * hacia la izquierda. Este ajuste centra el contenido visual, no el canvas.
+ */
+@media only screen and (max-width: 575px) {
+     .animations {
+          &__asterisk,
+          &__logo {
+               position: relative;
+               left: -5vw;
+          }
+     }
+}
+
+/*
+ * Entre 992px y 1199px hay navbar desktop, pero todavía se aplica el
+ * escalado tablet. Reducimos la composición antes de llegar al breakpoint
+ * desktop para que no invada la navegación.
+ */
+@media only screen and (min-width: 992px) and (max-width: 1099px) {
+     .animations {
+          &__asterisk {
+               transform: scale(1.5);
+          }
+
+          &__logo {
+               transform: scale(1.85);
+          }
+     }
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1199px) {
+     .animations {
+          &__asterisk {
+               transform: scale(1.7);
+          }
+
+          &__logo {
+               transform: scale(2);
+          }
+     }
 }

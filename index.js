@@ -1,3 +1,243 @@
+/*
+ * Loader inicial y recursos críticos de Hero.
+ *
+ * Tickets no participa de este flujo: tickets.js sigue cargando y renderizando
+ * de forma independiente para no retrasar la primera vista.
+ */
+(() => {
+     const MINIMUM_LOADER_DURATION = 3000;
+     const MAXIMUM_CRITICAL_WAIT = 12000;
+
+     const root = document.documentElement;
+     const loader = document.querySelector("#initial-loader");
+     const backgroundVideo = document.querySelector("#hero_bgs");
+     const heroAnimations = Array.from(
+          document.querySelectorAll(
+               ".animations__asterisk, .animations__logo",
+          ),
+     );
+     const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+     );
+
+     if (!backgroundVideo) return;
+
+     /*
+      * Sólo se inserta en el DOM la variante necesaria para el viewport actual.
+      * Así el navegador no descarga los videos de breakpoints inactivos.
+      */
+     const getBackgroundVariant = () => {
+          const isMobile = window.matchMedia("(max-width: 575px)").matches;
+          const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+          const isTablet = window.matchMedia("(max-width: 1199px)").matches;
+
+          if (isMobile && isPortrait) {
+               return {
+                    name: "mobile-vertical",
+                    webm: backgroundVideo.dataset.mobileVerticalWebm,
+                    mp4: backgroundVideo.dataset.mobileVerticalMp4,
+               };
+          }
+
+          if (isTablet) {
+               return {
+                    name: "tablet",
+                    webm: backgroundVideo.dataset.tabletWebm,
+                    mp4: backgroundVideo.dataset.tabletMp4,
+               };
+          }
+
+          return {
+               name: "desktop",
+               webm: backgroundVideo.dataset.desktopWebm,
+               mp4: backgroundVideo.dataset.desktopMp4,
+          };
+     };
+
+     let activeBackgroundVariant = "";
+
+     const setBackgroundSources = () => {
+          const variant = getBackgroundVariant();
+
+          if (variant.name === activeBackgroundVariant) return;
+
+          activeBackgroundVariant = variant.name;
+          backgroundVideo.replaceChildren();
+
+          [
+               { src: variant.webm, type: "video/webm" },
+               { src: variant.mp4, type: "video/mp4" },
+          ].forEach(({ src, type }) => {
+               const source = document.createElement("source");
+
+               source.src = src;
+               source.type = type;
+
+               backgroundVideo.appendChild(source);
+          });
+
+          backgroundVideo.preload = "auto";
+          backgroundVideo.load();
+
+          /*
+          * Al insertar sources dinámicamente, autoplay por sí solo no siempre
+          * reinicia la reproducción. Esta llamada cubre ese caso.
+          */
+          backgroundVideo.muted = true;
+          backgroundVideo.defaultMuted = true;
+
+          backgroundVideo.play().catch(() => {
+               /*
+                * El video permanece con su poster/frame disponible si el navegador
+                * impide la reproducción automática.
+                */
+          });
+     };
+
+     /*
+      * Se considera listo cuando el primer frame puede mostrarse.
+      * No se espera la descarga completa del archivo.
+      *
+      * Si un recurso falla, el loader continúa: nunca debe dejar el sitio
+      * bloqueado por un error de red o compatibilidad.
+      */
+     const waitForVideoFrame = (video) =>
+          new Promise((resolve) => {
+               const finish = () => {
+                    video.removeEventListener("loadeddata", finish);
+                    video.removeEventListener("error", finish);
+                    resolve();
+               };
+
+               if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+                    finish();
+                    return;
+               }
+
+               video.addEventListener("loadeddata", finish, { once: true });
+               video.addEventListener("error", finish, { once: true });
+          });
+
+     const waitForImage = (image) =>
+          new Promise((resolve) => {
+               if (image.complete) {
+                    resolve();
+                    return;
+               }
+
+               image.addEventListener("load", resolve, { once: true });
+               image.addEventListener("error", resolve, { once: true });
+          });
+
+     const wait = (duration) =>
+          new Promise((resolve) => {
+               window.setTimeout(resolve, duration);
+          });
+
+     const startHeroAnimations = () => {
+          heroAnimations.forEach((video) => {
+               /*
+                * Reduced motion conserva una reproducción completa, pero evita
+                * reinicios automáticos al terminar.
+                */
+               video.loop = !reducedMotion.matches;
+               video.currentTime = 0;
+
+               video.play().catch(() => {
+                    /*
+                    * Si autoplay no está disponible, el poster conserva una
+                    * representación visual estática de la animación.
+                    */
+               });
+          });
+     };
+
+     const updateHeroMotionPreference = () => {
+          heroAnimations.forEach((video) => {
+               video.loop = !reducedMotion.matches;
+          });
+     };
+
+     setBackgroundSources();
+
+     /*
+      * La variante de fondo cambia sólo si el viewport cruza un breakpoint
+      * o cambia de orientación. No se recarga si sigue siendo la misma.
+      */
+     let resizeFrame;
+
+     window.addEventListener(
+          "resize",
+          () => {
+               window.cancelAnimationFrame(resizeFrame);
+
+               resizeFrame = window.requestAnimationFrame(setBackgroundSources);
+          },
+          { passive: true },
+     );
+
+     reducedMotion.addEventListener("change", updateHeroMotionPreference);
+
+     /*
+      * Las entradas con hash son navegación intencional hacia Hero o Tickets.
+      * Allí se omite el loader, pero se prepara la misma variante de fondo.
+      */
+     if (!root.classList.contains("is-loading") || !loader) {
+          backgroundVideo.play().catch(() => { });
+          startHeroAnimations();
+          return;
+     }
+
+     const loaderLogo = loader.querySelector(".initial-loader__logo");
+     const startedAt = performance.now();
+
+     const criticalResources = Promise.all([
+          waitForImage(loaderLogo),
+          waitForVideoFrame(backgroundVideo),
+          ...heroAnimations.map(waitForVideoFrame),
+     ]);
+
+     const minimumDuration = wait(
+          Math.max(0, MINIMUM_LOADER_DURATION - (performance.now() - startedAt)),
+     );
+
+     /*
+      * La salvaguarda evita una pantalla bloqueada ante una solicitud que queda
+      * pendiente sin disparar un evento de error.
+      */
+     Promise.race([
+          Promise.all([criticalResources, minimumDuration]),
+          wait(MAXIMUM_CRITICAL_WAIT),
+     ]).then(() => {
+          loader.classList.add("is-leaving");
+          root.classList.remove("is-loading");
+
+          let completed = false;
+
+          const finishLoader = () => {
+               if (completed) return;
+
+               completed = true;
+               loader.remove();
+               startHeroAnimations();
+          };
+
+          loader.addEventListener(
+               "transitionend",
+               (event) => {
+                    if (event.target === loader) {
+                         finishLoader();
+                    }
+               },
+               { once: true },
+          );
+
+          /*
+           * Fallback si transitionend no llega a dispararse.
+           */
+          window.setTimeout(finishLoader, 600);
+     });
+})();
 
 setTimeout(function () {
      var headID = document.getElementsByTagName("head")[0];
@@ -9,7 +249,7 @@ setTimeout(function () {
 }, 15000); // 15 segundos de delay para mostrar el popup
 
 document.addEventListener("DOMContentLoaded", () => {
-     const block = document.querySelector("#hero-tickets");
+     const block = document.querySelector(".hero-tickets");
      const stage = document.querySelector(".hero-tickets__stage");
      const cta = document.querySelector(".go-to-tickets");
      const desktop = window.matchMedia("(min-width: 1200px)");

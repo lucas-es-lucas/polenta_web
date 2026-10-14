@@ -25,6 +25,42 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-14
+
+#### Added
+
+-   Se integró el loader inicial para `feat-hero-assets`. Bloquea contenido,
+    scroll e interacción mientras espera el GIF, el primer frame de las dos
+    animaciones de Hero y una única variante activa del video de fondo.
+-   Se incorporaron variantes responsive del fondo compartido Hero + Tickets:
+    vertical mobile, intermedia y desktop, cada una con WebM y MP4 como
+    alternativas de compatibilidad. Las variantes inactivas no se precargan.
+-   Se agregaron posters estáticos para representar la animación del
+    asterisco antes de que su video esté disponible.
+
+#### Changed
+
+-   El loader permanece al menos tres segundos, utiliza una transición de
+    salida y cuenta con una salvaguarda de doce segundos ante recursos que no
+    responden. Tickets permanece fuera de esta condición de salida.
+-   Las animaciones de Hero comienzan al terminar la transición del loader;
+    repiten normalmente y, con `prefers-reduced-motion: reduce`, se
+    reproducen una sola vez.
+-   Se ajustó la escala y el centrado responsive de logo y asterisco para
+    mobile, tablet, desktop y el rango de `992px` a `1199px`.
+-   Las entradas directas a `#hero` y `#tickets` omiten el loader.
+
+#### Documentation
+
+-   Se actualizaron las especificaciones del loader, Hero y el bloque Hero +
+    Tickets para reflejar la implementación actual y las verificaciones que
+    aún quedan pendientes.
+-   Áreas afectadas: `index.html`, `index.js`, `scss/sections/_loader.scss`,
+    `scss/sections/_animations.scss`, `imgs/assets-mov/`, `imgs/loader/`,
+    `imgs/video/`, `01-proyecto-resumen.md`,
+    `02-bloque-hero-tickets.md`, `03-section-hero.md`,
+    `04-section-tickets.md`, `05-loader.md` y `CHANGELOG.md`.
+
 ### 2026-10-12
 
 #### Changed

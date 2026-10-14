@@ -1,0 +1,60 @@
+/*
+ * El contenido no debe verse ni recibir interacción hasta que el loader
+ * termine. La clase se agrega en el <head>, antes de que cargue el contenido.
+ */
+html.is-loading,
+html.is-loading body {
+     height: 100%;
+     overflow: hidden;
+     overscroll-behavior: none;
+}
+
+html.is-loading body > :not(#initial-loader) {
+     visibility: hidden;
+     pointer-events: none;
+}
+
+/*
+ * Por defecto el loader no ocupa espacio ni se muestra.
+ * Sólo se activa en la carga inicial, o mientras ejecuta su salida.
+ */
+.initial-loader {
+     position: fixed;
+     inset: 0;
+
+     display: none;
+     place-items: center;
+
+     padding: 1.5rem;
+
+     background-color: $color-bg;
+     opacity: 1;
+
+     /*
+      * Debe cubrir header, CTA y widgets externos mientras bloquea el sitio.
+      */
+     z-index: 2000;
+
+     transition: opacity .45s ease;
+}
+
+html.is-loading .initial-loader,
+.initial-loader.is-leaving {
+     display: grid;
+}
+
+.initial-loader.is-leaving {
+     opacity: 0;
+}
+
+.initial-loader__logo {
+     /*
+      * La referencia usa un logo compacto: en desktop queda cercano a 24rem
+      * y en pantallas angostas puede ocupar hasta el 72% del viewport.
+      */
+     width: min(24rem, 72vw);
+     height: auto;
+     max-height: 82dvh;
+
+     object-fit: contain;
+}

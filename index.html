@@ -4,6 +4,19 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script>
+		/*
+		 * El loader no debe aparecer al entrar directamente a Hero o Tickets
+		 * desde las páginas legales.
+		 */
+		(function () {
+			const bypassLoader = ["#hero", "#tickets"].includes(window.location.hash);
+
+			if (!bypassLoader) {
+				document.documentElement.classList.add("is-loading");
+			}
+		})();
+	</script>
 	<meta name="description"
 		content="La Polenta es la fiesta que estás buscando. Vení como quieras, con quien quieras, a pasar una noche única" />
 	<meta name="keywords"
@@ -76,6 +89,11 @@
 </head>
 
 <body>
+	<!-- Loader inicial: cubre el sitio hasta preparar sólo recursos críticos. -->
+	<div id="initial-loader" class="initial-loader" role="status" aria-live="polite">
+		<img class="initial-loader__logo" src="/imgs/loader/Loader-Logo.gif" alt="Cargando Fiesta Polenta" width="1920"
+			height="1080" />
+	</div>
 	<!-- Optin - Inicio -->
 	<div id="optin-uTNllBzR" data-type="popup" data-mode="always"></div>
 	<link rel="stylesheet" type="text/css" href="https://optin.myperfit.com/res/css/fiestapolenta/uTNllBzR.css" />
@@ -431,13 +449,25 @@
 		</nav>
 	</header>
 	<main class="container">
-		<section id="hero-tickets" class="hero hero-tickets">
+		<section id="hero" class="hero hero-tickets">
 			<div class="hero-tickets__stage" aria-hidden="true">
-				<video id="hero_bgs" class="hero-tickets__bgs hero-video" autoplay muted loop playsinline preload="auto">
-					<source type="video/webm" src="/imgs/video/bg-tickets.webm" />
-					<source type="video/mp4" src="/imgs/video/bg-tickets.mp4" />
-					Tu navegador no soporta la reproducción automática del
-					video.
+				<video
+					id="hero_bgs"
+					class="hero-tickets__bgs hero-video"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="none"
+					poster="/imgs/video/bg-tickets-Cover.jpg"
+					data-mobile-vertical-webm="/imgs/video/bg-tickets-320-vertical.webm"
+					data-mobile-vertical-mp4="/imgs/video/bg-tickets-320-vertical.mp4"
+					data-tablet-webm="/imgs/video/bg-tickets-768.webm"
+					data-tablet-mp4="/imgs/video/bg-tickets-768.mp4"
+					data-desktop-webm="/imgs/video/bg-tickets.webm"
+					data-desktop-mp4="/imgs/video/bg-tickets.mp4"
+				>
+					Tu navegador no soporta la reproducción automática del video.
 				</video>
 				<div class="hero-overlay"></div>
 			</div>
@@ -446,7 +476,7 @@
 				<!-- section animaciones -->
 				<section class="hero-animations hero-tickets__animations animations animations__container">
 					<!-- asterisco animado -->
-					<video class="animations__asterisk" autoplay muted loop playsinline preload="auto">
+					<video class="animations__asterisk" muted playsinline preload="auto" poster="/imgs/assets-mov/asterisk-blue-square-poster.png">
 						<source src="/imgs/assets-mov/asterisk-blue-square-hevc-alpha-v3.mov"
 							type="video/quicktime; codecs=hvc1" />
 						<source src="/imgs/assets-mov/asterisk-blue-vp9.webm" type="video/webm; codecs=vp9" />
@@ -455,7 +485,8 @@
 					</video>
 					<!-- <video id="asterisk" class="animations__asterisk" autoplay muted loop playsinline></video> -->
 					<!-- logo animado -->
-					<video class="animations__logo" autoplay muted loop playsinline preload="auto">
+					  <!-- poster="/imgs/assets-mov/logo-type-changing-poster.png"> -->
+					<video class="animations__logo" muted playsinline preload="auto">
 						<source src="/imgs/assets-mov/logo-type-changing-hevc-alpha-v3.mov"
 							type="video/quicktime; codecs=hvc1" />
 						<source src="/imgs/assets-mov/logo-type-changing-vp8.webm" type="video/webm; codecs=vp8" />
