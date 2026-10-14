@@ -49,6 +49,10 @@ section Nosotros.
     viewport, sin insertar ni precargar las variantes inactivas.
 -   La composición responsive de las animaciones contempla mobile, tablet,
     desktop y el rango de `992px` a `1199px`.
+-   El CTA fijo "COMPRAR TICKETS" usa una única instancia de
+    `IntersectionObserver`: en desktop aparece después del bloque completo
+    Hero + Tickets; en mobile se muestra durante Hero, se oculta al llegar al
+    título de Tickets y reaparece al terminar la section.
 
 ### Parcialmente implementado
 
@@ -59,10 +63,6 @@ section Nosotros.
 
 -   Validar la reproducción de los recursos de video en los navegadores
     objetivo, además de los dispositivos Apple ya comprobados.
--   Revisar el comportamiento del CTA fijo "COMPRAR TICKETS", actualmente
-    controlado mediante un `IntersectionObserver` sobre `.hero`, para
-    determinar si sigue siendo adecuado con la nueva distribución visual de
-    Hero y Tickets.
 
 ## 5. Decisiones pendientes
 

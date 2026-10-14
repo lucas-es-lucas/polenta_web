@@ -72,9 +72,10 @@ videos. Ante un error de recurso se permite continuar y, si alguna solicitud
 queda pendiente sin informar error, una salvaguarda de doce segundos libera el
 sitio.
 
-Las entradas directas a `#hero` y `#tickets` omiten el loader. Esto permite
-que la navegación desde páginas internas llegue al destino sin reproducir la
-carga inicial.
+El loader sólo se activa al entrar a `index.html` sin hash. Las entradas
+directas a `#hero`, `#tickets`, `#nosotros`, `#puestas` y `#contacto` lo
+omiten. Esto permite que la navegación desde páginas internas llegue al
+destino sin reproducir la carga inicial.
 
 ## 5. Estado actual de implementación
 
@@ -93,7 +94,9 @@ carga inicial.
 -   La espera contempla el GIF, la variante activa de fondo y los primeros
     frames de asterisco y logo, sin incluir Tickets.
 -   Existe una salvaguarda de doce segundos para evitar bloqueo permanente.
--   Las entradas a `#hero` y `#tickets` omiten el loader.
+-   El loader aparece únicamente al entrar a `index.html` sin hash. Las
+    entradas a `#hero`, `#tickets`, `#nosotros`, `#puestas` y `#contacto`
+    omiten el loader.
 
 ## 6. Comportamientos no especificados
 

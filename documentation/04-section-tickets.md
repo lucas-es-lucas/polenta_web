@@ -38,6 +38,10 @@ Las condiciones de carga y salida del loader se documentan en:
 -   Los tickets se insertan dinámicamente en `#ticketsSlider`.
 -   `index.html` contiene Tickets después de las animaciones de Hero dentro
     del bloque `.hero`.
+-   La navegación a `#tickets` usa un ancla auxiliar dentro de su contenedor.
+    El título queda a la misma distancia visible de la cabecera fija que los
+    títulos de Nosotros y Puestas, sin modificar el scroll normal compartido
+    con Hero.
 -   Hasta `1199px`, `#ticketsSlider` utiliza una única columna.
 -   Desde `1200px`, `#ticketsSlider` utiliza una grilla de dos columnas y
     centra el último ticket cuando la cantidad de elementos es impar.

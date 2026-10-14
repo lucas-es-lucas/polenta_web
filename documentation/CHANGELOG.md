@@ -48,7 +48,18 @@ Tipos sugeridos:
     reproducen una sola vez.
 -   Se ajustó la escala y el centrado responsive de logo y asterisco para
     mobile, tablet, desktop y el rango de `992px` a `1199px`.
--   Las entradas directas a `#hero` y `#tickets` omiten el loader.
+-   El loader aparece únicamente al entrar a `index.html` sin hash. Las
+    entradas a `#hero`, `#tickets`, `#nosotros`, `#puestas` y `#contacto`
+    omiten el loader, incluyendo la navegación desde Términos y Privacidad.
+-   La navegación a Tickets utiliza un ancla auxiliar para alinear su título
+    con la posición de llegada de Nosotros y Puestas respecto de la cabecera
+    fija.
+
+#### Fixed
+
+-   Se estabilizó la navegación hacia Contacto ante ajustes posteriores de
+    layout en Puestas. Conserva el scroll nativo suave y también corrige una
+    entrada directa con `#contacto`.
 
 #### Documentation
 
@@ -59,6 +70,11 @@ Tipos sugeridos:
     `scss/sections/_animations.scss`, `imgs/assets-mov/`, `imgs/loader/`,
     `imgs/video/`, `01-proyecto-resumen.md`,
     `02-bloque-hero-tickets.md`, `03-section-hero.md`,
+    `04-section-tickets.md`, `05-loader.md` y `CHANGELOG.md`.
+
+-   Áreas afectadas por los ajustes de navegación: `index.html`, `index.js`,
+    `scss/_general.scss`, `scss/sections/_tickets.scss`, `css/estilos.css`,
+    `01-proyecto-resumen.md`, `02-bloque-hero-tickets.md`,
     `04-section-tickets.md`, `05-loader.md` y `CHANGELOG.md`.
 
 ### 2026-10-12

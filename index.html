@@ -4,13 +4,35 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script>
+	<!-- <script>
 		/*
 		 * El loader no debe aparecer al entrar directamente a Hero o Tickets
 		 * desde las páginas legales.
 		 */
 		(function () {
 			const bypassLoader = ["#hero", "#tickets"].includes(window.location.hash);
+
+			if (!bypassLoader) {
+				document.documentElement.classList.add("is-loading");
+			}
+		})();
+	</script> -->
+	<script>
+		/*
+		 * El loader se muestra únicamente al entrar a index.html sin hash.
+		 * Todas las navegaciones a sections, incluidas las provenientes de
+		 * Términos y Privacidad, llegan directamente sin loader.
+		 */
+		(function () {
+			const sectionHashes = new Set([
+				"#hero",
+				"#tickets",
+				"#nosotros",
+				"#puestas",
+				"#contacto",
+			]);
+
+			const bypassLoader = sectionHashes.has(window.location.hash);
 
 			if (!bypassLoader) {
 				document.documentElement.classList.add("is-loading");
@@ -486,7 +508,10 @@
 				</section>
 				<script src="/index.js"></script>
 				<!-- section tickets -->
-				<div id="tickets" class="hero__tickets tickets__container container__propio tickets">
+				<div class="hero__tickets tickets__container container__propio tickets">
+					<!-- El título tiene 6rem + 3rem de separación interna.
+					El ancla queda 3rem antes del título, igual que Nosotros/Puestas. -->
+					<span id="tickets" class="section-nav-target section-nav-target--tickets" aria-hidden="true"></span>
 					<section class="section tickets__section">
 						<article class="tickets__title">
 							<h2 class="title">

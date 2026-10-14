@@ -48,6 +48,11 @@ bloqueado y no será posible interactuar con el contenido subyacente.
 El loader permanece al menos tres segundos y desaparece mediante una
 transición. Al finalizarla, comienzan las dos animaciones de Hero.
 
+El loader sólo se muestra al acceder a `index.html` sin hash. Las entradas
+directas a las sections principales mediante `#hero`, `#tickets`, `#nosotros`,
+`#puestas` o `#contacto` omiten el loader para que las navegaciones desde las
+páginas legales lleguen directamente a su destino.
+
 La carga, obtención o renderizado de Tickets no debe retrasar la salida del
 loader.
 
@@ -102,7 +107,9 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 -   El loader espera el GIF, la variante de fondo activa y el primer frame de
     las dos animaciones; cuenta además con una salvaguarda de doce segundos
     para evitar que el sitio quede bloqueado ante un recurso pendiente.
--   Las entradas directas a `#hero` y `#tickets` omiten el loader.
+-   El loader se muestra únicamente al entrar a `index.html` sin hash. Las
+    entradas a `#hero`, `#tickets`, `#nosotros`, `#puestas` y `#contacto`
+    omiten el loader.
 -   Se ajustó la composición responsive de las animaciones para mobile,
     tablet, desktop y el rango intermedio de `992px` a `1199px`.
 
@@ -111,8 +118,8 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 -   Validar la reproducción de los videos en los navegadores objetivo, además
     de los dispositivos Apple ya comprobados.
 -   Validar la continuidad visual del video compartido durante el scroll.
--   Verificar la navegación desde los CTA y las páginas legales hacia
-    `#hero` y `#tickets` sin mostrar el loader.
+-   Revisar el comportamiento final de carga, renderizado y continuidad visual
+    del bloque Hero + Tickets al navegar directamente hacia sus sections.
 
 ## 7. Orden de visualización previsto
 

@@ -38,6 +38,14 @@ html {
   top: 3rem;
 }
 
+/*
+ * Tickets acumula 6rem del contenedor y 3rem de .tickets__section.
+ * Esta ancla queda 3rem antes del título visible.
+ */
+.section-nav-target--tickets {
+  top: 6rem;
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
@@ -1052,6 +1060,9 @@ html.is-loading .initial-loader,
   .animations__logo {
     transform: scale(2);
   }
+}
+.tickets__container {
+  position: relative;
 }
 .tickets__section {
   width: 100%;

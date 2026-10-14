@@ -435,51 +435,118 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // document.addEventListener("DOMContentLoaded", () => {
-//      const block = document.querySelector("#hero-tickets");
-//      const cta = document.querySelector(".go-to-tickets");
-//      const desktop = window.matchMedia("(min-width: 1200px)");
+//      const contactoLinks = document.querySelectorAll('a[href="#contacto"]');
+//      const contactoTarget = document.getElementById("contacto");
+//      const puestasSlider = document.querySelector(".puestas__slider");
+//      const root = document.documentElement;
 
-//      if (!cta || !block) return;
+//      if (!contactoLinks.length || !contactoTarget || !puestasSlider) return;
 
-//      let ctaObserver;
+//      let contactNavigationPending = false;
+//      let contactNavigationTimeout;
 
-//      const syncCta = () => {
-//           ctaObserver?.disconnect();
-
-//           if (!desktop.matches) {
-//                cta.classList.add("show");
+//      const correctContactNavigation = () => {
+//           if (!contactNavigationPending || window.location.hash !== "#contacto") {
 //                return;
 //           }
 
-//           cta.classList.remove("show");
+//           /*
+//            * Evita que html { scroll-behavior: smooth } deje una animación
+//            * nativa compitiendo con esta corrección de posición.
+//            */
+//           const previousScrollBehavior = root.style.scrollBehavior;
 
-//           ctaObserver = new IntersectionObserver(([entry]) => {
-//                cta.classList.toggle("show", !entry.isIntersecting);
-//           });
-
-//           ctaObserver.observe(block);
+//           root.style.scrollBehavior = "auto";
+//           contactoTarget.scrollIntoView({ block: "start" });
+//           root.style.scrollBehavior = previousScrollBehavior;
 //      };
 
-//      desktop.addEventListener("change", syncCta);
-//      syncCta();
+//      const beginContactNavigationCorrection = () => {
+//           contactNavigationPending = true;
+
+//           window.clearTimeout(contactNavigationTimeout);
+//           contactNavigationTimeout = window.setTimeout(() => {
+//                contactNavigationPending = false;
+//           }, 5000);
+
+//           requestAnimationFrame(() => {
+//                requestAnimationFrame(correctContactNavigation);
+//           });
+//      };
+
+//      const requestContactNavigationCorrection = () => {
+//           if (window.location.hash !== "#contacto" || root.classList.contains("is-loading")) {
+//                return;
+//           }
+
+//           beginContactNavigationCorrection();
+//      };
+
+//      contactoLinks.forEach((contactoLink) => {
+//           contactoLink.addEventListener("click", (event) => {
+//                /*
+//                 * Se evita el scroll nativo suave. pushState conserva la URL
+//                 * con #contacto sin disparar otra navegación paralela.
+//                 */
+//                event.preventDefault();
+
+//                if (window.location.hash !== "#contacto") {
+//                     window.history.pushState(null, "", "#contacto");
+//                }
+
+//                beginContactNavigationCorrection();
+//           });
+//      });
+
+//      window.addEventListener("hashchange", requestContactNavigationCorrection);
+
+//      /*
+//       * #contacto no omite el loader. Al liberarse el scroll, se aplica por
+//       * primera vez la posición correcta para una entrada directa con hash.
+//       */
+//      const loaderStateObserver = new MutationObserver(
+//           requestContactNavigationCorrection,
+//      );
+
+//      loaderStateObserver.observe(root, {
+//           attributes: true,
+//           attributeFilter: ["class"],
+//      });
+
+//      /*
+//       * Cubre la carga inicial directa una vez que DOMContentLoaded termina.
+//       */
+//      requestContactNavigationCorrection();
+
+//      const puestasResizeObserver = new ResizeObserver(() => {
+//           requestAnimationFrame(correctContactNavigation);
+//      });
+
+//      puestasResizeObserver.observe(puestasSlider);
 // });
 
-document.addEventListener("DOMContentLoaded", function () {
-     const contactoLink = document.querySelector('a[href="#contacto"]');
+document.addEventListener("DOMContentLoaded", () => {
      const contactoTarget = document.getElementById("contacto");
      const puestasSlider = document.querySelector(".puestas__slider");
 
-     if (!contactoLink || !contactoTarget || !puestasSlider) return;
+     if (!contactoTarget || !puestasSlider) return;
 
      let contactNavigationPending = false;
      let contactNavigationTimeout;
 
      const correctContactNavigation = () => {
-          if (!contactNavigationPending || window.location.hash !== "#contacto") return;
+          if (!contactNavigationPending || window.location.hash !== "#contacto") {
+               return;
+          }
 
+          /*
+           * behavior: "auto" respeta html { scroll-behavior: smooth }.
+           * Así Contacto conserva el mismo desplazamiento nativo suave que
+           * Tickets, Nosotros y Puestas.
+           */
           contactoTarget.scrollIntoView({
                block: "start",
-               behavior: "instant",
+               behavior: "auto",
           });
      };
 
@@ -491,18 +558,28 @@ document.addEventListener("DOMContentLoaded", function () {
                contactNavigationPending = false;
           }, 5000);
 
+          /*
+           * Deja que el navegador inicie su navegación nativa por hash y
+           * luego corrige la posición si Puestas termina de ajustar su layout.
+           */
           requestAnimationFrame(() => {
                requestAnimationFrame(correctContactNavigation);
           });
      };
-
-     contactoLink.addEventListener("click", beginContactNavigationCorrection);
 
      window.addEventListener("hashchange", () => {
           if (window.location.hash === "#contacto") {
                beginContactNavigationCorrection();
           }
      });
+
+     /*
+      * Cubre una entrada directa a /index.html#contacto. Esta ruta ahora
+      * omite el loader, igual que las demás navigaciones a sections.
+      */
+     if (window.location.hash === "#contacto") {
+          beginContactNavigationCorrection();
+     }
 
      const puestasResizeObserver = new ResizeObserver(() => {
           requestAnimationFrame(correctContactNavigation);
