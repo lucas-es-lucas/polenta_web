@@ -64,9 +64,14 @@
           activeBackgroundVariant = variant.name;
           backgroundVideo.replaceChildren();
 
+          /*
+           * MP4/H.264 se prioriza para que WebKit en iPhone use su ruta de
+           * decodificación más compatible. WebM permanece como alternativa.
+           * El navegador selecciona una sola fuente, no descarga ambas.
+           */
           [
-               { src: variant.webm, type: "video/webm" },
                { src: variant.mp4, type: "video/mp4" },
+               { src: variant.webm, type: "video/webm" },
           ].forEach(({ src, type }) => {
                const source = document.createElement("source");
 
