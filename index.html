@@ -451,22 +451,12 @@
 	<main class="container">
 		<section id="hero" class="hero hero-tickets">
 			<div class="hero-tickets__stage" aria-hidden="true">
-				<video
-					id="hero_bgs"
-					class="hero-tickets__bgs hero-video"
-					autoplay
-					muted
-					loop
-					playsinline
-					preload="none"
+				<video id="hero_bgs" class="hero-tickets__bgs hero-video" autoplay muted loop playsinline preload="none"
 					poster="/imgs/video/bg-tickets-Cover.jpg"
 					data-mobile-vertical-webm="/imgs/video/bg-tickets-320-vertical.webm"
 					data-mobile-vertical-mp4="/imgs/video/bg-tickets-320-vertical.mp4"
-					data-tablet-webm="/imgs/video/bg-tickets-768.webm"
-					data-tablet-mp4="/imgs/video/bg-tickets-768.mp4"
-					data-desktop-webm="/imgs/video/bg-tickets.webm"
-					data-desktop-mp4="/imgs/video/bg-tickets.mp4"
-				>
+					data-tablet-webm="/imgs/video/bg-tickets-768.webm" data-tablet-mp4="/imgs/video/bg-tickets-768.mp4"
+					data-desktop-webm="/imgs/video/bg-tickets.webm" data-desktop-mp4="/imgs/video/bg-tickets.mp4">
 					Tu navegador no soporta la reproducción automática del video.
 				</video>
 				<div class="hero-overlay"></div>
@@ -476,22 +466,22 @@
 				<!-- section animaciones -->
 				<section class="hero-animations hero-tickets__animations animations animations__container">
 					<!-- asterisco animado -->
-					<video class="animations__asterisk" muted playsinline preload="auto" poster="/imgs/assets-mov/asterisk-blue-square-poster.png">
-						<source src="/imgs/assets-mov/asterisk-blue-square-hevc-alpha-v3.mov"
-							type="video/quicktime; codecs=hvc1" />
-						<source src="/imgs/assets-mov/asterisk-blue-vp9.webm" type="video/webm; codecs=vp9" />
-						Tu navegador no soporta la reproducción automática del
-						video.
+					<video class="animations__asterisk" muted playsinline preload="none"
+						poster="/imgs/assets-mov/asterisk-blue-square-poster.png"
+						data-mobile-portrait-mov="/imgs/assets-mov/asterisk-blue-square-mobile-hevc-alpha-v2.mov"
+						data-mobile-portrait-webm="/imgs/assets-mov/asterisk-blue-square-mobile-vp9-v2.webm"
+						data-default-mov="/imgs/assets-mov/asterisk-blue-square-hevc-alpha-v3.mov"
+						data-default-webm="/imgs/assets-mov/asterisk-blue-vp9.webm">
+						Tu navegador no soporta la reproducción automática del video.
 					</video>
-					<!-- <video id="asterisk" class="animations__asterisk" autoplay muted loop playsinline></video> -->
+
 					<!-- logo animado -->
-					  <!-- poster="/imgs/assets-mov/logo-type-changing-poster.png"> -->
-					<video class="animations__logo" muted playsinline preload="auto">
-						<source src="/imgs/assets-mov/logo-type-changing-hevc-alpha-v3.mov"
-							type="video/quicktime; codecs=hvc1" />
-						<source src="/imgs/assets-mov/logo-type-changing-vp8.webm" type="video/webm; codecs=vp8" />
-						Tu navegador no soporta la reproducción automática del
-						video.
+					<video class="animations__logo" muted playsinline preload="none"
+						data-mobile-portrait-mov="/imgs/assets-mov/logo-type-changing-mobile-hevc-alpha-v1.mov"
+						data-mobile-portrait-webm="/imgs/assets-mov/logo-type-changing-mobile-vp8-v1.webm"
+						data-default-mov="/imgs/assets-mov/logo-type-changing-hevc-alpha-v3.mov"
+						data-default-webm="/imgs/assets-mov/logo-type-changing-vp8.webm">
+						Tu navegador no soporta la reproducción automática del video.
 					</video>
 				</section>
 				<script src="/index.js"></script>
@@ -1114,9 +1104,9 @@
 			</article>
 		</section>
 	</footer>
-	<a class="go-to-tickets go-to-tickets__index" href="#tickets" onclick="cerrar()"><img
-			class="go-to-tickets__icon" src="/imgs/icons/ticket.svg"
-			alt="ícono botón para ir a la sección de tickets" /><span class="go-to-tickets__text">COMPRAR
+	<a class="go-to-tickets go-to-tickets__index" href="#tickets" onclick="cerrar()"><img class="go-to-tickets__icon"
+			src="/imgs/icons/ticket.svg" alt="ícono botón para ir a la sección de tickets" /><span
+			class="go-to-tickets__text">COMPRAR
 			TICKETS</span></a>
 </body>
 <!-- <script src="/index.js"></script> -->

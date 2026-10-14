@@ -54,6 +54,83 @@
           };
      };
 
+     const isMobilePortrait = () =>
+          window.matchMedia("(max-width: 575px)").matches &&
+          window.matchMedia("(orientation: portrait)").matches;
+
+     const getHeroAnimationVariant = (video) => {
+          const useMobileVariant = isMobilePortrait();
+
+          return {
+               name: useMobileVariant ? "mobile-portrait" : "default",
+               mov: useMobileVariant
+                    ? video.dataset.mobilePortraitMov
+                    : video.dataset.defaultMov,
+               webm: useMobileVariant
+                    ? video.dataset.mobilePortraitWebm
+                    : video.dataset.defaultWebm,
+          };
+     };
+
+     let heroAnimationsStarted = false;
+
+     const playHeroAnimation = (video) => {
+          const start = () => {
+               video.loop = !reducedMotion.matches;
+               video.currentTime = 0;
+
+               video.play().catch(() => {
+                    /*
+                     * Si autoplay no está disponible, el poster conserva una
+                     * representación visual estática de la animación.
+                     */
+               });
+          };
+
+          if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+               start();
+               return;
+          }
+
+          video.addEventListener("loadeddata", start, { once: true });
+     };
+
+     const setHeroAnimationSources = () => {
+          heroAnimations.forEach((video) => {
+               const variant = getHeroAnimationVariant(video);
+
+               if (video.dataset.activeVariant === variant.name) return;
+
+               video.dataset.activeVariant = variant.name;
+               video.replaceChildren();
+
+               [
+                    {
+                         src: variant.mov,
+                         type: "video/quicktime; codecs=hvc1",
+                    },
+                    {
+                         src: variant.webm,
+                         type: "video/webm",
+                    },
+               ].forEach(({ src, type }) => {
+                    const source = document.createElement("source");
+
+                    source.src = src;
+                    source.type = type;
+
+                    video.appendChild(source);
+               });
+
+               video.preload = "auto";
+               video.load();
+
+               if (heroAnimationsStarted) {
+                    playHeroAnimation(video);
+               }
+          });
+     };
+
      let activeBackgroundVariant = "";
 
      const setBackgroundSources = () => {
@@ -140,21 +217,8 @@
           });
 
      const startHeroAnimations = () => {
-          heroAnimations.forEach((video) => {
-               /*
-                * Reduced motion conserva una reproducción completa, pero evita
-                * reinicios automáticos al terminar.
-                */
-               video.loop = !reducedMotion.matches;
-               video.currentTime = 0;
-
-               video.play().catch(() => {
-                    /*
-                    * Si autoplay no está disponible, el poster conserva una
-                    * representación visual estática de la animación.
-                    */
-               });
-          });
+          heroAnimationsStarted = true;
+          heroAnimations.forEach(playHeroAnimation);
      };
 
      const updateHeroMotionPreference = () => {
@@ -163,7 +227,12 @@
           });
      };
 
-     setBackgroundSources();
+     const syncHeroMedia = () => {
+          setBackgroundSources();
+          setHeroAnimationSources();
+     };
+
+     syncHeroMedia();
 
      /*
       * La variante de fondo cambia sólo si el viewport cruza un breakpoint
@@ -176,7 +245,7 @@
           () => {
                window.cancelAnimationFrame(resizeFrame);
 
-               resizeFrame = window.requestAnimationFrame(setBackgroundSources);
+               resizeFrame = window.requestAnimationFrame(syncHeroMedia);
           },
           { passive: true },
      );
