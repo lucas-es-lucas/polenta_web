@@ -312,27 +312,48 @@ document.addEventListener("DOMContentLoaded", () => {
      }
 
      /*
-      * CTA desktop: aparece únicamente al salir Hero + Tickets completo.
+      * Mobile: el CTA permanece visible salvo mientras Tickets esté en pantalla.
+      * Desktop: aparece únicamente después de salir del bloque Hero + Tickets.
+      * Se reutiliza una sola instancia de IntersectionObserver al cambiar
+      * de breakpoint.
       */
      if (!cta) return;
 
+     const ticketsSection = document.querySelector(".tickets__section");
      let ctaObserver;
 
      const syncCta = () => {
           ctaObserver?.disconnect();
 
-          if (!desktop.matches) {
-               cta.classList.add("show");
+          const target = desktop.matches ? block : ticketsSection;
+
+          if (!target) {
+               cta.classList.remove("show");
                return;
           }
 
-          cta.classList.remove("show");
+          /*
+           * En mobile se muestra inmediatamente. El observer la oculta cuando
+           * llega el título de Tickets: tickets__section tiene 3rem (48px) de
+           * padding superior antes de ese contenido visible.
+           *
+           * En desktop se conserva la observación del bloque Hero + Tickets.
+           */
+          if (desktop.matches) {
+               cta.classList.remove("show");
+          } else {
+               cta.classList.add("show");
+          }
+
+          const observerOptions = desktop.matches
+               ? {}
+               : { rootMargin: "0px 0px -48px 0px" };
 
           ctaObserver = new IntersectionObserver(([entry]) => {
                cta.classList.toggle("show", !entry.isIntersecting);
-          });
+          }, observerOptions);
 
-          ctaObserver.observe(block);
+          ctaObserver.observe(target);
      };
 
      desktop.addEventListener("change", syncCta);
