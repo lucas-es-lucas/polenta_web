@@ -38,6 +38,14 @@ html {
   top: 3rem;
 }
 
+/*
+ * Tickets acumula 6rem del contenedor y 3rem de .tickets__section.
+ * Esta ancla queda 3rem antes del título visible.
+ */
+.section-nav-target--tickets {
+  top: 6rem;
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
@@ -452,7 +460,7 @@ body .contacto__container {
   width: 10rem;
   height: 2.5rem;
   padding: 0.25rem 1rem;
-  bottom: 1.5rem;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
   right: 1.5rem;
   background-color: #E7270E;
   border: none;
@@ -475,20 +483,16 @@ body .contacto__container {
   column-gap: 0.3rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width: 1199px) {
   .go-to-tickets {
-    bottom: 0;
     left: 50%;
-    transform: translate(-50%, 0%);
+    right: auto;
+    transform: translateX(-50%);
   }
 }
-@media only screen and (max-width: 767px) {
+@media (min-width: 1200px) {
   .go-to-tickets {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 0.3rem;
-    opacity: 1;
+    right: clamp(1.25rem, 2vw, 2rem);
   }
 }
 .back-to-home {
@@ -1261,16 +1265,16 @@ body .contacto__container {
   width: 100%;
   border-radius: 1.25rem;
 }
+.puestas__section .slider .carousel-inner .carousel-item picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+}
 .puestas__section .slider .carousel-inner .carousel-item img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 1.25rem;
-}
-.puestas__section .slider .carousel-inner .carousel-item picture {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16/9;
 }
 .puestas__section .slider .carousel-indicators button {
   background-color: #24bf5e;

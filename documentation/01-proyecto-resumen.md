@@ -28,8 +28,8 @@ El sitio consta de:
 Las sections son:
 
 1.  Hero
-2.  Tickets
-3.  Nosotros
+2.  Nosotros
+3.  Tickets
 4.  Puestas
 5.  Contacto
 
@@ -99,7 +99,7 @@ El comportamiento específico de Tickets está documentado en:
 La documentación se organiza separando:
 
 -   contexto general del proyecto;
--   comportamiento compartido entre Hero y Tickets;
+-   relación entre Hero y Tickets;
 -   comportamiento específico de Hero;
 -   comportamiento específico de Tickets;
 -   historial de cambios;
@@ -108,8 +108,8 @@ La documentación se organiza separando:
 ### Documentos
 
 -   `01-proyecto-resumen.md` --- contexto general.
--   `02-bloque-hero-tickets.md` --- comportamiento compartido de Hero +
-    Tickets.
+-   `02-bloque-hero-tickets.md` --- relación, navegación y recursos de Hero
+    + Tickets.
 -   `03-section-hero.md` --- especificaciones propias de Hero.
 -   `04-section-tickets.md` --- especificaciones propias de Tickets.
 -   `CHANGELOG.md` --- cambios relevantes del proyecto.

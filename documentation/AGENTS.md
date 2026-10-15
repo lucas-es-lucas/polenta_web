@@ -17,8 +17,8 @@ Antes de modificar una parte del proyecto, consultar el documento
 correspondiente:
 
 -   `01-proyecto-resumen.md` --- contexto general.
--   `02-bloque-hero-tickets.md` --- comportamiento compartido de Hero +
-    Tickets.
+-   `02-bloque-hero-tickets.md` --- relación, navegación y recursos de Hero
+    + Tickets.
 -   `03-section-hero.md` --- características propias de Hero.
 -   `04-section-tickets.md` --- características propias de Tickets.
 -   `CHANGELOG.md` --- evolución relevante del proyecto.
@@ -37,12 +37,13 @@ documentación:
 
 ## 4. Hero + Tickets
 
-Hero y Tickets forman parte de un mismo bloque con video de fondo
-compartido.
+Hero y Tickets son sections independientes. Entre ambas se visualiza la
+section Nosotros; Hero utiliza su video compuesto y Tickets su propio video
+de fondo.
 
-No modificar de manera aislada el comportamiento del scroll, el
-contenedor o el video de fondo sin considerar la relación entre ambas
-sections.
+No modificar de manera aislada el comportamiento del scroll, las anclas, el
+CTA, los contenedores o los videos de fondo sin considerar la relación y el
+orden entre ambas sections.
 
 ## 5. Tickets
 

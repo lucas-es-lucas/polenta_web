@@ -241,7 +241,7 @@ setTimeout(function () {
 // });
 
 document.addEventListener("DOMContentLoaded", function () {
-     const ticketsSection = document.getElementById("tickets");
+     const ticketsSection = document.querySelector(".tickets__container");
      const nosotrosSection = document.getElementById("nosotros");
      const nosotrosContainer = nosotrosSection?.closest(".nosotros__container");
 
@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ? document.querySelector(initialHash)
           : null;
 
-     if (initialHashTarget) {
+     if (initialHashTarget && nosotrosContainer) {
           let initialHashNavigationPending = true;
           let initialHashNavigationFrame;
 
@@ -282,42 +282,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
      const goButton = document.querySelector(".go-to-tickets");
      const heroSection = document.getElementById("hero");
-     if (!goButton || !heroSection || !ticketsSection) return;
+     const ticketsVisibleSection = document.querySelector(".tickets__section");
+     const desktopQuery = window.matchMedia("(min-width: 1200px)");
+     if (!goButton || !heroSection || !ticketsVisibleSection) return;
 
-     const mobileQuery = window.matchMedia("(max-width: 767px)");
-     let visibilityFrame;
+     let ctaObserver;
 
-     const updateTicketsCtaVisibility = () => {
-          window.cancelAnimationFrame(visibilityFrame);
-          visibilityFrame = window.requestAnimationFrame(() => {
-               const scrollPaddingTop = parseFloat(
+     const syncTicketsCta = () => {
+          ctaObserver?.disconnect();
+
+          if (desktopQuery.matches) {
+               /*
+                * En desktop el CTA se oculta mientras Hero o Tickets están
+                * visibles y aparece en las sections intermedias o posteriores.
+                */
+               goButton.classList.remove("show");
+               const visibleSections = new Set();
+               const headerOffset = parseFloat(
                     window.getComputedStyle(document.documentElement).scrollPaddingTop,
                ) || 0;
-               const sectionIsVisible = (section) => {
-                    const { top, bottom } = section.getBoundingClientRect();
-                    return top < window.innerHeight && bottom > scrollPaddingTop;
-               };
-               const shouldShowOnDesktop = !sectionIsVisible(heroSection)
-                    && !sectionIsVisible(ticketsSection);
 
-               goButton.classList.toggle("show", mobileQuery.matches || shouldShowOnDesktop);
-          });
+               ctaObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                         if (entry.isIntersecting) {
+                              visibleSections.add(entry.target);
+                         } else {
+                              visibleSections.delete(entry.target);
+                         }
+                    });
+
+                    goButton.classList.toggle("show", visibleSections.size === 0);
+               }, { rootMargin: `-${headerOffset}px 0px 0px 0px` });
+
+               ctaObserver.observe(heroSection);
+          } else {
+               /*
+                * Tickets tiene 3rem de padding antes del título. El margen
+                * inferior de 48px oculta el CTA cuando el título comienza a entrar.
+                */
+               goButton.classList.add("show");
+               ctaObserver = new IntersectionObserver(([entry]) => {
+                    goButton.classList.toggle("show", !entry.isIntersecting);
+               }, { rootMargin: "0px 0px -48px 0px" });
+          }
+
+          ctaObserver.observe(ticketsVisibleSection);
      };
 
-     window.addEventListener("scroll", updateTicketsCtaVisibility, { passive: true });
-      window.addEventListener("resize", updateTicketsCtaVisibility);
-      mobileQuery.addEventListener("change", updateTicketsCtaVisibility);
-     new ResizeObserver(updateTicketsCtaVisibility).observe(heroSection);
-     new ResizeObserver(updateTicketsCtaVisibility).observe(ticketsSection);
-     updateTicketsCtaVisibility();
+     desktopQuery.addEventListener("change", syncTicketsCta);
+     syncTicketsCta();
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-     const contactoLink = document.querySelector('a[href="#contacto"]');
+     const contactoLinks = document.querySelectorAll('a[href="#contacto"]');
      const contactoTarget = document.getElementById("contacto");
      const puestasSlider = document.querySelector(".puestas__slider");
 
-     if (!contactoLink || !contactoTarget || !puestasSlider) return;
+     if (!contactoTarget || !puestasSlider) return;
 
      let contactNavigationPending = false;
      let contactNavigationTimeout;
@@ -327,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           contactoTarget.scrollIntoView({
                block: "start",
-               behavior: "instant",
+               behavior: "auto",
           });
      };
 
@@ -344,7 +365,9 @@ document.addEventListener("DOMContentLoaded", function () {
           });
      };
 
-     contactoLink.addEventListener("click", beginContactNavigationCorrection);
+     contactoLinks.forEach((contactoLink) => {
+          contactoLink.addEventListener("click", beginContactNavigationCorrection);
+     });
 
      window.addEventListener("hashchange", () => {
           if (window.location.hash === "#contacto") {
@@ -352,11 +375,81 @@ document.addEventListener("DOMContentLoaded", function () {
           }
      });
 
+     if (window.location.hash === "#contacto") {
+          beginContactNavigationCorrection();
+     }
+
      const puestasResizeObserver = new ResizeObserver(() => {
           requestAnimationFrame(correctContactNavigation);
      });
 
      puestasResizeObserver.observe(puestasSlider);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+     /*
+      * Tickets se inserta de forma asíncrona. Al agregarse, cambia la altura
+      * anterior a las sections posteriores y el hash necesita corregirse una vez.
+      */
+     const ticketSlider = document.getElementById("ticketsSlider");
+     const delayedTargets = new Set(["#nosotros", "#puestas", "#contacto"]);
+
+     if (!ticketSlider) return;
+
+     let ticketsRendered = ticketSlider.children.length > 0;
+     let pendingHash = "";
+
+     const correctPendingNavigation = () => {
+          if (!pendingHash || window.location.hash !== pendingHash) {
+               pendingHash = "";
+               return;
+          }
+
+          const target = document.querySelector(pendingHash);
+
+          if (!target) {
+               pendingHash = "";
+               return;
+          }
+
+          target.scrollIntoView({
+               block: "start",
+               behavior: "auto",
+          });
+
+          pendingHash = "";
+     };
+
+     const queueHashCorrection = () => {
+          const { hash } = window.location;
+
+          if (!delayedTargets.has(hash)) return;
+
+          pendingHash = hash;
+
+          if (ticketsRendered) {
+               requestAnimationFrame(correctPendingNavigation);
+          }
+     };
+
+     const ticketsObserver = new MutationObserver(() => {
+          if (ticketsRendered) return;
+
+          ticketsRendered = ticketSlider.children.length > 0;
+
+          if (ticketsRendered && pendingHash) {
+               requestAnimationFrame(correctPendingNavigation);
+          }
+     });
+
+     ticketsObserver.observe(ticketSlider, { childList: true });
+     queueHashCorrection();
+
+     window.addEventListener("hashchange", () => {
+          if (!ticketsRendered) {
+               queueHashCorrection();
+          }
+     });
 });
 
 // document.addEventListener("DOMContentLoaded", () => {

@@ -25,6 +25,32 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-15
+
+#### Fixed
+
+-   El CTA Comprar Tickets respeta el área segura inferior, se centra bajo
+    `1200px` y se alinea a la derecha desde ese breakpoint.
+-   Bajo `1200px`, el CTA se oculta mientras Tickets está visible. Desde
+    `1200px`, se oculta sobre Hero y Tickets y se muestra en Nosotros,
+    Puestas, Contacto y las sections posteriores.
+-   La navegación a Tickets utiliza un ancla auxiliar que alinea su título
+    con Nosotros y Puestas, sin quedar debajo de la cabecera fija.
+-   Las navegaciones hacia Puestas y Contacto se corrigen una vez que Tickets
+    termina de renderizar. Contacto también se realinea ante cambios tardíos
+    de altura del carrusel de Puestas, manteniendo el scroll suave nativo.
+-   Áreas afectadas: `index.html`, `index.js`,
+    `scss/_general.scss`, `scss/elements/_go-to-tickets.scss` y CSS compilado.
+
+#### Documentation
+
+-   Se actualizó la documentación de la rama para reflejar la arquitectura
+    independiente de Hero y Tickets, el orden Hero → Nosotros → Tickets →
+    Puestas → Contacto, el CTA responsive y las reglas de navegación por
+    hash.
+-   Áreas afectadas: `01-proyecto-resumen.md`,
+    `02-bloque-hero-tickets.md`, `04-section-tickets.md` y `AGENTS.md`.
+
 ### 2026-10-05
 
 #### Fixed

@@ -74,11 +74,22 @@ fondo. La variante se selecciona por ancho: `bg-tickets-320-vertical` bajo
 `768px`, `bg-tickets-768` desde `768px` hasta `1199px`, y `bg-tickets` desde
 `1200px`.
 
-El comportamiento compartido está documentado en:
+La relación con Hero y las reglas de navegación están documentadas en:
 
 `02-bloque-hero-tickets.md`
 
-## 7. Información pendiente
+## 7. Ancla de navegación
+
+El destino `#tickets` se resuelve mediante un ancla auxiliar ubicada dentro
+del contenedor relativo de Tickets, antes del título visible. El ancla se
+compensa con `scroll-padding-top: 6rem`, el padding externo del contenedor y
+el padding propio de `.tickets__section`, para alinear el título con los de
+Nosotros y Puestas sin que quede cubierto por la cabecera fija.
+
+El CTA fijo, la navbar de `index.html` y los enlaces equivalentes desde
+Términos y Condiciones y Política de Privacidad utilizan ese mismo destino.
+
+## 8. Información pendiente
 
 La documentación disponible no especifica:
 

@@ -26,7 +26,37 @@ del video de Tickets no forma parte de los recursos críticos del loader.
 Las sections siguen el scroll normal del documento. Al llegar a Tickets se
 visualiza su video de fondo independiente.
 
-## 4. Secuencia
+La navegación interna utiliza el scroll suave nativo y `scroll-padding-top:
+6rem` para reservar el espacio de la cabecera fija.
+
+## 4. CTA Comprar Tickets
+
+El CTA fijo navega a `#tickets`. Su posición se adapta al viewport:
+
+-   bajo `1200px`, se centra horizontalmente;
+-   desde `1200px`, se alinea a la derecha;
+-   en todos los breakpoints conserva una separación inferior equivalente a
+    `max(1.25rem, env(safe-area-inset-bottom))`.
+
+Su visibilidad se controla desde JavaScript con una única instancia de
+`IntersectionObserver` por breakpoint:
+
+-   bajo `1200px`, se muestra excepto mientras el título o la grilla de
+    Tickets están visibles;
+-   desde `1200px`, se oculta mientras Hero o Tickets están visibles y se
+    muestra en Nosotros, Puestas, Contacto y las sections posteriores.
+
+## 5. Navegación después de Tickets
+
+Los tickets se insertan de forma asíncrona. Si se navega hacia una section
+posterior antes de que termine esa inserción, el destino se corrige una única
+vez para `#nosotros`, `#puestas` y `#contacto` después de que Tickets agrega
+contenido.
+
+La navegación a `#contacto` también se vuelve a alinear si el carrusel de
+Puestas cambia de altura. Ambas correcciones respetan el scroll suave nativo.
+
+## 6. Secuencia
 
 El orden de visualización es:
 
@@ -37,14 +67,14 @@ El orden de visualización es:
 5.  Contacto.
 6.  Footer.
 
-## 5. Relación con otros documentos
+## 7. Relación con otros documentos
 
 Las características exclusivas de cada section se documentan por separado:
 
 -   `03-section-hero.md`
 -   `04-section-tickets.md`
 
-## 6. Información pendiente
+## 8. Información pendiente
 
 La documentación disponible no especifica la implementación CSS exacta del
 video de fondo de Tickets.
