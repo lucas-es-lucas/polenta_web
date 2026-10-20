@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Puestas | Fiesta Polenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Reemplazar por las fuentes reales del sitio si ya están cargadas -->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   TOKENS
+   Mapear estas variables a las del CSS del sitio.
+   ========================================================== */
+:root {
+  --c-bg: #000;
+  --c-text: #fff;
+  --c-accent: #e8452c;          /* rojo del botón "Comprar tickets" */
+  --c-btn-bg: rgba(0, 0, 0, .55);
+
+  --f-display: "Anton", "Oswald", Impact, sans-serif;
+  --f-serif: "Playfair Display", Georgia, serif;
+  --f-body: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+  --header-h: 0px;              /* alto del navbar fijo, si lo hay */
+  --gutter: clamp(16px, 4vw, 48px);
+  --slider-max-w: 1100px;
+  --slider-radius: 24px;
+  --slides-visible: 3;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--f-body);
+}
+
+/* ==========================================================
+   SECCIÓN PUESTAS
+   Clave del fix: la sección mide exactamente el alto visible
+   de la pantalla (100svh) y el slider ocupa el espacio que
+   sobra (flex: 1). Así las fotos nunca se cortan.
+   ========================================================== */
+.puestas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;                 /* fallback */
+  height: 100svh;                /* alto real visible, también en mobile */
+  min-height: 560px;             /* si la pantalla es muy baja, la sección crece */
+  padding: calc(var(--header-h) + clamp(16px, 4vh, 48px)) var(--gutter) clamp(72px, 10vh, 96px);
+  /* el padding inferior deja aire para el botón flotante "Comprar tickets" */
+  scroll-margin-top: var(--header-h);
+  text-align: center;
+  background: var(--c-bg);
+}
+
+.puestas__head {
+  flex: 0 0 auto;                /* el texto mide lo que mide */
+  max-width: 62ch;
+}
+
+.puestas__title {
+  margin: 0 0 clamp(8px, 2vh, 24px);
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(44px, 12vh, 128px);   /* escala con el ALTO, no sólo el ancho */
+  line-height: .95;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+
+.puestas__title em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.puestas__lead {
+  margin: 0 0 clamp(6px, 1.5vh, 16px);
+  font-size: clamp(16px, 3vh, 32px);
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+
+.puestas__tagline {
+  margin: 0;
+  font-size: clamp(18px, 3.4vh, 36px);
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+/* ==========================================================
+   SLIDER
+   ========================================================== */
+.slider {
+  position: relative;
+  flex: 1 1 0;                   /* ocupa todo el alto restante */
+  min-height: 200px;             /* piso para que nunca desaparezca */
+  width: min(100%, var(--slider-max-w));
+  margin-top: clamp(16px, 4vh, 48px);
+  border-radius: var(--slider-radius);
+  overflow: hidden;
+}
+
+.slider__track {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.slider__track::-webkit-scrollbar { display: none; }
+
+.slider__slide {
+  flex: 0 0 calc(100% / var(--slides-visible));
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.slider__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* la foto llena el cuadro sin deformarse */
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Botones */
+.slider__btn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-btn-bg);
+  color: var(--c-text);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color .2s ease, opacity .2s ease;
+}
+.slider__btn--prev { left: 12px; }
+.slider__btn--next { right: 12px; }
+.slider__btn:hover { background: var(--c-accent); }
+.slider__btn:focus-visible { outline: 3px solid var(--c-text); outline-offset: 2px; }
+.slider__btn[disabled] { opacity: 0; pointer-events: none; }
+.slider__btn svg { width: 22px; height: 22px; }
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1024px) {
+  :root { --slides-visible: 2; }
+}
+
+@media (max-width: 640px) {
+  :root { --slides-visible: 1; --slider-radius: 16px; }
+  .slider__btn { width: 40px; height: 40px; }
+}
+
+/* Pantallas bajas (notebooks chicas, mobile horizontal) */
+@media (max-height: 640px) {
+  .puestas__lead { display: none; }   /* prioriza que se vea el slider */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .slider__btn { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="puestas" id="puestas" aria-labelledby="puestas-title">
+  <div class="puestas__head">
+    <h2 class="puestas__title" id="puestas-title">PU<em>E</em>STAS</h2>
+    <p class="puestas__lead">
+      Queremos que Polenta* sea una experiencia completa, por eso pensamos en la puesta de luces, lásers, pantallas y visuales de cada fiesta.
+    </p>
+    <p class="puestas__tagline">Cada edición es única, como vos.</p>
+  </div>
+
+  <div class="slider" role="region" aria-roledescription="carrusel" aria-label="Puestas de Polenta">
+    <button class="slider__btn slider__btn--prev" type="button" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+
+    <ul class="slider__track" tabindex="0">
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-1.png" alt="Puesta de láseres violetas y rosas con confeti" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-2.png" alt="Estructura de láseres verdes sobre la pista" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-3.png" alt="Vista de la pista con iluminación verde" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-4.png" alt="Puesta de luces Polenta 4" loading="lazy" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-5.png" alt="Puesta de luces Polenta 5" loading="lazy" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-6.png" alt="Puesta de luces Polenta 6" loading="lazy" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-7.png" alt="Puesta de luces Polenta 7" loading="lazy" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-8.png" alt="Puesta de luces Polenta 8" loading="lazy" draggable="false"></li>
+      <li class="slider__slide"><img class="slider__img" src="https://fiestapolenta.com/imgs/puestas/slider-img-9.png" alt="Puesta de luces Polenta 9" loading="lazy" draggable="false"></li>
+    </ul>
+
+    <button class="slider__btn slider__btn--next" type="button" aria-label="Foto siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+(function () {
+  const slider = document.querySelector('#puestas .slider');
+  const track  = slider.querySelector('.slider__track');
+  const prev   = slider.querySelector('.slider__btn--prev');
+  const next   = slider.querySelector('.slider__btn--next');
+
+  const slideWidth = () => track.firstElementChild.getBoundingClientRect().width;
+
+  function update() {
+    const max = track.scrollWidth - track.clientWidth - 1;
+    prev.disabled = track.scrollLeft <= 0;
+    next.disabled = track.scrollLeft >= max;
+  }
+
+  prev.addEventListener('click', () => track.scrollBy({ left: -slideWidth(), behavior: 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left:  slideWidth(), behavior: 'smooth' }));
+
+  track.addEventListener('scroll', update, { passive: true });
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); next.click(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); prev.click(); }
+  });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+
+</body>
+</html>

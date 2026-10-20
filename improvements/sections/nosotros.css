@@ -1,0 +1,316 @@
+/* ==========================================================================
+   POLENTA* — "NOSOTROS" · OPCIÓN C: título visible + panel que se expande
+   · Reposo (mouse):  foto a sangre + barra de color con el TÍTULO abajo.
+   · Hover / foco:    la barra crece hacia arriba hasta cubrir TODA la card,
+                      el título sube y aparece la DESCRIPCIÓN.
+   · Touch (sin hover): no hay "hover", así que se muestra siempre el panel
+                      completo sobre la foto (igual que la Opción B).
+
+   Garantía anti-corte: título y descripción están SIEMPRE en el flujo (la
+   descripción solo se oculta con opacity), así que la card nunca es más baja
+   que el contenido expandido. Nada de alturas fijas ni overflow en el texto.
+   ========================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --polenta-bg: #2a2a2a;
+  --polenta-yellow: #d9a021;
+  --polenta-red: #e32414;
+  --polenta-green: #0b8943;
+  --polenta-beige: #dfc9af;
+  --polenta-ink: #0a0a0a;
+
+  --font-display: "Anton", "Impact", "Arial Narrow Bold", sans-serif;
+  --font-accent: "Playfair Display", "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --nosotros-gap: clamp(12px, 2vw, 24px);
+  --nosotros-pad-x: clamp(16px, 4vw, 48px);
+  --nosotros-pad-y: clamp(24px, 6vw, 72px);
+  --card-radius: clamp(18px, 2.2vw, 28px);
+  --panel-inset: clamp(8px, 3cqi, 14px);
+  --panel-radius: calc(var(--card-radius) - 6px);
+
+  /* Motion */
+  --dur: 0.5s;
+  --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
+
+  /* Alto de la card: foto visible (modo touch) y card completa (modo hover) */
+  --reveal-max-h: clamp(140px, 40svh, 420px);
+  --card-max-h: clamp(280px, 78svh, 680px);
+}
+
+/* ---------- 2. Sección ---------- */
+.nosotros {
+  padding: var(--nosotros-pad-y) var(--nosotros-pad-x);
+  background-color: var(--polenta-bg);
+  background-image: url("https://fiestapolenta.com/imgs/bgs/section-bg.png");
+  background-size: cover;
+  font-family: var(--font-body);
+  color: var(--polenta-ink);
+}
+
+.nosotros__inner {
+  max-width: 1280px;
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+/* ---------- 3. Grilla ---------- */
+.nosotros__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--nosotros-gap);
+}
+
+/* 1 columna */
+@container (max-width: 559px) {
+  .nosotros__grid > .card { --ratio-static: 16 / 10; --ratio-hover: 4 / 3; }
+}
+/* 2 × 2 */
+@container (min-width: 560px) {
+  .nosotros__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nosotros__grid > .card { --ratio-static: 4 / 3; --ratio-hover: 1 / 1; }
+}
+/* 4 en fila */
+@container (min-width: 960px) {
+  .nosotros__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .nosotros__grid > .card { --ratio-static: 1 / 0.85; --ratio-hover: 3 / 4; }
+}
+
+/* ---------- 4. Card (modo base = touch / sin hover) ---------- */
+.card {
+  --body-row: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  position: relative;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  background: #111;
+  container-type: inline-size;
+  isolation: isolate;
+  outline-offset: 3px;
+}
+
+/* Espaciador: define cuánta foto se ve (y el alto mínimo de la card) */
+.card::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  aspect-ratio: var(--ratio-static, 1 / 0.85);
+  max-height: var(--reveal-max-h);
+}
+
+.card--yellow { --card-bg: var(--polenta-yellow); }
+.card--red    { --card-bg: var(--polenta-red); }
+.card--green  { --card-bg: var(--polenta-green); }
+.card--beige  { --card-bg: var(--polenta-beige); }
+
+/* ---------- 5. Foto ---------- */
+.card__media {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  margin: 0;
+  position: relative;
+  z-index: -1;
+}
+
+.card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, 50% 25%);
+  transition: transform var(--dur) var(--ease);
+}
+
+.card--dance   { --focus: 40% 20%; }
+.card--remeras { --focus: 50% 25%; }
+.card--churros { --focus: 55% 30%; }
+.card--angeles { --focus: 50% 25%; }
+
+/* ---------- 6. Panel (base: siempre visible, abajo) ---------- */
+.card__body {
+  grid-column: 1;
+  grid-row: var(--body-row);
+  align-self: end;
+  padding: 0 var(--panel-inset) var(--panel-inset);
+}
+
+.card__panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: var(--panel-radius);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.28);
+  padding-bottom: clamp(14px, 6cqi, 24px);
+}
+
+.card__title {
+  margin: 0;
+  padding: clamp(14px, 6cqi, 22px) clamp(14px, 7cqi, 24px) 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 12.5cqi, 2.75rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.card__title em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 900;
+}
+
+.card__text {
+  margin: 0;
+  padding: clamp(8px, 3cqi, 12px) clamp(14px, 7cqi, 24px) 0;
+  font-size: clamp(0.9375rem, 3.2cqi + 0.55rem, 1.125rem);
+  line-height: 1.3;
+  text-align: center;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* ==========================================================================
+   7. MODO HOVER (mouse / trackpad): el panel se expande a toda la card
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+
+  .card {
+    --body-row: 1;
+    grid-template-rows: 1fr;
+    cursor: default;
+  }
+
+  /* En este modo la card completa es la foto */
+  .card::before {
+    aspect-ratio: var(--ratio-hover, 3 / 4);
+    max-height: var(--card-max-h);
+  }
+
+  /* El body ocupa toda la card; el panel mide el 100% de ese espacio */
+  .card__body {
+    align-self: stretch;
+    padding: var(--panel-inset);
+  }
+
+  .card__panel {
+    position: relative;
+    isolation: isolate;
+    height: 100%;
+    padding-bottom: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* Capa de color que "crece" desde abajo (se revela con clip-path) */
+  .card__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--card-bg);
+    border-radius: var(--panel-radius);
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path var(--dur) var(--ease);
+  }
+
+  /* TÍTULO — reposo: pegado al borde inferior del panel (barra de color).
+     top:100% + translateY(-100%) = "alineado abajo" sin conocer su alto. */
+  .card__title {
+    position: relative;
+    top: 100%;
+    transform: translateY(-100%);
+    padding-bottom: clamp(14px, 6cqi, 22px);
+    background: var(--card-bg);
+    border-radius: var(--panel-radius);
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.28);
+    transition:
+      top var(--dur) var(--ease),
+      transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+  }
+
+  /* DESCRIPCIÓN — en el flujo (reserva su alto) pero invisible en reposo.
+     Sigue disponible para lectores de pantalla. */
+  .card__text {
+    flex: 1;
+    display: grid;
+    align-content: center;
+    padding-bottom: clamp(16px, 7cqi, 28px);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition:
+      opacity 0.2s ease-out,
+      transform 0.2s ease-out;
+  }
+
+  /* ----- Estado expandido: hover o foco de teclado ----- */
+  .card:is(:hover, :focus-visible) .card__panel::before {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .card:is(:hover, :focus-visible) .card__title {
+    top: 0;
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .card:is(:hover, :focus-visible) .card__text {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.3s ease-out 0.18s,
+      transform 0.3s ease-out 0.18s;
+  }
+
+  .card:is(:hover, :focus-visible) .card__img {
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- 8. Accesibilidad / utilidades ---------- */
+.card:focus-visible {
+  outline: 3px solid #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card__img,
+  .card__panel::before,
+  .card__title,
+  .card__text {
+    transition: none !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Celular horizontal */
+@media (max-height: 480px) and (orientation: landscape) {
+  :root {
+    --reveal-max-h: clamp(100px, 36svh, 180px);
+    --card-max-h: clamp(220px, 70svh, 360px);
+  }
+}

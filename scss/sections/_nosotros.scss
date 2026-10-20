@@ -4,20 +4,19 @@
 // @media only screen and (min-width: 1400px) 
 
 
+// Cards de Nosotros encapsuladas: no afectan Bootstrap, Tickets ni otras sections.
+// En touch el panel queda visible porque no existe un hover persistente.
+// La altura resulta del contenido y del aspect-ratio: no se fijan alturas de texto.
+
 .nosotros__container {
      width: 100%;
-     flex-shrink: 0;
-
      display: inline-flex;
      flex-direction: column;
-     justify-content: center;
      align-items: center;
      row-gap: 3.5rem;
-     flex-shrink: 0;
 
      .section {
           width: 100%;
-
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -25,309 +24,775 @@
 
           .nosotros__queeslapolenta {
                display: flex;
-               padding: 0rem 2.3rem;
                flex-direction: column;
                align-items: center;
                row-gap: 2rem;
                align-self: stretch;
+               padding: 0 2.3rem;
           }
 
-          .cards {
-               @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
-               grid-template-areas:
-                    "dance-crew"
-                    "lanza-remeras"
-                    "churros"
-                    "angeles-polenta";
+          .nosotros-cards {
+               width: 100%;
+               padding-inline: 1rem;
 
-               .card__dance-crew {
-                    grid-area: "dance-crew";
-               }
-
-               .card__lanza-remeras {
-                    grid-area: "lanza-remeras";
-               }
-
-               .card__churros {
-                    grid-area: "churros";
-               }
-
-               .card__angeles-polenta {
-                    grid-area: "angeles-polenta";
+               &__grid {
+                    display: grid;
+                    grid-template-columns: minmax(0, 1fr);
+                    gap: .75rem;
+                    width: min(100%, 80rem);
+                    margin: 0 auto;
+                    padding: 0;
+                    list-style: none;
                }
           }
 
-          .card {
-               display: flex;
-               flex-direction: row;
-               align-items: center;
+          // --nosotros-gap: clamp(12px, 2vw, 24px);
+          // --nosotros-pad-x: clamp(16px, 4vw, 48px);
+          // --nosotros-pad-y: clamp(24px, 6vw, 72px);
+          // --card-radius: clamp(18px, 2.2vw, 28px);
+          // --panel-inset: clamp(8px, 3cqi, 14px);
+          // --panel-radius: calc(var(--card-radius) - 6px);
 
-               border: none;
-               border-radius: 1rem;
+          .nosotros-card {
+               --nosotros-card-radius: clamp(1.125rem, 2.2vw, 1.75rem);
+               --nosotros-panel-inset: clamp(8px, 3cqi, 14px); //.625rem;
+               --nosotros-ratio-static: 16 / 10;
+               --nosotros-ratio-hover: 4 / 3;
 
-               width: 22.5rem;
-
-               &__dance-crew {
-                    background-color: $color-fondo-card-dance-crew;
-               }
-
-               &__lanza-remeras {
-                    background-color: $color-fondo-card-lanza-remeras;
-               }
-
-               &__churros {
-                    background-color: $color-fondo-card-churros;
-               }
-
-               &__angeles-polenta {
-                    background-color: $color-fondo-card-angeles;
-               }
-          }
-
-          .card__container__imagen {
-               width: 10.6rem;
-               height: 11.25rem;
-
+               position: relative;
+               display: grid;
+               grid-template-columns: minmax(0, 1fr);
+               grid-template-rows: auto auto;
                overflow: hidden;
+               min-width: 0;
+               border-radius: var(--nosotros-card-radius);
+               background: #111;
+               isolation: isolate;
+               outline-offset: .25rem;
 
-               align-content: center;
+               // Reserva el espacio de la foto antes de que termine de cargar.
+               &::before {
+                    content: "";
+                    grid-column: 1;
+                    grid-row: 1;
+                    aspect-ratio: var(--nosotros-ratio-static);
+               }
+
+               &--dance {
+                    // --nosotros-card-color: $color-fondo-card-dance-crew;
+                    --nosotros-card-color: #E0A90E;
+                    --nosotros-image-position: 40% 20%;
+               }
+
+               &--remeras {
+                    // --nosotros-card-color: $color-fondo-card-lanza-remeras;
+                    --nosotros-card-color: #E7270E;
+                    --nosotros-image-position: 50% 25%;
+               }
+
+               &--churros {
+                    // --nosotros-card-color: $color-fondo-card-churros;
+                    --nosotros-card-color: #13964F;
+                    --nosotros-image-position: 55% 30%;
+               }
+
+               &--angeles {
+                    // --nosotros-card-color: $color-fondo-card-angeles;
+                    --nosotros-card-color: #E4CFB9;
+                    --nosotros-image-position: 50% 25%;
+               }
           }
 
-          .card__imagen {
+          .nosotros-card__media {
+               position: relative;
+               z-index: -1;
+               grid-column: 1;
+               grid-row: 1 / -1;
+               margin: 0;
+
+               picture {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+               }
+          }
+
+          .nosotros-card__img {
+               position: absolute;
+               inset: 0;
                width: 100%;
                height: 100%;
-
                object-fit: cover;
-
-               border-radius: 1rem 0 0 1rem;
+               object-position: var(--nosotros-image-position);
+               transition: transform .5s cubic-bezier(.22, .8, .2, 1);
           }
 
-          .card__container {
+          .nosotros-card__body {
+               z-index: 1;
+               grid-column: 1;
+               grid-row: 2;
+               align-self: end;
+               padding: 0 var(--nosotros-panel-inset) var(--nosotros-panel-inset);
+          }
+
+          .nosotros-card__panel {
                display: flex;
                flex-direction: column;
-               align-items: center;
-               justify-content: center;
-               row-gap: .3rem;
-               padding: .75rem .5rem;
-
-               width: 12.4rem;
-               height: 11.25rem;
+               min-height: 100%;
+               padding-bottom: clamp(.875rem, 4vw, 1.5rem);
+               border-radius: calc(var(--nosotros-card-radius) - .375rem);
+               background: var(--nosotros-card-color);
+               box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
           }
 
-          .card__icono {
-               width: 3rem;
+          .nosotros-card__title {
+               margin: 0;
+               padding: clamp(.875rem, 4vw, 1.375rem) clamp(.875rem, 5vw, 1.5rem) 0;
+               color: $color-text-negro;
+               font-family: $font-primary;
+               font-size: clamp(1.6rem, 7vw, 2.75rem);
+               font-weight: 400;
+               line-height: .92;
+               text-align: center;
+               text-transform: uppercase;
+
+               em {
+                    font-family: $font-alternative;
+                    font-style: italic;
+                    font-weight: 900;
+               }
+          }
+
+          .nosotros-card__text {
+               margin: 0;
+               padding: .625rem clamp(.875rem, 5vw, 1.5rem) 0;
+               color: $color-text-negro;
+               font-family: $font-secondary;
+               // font-size: clamp(.9375rem, 2.5vw, 1.125rem);
+               // Tamaño cómodo en mobile y en la grilla de dos columnas.
+               font-size: clamp(1.125rem, 2.8vw, 1.375rem);
+               font-weight: 400;
+               line-height: 1.3;
+               text-align: center;
+          }
+
+          .nosotros-card:focus-visible {
+               outline: .1875rem solid $color-text;
           }
      }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen and (min-width: 576px) {
      .nosotros__container {
-          width: 100%;
-          flex-shrink: 0;
-
-          display: inline-flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          row-gap: 3.5rem;
-          flex-shrink: 0;
-
           .section {
-               width: 100%;
-
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               row-gap: 3.5rem;
-
                .nosotros__queeslapolenta {
-                    display: flex;
-                    padding: 0rem 18%;
-                    flex-direction: column;
-                    align-items: center;
-                    row-gap: 2rem;
+                    padding-inline: 18%;
+               }
+
+               .nosotros-cards__grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: 1rem;
+               }
+
+               .nosotros-card {
+                    --nosotros-ratio-static: 4 / 3;
+                    --nosotros-ratio-hover: 1 / 1;
+               }
+          }
+     }
+}
+
+@media only screen and (min-width: 999px) {
+     .nosotros__container {
+          .section {
+               .nosotros-cards__grid {
+                    grid-template-columns: repeat(4, minmax(0, 1fr));
+               }
+
+               .nosotros-card {
+                    --nosotros-ratio-static: 1 / .85;
+                    --nosotros-ratio-hover: 3 / 4;
+               }
+          }
+     }
+}
+
+@media (hover: hover) and (pointer: fine) {
+     .nosotros__container {
+          .section {
+               .nosotros-card {
+                    grid-template-rows: minmax(0, 1fr);
+
+                    &::before {
+                         aspect-ratio: var(--nosotros-ratio-hover);
+                    }
+               }
+
+               .nosotros-card__body {
+                    grid-row: 1;
                     align-self: stretch;
+                    padding: var(--nosotros-panel-inset);
                }
 
-               .cards {
-                    @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
-                    grid-template-areas:
-                         "dance-crew lanza-remeras"
-                         "churros angeles-polenta";
+               .nosotros-card__panel {
+                    position: relative;
+                    isolation: isolate;
+                    padding-bottom: 0;
+                    background: transparent;
+                    box-shadow: none;
+
+                    &::before {
+                         position: absolute;
+                         inset: 0;
+                         z-index: -1;
+                         content: "";
+                         border-radius: calc(var(--nosotros-card-radius) - .375rem);
+                         background: var(--nosotros-card-color);
+                         clip-path: inset(100% 0 0 0);
+                         transition: clip-path .5s cubic-bezier(.22, .8, .2, 1);
+                    }
                }
 
-               .card {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-
-                    border: none;
-                    border-radius: 1rem;
-
-                    width: 15.5rem;
+               .nosotros-card__title {
+                    position: relative;
+                    top: 100%;
+                    padding-bottom: clamp(.875rem, 4vw, 1.375rem);
+                    border-radius: calc(var(--nosotros-card-radius) - .375rem);
+                    background: var(--nosotros-card-color);
+                    box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
+                    transform: translateY(-100%);
+                    transition:
+                         top .5s cubic-bezier(.22, .8, .2, 1),
+                         transform .5s cubic-bezier(.22, .8, .2, 1),
+                         box-shadow .5s cubic-bezier(.22, .8, .2, 1);
                }
 
-               .card__container__imagen {
-                    width: 15.5rem;
-                    height: 15rem;
-
-                    overflow: hidden;
-
+               .nosotros-card__text {
+                    flex: 1;
+                    display: grid;
                     align-content: center;
+                    padding-bottom: clamp(1rem, 4vw, 1.75rem);
+                    opacity: 0;
+                    pointer-events: none;
+                    transform: translateY(.625rem);
+                    transition:
+                         opacity .2s ease-out,
+                         transform .2s ease-out;
                }
 
-               .card__imagen {
-                    width: 100%;
-                    height: 100%;
+               .nosotros-card:is(:hover, :focus-visible) {
+                    .nosotros-card__panel::before {
+                         clip-path: inset(0);
+                    }
 
-                    object-fit: cover;
+                    .nosotros-card__title {
+                         top: 0;
+                         box-shadow: none;
+                         transform: translateY(0);
+                    }
 
-                    border-radius: 1rem 1rem 0 0;
-               }
+                    .nosotros-card__text {
+                         opacity: 1;
+                         transform: none;
+                         transition:
+                              opacity .3s ease-out .18s,
+                              transform .3s ease-out .18s;
+                    }
 
-               .card__container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-                    row-gap: .75rem;
-                    padding: 1.5rem 1rem;
-
-                    width: 15.5rem;
-                    height: 14.1rem;
-               }
-
-               .card__icono {
-                    width: 3rem;
+                    .nosotros-card__img {
+                         transform: scale(1.05);
+                    }
                }
           }
      }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media (prefers-reduced-motion: reduce) {
      .nosotros__container {
           .section {
-               .cards {
-                    @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
-                    grid-template-areas:
-                         "dance-crew lanza-remeras"
-                         "churros angeles-polenta";
+
+               .nosotros-card__img,
+               .nosotros-card__panel::before,
+               .nosotros-card__title,
+               .nosotros-card__text {
+                    transition: none !important;
                }
           }
      }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+/*
+ * Ajuste de interacción:
+ * - El título permanece visible sobre la foto en reposo.
+ * - Hover o foco expanden el color y muestran la descripción.
+ * - :focus también permite activar la card con teclado o toque.
+ */
+.nosotros__container {
+     .section {
+          .nosotros-card {
+               grid-template-rows: minmax(0, 1fr);
+          }
+
+          .nosotros-card__media {
+               grid-row: 1;
+          }
+
+          .nosotros-card__body {
+               display: flex;
+               grid-row: 1;
+               align-self: stretch;
+               padding: var(--nosotros-panel-inset);
+          }
+
+          .nosotros-card__panel {
+               position: relative;
+               isolation: isolate;
+               display: flex;
+               flex-direction: column;
+               width: 100%;
+               min-height: 100%;
+               padding: var(--nosotros-panel-inset);
+               background: transparent;
+               box-shadow: none;
+
+               // La capa de color se revela al interactuar con la card.
+               &::before {
+                    position: absolute;
+                    inset: 0;
+                    z-index: -1;
+                    content: "";
+                    border-radius: calc(var(--nosotros-card-radius) - .375rem);
+                    background: var(--nosotros-card-color);
+                    clip-path: inset(100% 0 0 0);
+                    transition: clip-path .5s cubic-bezier(.22, .8, .2, 1);
+               }
+          }
+
+          .nosotros-card__title {
+               position: relative;
+               top: auto;
+               z-index: 1;
+               margin-top: auto;
+               // padding: clamp(.875rem, 4vw, 1.375rem) clamp(.875rem, 5vw, 1.5rem);
+
+               // Panel visible en reposo: conserva aire superior,
+               // pero reduce laterales y, especialmente, el borde inferior.
+               padding:
+                    clamp(0.875rem, 4vw, 1.375rem) clamp(0.625rem, 2vw, 1rem) clamp(0.375rem, 1vw, 0.625rem);
+
+               border-radius: calc(var(--nosotros-card-radius) - .375rem);
+               background: var(--nosotros-card-color);
+               box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
+               transform: none;
+               transition:
+                    margin-top .5s cubic-bezier(.22, .8, .2, 1),
+                    background-color .2s ease,
+                    box-shadow .2s ease;
+          }
+
+          .nosotros-card__text {
+               max-height: 0;
+               margin: 0;
+               padding: 0 clamp(.875rem, 5vw, 1.5rem);
+               overflow: hidden;
+               opacity: 0;
+               transform: translateY(.625rem);
+               transition:
+                    max-height .35s ease,
+                    padding .35s ease,
+                    opacity .25s ease,
+                    transform .25s ease;
+          }
+
+          /*
+           * :hover cubre mouse/trackpad.
+           * :focus cubre teclado y permite activar la card al tocarla.
+           */
+          .nosotros-card:is(:hover, :focus) {
+               .nosotros-card__panel::before {
+                    clip-path: inset(0);
+               }
+
+               .nosotros-card__title {
+                    margin-top: 0;
+                    background: transparent;
+                    box-shadow: none;
+               }
+
+               .nosotros-card__text {
+                    flex: 1;
+                    display: grid;
+                    align-content: center;
+                    max-height: 20rem;
+                    padding:
+                         clamp(.625rem, 3vw, 1rem) clamp(.875rem, 5vw, 1.5rem) clamp(1rem, 4vw, 1.75rem);
+                    opacity: 1;
+                    transform: none;
+               }
+          }
+     }
+}
+
+@media (hover: hover) and (pointer: fine) {
      .nosotros__container {
           .section {
-               .cards {
-                    @include grillas__simetricas(2, auto, 2, auto, 2rem, 2rem);
-                    grid-template-areas:
-                         "dance-crew lanza-remeras"
-                         "churros angeles-polenta";
-               }
-
-               .card {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-
-                    border: none;
-                    border-radius: 1rem;
-
-                    width: 15.5rem;
-               }
-
-               .card__container__imagen {
-                    width: 15.5rem;
-                    height: 15rem;
-
-                    overflow: hidden;
-
-                    align-content: center;
-               }
-
-               .card__imagen {
-                    width: 100%;
-                    height: 100%;
-
-                    object-fit: cover;
-
-                    border-radius: 1rem 1rem 0 0;
-               }
-
-               .card__container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-                    row-gap: .75rem;
-                    padding: 1.5rem 1rem;
-
-                    width: 15.5rem;
-                    height: 14.1rem;
-               }
-
-               .card__icono {
-                    width: 3rem;
+               .nosotros-card:hover .nosotros-card__img {
+                    transform: scale(1.05);
                }
           }
      }
 }
 
-@media only screen and (min-width: 1200px) {
+// Desde cuatro columnas las cards son más angostas;
+// reducimos sólo la descripción para que no se comprima.
+@media only screen and (min-width: 999px) {
      .nosotros__container {
           .section {
-               .cards {
-                    @include grillas__simetricas(4, auto, 1, auto, .75rem, 0);
-                    grid-template-areas:
-                         "dance-crew lanza-remeras churros angeles-polenta";
-               }
-
-               .card {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-
-                    border: none;
-                    border-radius: 1rem;
-
-                    width: 15.5rem;
-               }
-
-               .card__container__imagen {
-                    width: 15.5rem;
-                    height: 15rem;
-
-                    overflow: hidden;
-
-                    align-content: center;
-               }
-
-               .card__imagen {
-                    width: 100%;
-                    height: 100%;
-
-                    object-fit: cover;
-
-                    border-radius: 1rem 1rem 0 0;
-               }
-
-               .card__container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: flex-start;
-                    row-gap: .75rem;
-                    padding: 1.5rem 1rem;
-
-                    width: 15.5rem;
-                    height: 14.1rem;
-               }
-
-               .card__icono {
-                    width: 3rem;
+               .nosotros-card__text {
+                    font-size: clamp(0.875rem, 1.1vw, 1.0625rem);
                }
           }
      }
 }
+
+// Playfair tiene una altura visual mayor que Anton.
+// Este ajuste queda limitado a la letra alternativa de las cards.
+.nosotros__container {
+     .section {
+          .nosotros-card__title em {
+               display: inline-block;
+               font-size: 0.92em;
+               line-height: 1;
+               position: relative;
+               top: 0.035em;
+          }
+     }
+}
+
+// .nosotros__container {
+//      width: 100%;
+//      flex-shrink: 0;
+
+//      display: inline-flex;
+//      flex-direction: column;
+//      justify-content: center;
+//      align-items: center;
+//      row-gap: 3.5rem;
+//      flex-shrink: 0;
+
+//      .section {
+//           width: 100%;
+
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           row-gap: 3.5rem;
+
+//           .nosotros__queeslapolenta {
+//                display: flex;
+//                padding: 0rem 2.3rem;
+//                flex-direction: column;
+//                align-items: center;
+//                row-gap: 2rem;
+//                align-self: stretch;
+//           }
+
+//           .cards {
+//                @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
+//                grid-template-areas:
+//                     "dance-crew"
+//                     "lanza-remeras"
+//                     "churros"
+//                     "angeles-polenta";
+
+//                .card__dance-crew {
+//                     grid-area: "dance-crew";
+//                }
+
+//                .card__lanza-remeras {
+//                     grid-area: "lanza-remeras";
+//                }
+
+//                .card__churros {
+//                     grid-area: "churros";
+//                }
+
+//                .card__angeles-polenta {
+//                     grid-area: "angeles-polenta";
+//                }
+//           }
+
+//           .card {
+//                display: flex;
+//                flex-direction: row;
+//                align-items: center;
+
+//                border: none;
+//                border-radius: 1rem;
+
+//                width: 22.5rem;
+
+//                &__dance-crew {
+//                     background-color: $color-fondo-card-dance-crew;
+//                }
+
+//                &__lanza-remeras {
+//                     background-color: $color-fondo-card-lanza-remeras;
+//                }
+
+//                &__churros {
+//                     background-color: $color-fondo-card-churros;
+//                }
+
+//                &__angeles-polenta {
+//                     background-color: $color-fondo-card-angeles;
+//                }
+//           }
+
+//           .card__container__imagen {
+//                width: 10.6rem;
+//                height: 11.25rem;
+
+//                overflow: hidden;
+
+//                align-content: center;
+//           }
+
+//           .card__imagen {
+//                width: 100%;
+//                height: 100%;
+
+//                object-fit: cover;
+
+//                border-radius: 1rem 0 0 1rem;
+//           }
+
+//           .card__container {
+//                display: flex;
+//                flex-direction: column;
+//                align-items: center;
+//                justify-content: center;
+//                row-gap: .3rem;
+//                padding: .75rem .5rem;
+
+//                width: 12.4rem;
+//                height: 11.25rem;
+//           }
+
+//           .card__icono {
+//                width: 3rem;
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 576px) and (max-width: 767px) {
+//      .nosotros__container {
+//           width: 100%;
+//           flex-shrink: 0;
+
+//           display: inline-flex;
+//           flex-direction: column;
+//           justify-content: center;
+//           align-items: center;
+//           row-gap: 3.5rem;
+//           flex-shrink: 0;
+
+//           .section {
+//                width: 100%;
+
+//                display: flex;
+//                flex-direction: column;
+//                align-items: center;
+//                row-gap: 3.5rem;
+
+//                .nosotros__queeslapolenta {
+//                     display: flex;
+//                     padding: 0rem 18%;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     row-gap: 2rem;
+//                     align-self: stretch;
+//                }
+
+//                .cards {
+//                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
+//                     grid-template-areas:
+//                          "dance-crew lanza-remeras"
+//                          "churros angeles-polenta";
+//                }
+
+//                .card {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+
+//                     border: none;
+//                     border-radius: 1rem;
+
+//                     width: 15.5rem;
+//                }
+
+//                .card__container__imagen {
+//                     width: 15.5rem;
+//                     height: 15rem;
+
+//                     overflow: hidden;
+
+//                     align-content: center;
+//                }
+
+//                .card__imagen {
+//                     width: 100%;
+//                     height: 100%;
+
+//                     object-fit: cover;
+
+//                     border-radius: 1rem 1rem 0 0;
+//                }
+
+//                .card__container {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     justify-content: flex-start;
+//                     row-gap: .75rem;
+//                     padding: 1.5rem 1rem;
+
+//                     width: 15.5rem;
+//                     height: 14.1rem;
+//                }
+
+//                .card__icono {
+//                     width: 3rem;
+//                }
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 768px) and (max-width: 991px) {
+//      .nosotros__container {
+//           .section {
+//                .cards {
+//                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
+//                     grid-template-areas:
+//                          "dance-crew lanza-remeras"
+//                          "churros angeles-polenta";
+//                }
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 992px) and (max-width: 1199px) {
+//      .nosotros__container {
+//           .section {
+//                .cards {
+//                     @include grillas__simetricas(2, auto, 2, auto, 2rem, 2rem);
+//                     grid-template-areas:
+//                          "dance-crew lanza-remeras"
+//                          "churros angeles-polenta";
+//                }
+
+//                .card {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+
+//                     border: none;
+//                     border-radius: 1rem;
+
+//                     width: 15.5rem;
+//                }
+
+//                .card__container__imagen {
+//                     width: 15.5rem;
+//                     height: 15rem;
+
+//                     overflow: hidden;
+
+//                     align-content: center;
+//                }
+
+//                .card__imagen {
+//                     width: 100%;
+//                     height: 100%;
+
+//                     object-fit: cover;
+
+//                     border-radius: 1rem 1rem 0 0;
+//                }
+
+//                .card__container {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     justify-content: flex-start;
+//                     row-gap: .75rem;
+//                     padding: 1.5rem 1rem;
+
+//                     width: 15.5rem;
+//                     height: 14.1rem;
+//                }
+
+//                .card__icono {
+//                     width: 3rem;
+//                }
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 1200px) {
+//      .nosotros__container {
+//           .section {
+//                .cards {
+//                     @include grillas__simetricas(4, auto, 1, auto, .75rem, 0);
+//                     grid-template-areas:
+//                          "dance-crew lanza-remeras churros angeles-polenta";
+//                }
+
+//                .card {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+
+//                     border: none;
+//                     border-radius: 1rem;
+
+//                     width: 15.5rem;
+//                }
+
+//                .card__container__imagen {
+//                     width: 15.5rem;
+//                     height: 15rem;
+
+//                     overflow: hidden;
+
+//                     align-content: center;
+//                }
+
+//                .card__imagen {
+//                     width: 100%;
+//                     height: 100%;
+
+//                     object-fit: cover;
+
+//                     border-radius: 1rem 1rem 0 0;
+//                }
+
+//                .card__container {
+//                     display: flex;
+//                     flex-direction: column;
+//                     align-items: center;
+//                     justify-content: flex-start;
+//                     row-gap: .75rem;
+//                     padding: 1.5rem 1rem;
+
+//                     width: 15.5rem;
+//                     height: 14.1rem;
+//                }
+
+//                .card__icono {
+//                     width: 3rem;
+//                }
+//           }
+//      }
+// }
