@@ -20,9 +20,11 @@
      }
 
      &__slider {
-          // width: 95%;
           width: 100%;
-          padding: 0 5%;
+          // padding: 0 5%;
+          /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+          padding: 0 var(--site-content-gutter);
+
           display: flex;
           flex-direction: column;
           row-gap: 1rem;
@@ -44,7 +46,9 @@
 
           &__slider {
                width: 100%;
-               padding: 0 5%;
+               // padding: 0 5%;
+               /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+               padding: 0 var(--site-content-gutter);
 
                display: flex;
                flex-direction: column;
@@ -67,8 +71,10 @@
           }
 
           &__slider {
-               width: 100%; // width: 65%;
-               padding: 0 10%;
+               width: 100%;
+               // padding: 0 10%;
+               /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+               padding: 0 var(--site-content-gutter);
 
                display: flex;
                flex-direction: column;
@@ -88,9 +94,6 @@
                flex-direction: column;
                align-items: center;
                row-gap: 2.75rem;
-
-               // padding-left: 10%;
-               // padding-right: 10%;
           }
 
           &__slider {
@@ -103,7 +106,9 @@
                gap: 1vw;
 
                width: 100%;
-               padding: 0 10%;
+               // padding: 0 10%;
+               /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+               padding: 0 var(--site-content-gutter);
 
                /* tickets */
 
@@ -126,14 +131,11 @@
 
 @media only screen and (min-width: 1400px) {
      .tickets {
-          // &__section {
-          //      padding-left: 5%;
-          //      padding-right: 5%;
-          // }
-
           &__slider {
                width: 100%;
-               padding: 0 10%;
+               // padding: 0 10%;
+               /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+               padding: 0 var(--site-content-gutter);
           }
      }
 }

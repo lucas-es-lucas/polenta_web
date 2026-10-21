@@ -2,7 +2,9 @@
      //.top-nav
      background: $color-bg-top-nav;
 
-     padding: .8rem 1.5rem;
+     // padding: .8rem 1.5rem;
+     /* Comparte márgenes laterales con Tickets y Nosotros. */
+     padding: .8rem var(--site-content-gutter);
 
      &__burger {
           color: $color-primary-verde;

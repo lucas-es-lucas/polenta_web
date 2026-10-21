@@ -28,6 +28,20 @@
      }
 }
 
+/*
+ * Margen lateral común para navbar, Tickets y Cards.
+ * Así las tres referencias usan exactamente el mismo ancho útil.
+ */
+:root {
+     --site-content-gutter: 5%;
+}
+
+@media only screen and (min-width: 992px) {
+     :root {
+          --site-content-gutter: 10%;
+     }
+}
+
 html {
      scroll-padding-top: 6rem; //calc($height-anouncement + $height-top-nav);
      scroll-behavior: smooth;

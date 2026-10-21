@@ -9,7 +9,8 @@
           //.top-nav
           background: $color-bg-top-nav;
 
-          padding: .25% 10% 0;
+          // padding: .25% 10% 0;
+          padding: .25% var(--site-content-gutter) 0;
 
           .navbar-collapse {
                height: auto;
