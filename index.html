@@ -982,7 +982,179 @@
 						Cada edición es única, como vos.
 					</p>
 				</article>
-				<div id="carouselExampleCaptions"
+				<div class="puestas-carousel puestas__slider" data-puestas-carousel role="region"
+					aria-roledescription="carrusel" aria-label="Puestas de Polenta">
+					<div class="puestas-carousel__controls">
+						<button class="puestas-carousel__control puestas-carousel__control--previous" type="button"
+							data-puestas-carousel-previous aria-controls="puestas-carousel-track"
+							aria-label="Ver foto anterior">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M15 18l-6-6 6-6" />
+							</svg>
+						</button>
+
+						<button class="puestas-carousel__control puestas-carousel__control--next" type="button"
+							data-puestas-carousel-next aria-controls="puestas-carousel-track"
+							aria-label="Ver foto siguiente">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M9 6l6 6-6 6" />
+							</svg>
+						</button>
+					</div>
+
+					<ul class="puestas-carousel__track" id="puestas-carousel-track" data-puestas-carousel-track
+						tabindex="0">
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-1-320w.png 320w, /imgs/puestas/mobile/slider-img-1-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-1-640w.png 640w, /imgs/puestas/tablet/slider-img-1-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-1-640w.png 640w, /imgs/puestas/tablet/slider-img-1-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-1.png"
+									alt="puestas-1" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-2-320w.png 320w, /imgs/puestas/mobile/slider-img-2-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-2-640w.png 640w, /imgs/puestas/tablet/slider-img-2-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-2-640w.png 640w, /imgs/puestas/tablet/slider-img-2-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-2.png"
+									alt="puestas-2" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-3-320w.png 320w, /imgs/puestas/mobile/slider-img-3-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-3-640w.png 640w, /imgs/puestas/tablet/slider-img-3-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-3-640w.png 640w, /imgs/puestas/tablet/slider-img-3-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-3.png"
+									alt="puestas-3" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-4-320w.png 320w, /imgs/puestas/mobile/slider-img-4-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-4-640w.png 640w, /imgs/puestas/tablet/slider-img-4-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-4-640w.png 640w, /imgs/puestas/tablet/slider-img-4-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-4.png"
+									alt="puestas-4" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-5-320w.png 320w, /imgs/puestas/mobile/slider-img-5-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-5-640w.png 640w, /imgs/puestas/tablet/slider-img-5-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-5-640w.png 640w, /imgs/puestas/tablet/slider-img-5-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-5.png"
+									alt="puestas-5" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-6-320w.png 320w, /imgs/puestas/mobile/slider-img-6-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-6-640w.png 640w, /imgs/puestas/tablet/slider-img-6-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-6-640w.png 640w, /imgs/puestas/tablet/slider-img-6-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-6.png"
+									alt="puestas-6" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-7-320w.png 320w, /imgs/puestas/mobile/slider-img-7-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-7-640w.png 640w, /imgs/puestas/tablet/slider-img-7-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-7-640w.png 640w, /imgs/puestas/tablet/slider-img-7-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-7.png"
+									alt="puestas-7" width="2336" height="1314" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-8-320w.png 320w, /imgs/puestas/mobile/slider-img-8-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-8-640w.png 640w, /imgs/puestas/tablet/slider-img-8-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-8-640w.png 640w, /imgs/puestas/tablet/slider-img-8-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-8.png"
+									alt="puestas-8" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+
+						<li class="puestas-carousel__slide">
+							<picture>
+								<source media="(max-width: 575px)"
+									srcset="/imgs/puestas/mobile/slider-img-9-320w.png 320w, /imgs/puestas/mobile/slider-img-9-480w.png 480w"
+									sizes="calc(100vw - 2rem)" />
+								<source media="(max-width: 991px)"
+									srcset="/imgs/puestas/tablet/slider-img-9-640w.png 640w, /imgs/puestas/tablet/slider-img-9-768w.png 768w"
+									sizes="80vw" />
+								<source media="(max-width: 1199px)"
+									srcset="/imgs/puestas/tablet/slider-img-9-640w.png 640w, /imgs/puestas/tablet/slider-img-9-768w.png 768w"
+									sizes="70vw" />
+								<img class="puestas-carousel__image" src="/imgs/puestas/desktop/slider-img-9.png"
+									alt="puestas-9" width="1920" height="1080" loading="lazy" decoding="async" />
+							</picture>
+						</li>
+					</ul>
+
+					<nav class="puestas-carousel__indicators" data-puestas-carousel-indicators
+						aria-label="Seleccionar una vista del carrusel"></nav>
+				</div>
+				<!-- <div id="carouselExampleCaptions"
 					class="carousel carousel-warning slide carousel-fade slider puestas__slider" data-bs-ride="carousel"
 					data-bs-touch="true">
 					<div class="carousel-indicators">
@@ -1152,7 +1324,7 @@
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Next</span>
 					</button>
-				</div>
+				</div> -->
 			</section>
 		</div>
 		<div class="contacto contacto__container">
@@ -1269,6 +1441,7 @@
 			src="/imgs/icons/ticket.svg" alt="ícono botón para ir a la sección de tickets" /><span
 			class="go-to-tickets__text">COMPRAR
 			TICKETS</span></a>
+	<script src="/puestas.js"></script>
 </body>
 <!-- <script src="/index.js"></script> -->
 <script src="/tickets.js"></script>

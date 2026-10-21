@@ -5,261 +5,517 @@
 
 .puestas {
      &__container {
-          background-color: $color-bg;
           position: relative;
           z-index: 2;
+          background-color: $color-bg;
      }
 
      &__section {
-          width: 100%;
-
           display: flex;
           flex-direction: column;
           align-items: center;
-          row-gap: 3.5rem;
+          width: 100%;
+          height: 100vh;
+          height: 100svh;
+          min-height: 35rem;
+          //           /*
+          //  * Compensa el padding exterior de 6rem que Puestas anuló para medir
+          //  * exactamente 100svh. Conserva el mismo desplazamiento ancla → título
+          //  * que Nosotros y Contacto, sin cambiar la regla global de navegación.
+          //  */
+          //           padding:
+          //                calc(6rem + clamp(1rem, 4vh, 3rem)) var(--site-content-gutter) clamp(4.5rem, 10vh, 6rem);
+          /*
+ * Puestas no usa el padding exterior de .container__propio.
+ * Se replica exactamente el padding superior de Nosotros y Contacto
+ * para alinear #puestas con sus títulos, sin alterar las anclas globales.
+ */
+          padding:
+               6rem var(--site-content-gutter) clamp(4.5rem, 10vh, 6rem);
+          text-align: center;
+     }
 
-          position: relative;
+     &__descripcion {
+          flex: 0 0 auto;
+          display: flex;
+          flex-direction: column;
+          row-gap: clamp(.375rem, 1.5vh, 1rem);
+          max-width: 62ch;
+          padding: 0;
 
-          .puestas__descripcion {
-               display: flex;
-               flex-direction: column;
-               row-gap: 1.5rem;
-
-               text-align: center;
-
-               padding: 0 2.5rem;
+          .title {
+               /*
+      * El tamaño se hereda de .title para seguir los mismos breakpoints
+      * que Tickets, Nosotros y Contacto.
+      */
+               line-height: .95;
           }
 
-          .slider {
-               display: flex;
+          .subtitle {
+               font-size: clamp(1rem, 2.4vh, 2rem);
+          }
 
-               padding: 0 1rem;
-
-               .puestas__slider {
-                    &__img {
-                         width: 100%;
-
-                         border-radius: 1.25rem;
-                    }
-               }
-
-               .carousel-inner {
-                    .carousel-item {
-                         picture {
-                              display: block;
-                              width: 100%;
-                              aspect-ratio: 16 / 9;
-                         }
-
-                         img {
-                              display: block;
-                              width: 100%;
-                              height: auto;
-
-                              border-radius: 1.25rem;
-                         }
-                    }
-               }
-
-               .carousel-indicators {
-                    button {
-                         background-color: $color-primary-verde;
-                    }
-               }
-
-               .carousel-control-prev {
-                    display: none;
-               }
-
-               .carousel-control-next {
-                    display: none;
-               }
+          .subtitle__bold {
+               font-size: clamp(1.125rem, 2.8vh, 2.25rem);
           }
      }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-     .puestas {
-          &__section {
-               width: 100%;
+/*
+ * La section ocupa el alto visible completo. Se anula únicamente el padding
+ * heredado de .container__propio para no sumar 12rem fuera de 100svh.
+ */
+body .container__propio.puestas__container {
+     padding: 0;
+}
 
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               row-gap: 3.5rem;
+.puestas-carousel {
+     position: relative;
+     flex: 1 1 auto;
+     width: min(100%, 68.75rem);
+     min-height: 12.5rem;
+     margin-top: clamp(1rem, 4vh, 3rem);
+     overflow: hidden;
+     border-radius: clamp(1rem, 2.2vw, 1.5rem);
+}
 
-               position: relative;
+.puestas-carousel__track {
+     display: flex;
+     align-items: stretch;
+     width: 100%;
+     height: 100%;
+     margin: 0;
+     padding: 0;
+     overflow-x: auto;
+     overscroll-behavior-x: contain;
+     scroll-behavior: smooth;
+     scroll-snap-type: x mandatory;
+     scrollbar-width: none;
+     list-style: none;
 
-               .puestas__descripcion {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 1.5rem;
-
-                    text-align: center;
-
-                    padding: 0 18%;
-               }
-
-               .slider {
-                    display: flex;
-
-                    padding: 0 10%;
-
-                    .puestas__slider {
-                         &__img {
-                              width: 100%;
-
-                              border-radius: 1.25rem;
-                         }
-                    }
-
-                    .carousel-inner {
-                         .carousel-item {
-                              img {
-                                   width: 100%;
-
-                                   border-radius: 1.25rem;
-                              }
-                         }
-                    }
-
-                    .carousel-indicators {
-                         button {
-                              background-color: $color-primary-verde;
-                         }
-                    }
-
-                    .carousel-control-prev {
-                         display: block;
-
-                         transform: rotate(270deg);
-
-                         left: 15%;
-
-                         width: auto;
-                         height: auto;
-
-                         & :hover {
-                              color: $color-primary-verde;
-                         }
-
-                         .carousel-control-prev-icon {
-                              background-image: url("/imgs/icons/scroll-top.png");
-                         }
-                    }
-
-                    .carousel-control-next {
-                         display: block;
-
-                         transform: rotate(90deg);
-
-                         right: 15%;
-
-                         width: auto;
-                         height: auto;
-
-                         & :hover {
-                              color: $color-primary-verde;
-                         }
-
-                         .carousel-control-next-icon {
-                              background-image: url("/imgs/icons/scroll-top.png");
-                         }
-                    }
-               }
-          }
+     &::-webkit-scrollbar {
+          display: none;
      }
 }
 
-@media only screen and (min-width: 992px) {
-     .puestas {
-          &__section {
-               width: 100%;
+.puestas-carousel__slide {
+     flex: 0 0 100%;
+     min-width: 0;
+     height: 100%;
+     scroll-snap-align: start;
+     scroll-snap-stop: always;
 
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               row-gap: 3.5rem;
-
-               position: relative;
-
-               .puestas__descripcion {
-                    display: flex;
-                    flex-direction: column;
-                    row-gap: 1.5rem;
-
-                    text-align: center;
-
-                    padding: 0 18%;
-               }
-
-               .slider {
-                    display: flex;
-
-                    padding: 0 15%;
-
-                    .puestas__slider {
-                         &__img {
-                              width: 100%;
-
-                              border-radius: 1.25rem;
-                         }
-                    }
-
-                    .carousel-inner {
-                         .carousel-item {
-                              img {
-                                   width: 100%;
-
-                                   border-radius: 1.25rem;
-                              }
-                         }
-                    }
-
-                    .carousel-indicators {
-                         button {
-                              background-color: $color-primary-verde;
-                         }
-                    }
-
-                    .carousel-control-prev {
-                         display: block;
-
-                         transform: rotate(270deg);
-
-                         left: 18%;
-
-                         width: auto;
-                         height: auto;
-
-                         & :hover {
-                              color: $color-primary-verde;
-                         }
-
-                         .carousel-control-prev-icon {
-                              background-image: url("/imgs/icons/scroll-top.png");
-                         }
-                    }
-
-                    .carousel-control-next {
-                         display: block;
-
-                         transform: rotate(90deg);
-
-                         right: 18%;
-
-                         width: auto;
-                         height: auto;
-
-                         & :hover {
-                              color: $color-primary-verde;
-                         }
-
-                         .carousel-control-next-icon {
-                              background-image: url("/imgs/icons/scroll-top.png");
-                         }
-                    }
-               }
-          }
+     picture {
+          display: block;
+          width: 100%;
+          height: 100%;
      }
 }
+
+.puestas-carousel__image {
+     display: block;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position: center;
+     user-select: none;
+     -webkit-user-drag: none;
+}
+
+.puestas-carousel__track {
+     transition: opacity .18s ease;
+}
+
+/*
+ * El fade se aplica sólo a las navegaciones programáticas
+ * (autoplay, flechas, teclado e indicadores). El arrastre manual
+ * conserva el scroll-snap nativo sin interferencias.
+ */
+.puestas-carousel.is-fading .puestas-carousel__track {
+     opacity: .3;
+     scroll-behavior: auto;
+}
+
+.puestas-carousel__controls,
+.puestas-carousel__indicators {
+     display: none;
+}
+
+.puestas-carousel__control {
+     position: absolute;
+     top: 50%;
+     z-index: 2;
+     display: grid;
+     place-items: center;
+     width: 3rem;
+     height: 3rem;
+     padding: 0;
+     border: 1px solid rgba($color-text, .75);
+     border-radius: 50%;
+     background-color: rgba($color-bg, .72);
+     color: $color-text;
+     backdrop-filter: blur(.375rem);
+     cursor: pointer;
+     transform: translateY(-50%);
+     transition: background-color .2s ease, transform .2s ease;
+
+     &:hover {
+          background-color: $color-bg-anouncement;
+     }
+
+     &:focus-visible {
+          outline: .1875rem solid $color-text;
+          outline-offset: .1875rem;
+     }
+
+     svg {
+          width: 1.375rem;
+          height: 1.375rem;
+     }
+
+     &--previous {
+          left: .75rem;
+     }
+
+     &--next {
+          right: .75rem;
+     }
+}
+
+.puestas-carousel__indicators {
+     position: absolute;
+     bottom: .75rem;
+     left: 50%;
+     z-index: 2;
+     align-items: center;
+     gap: .375rem;
+     padding: .375rem .5rem;
+     border-radius: 999px;
+     background-color: rgba($color-bg, .55);
+     transform: translateX(-50%);
+}
+
+.puestas-carousel__indicator {
+     width: .5rem;
+     height: .5rem;
+     padding: 0;
+     border: 0;
+     border-radius: 999px;
+     background-color: $color-text;
+     cursor: pointer;
+     opacity: .55;
+     transition: width .2s ease, background-color .2s ease, opacity .2s ease;
+
+     &[aria-current="true"] {
+          width: 1.5rem;
+          background-color: $color-bg-anouncement;
+          opacity: 1;
+     }
+
+     &:focus-visible {
+          outline: .125rem solid $color-text;
+          outline-offset: .1875rem;
+     }
+}
+
+@media only screen and (min-width: 768px) {
+     .puestas-carousel__slide {
+          flex-basis: 50%;
+     }
+}
+
+@media only screen and (min-width: 768px) {
+     .puestas-carousel__controls {
+          display: block;
+     }
+
+     .puestas-carousel__indicators {
+          display: flex;
+     }
+}
+
+@media only screen and (min-width: 1200px) {
+     .puestas-carousel__slide {
+          flex-basis: calc(100% / 3);
+     }
+}
+
+@media (max-height: 640px) {
+     .puestas__descripcion .subtitle:not(.subtitle__bold) {
+          display: none;
+     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+     .puestas-carousel__track,
+     .puestas-carousel__control,
+     .puestas-carousel__indicator {
+          transition: none;
+     }
+
+     .puestas-carousel__track {
+          scroll-behavior: auto;
+     }
+}
+
+
+// .puestas {
+//      &__container {
+//           background-color: $color-bg;
+//           position: relative;
+//           z-index: 2;
+//      }
+
+//      &__section {
+//           width: 100%;
+
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           row-gap: 3.5rem;
+
+//           position: relative;
+
+//           .puestas__descripcion {
+//                display: flex;
+//                flex-direction: column;
+//                row-gap: 1.5rem;
+
+//                text-align: center;
+
+//                padding: 0 2.5rem;
+//           }
+
+//           .slider {
+//                display: flex;
+
+//                padding: 0 1rem;
+
+//                .puestas__slider {
+//                     &__img {
+//                          width: 100%;
+
+//                          border-radius: 1.25rem;
+//                     }
+//                }
+
+//                .carousel-inner {
+//                     .carousel-item {
+//                          picture {
+//                               display: block;
+//                               width: 100%;
+//                               aspect-ratio: 16 / 9;
+//                          }
+
+//                          img {
+//                               display: block;
+//                               width: 100%;
+//                               height: auto;
+
+//                               border-radius: 1.25rem;
+//                          }
+//                     }
+//                }
+
+//                .carousel-indicators {
+//                     button {
+//                          background-color: $color-primary-verde;
+//                     }
+//                }
+
+//                .carousel-control-prev {
+//                     display: none;
+//                }
+
+//                .carousel-control-next {
+//                     display: none;
+//                }
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 768px) and (max-width: 991px) {
+//      .puestas {
+//           &__section {
+//                width: 100%;
+
+//                display: flex;
+//                flex-direction: column;
+//                align-items: center;
+//                row-gap: 3.5rem;
+
+//                position: relative;
+
+//                .puestas__descripcion {
+//                     display: flex;
+//                     flex-direction: column;
+//                     row-gap: 1.5rem;
+
+//                     text-align: center;
+
+//                     padding: 0 18%;
+//                }
+
+//                .slider {
+//                     display: flex;
+
+//                     padding: 0 10%;
+
+//                     .puestas__slider {
+//                          &__img {
+//                               width: 100%;
+
+//                               border-radius: 1.25rem;
+//                          }
+//                     }
+
+//                     .carousel-inner {
+//                          .carousel-item {
+//                               img {
+//                                    width: 100%;
+
+//                                    border-radius: 1.25rem;
+//                               }
+//                          }
+//                     }
+
+//                     .carousel-indicators {
+//                          button {
+//                               background-color: $color-primary-verde;
+//                          }
+//                     }
+
+//                     .carousel-control-prev {
+//                          display: block;
+
+//                          transform: rotate(270deg);
+
+//                          left: 15%;
+
+//                          width: auto;
+//                          height: auto;
+
+//                          & :hover {
+//                               color: $color-primary-verde;
+//                          }
+
+//                          .carousel-control-prev-icon {
+//                               background-image: url("/imgs/icons/scroll-top.png");
+//                          }
+//                     }
+
+//                     .carousel-control-next {
+//                          display: block;
+
+//                          transform: rotate(90deg);
+
+//                          right: 15%;
+
+//                          width: auto;
+//                          height: auto;
+
+//                          & :hover {
+//                               color: $color-primary-verde;
+//                          }
+
+//                          .carousel-control-next-icon {
+//                               background-image: url("/imgs/icons/scroll-top.png");
+//                          }
+//                     }
+//                }
+//           }
+//      }
+// }
+
+// @media only screen and (min-width: 992px) {
+//      .puestas {
+//           &__section {
+//                width: 100%;
+
+//                display: flex;
+//                flex-direction: column;
+//                align-items: center;
+//                row-gap: 3.5rem;
+
+//                position: relative;
+
+//                .puestas__descripcion {
+//                     display: flex;
+//                     flex-direction: column;
+//                     row-gap: 1.5rem;
+
+//                     text-align: center;
+
+//                     padding: 0 18%;
+//                }
+
+//                .slider {
+//                     display: flex;
+
+//                     padding: 0 15%;
+
+//                     .puestas__slider {
+//                          &__img {
+//                               width: 100%;
+
+//                               border-radius: 1.25rem;
+//                          }
+//                     }
+
+//                     .carousel-inner {
+//                          .carousel-item {
+//                               img {
+//                                    width: 100%;
+
+//                                    border-radius: 1.25rem;
+//                               }
+//                          }
+//                     }
+
+//                     .carousel-indicators {
+//                          button {
+//                               background-color: $color-primary-verde;
+//                          }
+//                     }
+
+//                     .carousel-control-prev {
+//                          display: block;
+
+//                          transform: rotate(270deg);
+
+//                          left: 18%;
+
+//                          width: auto;
+//                          height: auto;
+
+//                          & :hover {
+//                               color: $color-primary-verde;
+//                          }
+
+//                          .carousel-control-prev-icon {
+//                               background-image: url("/imgs/icons/scroll-top.png");
+//                          }
+//                     }
+
+//                     .carousel-control-next {
+//                          display: block;
+
+//                          transform: rotate(90deg);
+
+//                          right: 18%;
+
+//                          width: auto;
+//                          height: auto;
+
+//                          & :hover {
+//                               color: $color-primary-verde;
+//                          }
+
+//                          .carousel-control-next-icon {
+//                               background-image: url("/imgs/icons/scroll-top.png");
+//                          }
+//                     }
+//                }
+//           }
+//      }
+// }

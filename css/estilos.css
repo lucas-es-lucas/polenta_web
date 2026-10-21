@@ -1568,168 +1568,227 @@ html.is-loading .initial-loader,
   }
 }
 .puestas__container {
-  background-color: #000000;
   position: relative;
   z-index: 2;
+  background-color: #000000;
 }
 .puestas__section {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 3.5rem;
-  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 35rem;
+  /*
+  * Puestas no usa el padding exterior de .container__propio.
+  * Se replica exactamente el padding superior de Nosotros y Contacto
+  * para alinear #puestas con sus títulos, sin alterar las anclas globales.
+  */
+  padding: 6rem var(--site-content-gutter) clamp(4.5rem, 10vh, 6rem);
+  text-align: center;
 }
-.puestas__section .puestas__descripcion {
+.puestas__descripcion {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
-  text-align: center;
-  padding: 0 2.5rem;
+  row-gap: clamp(0.375rem, 1.5vh, 1rem);
+  max-width: 62ch;
+  padding: 0;
 }
-.puestas__section .slider {
+.puestas__descripcion .title {
+  /*
+  * El tamaño se hereda de .title para seguir los mismos breakpoints
+  * que Tickets, Nosotros y Contacto.
+  */
+  line-height: 0.95;
+}
+.puestas__descripcion .subtitle {
+  font-size: clamp(1rem, 2.4vh, 2rem);
+}
+.puestas__descripcion .subtitle__bold {
+  font-size: clamp(1.125rem, 2.8vh, 2.25rem);
+}
+
+/*
+ * La section ocupa el alto visible completo. Se anula únicamente el padding
+ * heredado de .container__propio para no sumar 12rem fuera de 100svh.
+ */
+body .container__propio.puestas__container {
+  padding: 0;
+}
+
+.puestas-carousel {
+  position: relative;
+  flex: 1 1 auto;
+  width: min(100%, 68.75rem);
+  min-height: 12.5rem;
+  margin-top: clamp(1rem, 4vh, 3rem);
+  overflow: hidden;
+  border-radius: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.puestas-carousel__track {
   display: flex;
-  padding: 0 1rem;
-}
-.puestas__section .slider .puestas__slider__img {
+  align-items: stretch;
   width: 100%;
-  border-radius: 1.25rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  list-style: none;
 }
-.puestas__section .slider .carousel-inner .carousel-item picture {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16/9;
-}
-.puestas__section .slider .carousel-inner .carousel-item img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 1.25rem;
-}
-.puestas__section .slider .carousel-indicators button {
-  background-color: #24bf5e;
-}
-.puestas__section .slider .carousel-control-prev {
-  display: none;
-}
-.puestas__section .slider .carousel-control-next {
+.puestas-carousel__track::-webkit-scrollbar {
   display: none;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .puestas__section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3.5rem;
-    position: relative;
-  }
-  .puestas__section .puestas__descripcion {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    text-align: center;
-    padding: 0 18%;
-  }
-  .puestas__section .slider {
-    display: flex;
-    padding: 0 10%;
-  }
-  .puestas__section .slider .puestas__slider__img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-inner .carousel-item img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-indicators button {
-    background-color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev {
-    display: block;
-    transform: rotate(270deg);
-    left: 15%;
-    width: auto;
-    height: auto;
-  }
-  .puestas__section .slider .carousel-control-prev :hover {
-    color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev .carousel-control-prev-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
-  }
-  .puestas__section .slider .carousel-control-next {
-    display: block;
-    transform: rotate(90deg);
-    right: 15%;
-    width: auto;
-    height: auto;
-  }
-  .puestas__section .slider .carousel-control-next :hover {
-    color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-next .carousel-control-next-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+.puestas-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.puestas-carousel__slide picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.puestas-carousel__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.puestas-carousel__track {
+  transition: opacity 0.18s ease;
+}
+
+/*
+ * El fade se aplica sólo a las navegaciones programáticas
+ * (autoplay, flechas, teclado e indicadores). El arrastre manual
+ * conserva el scroll-snap nativo sin interferencias.
+ */
+.puestas-carousel.is-fading .puestas-carousel__track {
+  opacity: 0.3;
+  scroll-behavior: auto;
+}
+
+.puestas-carousel__controls,
+.puestas-carousel__indicators {
+  display: none;
+}
+
+.puestas-carousel__control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  backdrop-filter: blur(0.375rem);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.puestas-carousel__control:hover {
+  background-color: #E7270E;
+}
+.puestas-carousel__control:focus-visible {
+  outline: 0.1875rem solid #ffffff;
+  outline-offset: 0.1875rem;
+}
+.puestas-carousel__control svg {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+.puestas-carousel__control--previous {
+  left: 0.75rem;
+}
+.puestas-carousel__control--next {
+  right: 0.75rem;
+}
+
+.puestas-carousel__indicators {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  z-index: 2;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  transform: translateX(-50%);
+}
+
+.puestas-carousel__indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: #ffffff;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: width 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+.puestas-carousel__indicator[aria-current=true] {
+  width: 1.5rem;
+  background-color: #E7270E;
+  opacity: 1;
+}
+.puestas-carousel__indicator:focus-visible {
+  outline: 0.125rem solid #ffffff;
+  outline-offset: 0.1875rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .puestas-carousel__slide {
+    flex-basis: 50%;
   }
 }
-@media only screen and (min-width: 992px) {
-  .puestas__section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3.5rem;
-    position: relative;
-  }
-  .puestas__section .puestas__descripcion {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    text-align: center;
-    padding: 0 18%;
-  }
-  .puestas__section .slider {
-    display: flex;
-    padding: 0 15%;
-  }
-  .puestas__section .slider .puestas__slider__img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-inner .carousel-item img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-indicators button {
-    background-color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev {
+@media only screen and (min-width: 768px) {
+  .puestas-carousel__controls {
     display: block;
-    transform: rotate(270deg);
-    left: 18%;
-    width: auto;
-    height: auto;
   }
-  .puestas__section .slider .carousel-control-prev :hover {
-    color: #24bf5e;
+  .puestas-carousel__indicators {
+    display: flex;
   }
-  .puestas__section .slider .carousel-control-prev .carousel-control-prev-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+}
+@media only screen and (min-width: 1200px) {
+  .puestas-carousel__slide {
+    flex-basis: 33.3333333333%;
   }
-  .puestas__section .slider .carousel-control-next {
-    display: block;
-    transform: rotate(90deg);
-    right: 18%;
-    width: auto;
-    height: auto;
+}
+@media (max-height: 640px) {
+  .puestas__descripcion .subtitle:not(.subtitle__bold) {
+    display: none;
   }
-  .puestas__section .slider .carousel-control-next :hover {
-    color: #24bf5e;
+}
+@media (prefers-reduced-motion: reduce) {
+  .puestas-carousel__track,
+  .puestas-carousel__control,
+  .puestas-carousel__indicator {
+    transition: none;
   }
-  .puestas__section .slider .carousel-control-next .carousel-control-next-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+  .puestas-carousel__track {
+    scroll-behavior: auto;
   }
 }
 .suscribite__container {
