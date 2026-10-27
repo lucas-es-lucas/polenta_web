@@ -2,8 +2,9 @@
 
 ## 1. Propósito
 
-Este documento define la arquitectura compartida entre Hero y Tickets para la
-versión `feat-hero-assets`.
+Este documento define la arquitectura compartida entre Hero y Tickets,
+incorporada en `feat-hero-assets`, e incluye el ajuste del CTA vigente en
+`feat-redesign-sections` al 2026-10-27.
 
 Hero y Tickets estarán visualmente diferenciados, pero formarán parte de un
 bloque general con un único video de fondo compartido.
@@ -49,10 +50,35 @@ section Nosotros.
     viewport, sin insertar ni precargar las variantes inactivas.
 -   La composición responsive de las animaciones contempla mobile, tablet,
     desktop y el rango de `992px` a `1199px`.
--   El CTA fijo "COMPRAR TICKETS" usa una única instancia de
-    `IntersectionObserver`: en desktop aparece después del bloque completo
-    Hero + Tickets; en mobile se muestra durante Hero, se oculta al llegar al
-    título de Tickets y reaparece al terminar la section.
+-   El CTA fijo "COMPRAR TICKETS" utiliza un `IntersectionObserver` activo
+    a la vez. Su comportamiento y breakpoints se detallan a continuación.
+
+### CTA fijo: comportamiento vigente
+
+-   Bajo `1200px`, observa `.tickets__section`: permanece visible fuera de
+    Tickets, incluido Hero, y se oculta mientras Tickets intersecta el área
+    observable ajustada.
+-   Desde `1200px`, observa `.hero-tickets`: permanece oculto mientras el
+    bloque Hero + Tickets intersecta esa área y visible fuera de él.
+-   En ambos modos utiliza `threshold: 0` y un `rootMargin` superior negativo
+    igual a la altura real de `.header__fixed`, redondeada hacia arriba.
+    Así excluye el contenido cubierto por la cabecera fija y evita que el CTA
+    siga oculto al llegar a Nosotros hasta realizar un pequeño scroll.
+-   Bajo `1200px`, agrega `-48px` al margen inferior del observer para
+    conservar el ajuste relativo al padding previo al contenido de Tickets.
+-   `syncCta` desconecta el observer anterior y crea uno nuevo al iniciar o
+    cruzar el breakpoint de `1200px`. La altura del header se mide en ese
+    momento; no existe una observación continua de sus cambios de altura.
+-   Hasta `1199px`, el botón se centra horizontalmente. Desde `1200px`, se
+    ubica a la derecha. Conserva posición fija y una separación inferior que
+    contempla `safe-area-inset-bottom`.
+
+La corrección del ancla de Nosotros y la reaparición del CTA fueron validadas
+por el usuario durante el ajuste. La medición de la introducción de Nosotros
+es independiente de este observer; no controla la visibilidad del botón.
+
+Referencias: `index.js`, `scss/elements/_go-to-tickets.scss` y
+[06-section-nosotros.md](06-section-nosotros.md).
 
 ### Parcialmente implementado
 

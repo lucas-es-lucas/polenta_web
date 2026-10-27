@@ -25,6 +25,50 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-27
+
+#### Changed
+
+-   Nosotros incorpora un cálculo de altura para la grilla de dos columnas
+    entre `768px` y `1199px`, hasta `900px` de alto. `ResizeObserver` mide la
+    introducción y CSS asigna el espacio restante a ambas filas, con mínimos
+    de `22rem` y `20rem`. La segunda fila continúa mediante scroll normal.
+-   Se recupera presencia del título y las frases de Nosotros, se conserva
+    la sincronización del ancla y se oculta únicamente la explicación
+    secundaria hasta `640px` de alto dentro del rango intermedio.
+-   El mínimo del loader pasa de tres a dos segundos antes de su transición
+    de salida; se conserva la salvaguarda de doce segundos.
+-   Se actualizan la agenda de `data/tickets.json` y sus imágenes para las
+    próximas fechas, sin modificar la lógica de filtrado de `tickets.js`.
+
+#### Fixed
+
+-   El observer del CTA descuenta la altura real de `.header__fixed` mediante
+    un `rootMargin` superior negativo, para evitar que permanezca oculto al
+    navegar a Nosotros hasta efectuar un scroll adicional.
+
+#### Documentation
+
+-   Se crean `06-section-nosotros.md` y `07-section-puestas.md` para describir
+    el estado vigente de los rediseños incorporados durante
+    `feat-redesign-sections`: cards, interacción, composición desktop compacta
+    y cálculo intermedio de Nosotros; distribución Flexbox, navegación,
+    indicadores y autoplay del carrusel de Puestas.
+-   Se distinguen implementación, validaciones informadas por el usuario y
+    pruebas pendientes. La evaluación visual inicial favorable de Nosotros
+    no se presenta como validación completa de responsive o accesibilidad.
+-   Se actualizan resumen, referencias para agentes, fuente de datos de
+    Tickets, comportamiento del CTA y duración vigente del loader. Las
+    entradas históricas se conservan con los valores que regían entonces.
+-   Archivos documentales afectados: `01-proyecto-resumen.md`,
+    `02-bloque-hero-tickets.md`, `05-loader.md`, `06-section-nosotros.md`,
+    `07-section-puestas.md`, `AGENTS.md` y `CHANGELOG.md`.
+-   Referencias de implementación: `index.html`, `index.js`, `puestas.js`,
+    `scss/sections/_nosotros.scss`, `scss/sections/_puestas.scss`,
+    `scss/_general.scss`, `scss/elements/_go-to-tickets.scss`,
+    `css/estilos.css`, `css/estilos.css.map`, `data/tickets.json` e
+    `imgs/tickets/`. Esta entrada no registra un despliegue en producción.
+
 ### 2026-10-14
 
 #### Added

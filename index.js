@@ -5,7 +5,7 @@
  * de forma independiente para no retrasar la primera vista.
  */
 (() => {
-     const MINIMUM_LOADER_DURATION = 3000;
+     const MINIMUM_LOADER_DURATION = 2000;
      const MAXIMUM_CRITICAL_WAIT = 12000;
 
      const root = document.documentElement;
@@ -710,6 +710,112 @@ document.addEventListener("DOMContentLoaded", () => {
           }
      });
 });
+
+/*
+ * Nosotros: mide la introducción para que CSS pueda asignar
+ * el alto restante a cada fila de cards.
+ *
+ * No modifica el scroll ni interviene en la visibilidad del CTA.
+ */
+(() => {
+     const initNosotrosViewport = () => {
+          const container = document.querySelector(".nosotros__container");
+          const intro = container?.querySelector(".nosotros__queeslapolenta");
+
+          if (
+               !container ||
+               !intro ||
+               !("ResizeObserver" in window) ||
+               !CSS.supports("height", "100svh")
+          ) {
+               return;
+          }
+
+          const compactViewport = window.matchMedia(
+               "(min-width: 768px) and (max-width: 1199px) and (max-height: 900px)",
+          );
+
+          let frame = 0;
+
+          const measure = () => {
+               frame = 0;
+
+               if (!compactViewport.matches) {
+                    container.classList.remove("nosotros--viewport-ready");
+                    container.style.removeProperty("--nosotros-intro-height");
+                    container.style.removeProperty("--nosotros-scroll-offset");
+                    return;
+               }
+
+               /*
+                * Incluye título, párrafos y gaps internos.
+                * Redondear hacia arriba evita sobreestimar el espacio libre.
+                */
+               const introHeight = Math.ceil(
+                    intro.getBoundingClientRect().height,
+               );
+
+               /*
+                * Lee el desplazamiento usado por la navegación nativa.
+                * Se mide scroll-padding-top porque ésa es la referencia
+                * actual del ancla, independientemente del observer del CTA.
+                */
+               const rootStyles = getComputedStyle(
+                    document.documentElement,
+               );
+
+               const scrollOffset =
+                    parseFloat(rootStyles.scrollPaddingTop) || 0;
+
+               container.style.setProperty(
+                    "--nosotros-intro-height",
+                    `${introHeight}px`,
+               );
+
+               container.style.setProperty(
+                    "--nosotros-scroll-offset",
+                    `${scrollOffset}px`,
+               );
+
+               container.classList.add("nosotros--viewport-ready");
+          };
+
+          const scheduleMeasure = () => {
+               if (frame) return;
+
+               frame = window.requestAnimationFrame(measure);
+          };
+
+          /*
+           * Sólo observamos la introducción:
+           * cambiar el alto de las cards no vuelve a disparar
+           * la medición por un cambio de alto de toda la sección.
+           */
+          const introObserver = new ResizeObserver(scheduleMeasure);
+          introObserver.observe(intro);
+
+          window.addEventListener("resize", scheduleMeasure, {
+               passive: true,
+          });
+
+          compactViewport.addEventListener("change", scheduleMeasure);
+
+          // Revisa el layout después de resolver las fuentes iniciales.
+          document.fonts?.ready.then(scheduleMeasure);
+
+          measure();
+     };
+
+     if (document.readyState === "loading") {
+          document.addEventListener(
+               "DOMContentLoaded",
+               initNosotrosViewport,
+               { once: true },
+          );
+     } else {
+          initNosotrosViewport();
+     }
+})();
 
 // document.addEventListener("DOMContentLoaded", () => {
 //      const tickets = document.querySelectorAll(".ticket");

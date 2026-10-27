@@ -22,6 +22,8 @@ correspondiente:
 -   `03-section-hero.md` --- características propias de Hero.
 -   `04-section-tickets.md` --- características propias de Tickets.
 -   `05-loader.md` --- características propias del Loader.
+-   `06-section-nosotros.md` --- cards, interacción y composición responsive de Nosotros.
+-   `07-section-puestas.md` --- composición vertical y carrusel de Puestas.
 -   `CHANGELOG.md` --- evolución relevante del proyecto.
 
 ## 3. Modalidad operativa y autorizaciones
@@ -75,8 +77,9 @@ sections.
 
 ## 6. Tickets
 
-La información utilizada para renderizar los tickets se encuentra en
-`tickets.js`.
+La agenda utilizada para renderizar los tickets se encuentra en
+`data/tickets.json`. `tickets.js` carga esos datos, filtra las fechas y
+renderiza los tickets.
 
 Las fechas futuras se agregan manualmente y las fechas obsoletas se
 quitan mediante JavaScript.

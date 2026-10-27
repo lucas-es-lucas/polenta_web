@@ -542,146 +542,130 @@
 }
 
 /*
- * Composición compacta para pantallas intermedias con poca altura.
+ * Composición intermedia:
+ * la introducción conserva su altura natural y ambas filas de cards
+ * comparten el espacio calculado para la primera vista.
  *
- * En este rango las cards permanecen distribuidas en dos columnas.
- * El objetivo es que, al navegar a Nosotros, entren en el viewport:
- *
- * - el título;
- * - la frase principal;
- * - la primera fila de cards completa;
- * - el espacio ocupado por el CTA fijo.
- *
- * La segunda fila puede continuar debajo del viewport.
+ * JavaScript sólo proporciona medidas. Las decisiones visuales
+ * y el presupuesto vertical permanecen en CSS.
  */
-@media only screen and (min-width: 768px) and (max-width: 1199px) and (max-height: 900px) {
+@media only screen
+     and (min-width: 768px)
+     and (max-width: 1199px)
+     and (max-height: 900px) {
 
      body .container__propio.nosotros__container {
-          /*
-           * Se elimina el padding superior global porque debe formar parte
-           * del cálculo de la composición compacta.
-           *
-           * El padding inferior no condiciona la llegada a la primera fila
-           * y mantiene separación después de la segunda.
-           */
-          padding:
-               0 0 clamp(3rem, 6vh, 5rem);
+          // El padding superior se administra dentro de la section.
+          // El inferior separa la segunda fila de la sección siguiente.
+          padding: 0 0 clamp(3rem, 6vh, 5rem);
      }
 
      .nosotros__container {
-          /*
-           * Centraliza el padding superior para mantener sincronizados
-           * el contenido y el ancla, igual que en el ajuste desktop.
-           */
+          // Se conserva la sincronización de navegación ya validada.
           --nosotros-narrow-padding-top: clamp(4rem, 8vh, 5rem);
-
-          // /*
-          //  * Reserva aproximada del CTA:
-          //  *
-          //  * - 2.5rem de altura;
-          //  * - 1.25rem de separación inferior;
-          //  * - 1rem adicional de aire respecto de las cards.
-          //  */
-          // --nosotros-cta-clearance: 4.75rem;
+          --nosotros-narrow-anchor-gap:
+               clamp(3rem, calc(7.4vw - .55rem), 5rem);
 
           /*
-          * Separación visual entre el destino del ancla y el título.
-          *
-          * En 768px conserva los 3rem actuales.
-          * A medida que aumenta el ancho, crece progresivamente hasta 5rem.
-          *
-          * Esto compensa el cambio de navbar y la diferente caja visual del título
-          * sin introducir un salto brusco en 960px o 992px.
-          */
-          --nosotros-narrow-anchor-gap:
-               clamp(3rem,
-                    calc(7.4vw - .55rem),
-                    5rem);
+           * Margen visual después de la primera fila.
+           * Permite que el CTA se superponga parcialmente con las cards.
+           * No representa una reserva completa para el botón.
+           */
+          --nosotros-first-view-bottom: 2rem;
+
+          --nosotros-intro-cards-gap: clamp(1.25rem, 3svh, 2rem);
+
+          /*
+           * Mínimo inicial para validar con los paneles abiertos.
+           * En las columnas más angostas los textos necesitan más alto.
+           */
+          --nosotros-card-min-height: 22rem;
+
+          --nosotros-card-row-height:
+               max(
+                    var(--nosotros-card-min-height),
+                    calc(
+                         100svh
+                         - var(--nosotros-scroll-offset, 6rem)
+                         - var(--nosotros-narrow-anchor-gap)
+                         - var(--nosotros-intro-height, 0px)
+                         - var(--nosotros-intro-cards-gap)
+                         - var(--nosotros-first-view-bottom)
+                    )
+               );
 
           #nosotros.section-nav-target {
-               /*
-               * El ancla se calcula a partir de los mismos valores que ubican
-               * visualmente al título. Si cambia el padding o la separación
-               * deseada, ambos continúan sincronizados.
-               */
                top:
-                    calc(var(--nosotros-narrow-padding-top) - var(--nosotros-narrow-anchor-gap));
+                    calc(
+                         var(--nosotros-narrow-padding-top)
+                         - var(--nosotros-narrow-anchor-gap)
+                    );
           }
 
           .section {
                padding-top: var(--nosotros-narrow-padding-top);
-
-               /*
-                * Reduce el espacio entre la introducción y la primera fila.
-                * El mínimo de 1.25rem evita que las cards queden visualmente
-                * pegadas al texto.
-                */
-               row-gap: clamp(1.25rem, 3vh, 2rem);
+               row-gap: var(--nosotros-intro-cards-gap);
 
                .nosotros__queeslapolenta {
-                    /*
-                     * Se usa el gutter general en lugar del 18% actual.
-                     * Esto le entrega más ancho al título y evita reducirlo
-                     * antes de tiempo.
-                     */
                     width: 100%;
                     padding-inline: var(--site-content-gutter);
-
-                    /*
-                     * Compacta la separación entre el título y la frase
-                     * principal sin modificar esta última.
-                     */
-                    row-gap: clamp(.75rem, 2vh, 1.25rem);
+                    row-gap: clamp(.75rem, 1.5svh, 1rem);
 
                     .title {
                          /*
-                          * En la base del rango el título puede conservar
-                          * dos líneas. El tamaño baja progresivamente respecto
-                          * de los 96px actuales, pero mantiene un mínimo de 72px.
+                          * Escala continua: elimina la reducción abrupta
+                          * que existía al llegar a 960px.
+                          * Puede ocupar dos líneas si el ancho lo exige.
                           */
-                         font-size: clamp(4.5rem, 9vw, 6rem);
-                         line-height: .9;
+                         font-size: clamp(4.5rem, 7.5vw, 6rem);
+                         line-height: .95;
+                         white-space: normal;
                     }
 
-                    /*
-                     * Replica conceptualmente el comportamiento de Puestas:
-                     * la explicación secundaria puede ocultarse cuando el alto
-                     * es limitado, pero la frase en bold permanece visible.
-                     */
+                    .subtitle {
+                         font-size: clamp(1.125rem, 2.4svh, 1.5rem);
+                         line-height: 1.2;
+                    }
+
+                    .subtitle__bold {
+                         font-size: clamp(1.25rem, 2.8svh, 1.75rem);
+                    }
+
                     .subtitle:not(.subtitle__bold) {
-                         display: none;
+                         display: block;
                     }
                }
+          }
 
-               .nosotros-card {
-                    /*
-                    * En la parte angosta del rango se aprovecha el ancho completo de
-                    * cada columna para recuperar protagonismo vertical.
-                    *
-                    * La primera fila crece y desplaza naturalmente la segunda debajo
-                    * del viewport.
-                    */
-                    --nosotros-ratio-static: 1 / 1;
-                    --nosotros-ratio-hover: 1 / 1;
+          /*
+           * La altura calculada sólo se activa después de medir.
+           * Sin JavaScript o sin ResizeObserver se conservan las
+           * proporciones base como alternativa funcional.
+           */
+          &.nosotros--viewport-ready {
+               .section {
+                    .nosotros-cards__grid {
+                         grid-auto-rows: var(--nosotros-card-row-height);
+                    }
 
-                    /*
-                    * No se fija height ni max-height.
-                    *
-                    * El tamaño vuelve a depender del ancho real de la columna y del
-                    * aspect-ratio. Así evitamos que el cálculo vertical comprima las
-                    * cards y deje media segunda fila visible.
-                    */
+                    .nosotros-card {
+                         // La fila de Grid determina la altura compartida.
+                         height: 100%;
+                         min-height: 0;
+
+                         // La foto ya tiene espacio reservado por la fila.
+                         &::before {
+                              aspect-ratio: auto;
+                         }
+                    }
                }
           }
      }
 }
 
 /*
- * Variante para la parte más ancha de la grilla de dos columnas.
- *
- * El título crece respecto de la primera propuesta, pero se compactan
- * ligeramente las separaciones verticales para que la primera fila
- * conserve prácticamente su posición actual.
+ * Con columnas más anchas los textos internos necesitan menos líneas.
+ * Es un mínimo inicial de seguridad, no la altura objetivo de las cards.
  */
 @media only screen
      and (min-width: 960px)
@@ -689,73 +673,22 @@
      and (max-height: 900px) {
 
      .nosotros__container {
-          .section {
-               /*
-                * Recupera algunos píxeles verticales entre la introducción
-                * y las cards. Compensa el crecimiento del título sin dejar
-                * ambos bloques visualmente pegados.
-                */
-               row-gap: clamp(1rem, 2.5vh, 1.5rem);
+          --nosotros-card-min-height: 20rem;
+     }
+}
 
-               .nosotros__queeslapolenta {
-                    /*
-                     * Esta separación se aplica entre:
-                     *
-                     * - título y frase principal;
-                     * - frase principal y descripción secundaria.
-                     *
-                     * Al reducirla levemente recuperamos aproximadamente
-                     * el alto adicional que incorpora el nuevo título.
-                     */
-                    row-gap: clamp(.625rem, 1.5vh, 1rem);
+/*
+ * En alturas extremas se recupera espacio ocultando únicamente
+ * la explicación secundaria. La frase principal permanece visible.
+ */
+@media only screen
+     and (min-width: 768px)
+     and (max-width: 1199px)
+     and (max-height: 640px) {
 
-                    .title {
-                         /*
-                          * Punto medio entre:
-                          *
-                          * - el tamaño compacto anterior: 56px–68px;
-                          * - el tamaño heredado sin override: 96px.
-                          *
-                          * Resultado aproximado:
-                          *
-                          * - cerca de 960px: 65px;
-                          * - cerca de 999px: 67px;
-                          * - cerca de 1199px: 81px.
-                          *
-                          * El máximo de 82px evita volver al consumo
-                          * vertical del título original.
-                          */
-                         font-size:
-                              clamp(
-                                   4rem,
-                                   6.75vw,
-                                   5.125rem
-                              );
-
-                         line-height: .9;
-                         white-space: nowrap;
-                    }
-
-                    /*
-                     * La descripción secundaria continúa visible en esta
-                     * parte más ancha del rango.
-                     */
-                    .subtitle:not(.subtitle__bold) {
-                         display: block;
-                         font-size: clamp(1rem, 2.2vh, 1.375rem);
-                         line-height: 1.2;
-                    }
-               }
-
-               .nosotros-card {
-                    /*
-                     * Se conserva la proporción ya validada.
-                     * El ajuste actual se concentra en título y espacios,
-                     * no en volver a modificar las cards.
-                     */
-                    --nosotros-ratio-static: 10 / 9;
-                    --nosotros-ratio-hover: 10 / 9;
-               }
+     .nosotros__container .section .nosotros__queeslapolenta {
+          .subtitle:not(.subtitle__bold) {
+               display: none;
           }
      }
 }

@@ -45,7 +45,7 @@ usuario acceda al contenido del sitio.
 Mientras esté visible, el contenido permanecerá oculto, el scroll estará
 bloqueado y no será posible interactuar con el contenido subyacente.
 
-El loader permanece al menos tres segundos y desaparece mediante una
+El loader permanece al menos dos segundos antes de desaparecer mediante una
 transición. Al finalizarla, comienzan las dos animaciones de Hero.
 
 El loader sólo se muestra al acceder a `index.html` sin hash. Las entradas
@@ -73,7 +73,12 @@ fondo compartido. Después de Tickets comenzará la section Nosotros.
 La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 `tickets.js` y no debe retrasar la salida del loader.
 
-## 6. Estado actual de feat-hero-assets
+## 6. Estado actual del proyecto
+
+La base de Hero + Tickets proviene de `feat-hero-assets`. El estado descrito
+a continuación incluye el rediseño de Nosotros y Puestas de la rama
+`feat-redesign-sections`, revisado el 2026-10-27; no implica que esos cambios
+ya estén publicados en producción.
 
 ### Funcionalidad definida
 
@@ -121,6 +126,29 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 -   Revisar el comportamiento final de carga, renderizado y continuidad visual
     del bloque Hero + Tickets al navegar directamente hacia sus sections.
 
+### Rediseño de Nosotros y Puestas implementado
+
+-   Nosotros presenta cuatro cards con imágenes responsive, títulos y paneles
+    que se revelan mediante hover o foco. La grilla utiliza una, dos o cuatro
+    columnas según el ancho disponible.
+-   Entre `768px` y `1199px`, con hasta `900px` de alto, Nosotros calcula la
+    altura compartida de ambas filas a partir del espacio vertical restante.
+    `ResizeObserver` mide la introducción; CSS administra el presupuesto y los
+    mínimos. La segunda fila continúa mediante scroll normal.
+-   Desde `1200px`, la composición compacta de Nosotros conserva un cálculo
+    independiente para las cuatro cards de una sola fila.
+-   Puestas utiliza una section de `100svh` con mínimo de `35rem`, una
+    introducción de altura natural y un carrusel que recibe el espacio
+    restante mediante Flexbox. Incluye navegación, indicadores y autoplay.
+-   El CTA fijo descuenta del área observada la altura real del header para
+    reaparecer al navegar hacia Nosotros sin exigir un scroll adicional.
+-   Se recibió una evaluación visual inicial favorable de la implementación
+    de Nosotros. La matriz completa de viewports, las interacciones y la
+    accesibilidad permanecen pendientes de validación sistemática.
+
+Las especificaciones, límites y comprobaciones pendientes están en
+[Nosotros](06-section-nosotros.md) y [Puestas](07-section-puestas.md).
+
 ## 7. Orden de visualización previsto
 
 Al cargar el sitio, el orden visual será:
@@ -146,8 +174,8 @@ La cantidad de tickets varía durante la semana.
 Las fechas futuras se agregan manualmente y las fechas obsoletas se
 quitan mediante JavaScript.
 
-El archivo `tickets.js` contiene la información utilizada para
-renderizar los tickets.
+`data/tickets.json` contiene la agenda. `tickets.js` la carga, filtra por
+fecha y renderiza los tickets.
 
 El comportamiento específico de Tickets está documentado en:
 
@@ -162,6 +190,7 @@ La documentación se organiza separando:
 -   comportamiento específico de Hero;
 -   comportamiento específico de Tickets;
 -   comportamiento específico del loader;
+-   comportamiento responsive e interacción de Nosotros y Puestas;
 -   historial de cambios;
 -   instrucciones de trabajo para agentes de desarrollo.
 
@@ -173,6 +202,8 @@ La documentación se organiza separando:
 -   `03-section-hero.md` --- especificaciones propias de Hero.
 -   `04-section-tickets.md` --- especificaciones propias de Tickets.
 -   `05-loader.md` --- especificaciones funcionales del loader inicial.
+-   [06-section-nosotros.md](06-section-nosotros.md) --- cards y composición responsive de Nosotros.
+-   [07-section-puestas.md](07-section-puestas.md) --- composición vertical y carrusel de Puestas.
 -   `CHANGELOG.md` --- cambios relevantes del proyecto.
 -   `AGENTS.md` --- reglas de trabajo para agentes de desarrollo.
 
@@ -201,9 +232,11 @@ La documentación disponible no define, entre otros aspectos:
 -   estructura completa de carpetas y archivos;
 -   nombres de todos los archivos CSS/HTML/JS;
 -   comportamiento detallado del header y navbar;
--   comportamiento de las sections Nosotros, Puestas y Contacto;
--   reglas exactas para considerar una fecha como obsoleta;
+-   comportamiento completo de Contacto;
 -   proveedor o formato de los links de compra.
+
+Nosotros y Puestas cuentan con documentos propios. La regla vigente de
+filtrado de fechas está detallada en `04-section-tickets.md`.
 
 No se deben inferir estas reglas a partir de este documento. Cuando sea
 necesario modificar alguno de estos aspectos, primero debe verificarse

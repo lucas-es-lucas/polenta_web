@@ -2,8 +2,8 @@
 
 ## 1. Propósito
 
-El loader inicial se muestra antes del contenido del sitio en la versión
-`feat-hero-assets`.
+El loader inicial se incorporó en `feat-hero-assets`. Este documento refleja
+su implementación vigente en `feat-redesign-sections`.
 
 Su finalidad es controlar la entrada al sitio hasta que los recursos críticos
 definidos para la versión estén preparados.
@@ -19,7 +19,7 @@ Mientras está visible:
 -   no se puede interactuar con el contenido subyacente.
 
 El loader permanece visible hasta que sus recursos críticos están preparados y
-cumple una duración mínima de tres segundos.
+cumple una duración mínima de dos segundos, antes de la transición de salida.
 
 El asset visual definido para el loader es:
 
@@ -37,7 +37,7 @@ loader.
 
 ## 3. Relación con Hero y Tickets
 
-La arquitectura actual de `feat-hero-assets` contiene:
+La arquitectura compartida de Hero + Tickets contiene:
 
 -   un video de fondo compartido entre Hero y Tickets;
 -   una animación de asterisco;
@@ -88,7 +88,8 @@ destino sin reproducir la carga inicial.
 -   Al finalizar la transición comienzan las animaciones de Hero.
 -   Tickets no debe retrasar la salida del loader.
 -   El asset visual definido es `imgs/loader/Loader-Logo.gif`.
--   La duración mínima es de tres segundos.
+-   La duración mínima es de dos segundos, antes de la transición de salida
+    (`MINIMUM_LOADER_DURATION = 2000` en `index.js`).
 -   La transición de salida es de opacidad y, al finalizar, inicia las
     animaciones de Hero.
 -   La espera contempla el GIF, la variante activa de fondo y los primeros
