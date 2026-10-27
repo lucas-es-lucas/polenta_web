@@ -817,49 +817,131 @@ document.addEventListener("DOMContentLoaded", () => {
      }
 })();
 
-// document.addEventListener("DOMContentLoaded", () => {
-//      const tickets = document.querySelectorAll(".ticket");
+/*
+ * Mobile: estabiliza la llegada inicial a una sección desde otra página
+ * o desde una URL directa con hash.
+ *
+ * Espera agenda, imágenes de Tickets y fuentes.
+ * No interviene en los clics posteriores de la navbar de index.html.
+ */
+(() => {
+     const initialHash = window.location.hash;
+     const targets = new Set([
+          "#tickets",
+          "#nosotros",
+          "#puestas",
+          "#contacto",
+     ]);
 
-//      // Fecha actual
-//      const today = new Date();
+     if (
+          !window.matchMedia("(max-width: 767px)").matches ||
+          !targets.has(initialHash)
+     ) {
+          return;
+     }
 
-//      // normalizar las fechas
-//      today.setHours(0, 0, 0, 0);
+     document.addEventListener("DOMContentLoaded", async () => {
+          const target = document.querySelector(initialHash);
+          const slider = document.getElementById("ticketsSlider");
+          const ticketsReady = window.polentaTicketsReady;
 
-//      tickets.forEach(ticket => {
-//           const img = ticket.querySelector(".ticket__img");
+          if (!target || !slider || !ticketsReady) return;
 
-//           if (!img) return;
+          let cancelled = false;
 
-//           // Obtiene el src
-//           const src = img.getAttribute("src");
+          /*
+           * Una acción del usuario tiene prioridad sobre la corrección.
+           * No usamos el evento scroll: también lo produce la navegación
+           * automática del navegador.
+           */
+          const cancelEvents = [
+               "pointerdown",
+               "touchstart",
+               "wheel",
+               "keydown",
+               "hashchange",
+               "pagehide",
+          ];
 
-//           // Busca una fecha tipo 20260522
-//           const match = src.match(/(\d{8})/);
+          const removeListeners = () => {
+               cancelEvents.forEach((eventName) => {
+                    window.removeEventListener(eventName, cancel, true);
+               });
+          };
 
-//           if (!match) return;
+          const cancel = () => {
+               cancelled = true;
+               removeListeners();
+          };
 
-//           const dateString = match[1];
+          cancelEvents.forEach((eventName) => {
+               window.addEventListener(eventName, cancel, {
+                    capture: true,
+                    passive: true,
+               });
+          });
 
-//           // Separar año, mes y día
-//           const year = parseInt(dateString.substring(0, 4));
-//           const month = parseInt(dateString.substring(4, 6)) - 1;
-//           const day = parseInt(dateString.substring(6, 8));
+          const waitForImage = (img) =>
+               new Promise((resolve) => {
+                    // complete también contempla una imagen que falló.
+                    if (img.complete) {
+                         resolve();
+                         return;
+                    }
 
-//           const ticketDate = new Date(year, month, day);
+                    const finish = () => {
+                         img.removeEventListener("load", finish);
+                         img.removeEventListener("error", finish);
+                         resolve();
+                    };
 
-//           // normalizar las fechas
-//           ticketDate.setHours(0, 0, 0, 0);
+                    img.addEventListener("load", finish);
+                    img.addEventListener("error", finish);
+               });
 
-//           const diffTime = today - ticketDate;
+          try {
+               await Promise.all([
+                    Promise.resolve(ticketsReady).then(() =>
+                         Promise.all(
+                              Array.from(
+                                   slider.querySelectorAll("img"),
+                                   waitForImage,
+                              ),
+                         ),
+                    ),
+                    document.fonts?.ready ?? Promise.resolve(),
+               ]);
 
-//           // Convertir a días
-//           const diffDays = diffTime / (1000 * 60 * 60 * 24);
+               // Deja aplicar el layout resultante antes de posicionar.
+               await new Promise((resolve) => {
+                    requestAnimationFrame(() => {
+                         requestAnimationFrame(resolve);
+                    });
+               });
 
-//           // Ocultar si pasaron más de 1 día //2 días
-//           if (diffDays > 1) {
-//                // ticket.style.display = "none";
-//                ticket.remove();
-//           }
-//      });
-// });
+               if (
+                    cancelled ||
+                    window.location.hash !== initialHash ||
+                    !window.matchMedia("(max-width: 767px)").matches
+               ) {
+                    return;
+               }
+
+               /*
+                * Es una corrección de posición inicial, por eso es inmediata.
+                * scrollIntoView conserva el scroll-padding-top del documento.
+                */
+               target.scrollIntoView({
+                    block: "start",
+                    behavior: "instant",
+               });
+          } catch {
+               /*
+                * Si falla la carga de la agenda, queda disponible
+                * la navegación nativa y la corrección existente.
+                */
+          } finally {
+               removeListeners();
+          }
+     }, { once: true });
+})();
