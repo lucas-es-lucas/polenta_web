@@ -394,6 +394,13 @@ document.addEventListener("DOMContentLoaded", () => {
      if (!cta) return;
 
      const ticketsSection = document.querySelector(".tickets__section");
+     /*
+     * IntersectionObserver considera todo el viewport, incluso la parte
+     * cubierta visualmente por la cabecera fixed.
+     *
+     * Se utiliza su altura real para excluir esa zona del área observable.
+     */
+     const fixedHeader = document.querySelector(".header__fixed");
      let ctaObserver;
 
      const syncCta = () => {
@@ -419,9 +426,35 @@ document.addEventListener("DOMContentLoaded", () => {
                cta.classList.add("show");
           }
 
+          /*
+           * La cabecera fixed no ocupa espacio dentro del layout y el observer no
+           * la descuenta automáticamente. Por eso una pequeña franja del bloque
+           * anterior puede seguir considerándose visible aunque esté escondida
+           * detrás de announcement bar + navbar.
+           */
+          const headerHeight = fixedHeader
+               ? Math.ceil(fixedHeader.getBoundingClientRect().height)
+               : 0;
+
+          /*
+           * En ambos modos se excluye la zona superior cubierta por la cabecera.
+           *
+           * Mobile conserva además sus 48px inferiores actuales: corresponden al
+           * padding previo al contenido visible de Tickets y evitan ocultar el CTA
+           * antes de que esa section empiece realmente a aparecer.
+           *
+           * Desktop continúa observando el bloque completo Hero + Tickets, pero deja
+           * de considerarlo visible cuando su parte restante queda detrás del header.
+           */
           const observerOptions = desktop.matches
-               ? {}
-               : { rootMargin: "0px 0px -48px 0px" };
+               ? {
+                    rootMargin: `-${headerHeight}px 0px 0px 0px`,
+                    threshold: 0,
+               }
+               : {
+                    rootMargin: `-${headerHeight}px 0px -48px 0px`,
+                    threshold: 0,
+               };
 
           ctaObserver = new IntersectionObserver(([entry]) => {
                cta.classList.toggle("show", !entry.isIntersecting);
