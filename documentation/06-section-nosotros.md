@@ -184,11 +184,31 @@ ajuste previo. Tras incorporar el cálculo con medición, informó una evaluaci�
 visual inicial favorable. La referencia comparativa corresponde aproximadamente
 a `1191 × 768` CSS px; no representa una validación de toda la matriz.
 
+Posteriormente, el usuario probó en iPhone mediante una preview de Netlify
+la navegación desde las páginas legales hacia las secciones de `index.html`
+y confirmó que la corrección mobile llega a los títulos correctamente.
+La corrección de entrada inicial espera la agenda, sus imágenes y las fuentes;
+su mecanismo compartido se detalla en
+[04-section-tickets.md](04-section-tickets.md).
+
+En esa prueba se observó una demora aproximada de un segundo hasta el
+posicionamiento final. Se acepta temporalmente y no constituye un tiempo fijo
+ni garantizado. Su análisis queda para otro chat y otra rama dedicados a la
+carga de tickets e imágenes.
+
+### Cierre de etapa
+
+El usuario da por cerrada por ahora esta etapa del rediseño, a la espera del
+feedback de Mica, la diseñadora. No se realizan ajustes de rendimiento en
+este cierre. Las comprobaciones pendientes siguientes se mantienen como
+referencia; no se consideran completadas por la prueba puntual en iPhone.
+
 ### Pendiente de validación sistemática
 
 -   Anchos `768`, `960`, `999` y `1199px` con altos cercanos a `768`, `800` y `900px`.
 -   Límites `959/960`, `991/992`, `1199/1200`, `900/901` y `640/641`.
--   Entrada directa a `#nosotros` y navegación desde navbar y páginas legales.
+-   Ampliar las pruebas de entrada directa a `#nosotros` y de navegación desde
+    navbar y páginas legales a otros dispositivos y condiciones de carga.
 -   CTA completamente visible y segunda fila accesible mediante scroll normal.
 -   Las cuatro cards abiertas por hover, teclado y touch, sin recorte de texto.
 -   Imágenes, zoom, texto ampliado, movimiento reducido y carga de fuentes.

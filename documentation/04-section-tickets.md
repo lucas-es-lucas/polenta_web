@@ -99,6 +99,39 @@ La cantidad de tickets puede variar durante la semana. Las fechas futuras se
 agregan manualmente en los datos y las fechas obsoletas se excluyen mediante
 JavaScript.
 
+### Finalización del renderizado y navegación inicial mobile
+
+`tickets.js` inicia la carga una sola vez y expone su promesa mediante:
+
+```js
+window.polentaTicketsReady = loadTickets();
+```
+
+La promesa indica que terminó la obtención, el filtrado y la inserción de la
+agenda en el DOM. No indica que las imágenes ya terminaron de cargar.
+Tickets continúa fuera de los recursos críticos del loader.
+
+En `index.js`, una corrección adicional se activa únicamente para entradas
+iniciales con `#tickets`, `#nosotros`, `#puestas` o `#contacto` en anchos de
+hasta `767px`. Cubre la llegada desde las páginas legales y las URLs directas
+con esos hashes. Espera la promesa de la agenda, los eventos de carga o error
+de sus imágenes y `document.fonts.ready`, cuando está disponible. Después de
+dos frames de layout, vuelve a posicionar el ancla con
+`scrollIntoView({ block: "start", behavior: "instant" })`, respetando el
+`scroll-padding-top` existente.
+
+La corrección se cancela ante interacción del usuario, cambio de hash o salida
+de la página, y comprueba nuevamente el ancho antes de posicionar. No se
+activa para los clics posteriores de la navbar de `index.html` ni modifica
+el observer del CTA. Las correcciones previas de navegación se conservan.
+
+El usuario verificó en iPhone, mediante una preview de Netlify, que los
+destinos desde las páginas legales llegan correctamente a los títulos.
+Observó aproximadamente un segundo hasta el posicionamiento final. Esa
+demora se acepta temporalmente y no es un tiempo fijo ni garantizado.
+La revisión de carga de tickets e imágenes se abordará en otro chat y otra
+rama; no forma parte del cierre actual del rediseño.
+
 ## 7. Precauciones y alcance
 
 Antes de cambiar la lógica de fechas, la estructura de `tickets.json`, el

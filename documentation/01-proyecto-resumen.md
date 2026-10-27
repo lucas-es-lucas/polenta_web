@@ -149,6 +149,25 @@ ya estén publicados en producción.
 Las especificaciones, límites y comprobaciones pendientes están en
 [Nosotros](06-section-nosotros.md) y [Puestas](07-section-puestas.md).
 
+### Cierre de etapa y trabajo posterior
+
+El usuario da por cerrada por ahora esta etapa del rediseño de Nosotros y
+Puestas, a la espera del feedback de Mica, la diseñadora. Este cierre no
+equivale a una aprobación final de diseño ni a una validación completa de la
+matriz responsive y de accesibilidad.
+
+La navegación desde las páginas legales hacia Tickets, Nosotros, Puestas y
+Contacto fue probada por el usuario en iPhone mediante una preview de Netlify
+y llega correctamente a los títulos después de la corrección inicial mobile.
+En esa prueba se observó una demora aproximada de un segundo hasta el
+posicionamiento final. Se acepta temporalmente; es una observación de esa
+prueba, no un tiempo fijo ni garantizado.
+
+El análisis de la carga de tickets e imágenes y de esta demora queda para
+otro chat y otra rama. No se optimiza la carga de `index.html` dentro de esta
+etapa. El mecanismo vigente está documentado en
+[04-section-tickets.md](04-section-tickets.md).
+
 ## 7. Orden de visualización previsto
 
 Al cargar el sitio, el orden visual será:

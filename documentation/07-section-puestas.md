@@ -157,6 +157,24 @@ Puestas conserva presencia del título y textos con un carrusel de unos
 `340px` de alto. Es una referencia visual; no acredita toda la matriz ni
 una auditoría de interacción o accesibilidad.
 
+Posteriormente, el usuario confirmó en iPhone, mediante una preview de Netlify,
+que la navegación desde las páginas legales hacia las secciones de `index.html`
+llega correctamente a sus títulos después de la corrección inicial mobile.
+Esta corrección espera la agenda, sus imágenes y las fuentes antes de volver
+a posicionar el ancla. El mecanismo compartido se describe en
+[04-section-tickets.md](04-section-tickets.md).
+
+Se observó una demora aproximada de un segundo hasta el posicionamiento final
+en esa prueba. Se acepta temporalmente; no se establece como tiempo fijo ni
+garantizado. La revisión de carga de tickets e imágenes queda para otro chat
+y otra rama.
+
+### Cierre de etapa
+
+El usuario da por cerrada por ahora esta etapa del rediseño de Nosotros y
+Puestas, a la espera del feedback de Mica, la diseñadora. El cierre no acredita
+la aprobación final del diseño ni completa las comprobaciones siguientes.
+
 ### Pendiente de validación sistemática
 
 -   Altura disponible con distintos saltos de texto y viewports bajos.
@@ -165,7 +183,8 @@ una auditoría de interacción o accesibilidad.
 -   Autoplay, pausa y reanudación con puntero, foco, rueda y cambio de pestaña.
 -   Criterio de visibilidad y movimiento reducido.
 -   Etiquetas accesibles, orden y visibilidad del foco, zoom y texto ampliado.
--   Entrada directa a `#puestas`, navegación posterior a Contacto y CTA visible.
+-   Ampliar las pruebas de entrada directa y desde legales a `#puestas` en
+    otros dispositivos; comprobar navegación posterior a Contacto y CTA visible.
 -   Recortes de imágenes y estabilidad con carga diferida y carga de fuentes.
 
 ## 9. Compilación

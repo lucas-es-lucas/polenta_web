@@ -43,12 +43,29 @@ Tipos sugeridos:
 
 #### Fixed
 
+-   Se agrega una corrección para entradas iniciales mobile, hasta `767px`,
+    con destino a Tickets, Nosotros, Puestas o Contacto. Espera el renderizado
+    de la agenda, sus imágenes y las fuentes antes de reposicionar el ancla;
+    se cancela ante interacción del usuario. `tickets.js` expone la promesa
+    de renderizado como `window.polentaTicketsReady`; la corrección vive en
+    `index.js` y conserva la navegación interna y las correcciones previas.
 -   El observer del CTA descuenta la altura real de `.header__fixed` mediante
     un `rootMargin` superior negativo, para evitar que permanezca oculto al
     navegar a Nosotros hasta efectuar un scroll adicional.
 
 #### Documentation
 
+-   El usuario confirma en iPhone, mediante una preview de Netlify, la llegada
+    correcta a los títulos desde las páginas legales. Observa aproximadamente
+    un segundo hasta el posicionamiento final: se acepta temporalmente y no
+    se registra como tiempo fijo ni garantizado.
+-   Se da por cerrada por ahora la etapa de rediseño de Nosotros y Puestas,
+    pendiente del feedback de Mica. El análisis de carga de tickets e imágenes
+    queda para otro chat y otra rama. Se conservan las comprobaciones
+    responsive y de accesibilidad que aún no cuentan con validación completa.
+-   La actualización de cierre afecta `01-proyecto-resumen.md`,
+    `04-section-tickets.md`, `06-section-nosotros.md`, `07-section-puestas.md`
+    y `CHANGELOG.md`. No modifica código ni registra un despliegue de producción.
 -   Se crean `06-section-nosotros.md` y `07-section-puestas.md` para describir
     el estado vigente de los rediseños incorporados durante
     `feat-redesign-sections`: cards, interacción, composición desktop compacta
