@@ -165,7 +165,7 @@
                em {
                     font-family: $font-alternative;
                     font-style: italic;
-                    font-weight: 900;
+                    font-weight: bold; //900;
                }
           }
 
@@ -503,13 +503,14 @@
                     font-family: $font-alternative;
                     font-size: 1.12em;
                     font-style: italic;
-                    font-weight: 900;
+                    font-weight: 600;
+                    font-optical-sizing: auto;
                     line-height: .82;
                     position: static;
                     vertical-align: baseline;
 
                     // Estira Playfair sólo en vertical: conserva el ancho y el layout actual.
-                    transform: scaleY(1.12);
+                    transform: scaleY(1.05);
                     transform-origin: 50% 70%;
                }
           }

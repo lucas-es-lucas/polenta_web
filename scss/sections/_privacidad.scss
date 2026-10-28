@@ -9,10 +9,15 @@ main {
           display: flex;
           flex-direction: column;
 
-          padding-top: 8rem;
+          padding-top: 4rem;
           padding-bottom: 4rem;
-          padding-left: 2rem;
-          padding-right: 2rem;
+
+          /*
+           * Comparte los paddings laterales de navbar y Tickets.
+           * La variable global ya resuelve el cambio en 992px.
+           */
+          padding-left: var(--site-content-gutter);
+          padding-right: var(--site-content-gutter);
      }
 }
 
@@ -21,29 +26,29 @@ main {
 // @media only screen and (min-width: 1200px) and (max-width: 1399px) 
 // @media only screen and (min-width: 1400px) 
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-     .privacidad {
-          &__container {
-               padding-left: 4rem;
-               padding-right: 4rem;
-          }
-     }
-}
+// @media only screen and (min-width: 576px) and (max-width: 767px) {
+//      .privacidad {
+//           &__container {
+//                padding-left: 4rem;
+//                padding-right: 4rem;
+//           }
+//      }
+// }
 
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-     .privacidad {
-          &__container {
-               padding-left: 8rem;
-               padding-right: 8rem;
-          }
-     }
-}
+// @media only screen and (min-width: 768px) and (max-width: 1199px) {
+//      .privacidad {
+//           &__container {
+//                padding-left: 8rem;
+//                padding-right: 8rem;
+//           }
+//      }
+// }
 
-@media only screen and (min-width: 1200px) {
-     .privacidad {
-          &__container {
-               padding-left: 15rem;
-               padding-right: 15rem;
-          }
-     }
-}
+// @media only screen and (min-width: 1200px) {
+//      .privacidad {
+//           &__container {
+//                padding-left: 15rem;
+//                padding-right: 15rem;
+//           }
+//      }
+// }

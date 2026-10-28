@@ -1297,7 +1297,7 @@ html.is-loading .initial-loader,
 .nosotros__container .section .nosotros-card__title em {
   font-family: "Playfair Display", serif;
   font-style: italic;
-  font-weight: 900;
+  font-weight: bold;
 }
 .nosotros__container .section .nosotros-card__text {
   margin: 0;
@@ -1541,11 +1541,12 @@ html.is-loading .initial-loader,
   font-family: "Playfair Display", serif;
   font-size: 1.12em;
   font-style: italic;
-  font-weight: 900;
+  font-weight: 600;
+  font-optical-sizing: auto;
   line-height: 0.82;
   position: static;
   vertical-align: baseline;
-  transform: scaleY(1.12);
+  transform: scaleY(1.05);
   transform-origin: 50% 70%;
 }
 
@@ -2121,58 +2122,30 @@ main {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /*
+   * Comparte los paddings laterales de navbar y Tickets.
+   * La variable global ya resuelve el cambio en 992px.
+   */
+  padding-left: var(--site-content-gutter);
+  padding-right: var(--site-content-gutter);
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .privacidad__container {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .privacidad__container {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .privacidad__container {
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
-}
 .proteccion__container {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /*
+   * Comparte los paddings laterales de navbar y Tickets.
+   * La variable global ya resuelve el cambio en 992px.
+   */
+  padding-left: var(--site-content-gutter);
+  padding-right: var(--site-content-gutter);
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .proteccion__container {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .proteccion__container {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .proteccion__container {
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
-}
 @media only screen and (min-width: 992px) {
   .menu {
     background: #0E0E0E;
