@@ -25,6 +25,38 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-10-28
+
+#### Changed
+
+-   En `feat-cta-icon`, el CTA fijo de `index.html` adopta una presentación
+    circular de `3rem` hasta `767px`, con ícono de ticket de `1.5rem` y
+    separación derecha de `1.5rem`. El texto «COMPRAR TICKETS» se oculta
+    visualmente y permanece disponible para lectores de pantalla.
+    Entre `768px` y `1199px` conserva texto visible y centrado; desde
+    `1200px`, texto visible y ubicación a la derecha. Se mantienen el destino
+    `#tickets`, el observer y la separación inferior con área segura.
+-   El ajuste previo de `feat-redesign-sections` alinea los márgenes laterales
+    de Términos y Privacidad con `--site-content-gutter` y reduce su padding
+    superior de `8rem` a `4rem`. Se agrega separación después de los subtítulos
+    de Privacidad y se desactivan los CTA fijos de compra de ambas páginas,
+    conservando su marcado comentado.
+-   Archivos de implementación del CTA: `scss/elements/_go-to-tickets.scss`,
+    `css/estilos.css` y `css/estilos.css.map`. Los ajustes de legales afectan
+    además `pages/terminos_y_condiciones.html`,
+    `pages/politica_de_privacidad.html`, `scss/sections/_proteccion.scss` y
+    `scss/sections/_privacidad.scss`.
+
+#### Documentation
+
+-   Se actualizan `01-proyecto-resumen.md`, `02-bloque-hero-tickets.md` y
+    `CHANGELOG.md` para reflejar la etapa `feat-cta-icon` y los tres rangos de
+    presentación del CTA. Se conserva el cierre anterior de Nosotros y Puestas.
+-   Se registra la valoración visual favorable informada por el usuario,
+    distinguiéndola de las pruebas completas de responsive y accesibilidad
+    todavía pendientes. Esta actualización no registra un despliegue en
+    producción.
+
 ### 2026-10-27
 
 #### Changed

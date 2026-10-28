@@ -3,8 +3,9 @@
 ## 1. Propósito
 
 Este documento define la arquitectura compartida entre Hero y Tickets,
-incorporada en `feat-hero-assets`, e incluye el ajuste del CTA vigente en
-`feat-redesign-sections` al 2026-10-27.
+incorporada en `feat-hero-assets`, e incluye los ajustes del CTA de
+`feat-redesign-sections` y su variante mobile en `feat-cta-icon` al 2026-10-28.
+Este estado no implica publicación en producción.
 
 Hero y Tickets estarán visualmente diferenciados, pero formarán parte de un
 bloque general con un único video de fondo compartido.
@@ -69,15 +70,39 @@ section Nosotros.
 -   `syncCta` desconecta el observer anterior y crea uno nuevo al iniciar o
     cruzar el breakpoint de `1200px`. La altura del header se mide en ese
     momento; no existe una observación continua de sus cambios de altura.
--   Hasta `1199px`, el botón se centra horizontalmente. Desde `1200px`, se
-    ubica a la derecha. Conserva posición fija y una separación inferior que
-    contempla `safe-area-inset-bottom`.
+
+### CTA fijo: presentación responsive
+
+La variante incorporada en `feat-cta-icon` se limita a
+`.go-to-tickets__index`, el enlace de `index.html` con destino a `#tickets`.
+
+| Ancho del viewport | Presentación | Posición horizontal |
+| --- | --- | --- |
+| Hasta `767px` | Círculo de `3rem` de ancho y alto, con ícono de ticket de `1.5rem` de ancho | A la derecha, a `1.5rem` del borde |
+| `768px–1199px` | Botón con ícono y texto visible «COMPRAR TICKETS» | Centrado |
+| Desde `1200px` | Botón con ícono y texto visible «COMPRAR TICKETS» | A la derecha, a `clamp(1.25rem, 2vw, 2rem)` del borde |
+
+En mobile, el texto se oculta únicamente de forma visual y permanece
+disponible para lectores de pantalla. El círculo equivale a `48px` con una
+base de `1rem = 16px`.
+
+En los tres rangos conserva posición fija y
+`bottom: max(1.25rem, env(safe-area-inset-bottom))`. El cambio de presentación
+no modifica el destino del enlace ni la lógica de aparición del observer.
+Los CTA de las páginas legales están comentados en su HTML y no forman parte
+de esta variante.
 
 La corrección del ancla de Nosotros y la reaparición del CTA fueron validadas
 por el usuario durante el ajuste. La medición de la introducción de Nosotros
 es independiente de este observer; no controla la visibilidad del botón.
 
-Referencias: `index.js`, `scss/elements/_go-to-tickets.scss` y
+El usuario informó una valoración visual favorable del cambio mobile. Esta
+actualización documental se contrastó con el código; no acredita pruebas
+completas de responsive ni de accesibilidad. Queda comprobar el límite
+`767/768px`, la navegación al activar el CTA y su presentación con zoom,
+lectores de pantalla y área segura inferior en los dispositivos objetivo.
+
+Referencias: `index.html`, `index.js`, `scss/elements/_go-to-tickets.scss` y
 [06-section-nosotros.md](06-section-nosotros.md).
 
 ### Parcialmente implementado

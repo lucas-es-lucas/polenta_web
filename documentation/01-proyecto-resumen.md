@@ -77,8 +77,9 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 
 La base de Hero + Tickets proviene de `feat-hero-assets`. El estado descrito
 a continuación incluye el rediseño de Nosotros y Puestas de la rama
-`feat-redesign-sections`, revisado el 2026-10-27; no implica que esos cambios
-ya estén publicados en producción.
+`feat-redesign-sections`, revisado el 2026-10-27, y el ajuste posterior del CTA
+en `feat-cta-icon` al 2026-10-28; no implica que esos cambios ya estén
+publicados en producción.
 
 ### Funcionalidad definida
 
@@ -167,6 +168,23 @@ El análisis de la carga de tickets e imágenes y de esta demora queda para
 otro chat y otra rama. No se optimiza la carga de `index.html` dentro de esta
 etapa. El mecanismo vigente está documentado en
 [04-section-tickets.md](04-section-tickets.md).
+
+### Ajuste posterior del CTA en `feat-cta-icon`
+
+Hasta `767px`, el CTA fijo de `index.html` pasa a ser un círculo de `3rem`
+con ícono de ticket, ubicado a la derecha. El texto «COMPRAR TICKETS» se
+oculta visualmente y permanece disponible para lectores de pantalla.
+Entre `768px` y `1199px` conserva el texto visible y el centrado; desde
+`1200px` conserva el texto visible y la ubicación a la derecha.
+
+El cambio mantiene el destino `#tickets`, la lógica de aparición del CTA y
+la separación inferior que contempla el área segura del dispositivo. El
+usuario informó una valoración visual favorable; la validación completa
+de responsive y accesibilidad continúa pendiente. Los detalles están en
+[02-bloque-hero-tickets.md](02-bloque-hero-tickets.md).
+
+Esta etapa es posterior al cierre de Nosotros y Puestas y no modifica sus
+pendientes ni registra un despliegue de producción.
 
 ## 7. Orden de visualización previsto
 
