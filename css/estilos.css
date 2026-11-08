@@ -27,10 +27,36 @@
   display: none;
 }
 
+/*
+ * Margen lateral común para navbar, Tickets y Cards.
+ * Así las tres referencias usan exactamente el mismo ancho útil.
+ */
+:root {
+  --site-content-gutter: 5%;
+}
+
+@media only screen and (min-width: 992px) {
+  :root {
+    --site-content-gutter: 10%;
+  }
+}
 html {
   scroll-padding-top: 6rem;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+.section-nav-target {
+  position: absolute;
+  top: 3rem;
+}
+
+/*
+ * Tickets acumula 6rem del contenedor y 3rem de .tickets__section.
+ * Esta ancla queda 3rem antes del título visible.
+ */
+.section-nav-target--tickets {
+  top: 6rem;
 }
 
 body {
@@ -89,6 +115,61 @@ body .contacto__container {
 .header__fixed {
   display: flex;
   flex-direction: column;
+}
+
+/*
+ * El contenido no debe verse ni recibir interacción hasta que el loader
+ * termine. La clase se agrega en el <head>, antes de que cargue el contenido.
+ */
+html.is-loading,
+html.is-loading body {
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.is-loading body > :not(#initial-loader) {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/*
+ * Por defecto el loader no ocupa espacio ni se muestra.
+ * Sólo se activa en la carga inicial, o mientras ejecuta su salida.
+ */
+.initial-loader {
+  position: fixed;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 1.5rem;
+  background-color: #000000;
+  opacity: 1;
+  /*
+   * Debe cubrir header, CTA y widgets externos mientras bloquea el sitio.
+   */
+  z-index: 2000;
+  transition: opacity 0.45s ease;
+}
+
+html.is-loading .initial-loader,
+.initial-loader.is-leaving {
+  display: grid;
+}
+
+.initial-loader.is-leaving {
+  opacity: 0;
+}
+
+.initial-loader__logo {
+  /*
+   * La referencia usa un logo compacto: en desktop queda cercano a 24rem
+   * y en pantallas angostas puede ocupar hasta el 72% del viewport.
+   */
+  width: min(24rem, 72vw);
+  height: auto;
+  max-height: 82dvh;
+  object-fit: contain;
 }
 
 .footer {
@@ -444,10 +525,10 @@ body .contacto__container {
 }
 .go-to-tickets {
   position: fixed;
-  width: 10rem;
+  width: auto;
   height: 2.5rem;
   padding: 0.25rem 1rem;
-  bottom: 1.5rem;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
   right: 1.5rem;
   background-color: #E7270E;
   border: none;
@@ -460,6 +541,7 @@ body .contacto__container {
 }
 .go-to-tickets__text {
   padding: 0.25rem;
+  white-space: nowrap;
 }
 
 .go-to-tickets.show {
@@ -470,11 +552,65 @@ body .contacto__container {
   column-gap: 0.3rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media (max-width: 1199px) {
   .go-to-tickets {
-    bottom: 0;
     left: 50%;
-    transform: translate(-50%, 0%);
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+@media (min-width: 1200px) {
+  .go-to-tickets {
+    right: clamp(1.25rem, 2vw, 2rem);
+  }
+}
+/*
+ * CTA circular únicamente en celular.
+ * Se limita al botón de index para mantener acotado el cambio.
+ */
+@media only screen and (max-width: 767px) {
+  .go-to-tickets__index {
+    /*
+     * Ancho y alto iguales + radio del 50%:
+     * círculo de 48px con la configuración habitual de 1rem = 16px.
+     */
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    border-radius: 50%;
+    /*
+     * Anula el centrado horizontal vigente bajo 1200px.
+     * Conserva la separación lateral derecha original.
+     */
+    left: auto;
+    right: 1.5rem;
+    transform: none;
+    /*
+     * No se redefine bottom:
+     * conserva max(1.25rem, env(safe-area-inset-bottom)).
+     */
+  }
+  .go-to-tickets__index .go-to-tickets__icon {
+    display: block;
+    width: 1.5rem;
+    height: auto;
+  }
+  .go-to-tickets__index {
+    /*
+     * Oculta visualmente el texto, pero lo conserva
+     * disponible para lectores de pantalla.
+     */
+  }
+  .go-to-tickets__index .go-to-tickets__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 .back-to-home {
@@ -695,9 +831,9 @@ body .contacto__container {
 }
 
 /* Secciones con contenido por encima del background */
-#nosotros,
-#puestas,
-#contacto {
+.nosotros__container,
+.puestas__container,
+.contacto__container {
   position: relative;
   z-index: 1;
 }
@@ -726,7 +862,8 @@ body .contacto__container {
 
 .menu {
   background: #0E0E0E;
-  padding: 0.8rem 1.5rem;
+  /* Comparte márgenes laterales con Tickets y Nosotros. */
+  padding: 0.8rem var(--site-content-gutter);
 }
 .menu__burger {
   color: #24bf5e;
@@ -791,43 +928,205 @@ body .contacto__container {
   column-gap: 1.5rem;
 }
 
-.hero {
+.hero-tickets {
   position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1;
+  isolation: isolate;
+  /*
+   * main tiene padding-top: 6rem y el header mide 6.5rem.
+   */
+  margin-top: 0.5rem;
+  /*
+   * El video queda fijo, pero JavaScript recorta visualmente esta capa
+   * al área visible de Hero + Tickets.
+   */
 }
-
-/* videos */
-.hero__bgs {
+.hero-tickets__stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /*
+   * Oculto hasta que index.js calcula el área visible del bloque.
+   */
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path;
+}
+.hero-tickets__bgs,
+.hero-tickets .hero-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+.hero-tickets__bgs {
   object-fit: cover;
   object-position: center;
-  z-index: 0;
 }
-
-/* por si necesito un filter después */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
+.hero-tickets .hero-overlay {
   background: rgba(0, 0, 0, 0.35);
   z-index: 1;
 }
-
-/* Tickets */
-.hero-content {
+.hero-tickets__block {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  padding: 0;
+}
+.hero-tickets__animations {
   width: 100%;
-  padding: 4rem 2rem;
+  /*
+  * Área visible del video:
+  * viewport menos announcement bar y navbar.
+  */
+  height: calc(100vh - 6.5rem);
+  height: calc(100svh - 6.5rem);
+  height: calc(100dvh - 6.5rem);
+  /*
+  * Evita que min-height vuelva a alterar el área de centrado.
+  */
+  min-height: 0;
+  /*
+  * Centra asterisco y logo sobre el rectángulo visible del video.
+  */
+  display: grid;
+  place-items: center;
+  /*
+  * Compensa que el header es fixed:
+  * centra las animaciones en el área visible del video,
+  * desde el final de la navbar hasta el borde inferior.
+  */
+  transform: translateY(6.5rem);
 }
 
+.animations__container {
+  /*
+   * Ambas animaciones usan la misma celda: se superponen y conservan
+   * el centro visual común del Hero.
+   */
+  display: grid;
+  place-items: center;
+}
+.animations__container > .animations__asterisk,
+.animations__container > .animations__logo {
+  grid-area: 1/1;
+}
+.animations__asterisk, .animations__logo {
+  display: block;
+  background: transparent;
+  object-fit: contain;
+}
+.animations__asterisk {
+  /*
+   * El asset es cuadrado. Se limita por alto para no competir con
+   * navbar/announcement ni desbordar Hero en pantallas bajas.
+   */
+  width: min(70vh, 42vw, 100% - 2rem);
+  max-height: calc(100% - clamp(2rem, 8vh, 8rem));
+  z-index: 0;
+  /*
+   * El archivo tiene bastante área transparente alrededor del objeto.
+   * Se escala visualmente para igualar la composición de referencia.
+   */
+  transform: scale(2.5);
+  transform-origin: center;
+}
+.animations__logo {
+  /*
+   * El logo proviene de un canvas 16:9 y requiere más ancho visual
+   * que el asterisco para coincidir con la referencia de Hero.
+   */
+  width: min(112vw, 34rem);
+  max-height: calc(100% - 2rem);
+  z-index: 1;
+  /*
+   * El canvas del logo incluye espacio lateral transparente.
+   * Esta escala aproxima su presencia al video compuesto de referencia.
+   */
+  transform: scale(1.7);
+  transform-origin: center;
+}
+
+/*
+ * Tablet: el espacio horizontal permite ampliar el logo sin aumentar
+ * el asterisco, que ya tiene una presencia equilibrada.
+ */
+@media only screen and (min-width: 576px) {
+  .animations__logo {
+    width: min(90vw, 90vh, 46rem);
+  }
+}
+/*
+ * Desktop: el logo se acerca a la referencia visual; el asterisco se mantiene
+ * limitado por el alto para no dominar el Hero en monitores panorámicos.
+ */
+@media only screen and (min-width: 1200px) {
+  .animations__logo {
+    width: min(68vw, 100vh, 64rem);
+  }
+}
+/*
+ * Tablet: ambos assets necesitan una expansión mayor porque sus canvases
+ * individuales contienen más espacio vacío que el video de referencia.
+ */
+@media only screen and (min-width: 576px) {
+  .animations__asterisk {
+    transform: scale(2.2);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
+/*
+ * Desktop: conserva aire alrededor de la composición sin reducir el impacto
+ * visual del logo ni del asterisco.
+ */
+@media only screen and (min-width: 1200px) {
+  .animations__asterisk {
+    transform: scale(1.5);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
+/*
+ * Sólo en mobile, los canvases ampliados conservan más espacio transparente
+ * hacia la izquierda. Este ajuste centra el contenido visual, no el canvas.
+ */
+@media only screen and (max-width: 575px) {
+  .animations__asterisk, .animations__logo {
+    position: relative;
+    left: -5vw;
+  }
+}
+/*
+ * Entre 992px y 1199px hay navbar desktop, pero todavía se aplica el
+ * escalado tablet. Reducimos la composición antes de llegar al breakpoint
+ * desktop para que no invada la navegación.
+ */
+@media only screen and (min-width: 992px) and (max-width: 1099px) {
+  .animations__asterisk {
+    transform: scale(1.5);
+  }
+  .animations__logo {
+    transform: scale(1.85);
+  }
+}
+@media only screen and (min-width: 1100px) and (max-width: 1199px) {
+  .animations__asterisk {
+    transform: scale(1.7);
+  }
+  .animations__logo {
+    transform: scale(2);
+  }
+}
+.tickets__container {
+  position: relative;
+}
 .tickets__section {
   width: 100%;
   padding-top: 3rem;
@@ -838,7 +1137,8 @@ body .contacto__container {
 }
 .tickets__slider {
   width: 100%;
-  padding: 0 5%;
+  /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+  padding: 0 var(--site-content-gutter);
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -855,7 +1155,8 @@ body .contacto__container {
   }
   .tickets__slider {
     width: 100%;
-    padding: 0 5%;
+    /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+    padding: 0 var(--site-content-gutter);
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -872,7 +1173,8 @@ body .contacto__container {
   }
   .tickets__slider {
     width: 100%;
-    padding: 0 10%;
+    /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+    padding: 0 var(--site-content-gutter);
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
@@ -893,7 +1195,8 @@ body .contacto__container {
     grid-template-columns: repeat(2, minmax(300px, 1fr));
     gap: 1vw;
     width: 100%;
-    padding: 0 10%;
+    /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+    padding: 0 var(--site-content-gutter);
     /* tickets */
   }
   .tickets__slider .ticket {
@@ -911,18 +1214,16 @@ body .contacto__container {
 @media only screen and (min-width: 1400px) {
   .tickets__slider {
     width: 100%;
-    padding: 0 10%;
+    /* Mantiene el mismo ancho útil que navbar y Cards en todos los breakpoints. */
+    padding: 0 var(--site-content-gutter);
   }
 }
 .nosotros__container {
   width: 100%;
-  flex-shrink: 0;
   display: inline-flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   row-gap: 3.5rem;
-  flex-shrink: 0;
 }
 .nosotros__container .section {
   width: 100%;
@@ -933,403 +1234,851 @@ body .contacto__container {
 }
 .nosotros__container .section .nosotros__queeslapolenta {
   display: flex;
-  padding: 0rem 2.3rem;
   flex-direction: column;
   align-items: center;
   row-gap: 2rem;
   align-self: stretch;
+  padding: 0 2.3rem;
 }
-.nosotros__container .section .cards {
+.nosotros__container .section .nosotros-cards {
+  width: 100%;
+  padding-inline: var(--site-content-gutter);
+}
+.nosotros__container .section .nosotros-cards__grid {
   display: grid;
-  grid-template-columns: repeat(1, auto);
-  grid-template-rows: repeat(4, auto);
-  column-gap: 0;
-  row-gap: 0.75rem;
-  justify-content: center;
-  grid-template-areas: "dance-crew" "lanza-remeras" "churros" "angeles-polenta";
+  grid-template-columns: minmax(0, 1fr);
+  /*
+  * Más aire entre cards sin perder proporción.
+  * El ancho de la grilla ya queda definido por el gutter compartido.
+  */
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.nosotros__container .section .cards .card__dance-crew {
-  grid-area: "dance-crew";
-}
-.nosotros__container .section .cards .card__lanza-remeras {
-  grid-area: "lanza-remeras";
-}
-.nosotros__container .section .cards .card__churros {
-  grid-area: "churros";
-}
-.nosotros__container .section .cards .card__angeles-polenta {
-  grid-area: "angeles-polenta";
-}
-.nosotros__container .section .card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: none;
-  border-radius: 1rem;
-  width: 22.5rem;
-}
-.nosotros__container .section .card__dance-crew {
-  background-color: #E0A90E;
-}
-.nosotros__container .section .card__lanza-remeras {
-  background-color: #E7270E;
-}
-.nosotros__container .section .card__churros {
-  background-color: #13964F;
-}
-.nosotros__container .section .card__angeles-polenta {
-  background-color: #E4CFB9;
-}
-.nosotros__container .section .card__container__imagen {
-  width: 10.6rem;
-  height: 11.25rem;
+.nosotros__container .section .nosotros-card {
+  --nosotros-card-radius: clamp(1.125rem, 2.2vw, 1.75rem);
+  --nosotros-panel-inset: clamp(8px, 3cqi, 14px);
+  --nosotros-ratio-static: 16 / 10;
+  --nosotros-ratio-hover: 4 / 3;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
   overflow: hidden;
-  align-content: center;
+  min-width: 0;
+  border-radius: var(--nosotros-card-radius);
+  background: #111;
+  isolation: isolate;
+  outline-offset: 0.25rem;
 }
-.nosotros__container .section .card__imagen {
+.nosotros__container .section .nosotros-card::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1;
+  aspect-ratio: var(--nosotros-ratio-static);
+}
+.nosotros__container .section .nosotros-card--dance {
+  --nosotros-card-color: #E0A90E;
+  --nosotros-image-position: 40% 20%;
+}
+.nosotros__container .section .nosotros-card--remeras {
+  --nosotros-card-color: #E7270E;
+  --nosotros-image-position: 50% 25%;
+}
+.nosotros__container .section .nosotros-card--churros {
+  --nosotros-card-color: #13964F;
+  --nosotros-image-position: 55% 30%;
+}
+.nosotros__container .section .nosotros-card--angeles {
+  --nosotros-card-color: #E4CFB9;
+  --nosotros-image-position: 50% 25%;
+}
+.nosotros__container .section .nosotros-card__media {
+  position: relative;
+  z-index: -1;
+  grid-column: 1;
+  grid-row: 1/-1;
+  margin: 0;
+}
+.nosotros__container .section .nosotros-card__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.nosotros__container .section .nosotros-card__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 1rem 0 0 1rem;
+  object-position: var(--nosotros-image-position);
+  transition: transform 0.5s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
-.nosotros__container .section .card__container {
+.nosotros__container .section .nosotros-card__body {
+  z-index: 1;
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  padding: 0 var(--nosotros-panel-inset) var(--nosotros-panel-inset);
+}
+.nosotros__container .section .nosotros-card__panel {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 0.3rem;
-  padding: 0.75rem 0.5rem;
-  width: 12.4rem;
-  height: 11.25rem;
+  min-height: 100%;
+  padding-bottom: clamp(0.875rem, 4vw, 1.5rem);
+  border-radius: calc(var(--nosotros-card-radius) - 0.375rem);
+  background: var(--nosotros-card-color);
+  box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.28);
 }
-.nosotros__container .section .card__icono {
-  width: 3rem;
+.nosotros__container .section .nosotros-card__title {
+  margin: 0;
+  padding: clamp(0.875rem, 4vw, 1.375rem) clamp(0.875rem, 5vw, 1.5rem) 0;
+  color: #000000;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(1.6rem, 7vw, 2.75rem);
+  font-weight: 400;
+  line-height: 0.92;
+  text-align: center;
+  text-transform: uppercase;
+}
+.nosotros__container .section .nosotros-card__title em {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: bold;
+}
+.nosotros__container .section .nosotros-card__text {
+  margin: 0;
+  padding: 0.625rem clamp(0.875rem, 5vw, 1.5rem) 0;
+  color: #000000;
+  font-family: "Inter", serif;
+  font-size: clamp(1.125rem, 2.8vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+}
+.nosotros__container .section .nosotros-card:focus-visible {
+  outline: 0.1875rem solid #ffffff;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .nosotros__container {
-    width: 100%;
-    flex-shrink: 0;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    row-gap: 3.5rem;
-    flex-shrink: 0;
+@media only screen and (min-width: 576px) {
+  .nosotros__container .section .nosotros__queeslapolenta {
+    padding-inline: 18%;
+  }
+  .nosotros__container .section .nosotros-cards__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nosotros__container .section .nosotros-card {
+    --nosotros-ratio-static: 4 / 3;
+    --nosotros-ratio-hover: 1 / 1;
+  }
+}
+/*
+ * Cuatro columnas recién desde 1200px:
+ * con el gutter común, antes de este ancho las cards quedarían demasiado angostas.
+ */
+@media only screen and (min-width: 1200px) {
+  .nosotros__container .section .nosotros-cards__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .nosotros__container .section .nosotros-card {
+    --nosotros-ratio-static: 1 / .85;
+    --nosotros-ratio-hover: 3 / 4;
   }
   .nosotros__container .section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3.5rem;
+    /*
+     * Reemplaza la reducción actual a 14px.
+     * La descripción gana presencia en desktop sin desbordar.
+     */
+  }
+  .nosotros__container .section .nosotros-card__text {
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .nosotros__container .section .nosotros-card {
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .nosotros__container .section .nosotros-card::before {
+    aspect-ratio: var(--nosotros-ratio-hover);
+  }
+  .nosotros__container .section .nosotros-card__body {
+    grid-row: 1;
+    align-self: stretch;
+    padding: var(--nosotros-panel-inset);
+  }
+  .nosotros__container .section .nosotros-card__panel {
+    position: relative;
+    isolation: isolate;
+    padding-bottom: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .nosotros__container .section .nosotros-card__panel::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    content: "";
+    border-radius: calc(var(--nosotros-card-radius) - 0.375rem);
+    background: var(--nosotros-card-color);
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.5s cubic-bezier(0.22, 0.8, 0.2, 1);
+  }
+  .nosotros__container .section .nosotros-card__title {
+    position: relative;
+    top: 100%;
+    padding-bottom: clamp(0.875rem, 4vw, 1.375rem);
+    border-radius: calc(var(--nosotros-card-radius) - 0.375rem);
+    background: var(--nosotros-card-color);
+    box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.28);
+    transform: translateY(-100%);
+    transition: top 0.5s cubic-bezier(0.22, 0.8, 0.2, 1), transform 0.5s cubic-bezier(0.22, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.22, 0.8, 0.2, 1);
+  }
+  .nosotros__container .section .nosotros-card__text {
+    flex: 1;
+    display: grid;
+    align-content: center;
+    padding-bottom: clamp(1rem, 4vw, 1.75rem);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.625rem);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  }
+  .nosotros__container .section .nosotros-card:is(:hover, :focus-visible) .nosotros-card__panel::before {
+    clip-path: inset(0);
+  }
+  .nosotros__container .section .nosotros-card:is(:hover, :focus-visible) .nosotros-card__title {
+    top: 0;
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  .nosotros__container .section .nosotros-card:is(:hover, :focus-visible) .nosotros-card__text {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s ease-out 0.18s, transform 0.3s ease-out 0.18s;
+  }
+  .nosotros__container .section .nosotros-card:is(:hover, :focus-visible) .nosotros-card__img {
+    transform: scale(1.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nosotros__container .section .nosotros-card__img,
+  .nosotros__container .section .nosotros-card__panel::before,
+  .nosotros__container .section .nosotros-card__title,
+  .nosotros__container .section .nosotros-card__text {
+    transition: none !important;
+  }
+}
+/*
+ * Ajuste de interacción:
+ * - El título permanece visible sobre la foto en reposo.
+ * - Hover o foco expanden el color y muestran la descripción.
+ * - :focus también permite activar la card con teclado o toque.
+ */
+.nosotros__container .section .nosotros-card {
+  grid-template-rows: minmax(0, 1fr);
+}
+.nosotros__container .section .nosotros-card__media {
+  grid-row: 1;
+}
+.nosotros__container .section .nosotros-card__body {
+  display: flex;
+  grid-row: 1;
+  align-self: stretch;
+  padding: var(--nosotros-panel-inset);
+}
+.nosotros__container .section .nosotros-card__panel {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: var(--nosotros-panel-inset);
+  background: transparent;
+  box-shadow: none;
+}
+.nosotros__container .section .nosotros-card__panel::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  border-radius: calc(var(--nosotros-card-radius) - 0.375rem);
+  background: var(--nosotros-card-color);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.5s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+.nosotros__container .section .nosotros-card__title {
+  position: relative;
+  top: auto;
+  z-index: 1;
+  margin-top: auto;
+  /*
+  * El título permanece abajo en reposo y recupera aire inferior.
+  * En hover/foco el fondo se expande y la descripción ocupa el espacio libre.
+  */
+  padding: clamp(0.875rem, 4vw, 1.375rem) clamp(0.625rem, 2vw, 1rem) clamp(0.875rem, 3vw, 1.25rem);
+  border-radius: calc(var(--nosotros-card-radius) - 0.375rem);
+  background: var(--nosotros-card-color);
+  box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.28);
+  transform: none;
+  transition: margin-top 0.5s cubic-bezier(0.22, 0.8, 0.2, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.nosotros__container .section .nosotros-card__text {
+  max-height: 0;
+  margin: 0;
+  padding: 0 clamp(0.875rem, 5vw, 1.5rem);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(0.625rem);
+  transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+.nosotros__container .section {
+  /*
+   * :hover cubre mouse/trackpad.
+   * :focus cubre teclado y permite activar la card al tocarla.
+   */
+}
+.nosotros__container .section .nosotros-card:is(:hover, :focus) .nosotros-card__panel::before {
+  clip-path: inset(0);
+}
+.nosotros__container .section .nosotros-card:is(:hover, :focus) .nosotros-card__title {
+  margin-top: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.nosotros__container .section .nosotros-card:is(:hover, :focus) .nosotros-card__text {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  max-height: 20rem;
+  padding: clamp(0.625rem, 3vw, 1rem) clamp(0.875rem, 5vw, 1.5rem) clamp(1rem, 4vw, 1.75rem);
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nosotros__container .section .nosotros-card:hover .nosotros-card__img {
+    transform: scale(1.05);
+  }
+}
+/*
+ * Tipografía de las líneas explícitas del título.
+ * No se redefinen márgenes, padding ni posición: esas reglas pertenecen
+ * al estado visual de reposo / hover y deben conservarse intactas.
+ */
+.nosotros__container .section .nosotros-card__title {
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
+  /* Cada línea queda completa y no puede partirse. */
+}
+.nosotros__container .section .nosotros-card__title-line {
+  display: block;
+  white-space: nowrap;
+}
+.nosotros__container .section .nosotros-card__title {
+  /*
+   * Playfair tiene una altura de mayúsculas visualmente menor
+   * que Anton al mismo tamaño. Se amplía sin cambiar la altura
+   * total de la línea: 1.12 × 0.82 ≈ line-height base de 0.92.
+   */
+}
+.nosotros__container .section .nosotros-card__title em {
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  font-size: 1.12em;
+  font-style: italic;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  line-height: 0.82;
+  position: static;
+  vertical-align: baseline;
+  transform: scaleY(1.05);
+  transform-origin: 50% 70%;
+}
+
+/*
+ * En cuatro columnas el tamaño responde al ancho real de cada Card.
+ * Así "REMERAS", "CHURROS" y "CREW DE" no se desbordan ni pierden centrado.
+ */
+@media only screen and (min-width: 1200px) {
+  .nosotros__container .section .nosotros-card {
+    container-type: inline-size;
+  }
+  .nosotros__container .section .nosotros-card__title {
+    /*
+     * 12cqi escala con el ancho de la Card, no con el viewport.
+     * El máximo de 40px conserva presencia en desktops amplios.
+     */
+    font-size: clamp(1.75rem, 12cqi, 2.5rem);
+    /* Deja espacio útil para las palabras más largas. */
+    padding-inline: 0.5rem;
+  }
+}
+/*
+ * Composición intermedia:
+ * la introducción conserva su altura natural y ambas filas de cards
+ * comparten el espacio calculado para la primera vista.
+ *
+ * JavaScript sólo proporciona medidas. Las decisiones visuales
+ * y el presupuesto vertical permanecen en CSS.
+ */
+@media only screen and (min-width: 768px) and (max-width: 1199px) and (max-height: 900px) {
+  body .container__propio.nosotros__container {
+    padding: 0 0 clamp(3rem, 6vh, 5rem);
+  }
+  .nosotros__container {
+    --nosotros-narrow-padding-top: clamp(4rem, 8vh, 5rem);
+    --nosotros-narrow-anchor-gap:
+         clamp(3rem, calc(7.4vw - .55rem), 5rem);
+    /*
+     * Margen visual después de la primera fila.
+     * Permite que el CTA se superponga parcialmente con las cards.
+     * No representa una reserva completa para el botón.
+     */
+    --nosotros-first-view-bottom: 2rem;
+    --nosotros-intro-cards-gap: clamp(1.25rem, 3svh, 2rem);
+    /*
+     * Mínimo inicial para validar con los paneles abiertos.
+     * En las columnas más angostas los textos necesitan más alto.
+     */
+    --nosotros-card-min-height: 22rem;
+    --nosotros-card-row-height:
+         max(
+              var(--nosotros-card-min-height),
+              calc(
+                   100svh
+                   - var(--nosotros-scroll-offset, 6rem)
+                   - var(--nosotros-narrow-anchor-gap)
+                   - var(--nosotros-intro-height, 0px)
+                   - var(--nosotros-intro-cards-gap)
+                   - var(--nosotros-first-view-bottom)
+              )
+         );
+  }
+  .nosotros__container #nosotros.section-nav-target {
+    top: calc(var(--nosotros-narrow-padding-top) - var(--nosotros-narrow-anchor-gap));
+  }
+  .nosotros__container .section {
+    padding-top: var(--nosotros-narrow-padding-top);
+    row-gap: var(--nosotros-intro-cards-gap);
   }
   .nosotros__container .section .nosotros__queeslapolenta {
-    display: flex;
-    padding: 0rem 18%;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 2rem;
-    align-self: stretch;
-  }
-  .nosotros__container .section .cards {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-    column-gap: 1rem;
-    row-gap: 1rem;
-    justify-content: center;
-    grid-template-areas: "dance-crew lanza-remeras" "churros angeles-polenta";
-  }
-  .nosotros__container .section .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    border-radius: 1rem;
-    width: 15.5rem;
-  }
-  .nosotros__container .section .card__container__imagen {
-    width: 15.5rem;
-    height: 15rem;
-    overflow: hidden;
-    align-content: center;
-  }
-  .nosotros__container .section .card__imagen {
     width: 100%;
+    padding-inline: var(--site-content-gutter);
+    row-gap: clamp(0.75rem, 1.5svh, 1rem);
+  }
+  .nosotros__container .section .nosotros__queeslapolenta .title {
+    /*
+     * Escala continua: elimina la reducción abrupta
+     * que existía al llegar a 960px.
+     * Puede ocupar dos líneas si el ancho lo exige.
+     */
+    font-size: clamp(4.5rem, 7.5vw, 6rem);
+    line-height: 0.95;
+    white-space: normal;
+  }
+  .nosotros__container .section .nosotros__queeslapolenta .subtitle {
+    font-size: clamp(1.125rem, 2.4svh, 1.5rem);
+    line-height: 1.2;
+  }
+  .nosotros__container .section .nosotros__queeslapolenta .subtitle__bold {
+    font-size: clamp(1.25rem, 2.8svh, 1.75rem);
+  }
+  .nosotros__container .section .nosotros__queeslapolenta .subtitle:not(.subtitle__bold) {
+    display: block;
+  }
+  .nosotros__container {
+    /*
+     * La altura calculada sólo se activa después de medir.
+     * Sin JavaScript o sin ResizeObserver se conservan las
+     * proporciones base como alternativa funcional.
+     */
+  }
+  .nosotros__container.nosotros--viewport-ready .section .nosotros-cards__grid {
+    grid-auto-rows: var(--nosotros-card-row-height);
+  }
+  .nosotros__container.nosotros--viewport-ready .section .nosotros-card {
     height: 100%;
-    object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
+    min-height: 0;
   }
-  .nosotros__container .section .card__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    row-gap: 0.75rem;
-    padding: 1.5rem 1rem;
-    width: 15.5rem;
-    height: 14.1rem;
-  }
-  .nosotros__container .section .card__icono {
-    width: 3rem;
+  .nosotros__container.nosotros--viewport-ready .section .nosotros-card::before {
+    aspect-ratio: auto;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .nosotros__container .section .cards {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-    column-gap: 1rem;
-    row-gap: 1rem;
-    justify-content: center;
-    grid-template-areas: "dance-crew lanza-remeras" "churros angeles-polenta";
+/*
+ * Con columnas más anchas los textos internos necesitan menos líneas.
+ * Es un mínimo inicial de seguridad, no la altura objetivo de las cards.
+ */
+@media only screen and (min-width: 960px) and (max-width: 1199px) and (max-height: 900px) {
+  .nosotros__container {
+    --nosotros-card-min-height: 20rem;
   }
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .nosotros__container .section .cards {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(2, auto);
-    column-gap: 2rem;
-    row-gap: 2rem;
-    justify-content: center;
-    grid-template-areas: "dance-crew lanza-remeras" "churros angeles-polenta";
-  }
-  .nosotros__container .section .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    border-radius: 1rem;
-    width: 15.5rem;
-  }
-  .nosotros__container .section .card__container__imagen {
-    width: 15.5rem;
-    height: 15rem;
-    overflow: hidden;
-    align-content: center;
-  }
-  .nosotros__container .section .card__imagen {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
-  }
-  .nosotros__container .section .card__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    row-gap: 0.75rem;
-    padding: 1.5rem 1rem;
-    width: 15.5rem;
-    height: 14.1rem;
-  }
-  .nosotros__container .section .card__icono {
-    width: 3rem;
+/*
+ * En alturas extremas se recupera espacio ocultando únicamente
+ * la explicación secundaria. La frase principal permanece visible.
+ */
+@media only screen and (min-width: 768px) and (max-width: 1199px) and (max-height: 640px) {
+  .nosotros__container .section .nosotros__queeslapolenta .subtitle:not(.subtitle__bold) {
+    display: none;
   }
 }
-@media only screen and (min-width: 1200px) {
-  .nosotros__container .section .cards {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(1, auto);
-    column-gap: 0.75rem;
+/*
+ * Composición compacta para desktops con poca altura disponible.
+ *
+ * El ajuste se decide por las dimensiones reales del viewport y no por
+ * el tipo de dispositivo: una notebook y una ventana baja de desktop
+ * necesitan resolver el mismo problema vertical.
+ *
+ * Mobile, tablet y desktops con más de 900px de alto conservan sin cambios
+ * la composición general definida anteriormente.
+ */
+@media only screen and (min-width: 1200px) and (max-height: 900px) {
+  /*
+   * El padding vertical global de .container__propio agregaría 12rem
+   * por fuera de la composición. Igual que en Puestas, se traslada ese
+   * espacio al interior de la section para poder administrarlo junto
+   * con el resto del contenido.
+   */
+  body .container__propio.nosotros__container {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 0;
+  }
+  .nosotros__container {
+    /*
+    * Se centraliza el padding superior en una custom property porque
+    * interviene tanto en la composición como en la posición del ancla.
+    *
+    * Si más adelante ajustamos este valor, el título y el destino de
+    * navegación continuarán sincronizados.
+    */
+    --nosotros-compact-padding-top: clamp(4rem, 9vh, 6rem);
+    /*
+    * Evita conservar el row-gap exterior cuando el único bloque
+    * visual que debe distribuir el espacio es .nosotros__section.
+    */
     row-gap: 0;
-    justify-content: center;
-    grid-template-areas: "dance-crew lanza-remeras churros angeles-polenta";
+    /*
+    * El ancla debe quedar 3rem antes del título, igual que en la
+    * composición original:
+    *
+    * padding superior de la section - 3rem = posición del ancla.
+    *
+    * Después, scroll-padding-top reserva el espacio de la cabecera fija.
+    */
   }
-  .nosotros__container .section .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-    border-radius: 1rem;
-    width: 15.5rem;
+  .nosotros__container #nosotros.section-nav-target {
+    top: calc(var(--nosotros-compact-padding-top) - 3rem);
   }
-  .nosotros__container .section .card__container__imagen {
-    width: 15.5rem;
-    height: 15rem;
-    overflow: hidden;
-    align-content: center;
+  .nosotros__container .section {
+    /*
+     * La section toma como referencia el alto visible.
+     * No se fija height: 100svh porque el contenido debe poder
+     * crecer y generar scroll si llegara a ser estrictamente
+     * necesario en una pantalla extremadamente baja.
+     */
+    min-height: 100vh;
+    min-height: 100svh;
+    /*
+     * El padding superior conserva el aire visual y la posición
+     * esperada al navegar a #nosotros, pero puede reducirse con
+     * la altura de la pantalla.
+     *
+     * El padding inferior es menor porque el objetivo es que las
+     * cards terminen antes del borde inferior del viewport.
+     */
+    padding: var(--nosotros-compact-padding-top) 0 clamp(0.75rem, 2vh, 1.5rem);
+    /*
+     * Reemplaza el gap fijo de 3.5rem entre la introducción y
+     * las cards. En viewports bajos puede bajar a 1.25rem.
+     */
+    row-gap: clamp(1.25rem, 3vh, 2rem);
   }
-  .nosotros__container .section .card__imagen {
+  .nosotros__container .section .nosotros__queeslapolenta {
+    /*
+     * El ancho continúa alineado con navbar, Tickets
+     * y cards mediante el gutter común del sitio.
+     */
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1rem 1rem 0 0;
+    padding-inline: var(--site-content-gutter);
+    /*
+     * Compacta progresivamente las separaciones internas
+     * sin alterar la tipografía de los párrafos.
+     */
+    row-gap: clamp(0.75rem, 2vh, 1.5rem);
   }
-  .nosotros__container .section .card__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    row-gap: 0.75rem;
-    padding: 1.5rem 1rem;
-    width: 15.5rem;
-    height: 14.1rem;
+  .nosotros__container .section .nosotros__queeslapolenta .title {
+    /*
+     * Esta es la única variante que fuerza una línea.
+     * El tamaño escala con el ancho disponible:
+     *
+     * - cerca de 1200px: aproximadamente 72px;
+     * - cerca de 1500px: aproximadamente 90px;
+     * - nunca supera los 96px actuales.
+     */
+    width: 100%;
+    font-size: clamp(4.5rem, 6vw, 6rem);
+    line-height: 0.9;
+    white-space: nowrap;
   }
-  .nosotros__container .section .card__icono {
-    width: 3rem;
+  .nosotros__container .section .nosotros-cards {
+    /*
+     * min-height: 0 permite que este bloque pueda contraerse
+     * dentro de una composición gobernada por el viewport.
+     */
+    min-height: 0;
+  }
+  .nosotros__container .section .nosotros-card {
+    /*
+     * Altura progresiva:
+     *
+     * - 100svh - 27rem reserva espacio para título,
+     *   descripción, separaciones y paddings;
+     * - 125cqi limita la altura a 1.25 veces el ancho real
+     *   de cada card;
+     * - 14rem evita que una card quede excesivamente baja.
+     *
+     * Los cqi ya son compatibles con la implementación
+     * actual porque las cards desktop declaran
+     * container-type: inline-size.
+     */
+    height: clamp(14rem, 100svh - 27rem, 125cqi);
+    /*
+     * La altura ya queda reservada explícitamente, por lo
+     * que el pseudo-elemento no necesita imponer además
+     * el aspect-ratio desktop de 3 / 4.
+     */
+  }
+  .nosotros__container .section .nosotros-card::before {
+    aspect-ratio: auto;
   }
 }
 .puestas__container {
-  background-color: #000000;
   position: relative;
   z-index: 2;
+  background-color: #000000;
 }
 .puestas__section {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 3.5rem;
-  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 35rem;
+  /*
+  * Puestas no usa el padding exterior de .container__propio.
+  * Se replica exactamente el padding superior de Nosotros y Contacto
+  * para alinear #puestas con sus títulos, sin alterar las anclas globales.
+  */
+  padding: 6rem var(--site-content-gutter) clamp(4.5rem, 10vh, 6rem);
+  text-align: center;
 }
-.puestas__section .puestas__descripcion {
+.puestas__descripcion {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  row-gap: 1.5rem;
-  text-align: center;
-  padding: 0 2.5rem;
+  row-gap: clamp(0.375rem, 1.5vh, 1rem);
+  max-width: 62ch;
+  padding: 0;
 }
-.puestas__section .slider {
+.puestas__descripcion .title {
+  /*
+  * El tamaño se hereda de .title para seguir los mismos breakpoints
+  * que Tickets, Nosotros y Contacto.
+  */
+  line-height: 0.95;
+}
+.puestas__descripcion .subtitle {
+  font-size: clamp(1rem, 2.4vh, 2rem);
+}
+.puestas__descripcion .subtitle__bold {
+  font-size: clamp(1.125rem, 2.8vh, 2.25rem);
+}
+
+/*
+ * La section ocupa el alto visible completo. Se anula únicamente el padding
+ * heredado de .container__propio para no sumar 12rem fuera de 100svh.
+ */
+body .container__propio.puestas__container {
+  padding: 0;
+}
+
+.puestas-carousel {
+  position: relative;
+  flex: 1 1 auto;
+  width: min(100%, 68.75rem);
+  min-height: 12.5rem;
+  margin-top: clamp(1rem, 4vh, 3rem);
+  overflow: hidden;
+  border-radius: clamp(1rem, 2.2vw, 1.5rem);
+}
+
+.puestas-carousel__track {
   display: flex;
-  padding: 0 1rem;
-}
-.puestas__section .slider .puestas__slider__img {
+  align-items: stretch;
   width: 100%;
-  border-radius: 1.25rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  list-style: none;
 }
-.puestas__section .slider .carousel-inner .carousel-item img {
-  width: 100%;
-  border-radius: 1.25rem;
-}
-.puestas__section .slider .carousel-indicators button {
-  background-color: #24bf5e;
-}
-.puestas__section .slider .carousel-control-prev {
-  display: none;
-}
-.puestas__section .slider .carousel-control-next {
+.puestas-carousel__track::-webkit-scrollbar {
   display: none;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .puestas__section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3.5rem;
-    position: relative;
-  }
-  .puestas__section .puestas__descripcion {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    text-align: center;
-    padding: 0 18%;
-  }
-  .puestas__section .slider {
-    display: flex;
-    padding: 0 10%;
-  }
-  .puestas__section .slider .puestas__slider__img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-inner .carousel-item img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-indicators button {
-    background-color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev {
-    display: block;
-    transform: rotate(270deg);
-    left: 15%;
-    width: auto;
-    height: auto;
-  }
-  .puestas__section .slider .carousel-control-prev :hover {
-    color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev .carousel-control-prev-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
-  }
-  .puestas__section .slider .carousel-control-next {
-    display: block;
-    transform: rotate(90deg);
-    right: 15%;
-    width: auto;
-    height: auto;
-  }
-  .puestas__section .slider .carousel-control-next :hover {
-    color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-next .carousel-control-next-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+.puestas-carousel__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  height: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.puestas-carousel__slide picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.puestas-carousel__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.puestas-carousel__track {
+  transition: opacity 0.18s ease;
+}
+
+/*
+ * El fade se aplica sólo a las navegaciones programáticas
+ * (autoplay, flechas, teclado e indicadores). El arrastre manual
+ * conserva el scroll-snap nativo sin interferencias.
+ */
+.puestas-carousel.is-fading .puestas-carousel__track {
+  opacity: 0.3;
+  scroll-behavior: auto;
+}
+
+.puestas-carousel__controls,
+.puestas-carousel__indicators {
+  display: none;
+}
+
+.puestas-carousel__control {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.72);
+  color: #ffffff;
+  backdrop-filter: blur(0.375rem);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.puestas-carousel__control:hover {
+  background-color: #E7270E;
+}
+.puestas-carousel__control:focus-visible {
+  outline: 0.1875rem solid #ffffff;
+  outline-offset: 0.1875rem;
+}
+.puestas-carousel__control svg {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+.puestas-carousel__control--previous {
+  left: 0.75rem;
+}
+.puestas-carousel__control--next {
+  right: 0.75rem;
+}
+
+.puestas-carousel__indicators {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  z-index: 2;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.5rem;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.55);
+  transform: translateX(-50%);
+}
+
+.puestas-carousel__indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background-color: #ffffff;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: width 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+.puestas-carousel__indicator[aria-current=true] {
+  width: 1.5rem;
+  background-color: #E7270E;
+  opacity: 1;
+}
+.puestas-carousel__indicator:focus-visible {
+  outline: 0.125rem solid #ffffff;
+  outline-offset: 0.1875rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .puestas-carousel__slide {
+    flex-basis: 50%;
   }
 }
-@media only screen and (min-width: 992px) {
-  .puestas__section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 3.5rem;
-    position: relative;
-  }
-  .puestas__section .puestas__descripcion {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    text-align: center;
-    padding: 0 18%;
-  }
-  .puestas__section .slider {
-    display: flex;
-    padding: 0 15%;
-  }
-  .puestas__section .slider .puestas__slider__img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-inner .carousel-item img {
-    width: 100%;
-    border-radius: 1.25rem;
-  }
-  .puestas__section .slider .carousel-indicators button {
-    background-color: #24bf5e;
-  }
-  .puestas__section .slider .carousel-control-prev {
+@media only screen and (min-width: 768px) {
+  .puestas-carousel__controls {
     display: block;
-    transform: rotate(270deg);
-    left: 18%;
-    width: auto;
-    height: auto;
   }
-  .puestas__section .slider .carousel-control-prev :hover {
-    color: #24bf5e;
+  .puestas-carousel__indicators {
+    display: flex;
   }
-  .puestas__section .slider .carousel-control-prev .carousel-control-prev-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+}
+@media only screen and (min-width: 1200px) {
+  .puestas-carousel__slide {
+    flex-basis: 33.3333333333%;
   }
-  .puestas__section .slider .carousel-control-next {
-    display: block;
-    transform: rotate(90deg);
-    right: 18%;
-    width: auto;
-    height: auto;
+}
+@media (max-height: 640px) {
+  .puestas__descripcion .subtitle:not(.subtitle__bold) {
+    display: none;
   }
-  .puestas__section .slider .carousel-control-next :hover {
-    color: #24bf5e;
+}
+@media (prefers-reduced-motion: reduce) {
+  .puestas-carousel__track,
+  .puestas-carousel__control,
+  .puestas-carousel__indicator {
+    transition: none;
   }
-  .puestas__section .slider .carousel-control-next .carousel-control-next-icon {
-    background-image: url("/imgs/icons/scroll-top.png");
+  .puestas-carousel__track {
+    scroll-behavior: auto;
   }
 }
 .suscribite__container {
@@ -1422,62 +2171,34 @@ main {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /*
+   * Comparte los paddings laterales de navbar y Tickets.
+   * La variable global ya resuelve el cambio en 992px.
+   */
+  padding-left: var(--site-content-gutter);
+  padding-right: var(--site-content-gutter);
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .privacidad__container {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .privacidad__container {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .privacidad__container {
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
-}
 .proteccion__container {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  /*
+   * Comparte los paddings laterales de navbar y Tickets.
+   * La variable global ya resuelve el cambio en 992px.
+   */
+  padding-left: var(--site-content-gutter);
+  padding-right: var(--site-content-gutter);
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .proteccion__container {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-}
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
-  .proteccion__container {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .proteccion__container {
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
-}
 @media only screen and (min-width: 992px) {
   .menu {
     background: #0E0E0E;
-    padding: 0.25% 10% 0;
+    padding: 0.25% var(--site-content-gutter) 0;
   }
   .menu .navbar-collapse {
     height: auto;
