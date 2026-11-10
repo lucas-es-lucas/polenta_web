@@ -61,6 +61,20 @@
                 * del viewport antes de crear este contenedor.
                 */
                --nosotros-panel-inset: clamp(8px, 3svw, 14px);
+
+               /*
+               * Reduce un 25% los insets laterales e inferiores.
+               * El superior conserva el valor original para mantener la separación actual.
+               */
+               --nosotros-panel-inset-reduced: clamp(6px, 1svw, 10.5px);
+
+               /*
+               * En reposo, el título suma el inset de body y el de panel.
+               * El panel expandido usa este mismo total en sus laterales e inferior.
+               */
+               --nosotros-expanded-panel-inset:
+                    calc(var(--nosotros-panel-inset-reduced) + var(--nosotros-panel-inset-reduced));
+
                --nosotros-collapsed-title-size: 15.625cqi;
 
                container-type: inline-size;
@@ -142,7 +156,17 @@
                grid-row: 1;
                display: flex;
                align-self: stretch;
-               padding: var(--nosotros-panel-inset);
+               // padding: var(--nosotros-panel-inset);
+               /*
+               * El shorthand conserva el inset superior y acerca el panel a los
+               * laterales y al borde inferior de la card.
+               */
+               padding:
+                    var(--nosotros-panel-inset)
+                    var(--nosotros-panel-inset-reduced)
+                    var(--nosotros-panel-inset-reduced);
+
+               transition: padding .5s cubic-bezier(.22, .8, .2, 1);
           }
 
           .nosotros-card__panel {
@@ -152,7 +176,15 @@
                flex-direction: column;
                width: 100%;
                min-height: 100%;
-               padding: var(--nosotros-panel-inset);
+               // padding: var(--nosotros-panel-inset);
+               /*
+               * Reduce el espacio interno lateral e inferior. En reposo esto acerca
+               * el título a los bordes; expandido, acerca el contenido sin mover el fondo.
+               */
+               padding:
+                    var(--nosotros-panel-inset)
+                    var(--nosotros-panel-inset-reduced)
+                    var(--nosotros-panel-inset-reduced);
                border-radius: calc(var(--nosotros-card-radius) - .375rem);
                background: transparent;
                box-shadow: none;
@@ -367,6 +399,7 @@
                     --nosotros-ratio-hover: 3 / 4;
 
                     --nosotros-panel-inset: clamp(8px, 3cqi, 14px);
+                    --nosotros-panel-inset-reduced: clamp(6px, 2.25cqi, 10.5px);
                     --nosotros-collapsed-title-size: 21.25cqi;
                }
 
@@ -434,8 +467,8 @@
 @media (prefers-reduced-motion: reduce) {
      .nosotros__container {
           .section {
-
                .nosotros-card__img,
+               .nosotros-card__body,
                .nosotros-card__panel::before,
                .nosotros-card__title,
                .nosotros-card__text {
@@ -454,6 +487,11 @@
           .nosotros-card:is(:hover, :focus) {
                .nosotros-card__panel::before {
                     clip-path: inset(0);
+               }
+
+               .nosotros-card__body {
+                    padding-inline: var(--nosotros-expanded-panel-inset);
+                    padding-block-end: var(--nosotros-expanded-panel-inset);
                }
 
                .nosotros-card__title {
