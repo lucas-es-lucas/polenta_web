@@ -25,6 +25,28 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-11-10
+
+#### Changed
+
+-   En `feat-redesign-cards`, los bloques de título de las cuatro cards de
+    Nosotros ocupan el `25%` de la altura de cada card en reposo, incluso en
+    las composiciones con proporción, altura medida por la grilla y altura
+    compacta definida con `clamp()`. Se conserva la geometría de las cards y
+    el recorte de las imágenes.
+-   Se adaptan los títulos a una línea hasta `767px` y a dos renglones desde
+    `768px`, con tamaños máximos específicos en los rangos mobile. Se mantiene
+    la alineación de Anton y Playfair Display.
+-   Se reducen los insets laterales e inferiores de los títulos en reposo y
+    se igualan al expandir el espacio exterior del panel. Hover, foco y
+    `prefers-reduced-motion` conservan su comportamiento.
+
+#### Documentation
+
+-   Se actualizan `01-proyecto-resumen.md` y `06-section-nosotros.md` para
+    describir los ajustes y el estado de validación informado por el usuario.
+    Esta entrada no registra un despliegue en producción.
+
 ### 2026-10-28
 
 #### Changed
