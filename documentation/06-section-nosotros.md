@@ -5,8 +5,8 @@
 Nosotros presenta qué es Polenta y cuatro rasgos de la fiesta: Dance Crew,
 Lanza Remeras, Churros y Crew de Ángeles.
 
-Este documento describe el código vigente de `feat-redesign-sections` al
-2026-10-27. Separa implementación, validaciones informadas y comprobaciones
+Este documento describe el código vigente de `feat-redesign-cards` al
+2026-11-10. Separa implementación, validaciones informadas y comprobaciones
 pendientes; no certifica una publicación en producción.
 
 ## 2. Estructura y archivos
@@ -154,7 +154,46 @@ independiente de cuatro columnas:
 Esta variante no utiliza la medición intermedia. Con más de `900px` de alto
 se mantienen las reglas generales correspondientes a cada ancho.
 
-## 7. Interacción y accesibilidad
+## 7. Títulos, proporciones y padding
+
+En reposo, el rectángulo de color del título ocupa el `25%` de la altura total
+de la card. `.nosotros-card__title` usa `box-sizing: border-box`, por lo que
+su padding vertical queda incluido en esa medida. El alto se conserva en
+`--nosotros-collapsed-title-size`; no cambia la altura de las cards ni el
+recorte de sus imágenes.
+
+El valor responde a la referencia activa en cada composición:
+
+| Composición en reposo | Proporción de la card | Alto del título |
+| --- | --- | --- |
+| Hasta `575px`, sin puntero fino | `16 / 10` | `15.625cqi` |
+| `576px–1199px`, sin puntero fino | `4 / 3` | `18.75cqi` |
+| Desde `1200px`, sin puntero fino | `1 / .85` | `21.25cqi` |
+| Hasta `575px`, con hover y puntero fino | `4 / 3` | `18.75cqi` |
+| `576px–1199px`, con hover y puntero fino | `1 / 1` | `25cqi` |
+| Desde `1200px`, con hover y puntero fino | `3 / 4` | `33.333333cqi` |
+
+En la composición intermedia con altura medida, el título usa
+`calc(var(--nosotros-card-row-height) / 4)`. En desktop compacto, tanto la
+altura de la card como la del título usan `clamp()` con límites equivalentes
+a una cuarta parte; el título conserva el `25%` de la altura resultante.
+
+Desde `768px`, los títulos conservan la composición en dos renglones y usan
+una separación de `.08em`. Hasta `767px`, se presentan en una línea. Su tamaño
+escala con la altura del bloque mediante el factor `.48`; el máximo es
+`1.75rem`, excepto entre `576px` y `654px`, donde es `1.55rem`. Anton,
+Playfair Display y la compensación vertical de la cursiva se mantienen.
+
+El inset superior de `body` y `panel` conserva `--nosotros-panel-inset`.
+Los laterales y el borde inferior usan `--nosotros-panel-inset-reduced`:
+`clamp(6px, 1svw, 10.5px)` en la composición base y
+`clamp(6px, 2.25cqi, 10.5px)` desde `1200px`. En reposo, el espacio exterior
+del título suma los insets de `body` y `panel`. Al expandirse, `body` usa el
+doble del inset reducido en sus laterales y borde inferior, igualando ese
+espacio exterior. El cambio de padding se anima y se desactiva con
+`prefers-reduced-motion`.
+
+## 8. Interacción y accesibilidad
 
 El título se muestra sobre la foto en reposo. Hover o foco expanden el color
 del panel y revelan su descripción. El código vigente utiliza `:hover` y
@@ -170,7 +209,7 @@ y textos usan recorte de desbordamiento, es necesario comprobar que ningún
 texto quede oculto al interactuar, ampliar texto o usar zoom. Mantener
 `tabindex` y selectores de foco no equivale a una auditoría de accesibilidad.
 
-## 8. Estado y validaciones
+## 9. Estado y validaciones
 
 ### Implementado
 
@@ -196,12 +235,17 @@ posicionamiento final. Se acepta temporalmente y no constituye un tiempo fijo
 ni garantizado. Su análisis queda para otro chat y otra rama dedicados a la
 carga de tickets e imágenes.
 
+En noviembre de 2026, el usuario revisó capturas de los ajustes de tamaño,
+separación y padding de los títulos en varios viewports, e informó que el
+resultado visual es satisfactorio. Esto no certifica la matriz completa de
+punteros, foco, movimiento reducido y accesibilidad.
+
 ### Cierre de etapa
 
-El usuario da por cerrada por ahora esta etapa del rediseño, a la espera del
-feedback de Mica, la diseñadora. No se realizan ajustes de rendimiento en
-este cierre. Las comprobaciones pendientes siguientes se mantienen como
-referencia; no se consideran completadas por la prueba puntual en iPhone.
+El usuario considera satisfactorios los ajustes visuales actuales de las
+cards y revisa la documentación antes del deploy. Este estado no registra una
+publicación en producción ni completa las validaciones sistemáticas que siguen
+pendientes. No se afirma aquí si se recibió feedback de Mica, la diseñadora.
 
 ### Pendiente de validación sistemática
 
@@ -214,7 +258,7 @@ referencia; no se consideran completadas por la prueba puntual en iPhone.
 -   Imágenes, zoom, texto ampliado, movimiento reducido y carga de fuentes.
 -   Comportamiento sin medición y en viewports extremadamente bajos.
 
-## 9. Compilación
+## 10. Compilación
 
 Los cambios de estilos se realizan en SCSS. Generar CSS y mapa mediante:
 

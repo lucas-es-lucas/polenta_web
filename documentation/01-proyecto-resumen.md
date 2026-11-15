@@ -77,9 +77,10 @@ La lógica actual de Tickets se conserva. Su contenido se renderiza mediante
 
 La base de Hero + Tickets proviene de `feat-hero-assets`. El estado descrito
 a continuación incluye el rediseño de Nosotros y Puestas de la rama
-`feat-redesign-sections`, revisado el 2026-10-27, y el ajuste posterior del CTA
-en `feat-cta-icon` al 2026-10-28; no implica que esos cambios ya estén
-publicados en producción.
+`feat-redesign-sections`, revisado el 2026-10-27, los ajustes posteriores de
+las cards de Nosotros en `feat-redesign-cards` al 2026-11-10 y el ajuste del
+CTA en `feat-cta-icon` al 2026-10-28. Este estado no implica que esos cambios
+ya estén publicados en producción.
 
 ### Funcionalidad definida
 
@@ -138,24 +139,30 @@ publicados en producción.
     mínimos. La segunda fila continúa mediante scroll normal.
 -   Desde `1200px`, la composición compacta de Nosotros conserva un cálculo
     independiente para las cuatro cards de una sola fila.
+-   En `feat-redesign-cards`, los bloques de título de las cards de Nosotros
+    ocupan el `25%` de su altura en reposo. Se adaptaron la tipografía y los
+    insets laterales e inferiores; el detalle responsive está en
+    [06-section-nosotros.md](06-section-nosotros.md).
 -   Puestas utiliza una section de `100svh` con mínimo de `35rem`, una
     introducción de altura natural y un carrusel que recibe el espacio
     restante mediante Flexbox. Incluye navegación, indicadores y autoplay.
 -   El CTA fijo descuenta del área observada la altura real del header para
     reaparecer al navegar hacia Nosotros sin exigir un scroll adicional.
--   Se recibió una evaluación visual inicial favorable de la implementación
-    de Nosotros. La matriz completa de viewports, las interacciones y la
-    accesibilidad permanecen pendientes de validación sistemática.
+-   El usuario revisó los ajustes recientes de los títulos de Nosotros en
+    capturas de varios viewports y considera satisfactorio el resultado
+    visual. La validación completa de responsive, interacciones y
+    accesibilidad permanece pendiente; no se registra un deploy.
 
 Las especificaciones, límites y comprobaciones pendientes están en
 [Nosotros](06-section-nosotros.md) y [Puestas](07-section-puestas.md).
 
 ### Cierre de etapa y trabajo posterior
 
-El usuario da por cerrada por ahora esta etapa del rediseño de Nosotros y
-Puestas, a la espera del feedback de Mica, la diseñadora. Este cierre no
-equivale a una aprobación final de diseño ni a una validación completa de la
-matriz responsive y de accesibilidad.
+El usuario considera satisfactorios los ajustes visuales actuales de las
+cards de Nosotros y revisa la documentación antes del deploy. Esto no equivale
+a una validación completa de la matriz responsive y de accesibilidad ni
+registra una publicación en producción. El estado del feedback de Mica, la
+diseñadora, no queda establecido en esta actualización.
 
 La navegación desde las páginas legales hacia Tickets, Nosotros, Puestas y
 Contacto fue probada por el usuario en iPhone mediante una preview de Netlify

@@ -52,23 +52,40 @@
                }
           }
 
-          // --nosotros-gap: clamp(12px, 2vw, 24px);
-          // --nosotros-pad-x: clamp(16px, 4vw, 48px);
-          // --nosotros-pad-y: clamp(24px, 6vw, 72px);
-          // --card-radius: clamp(18px, 2.2vw, 28px);
-          // --panel-inset: clamp(8px, 3cqi, 14px);
-          // --panel-radius: calc(var(--card-radius) - 6px);
-
           .nosotros-card {
                --nosotros-card-radius: clamp(1.125rem, 2.2vw, 1.75rem);
-               --nosotros-panel-inset: clamp(8px, 3cqi, 14px); //.625rem;
+
+               /*
+                * Al usar cqi para el título, la referencia es cada card.
+                * En el rango bajo, svw conserva el inset que cqi tomaba
+                * del viewport antes de crear este contenedor.
+                */
+               --nosotros-panel-inset: clamp(8px, 3svw, 14px);
+
+               /*
+               * Reduce un 25% los insets laterales e inferiores.
+               * El superior conserva el valor original para mantener la separación actual.
+               */
+               --nosotros-panel-inset-reduced: clamp(6px, 1svw, 10.5px);
+
+               /*
+               * En reposo, el título suma el inset de body y el de panel.
+               * El panel expandido usa este mismo total en sus laterales e inferior.
+               */
+               --nosotros-expanded-panel-inset:
+                    calc(var(--nosotros-panel-inset-reduced) + var(--nosotros-panel-inset-reduced));
+
+               --nosotros-collapsed-title-size: 15.625cqi;
+
+               container-type: inline-size;
+
                --nosotros-ratio-static: 16 / 10;
                --nosotros-ratio-hover: 4 / 3;
 
                position: relative;
                display: grid;
                grid-template-columns: minmax(0, 1fr);
-               grid-template-rows: auto auto;
+               grid-template-rows: minmax(0, 1fr);
                overflow: hidden;
                min-width: 0;
                border-radius: var(--nosotros-card-radius);
@@ -113,7 +130,7 @@
                position: relative;
                z-index: -1;
                grid-column: 1;
-               grid-row: 1 / -1;
+               grid-row: 1;
                margin: 0;
 
                picture {
@@ -136,50 +153,203 @@
           .nosotros-card__body {
                z-index: 1;
                grid-column: 1;
-               grid-row: 2;
-               align-self: end;
-               padding: 0 var(--nosotros-panel-inset) var(--nosotros-panel-inset);
+               grid-row: 1;
+               display: flex;
+               align-self: stretch;
+               // padding: var(--nosotros-panel-inset);
+               /*
+               * El shorthand conserva el inset superior y acerca el panel a los
+               * laterales y al borde inferior de la card.
+               */
+               padding:
+                    var(--nosotros-panel-inset)
+                    var(--nosotros-panel-inset-reduced)
+                    var(--nosotros-panel-inset-reduced);
+
+               transition: padding .5s cubic-bezier(.22, .8, .2, 1);
           }
 
           .nosotros-card__panel {
+               position: relative;
+               isolation: isolate;
                display: flex;
                flex-direction: column;
+               width: 100%;
                min-height: 100%;
-               padding-bottom: clamp(.875rem, 4vw, 1.5rem);
+               // padding: var(--nosotros-panel-inset);
+               /*
+               * Reduce el espacio interno lateral e inferior. En reposo esto acerca
+               * el título a los bordes; expandido, acerca el contenido sin mover el fondo.
+               */
+               padding:
+                    var(--nosotros-panel-inset)
+                    var(--nosotros-panel-inset-reduced)
+                    var(--nosotros-panel-inset-reduced);
                border-radius: calc(var(--nosotros-card-radius) - .375rem);
-               background: var(--nosotros-card-color);
-               box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
+               background: transparent;
+               box-shadow: none;
+
+               // El panel completo se revela al activar hover o foco.
+               &::before {
+                    position: absolute;
+                    inset: 0;
+                    z-index: -1;
+                    content: "";
+                    border-radius: calc(var(--nosotros-card-radius) - .375rem);
+                    background: var(--nosotros-card-color);
+                    clip-path: inset(100% 0 0 0);
+                    transition: clip-path .5s cubic-bezier(.22, .8, .2, 1);
+               }
           }
 
           .nosotros-card__title {
-               margin: 0;
-               padding: clamp(.875rem, 4vw, 1.375rem) clamp(.875rem, 5vw, 1.5rem) 0;
+               /*
+                * La caja visible de color es 1/4 de la altura de la card.
+                * border-box incluye el padding vertical dentro de esa medida.
+                */
+               box-sizing: border-box;
+
+               display: flex;
+               flex-direction: column;
+
+               /*
+                * Separa los dos renglones cuando el flex está en columna.
+                * En mobile, el título pasa a una fila sin wrap y este espacio
+                * no afecta la composición de una línea.
+                */
+               row-gap: .08em;
+
+               align-items: center;
+               justify-content: center;
+
+               block-size: var(--nosotros-collapsed-title-size);
+               flex: 0 0 var(--nosotros-collapsed-title-size);
+               min-block-size: 0;
+
+               padding-block: clamp(.25rem, 1cqi, .5rem);
+               padding-inline: clamp(.625rem, 2vw, 1rem);
+
+               position: relative;
+               top: auto;
+               z-index: 1;
+               margin-top: auto;
+               border-radius: calc(var(--nosotros-card-radius) - .375rem);
+               background: var(--nosotros-card-color);
+               box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
                color: $color-text-negro;
                font-family: $font-primary;
-               font-size: clamp(1.6rem, 7vw, 2.75rem);
+               // font-size: clamp(1.6rem, 7vw, 2.75rem);
+
+               /*
+                * El tamaño deriva de la altura real del bloque contraído,
+                * así texto y fondo escalan juntos en los tres mecanismos
+                * que determinan la altura de la card.
+                */
+               font-size:
+                    clamp(1rem,
+                         calc(var(--nosotros-collapsed-title-size) * .32),
+                         2.5rem);
+
                font-weight: 400;
                line-height: .92;
                text-align: center;
                text-transform: uppercase;
+               overflow-wrap: normal;
+               word-break: keep-all;
+               hyphens: none;
+               transform: none;
+               transition:
+                    margin-top .5s cubic-bezier(.22, .8, .2, 1),
+                    background-color .2s ease,
+                    box-shadow .2s ease;
 
+               &-line {
+                    display: block;
+                    white-space: nowrap;
+               }
+
+               /*
+                * El factor 1.12 con line-height .82 aproxima el .92 de Anton.
+                * scaleY corrige la altura visual de Playfair sin cambiar el ancho.
+                */
                em {
+                    display: inline-block;
                     font-family: $font-alternative;
+                    font-size: 1.12em;
                     font-style: italic;
-                    font-weight: bold; //900;
+                    font-weight: 600;
+                    font-optical-sizing: auto;
+                    line-height: .82;
+                    position: static;
+                    vertical-align: baseline;
+                    transform: scaleY(1.05);
+                    transform-origin: 50% 70%;
+               }
+          }
+
+          /*
+           * Hasta 767px el título ocupa una fila. Estos spans son flex items,
+           * por eso el eje del h3 debe ser horizontal; display:inline no basta.
+           */
+          @media only screen and (max-width: 767px) {
+               .nosotros-card__title {
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    column-gap: .12em;
+
+                    /*
+                     * Una fila admite una proporción mayor de la altura del
+                     * bloque que dos filas, sin fijar un tamaño de viewport.
+                     */
+                    /*
+                     * La fuente crece junto con el alto del bloque. El límite
+                     * superior contiene las frases largas en las cards angostas.
+                     */
+                    font-size:
+                         clamp(1rem,
+                              calc(var(--nosotros-collapsed-title-size) * .48),
+                              1.75rem);
+
+                    &-line {
+                         flex: 0 0 auto;
+                    }
+               }
+          }
+
+          /*
+           * En este rango las cards ya están en dos columnas y hay menos
+           * ancho por título. Se conserva el escalado relativo, con un tope
+           * menor para que las frases largas mantengan espacio a los lados.
+           */
+          @media only screen and (min-width: 576px) and (max-width: 654px) {
+               .nosotros-card__title {
+                    font-size:
+                         clamp(1rem,
+                              calc(var(--nosotros-collapsed-title-size) * .48),
+                              1.55rem);
                }
           }
 
           .nosotros-card__text {
+               flex: 0 1 auto;
                margin: 0;
-               padding: .625rem clamp(.875rem, 5vw, 1.5rem) 0;
+               padding: 0 clamp(.875rem, 5vw, 1.5rem);
+               overflow: hidden;
                color: $color-text-negro;
                font-family: $font-secondary;
-               // font-size: clamp(.9375rem, 2.5vw, 1.125rem);
-               // Tamaño cómodo en mobile y en la grilla de dos columnas.
                font-size: clamp(1.125rem, 2.8vw, 1.375rem);
                font-weight: 400;
                line-height: 1.3;
                text-align: center;
+               max-height: 0;
+               opacity: 0;
+               transform: translateY(.625rem);
+               transition:
+                    max-height .35s ease,
+                    padding .35s ease,
+                    opacity .25s ease,
+                    transform .25s ease;
           }
 
           .nosotros-card:focus-visible {
@@ -203,6 +373,8 @@
                .nosotros-card {
                     --nosotros-ratio-static: 4 / 3;
                     --nosotros-ratio-hover: 1 / 1;
+
+                    --nosotros-collapsed-title-size: 18.75cqi;
                }
           }
      }
@@ -211,6 +383,9 @@
 /*
  * Cuatro columnas recién desde 1200px:
  * con el gutter común, antes de este ancho las cards quedarían demasiado angostas.
+
+ * En cuatro columnas el tamaño responde al ancho real de cada Card.
+ * Así "REMERAS", "CHURROS" y "CREW DE" no se desbordan ni pierden centrado.
  */
 @media only screen and (min-width: 1200px) {
      .nosotros__container {
@@ -222,15 +397,16 @@
                .nosotros-card {
                     --nosotros-ratio-static: 1 / .85;
                     --nosotros-ratio-hover: 3 / 4;
+
+                    --nosotros-panel-inset: clamp(8px, 3cqi, 14px);
+                    --nosotros-panel-inset-reduced: clamp(6px, 2.25cqi, 10.5px);
+                    --nosotros-collapsed-title-size: 21.25cqi;
                }
 
-               // /*
-               //  * Se reduce sólo lo necesario al entrar en cuatro columnas.
-               //  * Desde 1375px vuelve al máximo actual de 44px.
-               //  */
-               // .nosotros-card__title {
-               //      font-size: clamp(2rem, 3.2vw, 2.75rem);
-               // }
+               .nosotros-card__title {
+                    /* Deja espacio útil para las palabras más largas. */
+                    padding-inline: .5rem;
+               }
 
                /*
                 * Reemplaza la reducción actual a 14px.
@@ -243,101 +419,56 @@
      }
 }
 
+/*
+ * Con puntero fino, el ratio de hover es también el ratio de la card
+ * en reposo; estos factores corresponden a esos ratios efectivos.
+ */
 @media (hover: hover) and (pointer: fine) {
      .nosotros__container {
           .section {
                .nosotros-card {
-                    grid-template-rows: minmax(0, 1fr);
+                    --nosotros-collapsed-title-size: 18.75cqi;
 
                     &::before {
                          aspect-ratio: var(--nosotros-ratio-hover);
                     }
                }
 
-               .nosotros-card__body {
-                    grid-row: 1;
-                    align-self: stretch;
-                    padding: var(--nosotros-panel-inset);
-               }
-
-               .nosotros-card__panel {
-                    position: relative;
-                    isolation: isolate;
-                    padding-bottom: 0;
-                    background: transparent;
-                    box-shadow: none;
-
-                    &::before {
-                         position: absolute;
-                         inset: 0;
-                         z-index: -1;
-                         content: "";
-                         border-radius: calc(var(--nosotros-card-radius) - .375rem);
-                         background: var(--nosotros-card-color);
-                         clip-path: inset(100% 0 0 0);
-                         transition: clip-path .5s cubic-bezier(.22, .8, .2, 1);
-                    }
-               }
-
-               .nosotros-card__title {
-                    position: relative;
-                    top: 100%;
-                    padding-bottom: clamp(.875rem, 4vw, 1.375rem);
-                    border-radius: calc(var(--nosotros-card-radius) - .375rem);
-                    background: var(--nosotros-card-color);
-                    box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
-                    transform: translateY(-100%);
-                    transition:
-                         top .5s cubic-bezier(.22, .8, .2, 1),
-                         transform .5s cubic-bezier(.22, .8, .2, 1),
-                         box-shadow .5s cubic-bezier(.22, .8, .2, 1);
-               }
-
                .nosotros-card__text {
                     flex: 1;
                     display: grid;
                     align-content: center;
-                    padding-bottom: clamp(1rem, 4vw, 1.75rem);
-                    opacity: 0;
-                    pointer-events: none;
-                    transform: translateY(.625rem);
-                    transition:
-                         opacity .2s ease-out,
-                         transform .2s ease-out;
                }
 
-               .nosotros-card:is(:hover, :focus-visible) {
-                    .nosotros-card__panel::before {
-                         clip-path: inset(0);
-                    }
-
-                    .nosotros-card__title {
-                         top: 0;
-                         box-shadow: none;
-                         transform: translateY(0);
-                    }
-
-                    .nosotros-card__text {
-                         opacity: 1;
-                         transform: none;
-                         transition:
-                              opacity .3s ease-out .18s,
-                              transform .3s ease-out .18s;
-                    }
-
-                    .nosotros-card__img {
-                         transform: scale(1.05);
-                    }
+               /*
+                * La regla posterior conserva el zoom al pasar el puntero.
+                * Este selector mantiene también el zoom actual al recibir
+                * foco visible en un dispositivo con puntero fino.
+                */
+               .nosotros-card:focus-visible .nosotros-card__img {
+                    transform: scale(1.05);
                }
           }
+     }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 1199px) and (hover: hover) and (pointer: fine) {
+     .nosotros__container .section .nosotros-card {
+          --nosotros-collapsed-title-size: 25cqi;
+     }
+}
+
+@media only screen and (min-width: 1200px) and (hover: hover) and (pointer: fine) {
+     .nosotros__container .section .nosotros-card {
+          --nosotros-collapsed-title-size: 33.333333cqi;
      }
 }
 
 @media (prefers-reduced-motion: reduce) {
      .nosotros__container {
           .section {
-
                .nosotros-card__img,
+               .nosotros-card__body,
                .nosotros-card__panel::before,
                .nosotros-card__title,
                .nosotros-card__text {
@@ -348,107 +479,29 @@
 }
 
 /*
- * Ajuste de interacción:
- * - El título permanece visible sobre la foto en reposo.
- * - Hover o foco expanden el color y muestran la descripción.
- * - :focus también permite activar la card con teclado o toque.
+ * La base ya define la geometría y los estilos de reposo.
+ * Este bloque contiene sólo los cambios activados al interactuar.
  */
 .nosotros__container {
      .section {
-          .nosotros-card {
-               grid-template-rows: minmax(0, 1fr);
-          }
-
-          .nosotros-card__media {
-               grid-row: 1;
-          }
-
-          .nosotros-card__body {
-               display: flex;
-               grid-row: 1;
-               align-self: stretch;
-               padding: var(--nosotros-panel-inset);
-          }
-
-          .nosotros-card__panel {
-               position: relative;
-               isolation: isolate;
-               display: flex;
-               flex-direction: column;
-               width: 100%;
-               min-height: 100%;
-               padding: var(--nosotros-panel-inset);
-               background: transparent;
-               box-shadow: none;
-
-               // La capa de color se revela al interactuar con la card.
-               &::before {
-                    position: absolute;
-                    inset: 0;
-                    z-index: -1;
-                    content: "";
-                    border-radius: calc(var(--nosotros-card-radius) - .375rem);
-                    background: var(--nosotros-card-color);
-                    clip-path: inset(100% 0 0 0);
-                    transition: clip-path .5s cubic-bezier(.22, .8, .2, 1);
-               }
-          }
-
-          .nosotros-card__title {
-               position: relative;
-               top: auto;
-               z-index: 1;
-               margin-top: auto;
-
-               // // Panel visible en reposo: conserva aire superior,
-               // // pero reduce laterales y, especialmente, el borde inferior.
-               // padding:
-               //      clamp(0.875rem, 4vw, 1.375rem) clamp(0.625rem, 2vw, 1rem) clamp(0.375rem, 1vw, 0.625rem);
-
-               /*
- * El título permanece abajo en reposo y recupera aire inferior.
- * En hover/foco el fondo se expande y la descripción ocupa el espacio libre.
- */
-               padding:
-                    clamp(.875rem, 4vw, 1.375rem) clamp(.625rem, 2vw, 1rem) clamp(.875rem, 3vw, 1.25rem);
-
-               border-radius: calc(var(--nosotros-card-radius) - .375rem);
-               background: var(--nosotros-card-color);
-               box-shadow: 0 .375rem 1.25rem rgb(0 0 0 / 28%);
-               transform: none;
-               transition:
-                    margin-top .5s cubic-bezier(.22, .8, .2, 1),
-                    background-color .2s ease,
-                    box-shadow .2s ease;
-          }
-
-          .nosotros-card__text {
-               max-height: 0;
-               margin: 0;
-               padding: 0 clamp(.875rem, 5vw, 1.5rem);
-               overflow: hidden;
-               opacity: 0;
-               transform: translateY(.625rem);
-               transition:
-                    max-height .35s ease,
-                    padding .35s ease,
-                    opacity .25s ease,
-                    transform .25s ease;
-          }
-
-          /*
-           * :hover cubre mouse/trackpad.
-           * :focus cubre teclado y permite activar la card al tocarla.
-           */
           .nosotros-card:is(:hover, :focus) {
                .nosotros-card__panel::before {
                     clip-path: inset(0);
+               }
+
+               .nosotros-card__body {
+                    padding-inline: var(--nosotros-expanded-panel-inset);
+                    padding-block-end: var(--nosotros-expanded-panel-inset);
                }
 
                .nosotros-card__title {
                     margin-top: 0;
                     background: transparent;
                     box-shadow: none;
+
+                    block-size: auto;
+                    flex-basis: auto;
+                    min-block-size: 0;
                }
 
                .nosotros-card__text {
@@ -475,72 +528,20 @@
      }
 }
 
-/*
- * Tipografía de las líneas explícitas del título.
- * No se redefinen márgenes, padding ni posición: esas reglas pertenecen
- * al estado visual de reposo / hover y deben conservarse intactas.
- */
-.nosotros__container {
-     .section {
-          .nosotros-card__title {
-               overflow-wrap: normal;
-               word-break: keep-all;
-               hyphens: none;
-
-               /* Cada línea queda completa y no puede partirse. */
-               &-line {
-                    display: block;
-                    white-space: nowrap;
-               }
-
-               /*
-                * Playfair tiene una altura de mayúsculas visualmente menor
-                * que Anton al mismo tamaño. Se amplía sin cambiar la altura
-                * total de la línea: 1.12 × 0.82 ≈ line-height base de 0.92.
-                */
-               em {
-                    display: inline-block;
-                    font-family: $font-alternative;
-                    font-size: 1.12em;
-                    font-style: italic;
-                    font-weight: 600;
-                    font-optical-sizing: auto;
-                    line-height: .82;
-                    position: static;
-                    vertical-align: baseline;
-
-                    // Estira Playfair sólo en vertical: conserva el ancho y el layout actual.
-                    transform: scaleY(1.05);
-                    transform-origin: 50% 70%;
-               }
-          }
-     }
-}
-
-/*
- * En cuatro columnas el tamaño responde al ancho real de cada Card.
- * Así "REMERAS", "CHURROS" y "CREW DE" no se desbordan ni pierden centrado.
- */
-@media only screen and (min-width: 1200px) {
-     .nosotros__container {
-          .section {
-               .nosotros-card {
-                    container-type: inline-size;
-               }
-
-               .nosotros-card__title {
-                    /*
-                     * 12cqi escala con el ancho de la Card, no con el viewport.
-                     * El máximo de 40px conserva presencia en desktops amplios.
-                     */
-                    font-size: clamp(1.75rem, 12cqi, 2.5rem);
-
-                    /* Deja espacio útil para las palabras más largas. */
-                    padding-inline: .5rem;
-               }
-          }
-     }
-}
+// /*
+//  * En cuatro columnas el tamaño responde al ancho real de cada Card.
+//  * Así "REMERAS", "CHURROS" y "CREW DE" no se desbordan ni pierden centrado.
+//  */
+// @media only screen and (min-width: 1200px) {
+//      .nosotros__container {
+//           .section {
+//                .nosotros-card__title {
+//                     /* Deja espacio útil para las palabras más largas. */
+//                     padding-inline: .5rem;
+//                }
+//           }
+//      }
+// }
 
 /*
  * Composición intermedia:
@@ -550,10 +551,7 @@
  * JavaScript sólo proporciona medidas. Las decisiones visuales
  * y el presupuesto vertical permanecen en CSS.
  */
-@media only screen
-     and (min-width: 768px)
-     and (max-width: 1199px)
-     and (max-height: 900px) {
+@media only screen and (min-width: 768px) and (max-width: 1199px) and (max-height: 900px) {
 
      body .container__propio.nosotros__container {
           // El padding superior se administra dentro de la section.
@@ -583,24 +581,12 @@
           --nosotros-card-min-height: 22rem;
 
           --nosotros-card-row-height:
-               max(
-                    var(--nosotros-card-min-height),
-                    calc(
-                         100svh
-                         - var(--nosotros-scroll-offset, 6rem)
-                         - var(--nosotros-narrow-anchor-gap)
-                         - var(--nosotros-intro-height, 0px)
-                         - var(--nosotros-intro-cards-gap)
-                         - var(--nosotros-first-view-bottom)
-                    )
-               );
+               max(var(--nosotros-card-min-height),
+                    calc(100svh - var(--nosotros-scroll-offset, 6rem) - var(--nosotros-narrow-anchor-gap) - var(--nosotros-intro-height, 0px) - var(--nosotros-intro-cards-gap) - var(--nosotros-first-view-bottom)));
 
           #nosotros.section-nav-target {
                top:
-                    calc(
-                         var(--nosotros-narrow-padding-top)
-                         - var(--nosotros-narrow-anchor-gap)
-                    );
+                    calc(var(--nosotros-narrow-padding-top) - var(--nosotros-narrow-anchor-gap));
           }
 
           .section {
@@ -658,6 +644,12 @@
                          &::before {
                               aspect-ratio: auto;
                          }
+
+                         /*
+                          * La misma fila define la altura de la card.
+                          * El título toma exactamente una cuarta parte.
+                          */
+                         --nosotros-collapsed-title-size: calc(var(--nosotros-card-row-height) / 4);
                     }
                }
           }
@@ -668,10 +660,7 @@
  * Con columnas más anchas los textos internos necesitan menos líneas.
  * Es un mínimo inicial de seguridad, no la altura objetivo de las cards.
  */
-@media only screen
-     and (min-width: 960px)
-     and (max-width: 1199px)
-     and (max-height: 900px) {
+@media only screen and (min-width: 960px) and (max-width: 1199px) and (max-height: 900px) {
 
      .nosotros__container {
           --nosotros-card-min-height: 20rem;
@@ -682,10 +671,7 @@
  * En alturas extremas se recupera espacio ocultando únicamente
  * la explicación secundaria. La frase principal permanece visible.
  */
-@media only screen
-     and (min-width: 768px)
-     and (max-width: 1199px)
-     and (max-height: 640px) {
+@media only screen and (min-width: 768px) and (max-width: 1199px) and (max-height: 640px) {
 
      .nosotros__container .section .nosotros__queeslapolenta {
           .subtitle:not(.subtitle__bold) {
@@ -830,6 +816,11 @@
                               calc(100svh - 27rem),
                               125cqi);
 
+                    --nosotros-collapsed-title-size:
+                         clamp(3.5rem,
+                              calc(25svh - 6.75rem),
+                              31.25cqi);
+
                     /*
                      * La altura ya queda reservada explícitamente, por lo
                      * que el pseudo-elemento no necesita imponer además
@@ -842,331 +833,3 @@
           }
      }
 }
-
-// .nosotros__container {
-//      width: 100%;
-//      flex-shrink: 0;
-
-//      display: inline-flex;
-//      flex-direction: column;
-//      justify-content: center;
-//      align-items: center;
-//      row-gap: 3.5rem;
-//      flex-shrink: 0;
-
-//      .section {
-//           width: 100%;
-
-//           display: flex;
-//           flex-direction: column;
-//           align-items: center;
-//           row-gap: 3.5rem;
-
-//           .nosotros__queeslapolenta {
-//                display: flex;
-//                padding: 0rem 2.3rem;
-//                flex-direction: column;
-//                align-items: center;
-//                row-gap: 2rem;
-//                align-self: stretch;
-//           }
-
-//           .cards {
-//                @include grillas__simetricas(1, auto, 4, auto, 0, .75rem);
-//                grid-template-areas:
-//                     "dance-crew"
-//                     "lanza-remeras"
-//                     "churros"
-//                     "angeles-polenta";
-
-//                .card__dance-crew {
-//                     grid-area: "dance-crew";
-//                }
-
-//                .card__lanza-remeras {
-//                     grid-area: "lanza-remeras";
-//                }
-
-//                .card__churros {
-//                     grid-area: "churros";
-//                }
-
-//                .card__angeles-polenta {
-//                     grid-area: "angeles-polenta";
-//                }
-//           }
-
-//           .card {
-//                display: flex;
-//                flex-direction: row;
-//                align-items: center;
-
-//                border: none;
-//                border-radius: 1rem;
-
-//                width: 22.5rem;
-
-//                &__dance-crew {
-//                     background-color: $color-fondo-card-dance-crew;
-//                }
-
-//                &__lanza-remeras {
-//                     background-color: $color-fondo-card-lanza-remeras;
-//                }
-
-//                &__churros {
-//                     background-color: $color-fondo-card-churros;
-//                }
-
-//                &__angeles-polenta {
-//                     background-color: $color-fondo-card-angeles;
-//                }
-//           }
-
-//           .card__container__imagen {
-//                width: 10.6rem;
-//                height: 11.25rem;
-
-//                overflow: hidden;
-
-//                align-content: center;
-//           }
-
-//           .card__imagen {
-//                width: 100%;
-//                height: 100%;
-
-//                object-fit: cover;
-
-//                border-radius: 1rem 0 0 1rem;
-//           }
-
-//           .card__container {
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                justify-content: center;
-//                row-gap: .3rem;
-//                padding: .75rem .5rem;
-
-//                width: 12.4rem;
-//                height: 11.25rem;
-//           }
-
-//           .card__icono {
-//                width: 3rem;
-//           }
-//      }
-// }
-
-// @media only screen and (min-width: 576px) and (max-width: 767px) {
-//      .nosotros__container {
-//           width: 100%;
-//           flex-shrink: 0;
-
-//           display: inline-flex;
-//           flex-direction: column;
-//           justify-content: center;
-//           align-items: center;
-//           row-gap: 3.5rem;
-//           flex-shrink: 0;
-
-//           .section {
-//                width: 100%;
-
-//                display: flex;
-//                flex-direction: column;
-//                align-items: center;
-//                row-gap: 3.5rem;
-
-//                .nosotros__queeslapolenta {
-//                     display: flex;
-//                     padding: 0rem 18%;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     row-gap: 2rem;
-//                     align-self: stretch;
-//                }
-
-//                .cards {
-//                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
-//                     grid-template-areas:
-//                          "dance-crew lanza-remeras"
-//                          "churros angeles-polenta";
-//                }
-
-//                .card {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-
-//                     border: none;
-//                     border-radius: 1rem;
-
-//                     width: 15.5rem;
-//                }
-
-//                .card__container__imagen {
-//                     width: 15.5rem;
-//                     height: 15rem;
-
-//                     overflow: hidden;
-
-//                     align-content: center;
-//                }
-
-//                .card__imagen {
-//                     width: 100%;
-//                     height: 100%;
-
-//                     object-fit: cover;
-
-//                     border-radius: 1rem 1rem 0 0;
-//                }
-
-//                .card__container {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     justify-content: flex-start;
-//                     row-gap: .75rem;
-//                     padding: 1.5rem 1rem;
-
-//                     width: 15.5rem;
-//                     height: 14.1rem;
-//                }
-
-//                .card__icono {
-//                     width: 3rem;
-//                }
-//           }
-//      }
-// }
-
-// @media only screen and (min-width: 768px) and (max-width: 991px) {
-//      .nosotros__container {
-//           .section {
-//                .cards {
-//                     @include grillas__simetricas(2, auto, 2, auto, 1rem, 1rem);
-//                     grid-template-areas:
-//                          "dance-crew lanza-remeras"
-//                          "churros angeles-polenta";
-//                }
-//           }
-//      }
-// }
-
-// @media only screen and (min-width: 992px) and (max-width: 1199px) {
-//      .nosotros__container {
-//           .section {
-//                .cards {
-//                     @include grillas__simetricas(2, auto, 2, auto, 2rem, 2rem);
-//                     grid-template-areas:
-//                          "dance-crew lanza-remeras"
-//                          "churros angeles-polenta";
-//                }
-
-//                .card {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-
-//                     border: none;
-//                     border-radius: 1rem;
-
-//                     width: 15.5rem;
-//                }
-
-//                .card__container__imagen {
-//                     width: 15.5rem;
-//                     height: 15rem;
-
-//                     overflow: hidden;
-
-//                     align-content: center;
-//                }
-
-//                .card__imagen {
-//                     width: 100%;
-//                     height: 100%;
-
-//                     object-fit: cover;
-
-//                     border-radius: 1rem 1rem 0 0;
-//                }
-
-//                .card__container {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     justify-content: flex-start;
-//                     row-gap: .75rem;
-//                     padding: 1.5rem 1rem;
-
-//                     width: 15.5rem;
-//                     height: 14.1rem;
-//                }
-
-//                .card__icono {
-//                     width: 3rem;
-//                }
-//           }
-//      }
-// }
-
-// @media only screen and (min-width: 1200px) {
-//      .nosotros__container {
-//           .section {
-//                .cards {
-//                     @include grillas__simetricas(4, auto, 1, auto, .75rem, 0);
-//                     grid-template-areas:
-//                          "dance-crew lanza-remeras churros angeles-polenta";
-//                }
-
-//                .card {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-
-//                     border: none;
-//                     border-radius: 1rem;
-
-//                     width: 15.5rem;
-//                }
-
-//                .card__container__imagen {
-//                     width: 15.5rem;
-//                     height: 15rem;
-
-//                     overflow: hidden;
-
-//                     align-content: center;
-//                }
-
-//                .card__imagen {
-//                     width: 100%;
-//                     height: 100%;
-
-//                     object-fit: cover;
-
-//                     border-radius: 1rem 1rem 0 0;
-//                }
-
-//                .card__container {
-//                     display: flex;
-//                     flex-direction: column;
-//                     align-items: center;
-//                     justify-content: flex-start;
-//                     row-gap: .75rem;
-//                     padding: 1.5rem 1rem;
-
-//                     width: 15.5rem;
-//                     height: 14.1rem;
-//                }
-
-//                .card__icono {
-//                     width: 3rem;
-//                }
-//           }
-//      }
-// }
