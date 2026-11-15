@@ -21,9 +21,40 @@ correspondiente:
     Tickets.
 -   `03-section-hero.md` --- características propias de Hero.
 -   `04-section-tickets.md` --- características propias de Tickets.
+-   `05-loader.md` --- características propias del Loader.
+-   `06-section-nosotros.md` --- cards, interacción y composición responsive de Nosotros.
+-   `07-section-puestas.md` --- composición vertical y carrusel de Puestas.
 -   `CHANGELOG.md` --- evolución relevante del proyecto.
 
-## 3. Regla principal
+## 3. Modalidad operativa y autorizaciones
+
+Codex y Claude funcionan principalmente como asistentes técnicos, analistas del
+repositorio y colaboradores en tareas de documentación y Git.
+
+Pueden leer y analizar cualquier archivo del repositorio sin solicitar
+autorización adicional. También pueden consultar el estado del repositorio,
+revisar el historial de Git y comparar ramas mediante operaciones de solo
+lectura.
+
+Pueden proponer soluciones técnicas, detectar problemas y explicar
+alternativas de implementación.
+
+No pueden modificar, crear, eliminar ni renombrar archivos sin autorización
+expresa. Esta restricción incluye HTML, CSS, SCSS, JavaScript, JSON, assets,
+configuraciones y documentación Markdown. También se aplica a scripts,
+comandos y herramientas que puedan modificar archivos indirectamente.
+
+Antes de modificar documentación, deben presentar una propuesta e identificar
+los archivos afectados. Una autorización para modificar documentación no
+autoriza cambios de código.
+
+Cada autorización se limita exclusivamente a la tarea y los archivos
+indicados por el usuario. Si durante una tarea autorizada fuera necesario
+modificar archivos adicionales, deben informar cuáles son y solicitar
+autorización antes de intervenirlos. Ante cualquier duda sobre el alcance de
+una autorización, deben consultar antes de actuar.
+
+## 4. Regla principal
 
 No inventar requisitos ni comportamientos que no estén documentados.
 
@@ -35,7 +66,7 @@ documentación:
 3.  si el comportamiento requerido no puede determinarse, pedir una
     definición antes de asumirla.
 
-## 4. Hero + Tickets
+## 5. Hero + Tickets
 
 Hero y Tickets forman parte de un mismo bloque con video de fondo
 compartido.
@@ -44,10 +75,11 @@ No modificar de manera aislada el comportamiento del scroll, el
 contenedor o el video de fondo sin considerar la relación entre ambas
 sections.
 
-## 5. Tickets
+## 6. Tickets
 
-La información utilizada para renderizar los tickets se encuentra en
-`tickets.js`.
+La agenda utilizada para renderizar los tickets se encuentra en
+`data/tickets.json`. `tickets.js` carga esos datos, filtra las fechas y
+renderiza los tickets.
 
 Las fechas futuras se agregan manualmente y las fechas obsoletas se
 quitan mediante JavaScript.
@@ -55,15 +87,17 @@ quitan mediante JavaScript.
 No cambiar la lógica de fechas sin verificar primero el comportamiento
 existente.
 
-## 6. Documentación
+## 7. Documentación
 
-Cuando una implementación cambie de forma relevante el comportamiento
-del proyecto, actualizar `CHANGELOG.md`.
+Cuando una implementación autorizada cambie de forma relevante el
+comportamiento del proyecto, actualizar `CHANGELOG.md` con autorización
+expresa para ese archivo.
 
-Si una modificación cambia una especificación documentada, actualizar
-también el documento `.md` correspondiente.
+Si una modificación autorizada cambia una especificación documentada,
+actualizar también el documento `.md` correspondiente con autorización
+expresa para ese archivo.
 
-## 7. Flujo de ramas
+## 8. Flujo de ramas
 
 -   `branch_deploy` es la rama de producción y representa la versión pública
     de `https://fiestapolenta.com/`.
@@ -81,26 +115,35 @@ No hacer commits directos, pushes directos ni merges rutinarios en `main`.
 Todo cambio destinado a `main` debe pasar mediante una pull request desde
 `branch_deploy`.
 
-## 8. Formato de commits
+Codex y Claude no pueden ejecutar operaciones Git que modifiquen el estado del
+repositorio sin autorización expresa. Esto incluye `git add`, commits,
+pushes, merges, rebases, resets, cambios de rama y cualquier otra operación
+de escritura.
+
+Antes de cualquier operación Git de escritura, deben verificar la rama actual,
+revisar los cambios pendientes y explicar la operación propuesta.
+
+## 9. Formato de commits
 
 Todos los commits del proyecto, sin importar la rama, deben usar este formato:
 
-`YYYYMMDD_N: descripción concisa y clara del cambio`
+`YYYYMMDD-HHMM-ART: descripción concisa y clara del cambio`
 
--   `YYYYMMDD` es la fecha del commit: año de cuatro dígitos, mes de dos
-    dígitos y día de dos dígitos.
--   `_` separa la fecha del número de commit.
--   `N` es el número correlativo inmediatamente posterior al número más alto
-    utilizado en todo el repositorio, considerando todas las ramas existentes.
+-   `YYYYMMDD` es la fecha del commit: año de cuatro dígitos,
+    mes de dos dígitos, día de dos dígitos.
+-   `-` separa la fecha, la hora y la zona horaria del commit.
+-   `HHMM` es la hora del commit: hora de dos dígitos en formato de 24 horas y
+    minutos de dos dígitos, sin separador.
+-   `ART` identifica la zona horaria `America/Argentina/Buenos_Aires`.
 -   `:` separa el identificador del mensaje.
 -   La descripción explica de forma concisa y clara el contenido del commit.
 
-Ejemplo: `20261002_103: Section Hero: se agregan variantes del video para distintos breakpoints.`
+Ejemplo: `20261003-2149-ART: Navegación de las sections Nosotros, Puestas y Contacto. Ahora anclan al punto medio de su padding superior: 48px antes del título dentro de los 96px existentes.`
 
-Antes de crear un commit, verificar el número más alto disponible en el
-historial de todas las ramas para evitar duplicados.
+Antes de crear un commit, verificar en el historial de todas las ramas que el
+identificador `YYYYMMDD-HHMM-ART` no esté utilizado, para evitar duplicados.
 
-## 9. Alcance
+## 10. Alcance
 
 Estas instrucciones se basan exclusivamente en la documentación
 disponible del proyecto. No presuponen una arquitectura de carpetas,

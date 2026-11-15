@@ -78,9 +78,9 @@
 }
 
 /* Secciones con contenido por encima del background */
-#nosotros,
-#puestas,
-#contacto {
+.nosotros__container,
+.puestas__container,
+.contacto__container {
      position: relative;
      z-index: 1;
 }

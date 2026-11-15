@@ -1,0 +1,20 @@
+[
+    {
+        "datetime": "20261003-01:38",
+        "commit": "b978fd6",
+        "message": "20261004_109: Se agregan variantes mobile y tablet para las imágenes de las sections Nosotros (cards) y Puestas.",
+        "url": "https://6ac67d08e3610000080fcf6c--fiestapolenta.netlify.app/"
+    },
+    {
+        "datetime": "20261003-15:08",
+        "commit": "9de249f",
+        "message": "20261007_124: Se incorpora documentation/url-deploys.md para el tracking de deploys de Netlify.",
+        "url": "https://6ac68abfad20e60008c14d84--fiestapolenta.netlify.app/"
+    },
+    {
+        "datetime": "20261007-15:15",
+        "commit": "11a81f7",
+        "message": "20261007_125: Integración de la rama fix-navigation-sections.",
+        "url": "https://6ac68c9a98b008000820e300--fiestapolenta.netlify.app/"
+    }
+]

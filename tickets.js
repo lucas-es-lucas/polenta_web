@@ -1,4 +1,4 @@
-{/* <script> */ }
+
 async function loadTickets() {
      const response = await fetch("/data/tickets.json");
      const tickets = await response.json();
@@ -58,5 +58,9 @@ async function loadTickets() {
      });
 }
 
-loadTickets();
-// </script>
+/*
+ * Expone la finalización del renderizado para la navegación inicial.
+ * La carga sigue comenzando inmediatamente y no depende del loader.
+ */
+window.polentaTicketsReady = loadTickets();
+
