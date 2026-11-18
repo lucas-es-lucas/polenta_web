@@ -1,62 +1,39 @@
 [
      {
-          "date": "20261030",
-          "city": "mallorca",
-          "alt": "ticket Polenta Mallorca Halloween 30-10-2026",
-          "link": "https://site.fourvenues.com/es/parao/events/polenta-mallorca-30-10-2026-JOC4"
-     },
-     {
-          "date": "20261031",
-          "city": "cafe-polenta",
-          "alt": "ticket Cafe Polenta Usted Señalemelo 31-10-2026",
-          "link": "https://venti.live/evento/caf-polenta-usted-se-alemelo-doppel-gangs"
-     },
-     {
-          "date": "20261106",
-          "city": "nyc",
-          "alt": "ticket Polenta New York 06-11-2026",
-          "link": "https://kydlabs.com/e/EV9a0a6819-372a-4502-8b30-51b5af020b44?ref=shortlink"
-     },
-     {
-          "date": "20261106",
-          "city": "la-plata",
-          "alt": "ticket Polenta La Plata 06-11-2026",
-          "link": "https://livepass.com.ar/events/polenta-en-el-teatro-opera-lp-2026-11-06-23-55-00-0300"
-     },
-     {
-          "date": "20261106",
-          "city": "caba",
-          "alt": "ticket Polenta Buenos Aires 06-11-2026",
-          "link": "https://venti.live/evento/polenta-6-nov-en-niceto-club-18-a-os"
-     },
-     {
-          "date": "20261113",
-          "city": "bcna",
-          "alt": "ticket Polenta Barcelona 13-11-2026",
-          "link": "https://ra.co/events/2554207"
-     },
-     {
-          "date": "20261113",
-          "city": "copenhague",
-          "alt": "ticket Polenta Copenhague 13-11-2026",
-          "link": "https://pretix.eu/malvadaprod/polentacph/"
-     },
-     {
-          "date": "20261114",
-          "city": "madrid",
-          "alt": "ticket Polenta Madrid 14-11-2026",
-          "link": "https://site.fourvenues.com/es/polenta-promotora/events/polenta-madrid-14-11-2026-SLXK"
-     },
-     {
-          "date": "20261120",
-          "city": "sevilla",
-          "alt": "ticket Polenta Sevilla 20-11-2026",
-          "link": "https://site.fourvenues.com/es/occo-club/events/viernes-noche-20-11-20262-M4UI"
-     },
-     {
           "date": "20261121",
           "city": "solo-pop-cba",
           "alt": "ticket Polenta Solo Pop Córdoba 21-11-2026",
           "link": "https://alpogo.com/evento/29667"
+     },
+     {
+          "date": "20261128",
+          "city": "mvdeo",
+          "alt": "ticket Polenta Montevideo 28-11-2026",
+          "link": "https://redtickets.uy/evento/POLENTA-MONTEVIDEO--2811/34368/"
+     },
+     {
+          "date": "20261205",
+          "city": "necochea",
+          "alt": "ticket Polenta Necochea 05-12-2026",
+          "link": "https://venti.live/evento/polenta-necochea"
+     },
+     {
+          "date": "20261205",
+          "city": "quilmes",
+          "alt": "ticket Polenta Quilmes 05-12-2026",
+          "link": "https://livepass.com.ar/events/polenta-en-club-re-quilmes"
+     },
+     {
+          "date": "20261205",
+          "city": "bcna",
+          "alt": "ticket Polenta Barcelona 05-12-2026",
+          "link": "https://es.ra.co/events/2584685"
+     },
+     {
+          "date": "20261211",
+          "city": "caba",
+          "alt": "ticket Polenta Buenos Aires 11-12-2026",
+          "link": "https://www.passline.com/eventos/polenta-578850"
      }
+
 ]
