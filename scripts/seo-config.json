@@ -1,0 +1,101 @@
+{
+	"baseUrl": "https://fiestapolenta.com",
+	"daysToKeep": 2,
+	"defaultEventType": "DanceEvent",
+	"organization": {
+		"name": "Fiesta Polenta*",
+		"alternateName": ["Fiesta Polenta", "Polenta*", "Polenta"],
+		"foundingDate": "2019",
+		"description": "Fiesta itinerante de baile nacida en Buenos Aires, Argentina, en 2019. Suena pop, reggaetón, cachengue, techengue, tech house y música urbana, con puesta de luces, láseres, pantallas y visuales.",
+		"email": "hola@fiestapolenta.com",
+		"logo": "/imgs/logos/logo-polenta.svg",
+		"founders": [
+			{ "name": "Nacho Elizalde" },
+			{ "name": "Maru Frohmann", "alternateName": "DJ Pol4ca" }
+		],
+		"sameAs": [
+			"https://www.instagram.com/polenta.polenta",
+			"https://www.tiktok.com/@polenta.polenta",
+			"https://x.com/fiestapolenta",
+			"https://www.youtube.com/@polenta.polenta",
+			"https://open.spotify.com/user/31feh6byuhxyjkfpe26lwc3lwpt4"
+		]
+	},
+	"website": {
+		"name": "Fiesta Polenta*",
+		"language": "es"
+	},
+	"countries": {
+		"AR": { "es": "Argentina", "en": "Argentina", "currency": "ARS" },
+		"ES": { "es": "España", "en": "Spain", "currency": "EUR" },
+		"DK": { "es": "Dinamarca", "en": "Denmark", "currency": "DKK" },
+		"US": { "es": "Estados Unidos", "en": "United States", "currency": "USD" },
+		"UY": { "es": "Uruguay", "en": "Uruguay", "currency": "UYU" }
+	},
+	"cities": {
+		"mallorca": {
+			"es": "Mallorca", "en": "Mallorca",
+			"country": "ES", "timezone": "Europe/Madrid"
+		},
+		"bcna": {
+			"es": "Barcelona", "en": "Barcelona",
+			"country": "ES", "timezone": "Europe/Madrid"
+		},
+		"madrid": {
+			"es": "Madrid", "en": "Madrid",
+			"country": "ES", "timezone": "Europe/Madrid"
+		},
+		"sevilla": {
+			"es": "Sevilla", "en": "Seville",
+			"country": "ES", "timezone": "Europe/Madrid"
+		},
+		"copenhague": {
+			"es": "Copenhague", "en": "Copenhagen",
+			"country": "DK", "timezone": "Europe/Copenhagen"
+		},
+		"nyc": {
+			"es": "Nueva York", "en": "New York",
+			"country": "US", "timezone": "America/New_York"
+		},
+		"mvdeo": {
+			"es": "Montevideo", "en": "Montevideo",
+			"country": "UY", "timezone": "America/Montevideo"
+		},
+		"caba": {
+			"es": "Buenos Aires", "en": "Buenos Aires",
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires"
+		},
+		"la-plata": {
+			"es": "La Plata", "en": "La Plata",
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires"
+		},
+		"quilmes": {
+			"es": "Quilmes", "en": "Quilmes",
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires"
+		},
+		"necochea": {
+			"es": "Necochea", "en": "Necochea",
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires"
+		},
+		"solo-pop-cba": {
+			"es": "Córdoba", "en": "Córdoba",
+			"country": "AR", "timezone": "America/Argentina/Cordoba",
+			"defaultName": "Fiesta Polenta* Solo Pop en Córdoba"
+		},
+		"cafe-polenta": {
+			"es": "Buenos Aires", "en": "Buenos Aires",
+			"region": true,
+			"display": {
+				"es": "Provincia de Buenos Aires, Argentina",
+				"en": "Buenos Aires Province, Argentina"
+			},
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires",
+			"defaultName": "Café Polenta"
+		}
+	},
+	"sitemapPages": [
+		{ "path": "/", "isHome": true },
+		{ "path": "/pages/terminos_y_condiciones.html" },
+		{ "path": "/pages/politica_de_privacidad.html" }
+	]
+}

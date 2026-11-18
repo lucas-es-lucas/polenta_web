@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "sass scss/estilos.scss css/estilos.css",
-    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "build-seo": "node scripts/build-seo.js"
   },
   "author": "lucas_es_lucas",
   "license": "ISC",
