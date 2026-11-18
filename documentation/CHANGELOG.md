@@ -56,6 +56,11 @@ Tipos sugeridos:
     flujo GEO, los campos opcionales y una observación pendiente sobre la
     zona horaria en la regla de fechas de `tickets.js`. Esta entrada no
     registra un despliegue en producción.
+-   Se agrega `08-flujo-geo.md`, con el flujo de trabajo GEO (publicación
+    semanal y de versión nueva), los responsables de cada tarea y las
+    verificaciones. Se suma su versión para compartir en
+    `documentation/pdf/Flujo-GEO-Fiesta-Polenta.pdf` y se lista el nuevo
+    documento en `AGENTS.md`.
 
 ### 2026-11-10
 

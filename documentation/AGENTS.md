@@ -24,6 +24,8 @@ correspondiente:
 -   `05-loader.md` --- características propias del Loader.
 -   `06-section-nosotros.md` --- cards, interacción y composición responsive de Nosotros.
 -   `07-section-puestas.md` --- composición vertical y carrusel de Puestas.
+-   `08-flujo-geo.md` --- flujo de trabajo GEO (publicación semanal y de
+    versión nueva), responsables y verificaciones.
 -   `CHANGELOG.md` --- evolución relevante del proyecto.
 
 ## 3. Modalidad operativa y autorizaciones
