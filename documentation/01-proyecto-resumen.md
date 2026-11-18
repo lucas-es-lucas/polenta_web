@@ -193,6 +193,39 @@ de responsive y accesibilidad continúa pendiente. Los detalles están en
 Esta etapa es posterior al cierre de Nosotros y Puestas y no modifica sus
 pendientes ni registra un despliegue de producción.
 
+### GEO y metadatos en `feat-GEO`
+
+La rama `feat-GEO` incorpora archivos y metadatos para que buscadores y
+motores de IA entiendan el sitio. No cambia el diseño ni el comportamiento
+visible de las sections. No registra un despliegue en producción.
+
+-   `index.html` pasa a `lang="es"` (también las dos páginas legales), tiene
+    un `<title>` descriptivo («Fiesta Polenta* | No es cualquier fiesta»),
+    `canonical` y metadatos Open Graph, con `slider-img-1.png` como imagen
+    provisoria. Cambia lo que muestran la pestaña del navegador y la vista
+    previa al compartir el link.
+-   El `<head>` de `index.html` incluye un bloque JSON-LD (Organization,
+    WebSite y un evento por cada fecha vigente) entre los marcadores
+    `SEO:JSONLD:START` y `SEO:JSONLD:END`. Ese bloque, `llms.txt` y
+    `sitemap.xml` son archivos generados: no se editan a mano.
+-   `robots.txt` es estático. Todos están en la raíz del proyecto.
+-   Se generan con `npm run build-seo` (`scripts/build-seo.js`), a partir de
+    `data/tickets.json`, `scripts/seo-config.json` y
+    `scripts/llms.template.txt`. Los textos fijos se editan en esos dos
+    últimos archivos.
+-   La regla de fechas vigentes del script repite la de `tickets.js` (hoy y
+    los 2 días anteriores); si una cambia, debe cambiar la otra.
+
+Flujo de actualización semanal: Mica actualiza `tickets.json` e imágenes, el
+desarrollador ejecuta `npm run build-seo -- --out seo-out` desde una copia
+equivalente a `branch_deploy` y Mica sube `index.html`, `llms.txt` y
+`sitemap.xml`, junto con `tickets.json` y las imágenes. Con una versión nueva
+se ejecuta `npm run build-seo` antes de generar el zip.
+
+Los campos opcionales de `tickets.json` están en
+[04-section-tickets.md](04-section-tickets.md). La FAQ vive solo en
+`llms.txt`, porque el sitio no tiene una section de FAQ visible.
+
 ## 7. Orden de visualización previsto
 
 Al cargar el sitio, el orden visual será:

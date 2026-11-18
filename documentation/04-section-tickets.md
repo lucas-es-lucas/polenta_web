@@ -145,3 +145,30 @@ Las especificaciones visuales y funcionales propias del Hero se documentan en:
 No se deben asumir elementos HTML definitivos, breakpoints adicionales ni
 cambios funcionales en Tickets mientras la estructura final de Hero + Tickets
 continúe en implementación.
+
+## 8. Campos opcionales y uso para GEO
+
+`scripts/build-seo.js` lee `data/tickets.json` para generar el JSON-LD de
+eventos, `llms.txt` y `sitemap.xml`. `tickets.js` ignora los campos que no
+usa, por lo que los siguientes son opcionales y no afectan a Tickets. Si
+faltan, el script los omite sin error:
+
+-   `name`: nombre propio del evento. Sin él se usa «Fiesta Polenta* en
+    {ciudad}» o el nombre predefinido en `scripts/seo-config.json`.
+-   `venue`, `address`: lugar y dirección.
+-   `startTime`, `endTime`: horarios `HH:MM` en hora local de la ciudad.
+-   `price`, `currency`: precio y moneda (por defecto, la del país).
+-   `type`: tipo de evento de schema.org (por defecto `DanceEvent`).
+
+Cada valor de `city` debe existir en la tabla de `scripts/seo-config.json`;
+si no, el script avisa y genera el evento sin ubicación. Al agregar una
+ciudad nueva en `tickets.json`, hay que sumarla también a esa tabla.
+
+La regla de fechas del script (hoy y los 2 días anteriores, por días
+calendario) repite la de `tickets.js`.
+
+Observación pendiente de revisión: `tickets.js` convierte la fecha con
+`new Date("YYYY-MM-DD")`, que se interpreta en UTC; según la zona horaria
+del visitante, el corte puede quedar un día distinto (en Argentina se ven
+hoy y ayer; en Europa, hoy y los 2 días anteriores). No se modificó el
+código; se revisará más adelante.

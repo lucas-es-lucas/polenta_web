@@ -25,6 +25,38 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-11-18
+
+#### Added
+
+-   En `feat-GEO`, se agrega `scripts/build-seo.js` (`npm run build-seo`),
+    que genera a partir de `data/tickets.json` el bloque JSON-LD de
+    `index.html` (Organization, WebSite y un evento por fecha vigente),
+    `llms.txt` (español e inglés, con próximas fechas y FAQ) y
+    `sitemap.xml`. Admite `--dry-run` y `--out <carpeta>`. Los datos fijos
+    están en `scripts/seo-config.json` y `scripts/llms.template.txt`.
+-   Se agrega `robots.txt` en la raíz, con acceso explícito para rastreadores
+    de IA y la ubicación del sitemap.
+-   `data/tickets.json` admite campos opcionales (`name`, `venue`,
+    `address`, `startTime`, `endTime`, `price`, `currency`, `type`) que no
+    afectan a `tickets.js`.
+
+#### Changed
+
+-   `index.html` incorpora un `<title>` descriptivo, `canonical`, Open Graph
+    (imagen provisoria `imgs/puestas/desktop/slider-img-1.png`) y
+    `twitter:card`. El atributo `lang` pasa de `en` a `es` en `index.html`,
+    `pages/terminos_y_condiciones.html` y `pages/politica_de_privacidad.html`.
+-   Archivos afectados: `index.html`, `package.json`, las dos páginas
+    legales, `robots.txt`, `llms.txt`, `sitemap.xml` y `scripts/`.
+
+#### Documentation
+
+-   Se actualizan `01-proyecto-resumen.md` y `04-section-tickets.md` con el
+    flujo GEO, los campos opcionales y una observación pendiente sobre la
+    zona horaria en la regla de fechas de `tickets.js`. Esta entrada no
+    registra un despliegue en producción.
+
 ### 2026-11-10
 
 #### Changed
