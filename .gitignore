@@ -1,5 +1,9 @@
 # carpeta completa
 node_modules/
 
+# salidas de los comandos GEO (se regeneran)
+entrega-geo/
+seo-out/
+
 # archivo de Figma
 # Polenta Web - Landing Demo.fig

@@ -7,7 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "sass scss/estilos.scss css/estilos.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
-    "build-seo": "node scripts/build-seo.js"
+    "build-seo": "node scripts/build-seo.js",
+    "geo:validar": "node scripts/geo/validar.js",
+    "geo:ciudad": "node scripts/geo/ciudad.js",
+    "geo:preparar": "node scripts/geo/preparar.js",
+    "geo:zip":"node scripts/geo/zip.js",
+    "geo:verificar": "node scripts/geo/verificar.js"
   },
   "author": "lucas_es_lucas",
   "license": "ISC",
