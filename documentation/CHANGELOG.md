@@ -25,6 +25,49 @@ Tipos sugeridos:
 
 ## Historial
 
+### 2026-11-23
+
+#### Added
+
+-   En `feat-GEO`, se agregan los comandos del flujo GEO, que funcionan por
+    ahora en la Mac de Lucas y están en `scripts/geo/`:
+    -   `npm run geo:validar`: valida un `tickets.json` antes de generar
+        (formato, fechas, ciudades, duplicados, links, horarios, precio,
+        moneda e imágenes, en el proyecto o en producción). No escribe nada.
+    -   `npm run geo:ciudad`: agrega ciudades y países nuevos a
+        `scripts/seo-config.json`, con vista previa y confirmación.
+    -   `npm run geo:preparar`: valida, genera los archivos GEO en una
+        carpeta temporal y deja `entrega-geo/AAAAMMDD-HHMM/` con
+        `index.html`, `llms.txt`, `sitemap.xml`, `tickets.json` y
+        `LEEME.txt` para Mica, sin modificar el proyecto.
+    -   `npm run geo:zip`: arma el zip de una versión nueva, sin
+        `data/tickets.json` ni `imgs/tickets/`.
+    -   `npm run geo:verificar`: verifica el sitio publicado (archivos,
+        agenda, imágenes, JSON-LD, `llms.txt` y `sitemap.xml`).
+-   Los comandos comparten utilidades en `scripts/geo/lib.js`. Los
+    `tickets.json` nuevos se buscan por defecto en `~/Downloads/tickets.json`.
+-   Skill del repositorio `.claude/skills/geo-semanal/SKILL.md`: guía a Claude
+    en el flujo GEO semanal y de versión nueva con los comandos `geo:*`,
+    respetando las reglas de autorización de `AGENTS.md`.
+
+#### Changed
+
+-   `package.json` incorpora los scripts `geo:validar`, `geo:ciudad`,
+    `geo:preparar`, `geo:zip` y `geo:verificar`. `.gitignore` ignora
+    `entrega-geo/` y `seo-out/`.
+-   Archivos afectados: `package.json`, `.gitignore` y `scripts/geo/`.
+    `scripts/build-seo.js` no se modifica.
+
+#### Documentation
+
+-   Se actualiza `08-flujo-geo.md` con los comandos, el flujo semanal y de
+    versión nueva basado en ellos, el comportamiento ante una ciudad nueva sin
+    cargar y los límites de la automatización. Se actualiza
+    `01-proyecto-resumen.md`. Se regenera el PDF
+    `pdf/Flujo-GEO-Fiesta-Polenta.pdf` (versión del 23-11-2026, para Mica)
+    con el flujo basado en los comandos. Esta entrada no registra un
+    despliegue en producción.
+
 ### 2026-11-18
 
 #### Added

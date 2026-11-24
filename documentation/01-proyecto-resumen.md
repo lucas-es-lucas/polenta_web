@@ -216,11 +216,17 @@ visible de las sections. No registra un despliegue en producción.
 -   La regla de fechas vigentes del script repite la de `tickets.js` (hoy y
     los 2 días anteriores); si una cambia, debe cambiar la otra.
 
-Flujo de actualización semanal: Mica actualiza `tickets.json` e imágenes, el
-desarrollador ejecuta `npm run build-seo -- --out seo-out` desde una copia
-equivalente a `branch_deploy` y Mica sube `index.html`, `llms.txt` y
-`sitemap.xml`, junto con `tickets.json` y las imágenes. Con una versión nueva
-se ejecuta `npm run build-seo` antes de generar el zip.
+Flujo de actualización semanal: Mica actualiza `tickets.json` e imágenes y le
+envía el `tickets.json` al desarrollador. Este lo guarda en
+`~/Downloads/tickets.json`, agrega las ciudades nuevas con
+`npm run geo:ciudad` y ejecuta `npm run geo:preparar`, que valida y deja
+`index.html`, `llms.txt`, `sitemap.xml` y `tickets.json` en
+`entrega-geo/AAAAMMDD-HHMM/`. Mica los sube por CPanel junto con las imágenes
+nuevas. Con una versión nueva se ejecuta `npm run geo:zip`, que arma un zip sin
+`data/tickets.json` ni `imgs/tickets/`. Después de publicar se ejecuta
+`npm run geo:verificar`. Los comandos (`scripts/geo/`) funcionan por ahora en
+la Mac del desarrollador; el detalle de cada uno, los responsables y las
+verificaciones están en [08-flujo-geo.md](08-flujo-geo.md).
 
 Los campos opcionales de `tickets.json` están en
 [04-section-tickets.md](04-section-tickets.md). La FAQ vive solo en
@@ -281,6 +287,7 @@ La documentación se organiza separando:
 -   `05-loader.md` --- especificaciones funcionales del loader inicial.
 -   [06-section-nosotros.md](06-section-nosotros.md) --- cards y composición responsive de Nosotros.
 -   [07-section-puestas.md](07-section-puestas.md) --- composición vertical y carrusel de Puestas.
+-   [08-flujo-geo.md](08-flujo-geo.md) --- flujo de trabajo GEO y comandos `geo:*`.
 -   `CHANGELOG.md` --- cambios relevantes del proyecto.
 -   `AGENTS.md` --- reglas de trabajo para agentes de desarrollo.
 
