@@ -29,6 +29,7 @@ const { ROOT, splitTickets, artStamp, extractJsonLd, eventsOf } = require("./lib
 const EXCLUDED_ROOT_DIRS = new Set([
 	".git",
 	".vscode",
+	".claude",
 	"node_modules",
 	"documentation",
 	"scripts",
@@ -153,7 +154,7 @@ for (const f of files) {
 	byTop.set(top, (byTop.get(top) || 0) + 1);
 }
 for (const [top, count] of [...byTop].sort()) console.log(`  ${top.padEnd(10)} ${count}`);
-console.log("  No viajan: data/tickets.json, imgs/tickets/, .git, node_modules, documentation, scripts, scss, .vscode, package*.json, .gitignore.");
+console.log("  No viajan: data/tickets.json, imgs/tickets/, .git, node_modules, documentation, scripts, scss, .vscode, .claude, package*.json, .gitignore.");
 
 if (DRY_RUN) {
 	console.log("\nDry-run: no se escribió ningún archivo.");
@@ -187,6 +188,7 @@ const forbidden = entries.filter(
 		e === "data/tickets.json" ||
 		e.startsWith("imgs/tickets/") ||
 		e.startsWith(".git/") ||
+			e.startsWith(".claude/") ||
 		e.startsWith("node_modules/") ||
 		e.endsWith(".DS_Store"),
 );

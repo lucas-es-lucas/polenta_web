@@ -144,7 +144,7 @@ evento por fecha vigente de `data/tickets.json` y arma
 
 El zip **no incluye** `data/tickets.json` ni `imgs/tickets/`, que administra
 Mica en producción, de modo que no puede pisarlos. Tampoco incluye lo que no
-es del sitio: `.git`, `.vscode`, `node_modules`, `documentation`, `scripts`,
+es del sitio: `.git`, `.vscode`, `.claude`, `node_modules`, `documentation`, `scripts`,
 `scss`, `entrega-geo`, `seo-out`, `package.json`, `package-lock.json`,
 `.gitignore` y `.DS_Store`. Después de armarlo, abre el zip y comprueba que
 no contenga nada de lo excluido. La lista de exclusiones está al principio de
@@ -205,15 +205,25 @@ publicado, es un paso manual aparte, a decisión de Lucas.
 
 ## 5. Publicación de versión nueva (cambios complejos o rediseños)
 
-1.  **Lucas**: corre `npm run geo:zip` y pasa a Mica el zip de
-    `entrega-geo/`.
-2.  **Mica**: descomprime y pega todo el contenido desde el administrador de
+1.  **Lucas**: antes de armar el zip, corre `npm run geo:verificar` para
+    confirmar que el `tickets.json` de producción coincide con el del
+    proyecto. Luego corre `npm run geo:zip` y pasa a Mica el zip de
+    `entrega-geo/`. Conviene correrlo el mismo día de la publicación: la
+    ventana de fechas vigentes cambia cada día.
+2.  **Mica**: antes de pisar nada, descarga desde el administrador de
+    archivos de CPanel una copia del sitio actual (backup). Es la forma de
+    volver atrás si algo sale mal.
+3.  **Mica**: descomprime y pega todo el contenido desde el administrador de
     archivos de CPanel.
-3.  **Mica**: el zip no trae `data/tickets.json` ni `imgs/tickets/`, así que
-    no los pisa; antes de publicar, debe confirmarse que el `tickets.json` de
-    producción es el mismo que usó `build-seo` (el JSON-LD y `llms.txt` se
-    generaron con el del proyecto). `geo:verificar` lo comprueba.
-4.  **Ambos**: repiten la verificación (sección 6).
+4.  **Mica**: el zip no trae `data/tickets.json` ni `imgs/tickets/`, así que
+    no los pisa. Por eso, antes de publicar, el `tickets.json` de producción
+    debe ser el mismo que usó `build-seo` (el JSON-LD y `llms.txt` se
+    generaron con el del proyecto): es lo que comprueba el paso 1. Antes de
+    la primera publicación, `geo:verificar` también informa errores por
+    `llms.txt`, `sitemap.xml` y `robots.txt` (todavía no existen en
+    producción); en ese paso solo importa la comparación del
+    `tickets.json`.
+5.  **Ambos**: repiten la verificación (sección 6).
 
 ### Primera publicación GEO
 
