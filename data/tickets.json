@@ -1,11 +1,5 @@
 [
      {
-          "date": "20261121",
-          "city": "solo-pop-cba",
-          "alt": "ticket Polenta Solo Pop Córdoba 21-11-2026",
-          "link": "https://alpogo.com/evento/29667"
-     },
-     {
           "date": "20261128",
           "city": "mvdeo",
           "alt": "ticket Polenta Montevideo 28-11-2026",
@@ -34,6 +28,12 @@
           "city": "caba",
           "alt": "ticket Polenta Buenos Aires 11-12-2026",
           "link": "https://www.passline.com/eventos/polenta-578850"
+     },
+     {
+          "date": "20261231",
+          "city": "pde",
+          "alt": "ticket Polenta Punta del Este 31-12-2026",
+          "link": "https://redtickets.uy/evento/FIESTA-POLENTA/35216/"
      }
 
 ]
