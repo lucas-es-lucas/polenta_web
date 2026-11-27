@@ -91,6 +91,22 @@
 			},
 			"country": "AR", "timezone": "America/Argentina/Buenos_Aires",
 			"defaultName": "Café Polenta"
+		},
+		"pde": {
+			"es": "Punta del Este", "en": "Punta del Este",
+			"country": "UY", "timezone": "America/Montevideo"
+		},
+		"carlos-paz": {
+			"es": "Villa Carlos Paz", "en": "Villa Carlos Paz",
+			"country": "AR", "timezone": "America/Argentina/Cordoba"
+		},
+		"casilda": {
+			"es": "Casilda", "en": "Casilda",
+			"country": "AR", "timezone": "America/Argentina/Cordoba"
+		},
+		"rauch": {
+			"es": "Rauch", "en": "Rauch",
+			"country": "AR", "timezone": "America/Argentina/Buenos_Aires"
 		}
 	},
 	"sitemapPages": [
